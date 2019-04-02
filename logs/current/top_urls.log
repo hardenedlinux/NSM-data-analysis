@@ -1,0 +1,19 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	top_urls
+#open	2019-02-15-16-27-02
+#fields	epoch_time	top_list	top_counts
+#types	time	vector[string]	vector[count]
+1550266022.991868	github.com	1
+1550266032.991890	gtrun.nsm.local	2
+1550266172.992275	_sleep-proxy._udp.local	18
+1550266332.993823	ftp-chi.osuosl.org,_http._tcp.ftp.us.debian.org	2,1
+1550266352.993885	gtrun.nsm.local	10
+1550266462.994130	gjcybzvmvir.com,ygjqujokmwmccld.org,jutngoyfcngragcdei.info,cenpksygb.org,ripygqgosebdxtmbfbueiixa.org,yqwjvhxgaiszygziq.org,sdf.21kilos.com,google.com,dcbuwccouispn.info,nykoantpydkvsmqqrjtctt.info,uvaphhxjmijvuvobqfezgnc.com,ljiececesruwqsiaafspjb.biz,dzgddgiowhm.info,kqcpbgcxbgylzgsadxb.org,qtbtqnuubwzibkriqg.org,dslmkpgjvuisnqa.com,dpsjwmwzuwnicaq.biz,coxrwiuxkcausxnlbgjmakxrw.net,bxlwdhpnkbrmw.com,qtcoickldqbvtrwyfqjflt.org	25,7,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3
+1550266472.994131	sanjose.speedtest.comcast.net,boston.speedtest.comcast.net,jacksonville.speedtest.comcast.net,houston.speedtest.comcast.net,5.82.164.184.in-addr.arpa,google.com,microsoft.com,cnn.com,uvaphhxjmijvuvobqfezgnc.com,ljiececesruwqsiaafspjb.biz	30,30,30,30,30,15,15,15,9,9
+1550266483.075663	www.google.ca,clients1.google.ca,dns.msftncsi.com,www.google.co.uk,www.google.com,teredo.ipv6.microsoft.com,fbstatic-a.akamaihd.net,ssl.gstatic.com,googleads.g.doubleclick.net,ip-addr.es,runlove.us,kritischerkonsum.uni-koeln.de,comarksecurity.com,7oqnsnzwwnm6zb7y.gigapaysun.com,www.facebook.com,fbcdn-profile-a.akamaihd.net,va872g.g90e1h.b8.642b63u.j985a2.v33e.37.pa269cc.e8mfzdgrf7g0.groupprograms.in,ubb67.3c147o.u806a4.w07d919.o5f.f1.b80w.r0faf9.e8mfzdgrf7g0.groupprograms.in,r03afd2.c3008e.xc07r.b0f.a39.h7f0fa5eu.vb8fbl.e8mfzdgrf7g0.groupprograms.in,java.com	140,131,128,125,123,122,122,122,122,120,120,120,120,120,119,119,119,119,119,117
+1550266493.075672	WPAD,ISATAP,geronimo-pc,win-c2ke6n4w3n1g,isatap,wpad,72.74.187.66.in-addr.arpa,gregory-pc,google.com,khm0.googleapis.com,maps.googleapis.com,mt1.googleapis.com,fonts.googleapis.com,in.getclicky.com,adadvisor.net,GREGORY-PC,connexity.net,ads.pubmatic.com,apis.google.com,www.google.com	222,117,105,93,93,84,78,67,66,66,66,66,66,66,66,65,64,63,63,63
+1550266513.075777	110.226.204.23.in-addr.arpa	1
+1550266563.075889	_sleep-proxy._udp.local	4

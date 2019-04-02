@@ -1,0 +1,26 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	vlanlocation
+#open	2019-02-15-16-25-22
+#fields	ts	vid	vlan.description	vlan.ipv4net	vlan.ipv6net	vlan.location	seen
+#types	time	int	string	subnet	subnet	string	bool
+1550265922.991558	101	south	10.12.0.0/24	2001:468:1f07:c::/64	south	F
+1550265922.991558	1002	Gigamon Port 2/1/x2	-	-	wifi-lower-level	F
+1550265922.991558	102	west	10.16.0.0/24	2001:468:1f07:d::/64	west	F
+1550265922.991558	1001	Gigamon Port 2/1/x1	-	-	wifi-upper-level	F
+1550265922.991558	103	east	10.10.0.0/24	2001:468:1f07:f00e::/64	east	F
+1550265922.991558	100	north	10.2.0.0/24	2001:468:1f07:b::/64	north	F
+1550266222.991567	101	south	10.12.0.0/24	2001:468:1f07:c::/64	south	F
+1550266222.991567	1002	Gigamon Port 2/1/x2	-	-	wifi-lower-level	F
+1550266222.991567	102	west	10.16.0.0/24	2001:468:1f07:d::/64	west	F
+1550266222.991567	1001	Gigamon Port 2/1/x1	-	-	wifi-upper-level	F
+1550266222.991567	103	east	10.10.0.0/24	2001:468:1f07:f00e::/64	east	F
+1550266222.991567	100	north	10.2.0.0/24	2001:468:1f07:b::/64	north	F
+1550266522.991594	101	south	10.12.0.0/24	2001:468:1f07:c::/64	south	F
+1550266522.991594	1002	Gigamon Port 2/1/x2	-	-	wifi-lower-level	F
+1550266522.991594	102	west	10.16.0.0/24	2001:468:1f07:d::/64	west	F
+1550266522.991594	1001	Gigamon Port 2/1/x1	-	-	wifi-upper-level	F
+1550266522.991594	103	east	10.10.0.0/24	2001:468:1f07:f00e::/64	east	F
+1550266522.991594	100	north	10.2.0.0/24	2001:468:1f07:b::/64	north	F

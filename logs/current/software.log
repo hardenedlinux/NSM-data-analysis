@@ -1,0 +1,191 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	software
+#open	2019-02-15-16-27-02
+#fields	ts	host	host_p	software_type	name	version.major	version.minor	version.minor2	version.minor3	version.addl	unparsed_version	o_host	QQ_num	o_host
+#types	time	addr	port	enum	string	count	count	count	count	string	string	addr	string	addr
+1550266022.582924	10.220.170.105	-	SSH::CLIENT	OpenSSH	7	9	-	-	-	OpenSSH_7.9	-	-	-
+1550266453.836364	192.168.122.149	-	HTTP::BROWSER	MSIE	10	0	-	-	-	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)	-	-	-
+1550266473.608821	172.16.165.165	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266473.623451	172.16.165.165	-	HTTP::BROWSER	Java	1	6	0	25	-	Mozilla/4.0 (Windows 7 6.1) Java/1.6.0_25	-	-	-
+1550266474.051058	172.16.165.132	-	HTTP::BROWSER	MSIE	10	0	-	-	-	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)	-	-	-
+1550266474.062544	172.16.165.132	-	HTTP::BROWSER	<unknown browser>	-	-	-	-	-	Mozilla/4.0 (compatible; Win32; WinHttp.WinHttpRequest.5)	-	-	-
+1550266474.547020	192.168.137.62	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)	-	-	-
+1550266475.007032	192.168.204.137	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729)	-	-	-
+1550266475.019018	192.168.204.137	-	HTTP::BROWSER	Java	1	6	0	25	-	Mozilla/4.0 (Windows 7 6.1) Java/1.6.0_25	-	-	-
+1550266475.439584	192.168.204.139	-	HTTP::BROWSER	MSIE	10	0	-	-	-	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)	-	-	-
+1550266475.440048	192.168.204.146	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko	-	-	-
+1550266475.464482	192.168.204.137	-	HTTP::BROWSER	Mozilla	-	-	-	-	-	Mozilla	-	-	-
+1550266476.427024	172.16.120.154	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)	-	-	-
+1550266476.427409	172.16.120.154	-	HTTP::BROWSER	<unknown browser>	-	-	-	-	-	Mozilla/4.0	-	-	-
+1550266476.899005	192.168.138.158	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266476.931162	192.168.138.158	-	HTTP::BROWSER	Java	1	6	0	25	-	Mozilla/4.0 (Windows 7 6.1) Java/1.6.0_25	-	-	-
+1550266477.867096	192.168.120.154	-	HTTP::BROWSER	Microsoft-CryptoAPI	6	1	-	-	-	Microsoft-CryptoAPI/6.1	-	-	-
+1550266478.635236	172.16.137.40	-	HTTP::BROWSER	<unknown browser>	-	-	-	-	-	Mozilla/5.0	-	-	-
+1550266478.638808	172.16.137.40	-	HTTP::BROWSER	Microsoft-CryptoAPI	6	1	-	-	-	Microsoft-CryptoAPI/6.1	-	-	-
+1550266479.071365	192.168.137.81	-	HTTP::BROWSER	Microsoft NCSI	-	-	-	-	-	Microsoft NCSI	-	-	-
+1550266479.071763	192.168.137.81	-	HTTP::BROWSER	MSIE	10	0	-	-	-	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)	-	-	-
+1550266479.583160	10.10.100.139	-	HTTP::BROWSER	Microsoft NCSI	-	-	-	-	-	Microsoft NCSI	-	-	-
+1550266479.583226	10.10.100.139	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266479.589182	10.10.100.139	-	HTTP::BROWSER	Microsoft BITS	7	5	-	-	-	Microsoft BITS/7.5	-	-	-
+1550266479.589766	10.10.100.139	-	HTTP::BROWSER	Shockwave Flash	-	-	-	-	-	Shockwave Flash	-	-	-
+1550266479.598164	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.3; Trident/7.0)	-	-	-
+1550266479.599687	10.10.100.139	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266479.601585	10.10.100.139	-	HTTP::BROWSER	Java	1	7	0	9	-	Mozilla/4.0 (Windows 7 6.1) Java/1.7.0_09	-	-	-
+1550266479.617456	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.618276	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.618282	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.622089	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.622197	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.622266	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.622279	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.622784	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.623960	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.623966	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.632841	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.632845	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.643800	10.10.100.139	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266479.658592	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.3; Trident/7.0)	-	-	-
+1550266479.660299	10.10.100.139	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266479.677918	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.678773	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.678778	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.682402	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.682894	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.683474	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.684539	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.684544	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.693655	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.693660	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.703432	10.10.100.139	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266479.718519	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.3; Trident/7.0)	-	-	-
+1550266479.720226	10.10.100.139	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266479.737721	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.738630	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.738635	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.742362	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.742839	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.743430	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.744507	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.744509	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266479.753549	10.10.100.139	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)	-	-	-
+1550266479.753552	10.10.100.139	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0)	-	-	-
+1550266480.127015	192.168.120.154	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; InfoPath.3)	-	-	-
+1550266480.130697	192.168.120.154	-	HTTP::BROWSER	Microsoft BITS	7	5	-	-	-	Microsoft BITS/7.5	-	-	-
+1550266480.141064	192.168.120.154	-	HTTP::BROWSER	Windows-Update-Agent	-	-	-	-	-	Windows-Update-Agent	-	-	-
+1550266480.149682	192.168.120.154	-	HTTP::BROWSER	Java	1	6	0	20	-	Mozilla/4.0 (Windows 7 6.1) Java/1.6.0_20	-	-	-
+1550266480.603296	172.16.101.196	-	HTTP::BROWSER	MSIE	10	0	-	-	-	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)	-	-	-
+1550266480.621622	172.16.101.196	-	HTTP::BROWSER	contype	-	-	-	-	-	contype	-	-	-
+1550266481.135103	172.16.138.158	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266481.138907	172.16.138.158	-	HTTP::BROWSER	Shockwave Flash	-	-	-	-	-	Shockwave Flash	-	-	-
+1550266481.173573	172.16.138.158	-	HTTP::BROWSER	MSIE	10	0	-	-	-	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)	-	-	-
+1550266481.178870	172.16.138.158	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266481.245571	172.16.138.158	-	HTTP::BROWSER	MSIE	10	0	-	-	-	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)	-	-	-
+1550266481.251079	172.16.138.158	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266481.319589	172.16.138.158	-	HTTP::BROWSER	MSIE	10	0	-	-	-	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)	-	-	-
+1550266481.324531	172.16.138.158	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266481.791136	192.168.122.200	-	HTTP::BROWSER	Microsoft NCSI	-	-	-	-	-	Microsoft NCSI	-	-	-
+1550266481.791189	192.168.122.200	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-
+1550266481.822209	192.168.122.200	-	HTTP::BROWSER	Java	1	6	0	25	-	Mozilla/4.0 (Windows 7 6.1) Java/1.6.0_25	-	-	-
+1550266482.343466	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.343491	10.200.2.252	-	HTTP::BROWSER	Chrome	36	0	1985	143	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36	-	-	-
+1550266482.343563	10.200.2.252	-	HTTP::BROWSER	Chrome	38	0	2125	111	-	Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36	-	-	-
+1550266482.343603	10.200.2.252	-	HTTP::BROWSER	Firefox	35	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0	-	-	-
+1550266482.343730	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.346237	10.200.2.252	-	HTTP::BROWSER	Chrome	36	0	1985	143	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36	-	-	-
+1550266482.346276	10.200.2.252	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko	-	-	-
+1550266482.347347	10.200.2.252	-	HTTP::BROWSER	Firefox	34	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0	-	-	-
+1550266482.347405	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.348460	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	120	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36	-	-	-
+1550266482.349201	10.200.2.252	-	HTTP::BROWSER	Chrome	38	0	2125	111	-	Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36	-	-	-
+1550266482.349240	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	120	-	Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36	-	-	-
+1550266482.349335	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.349360	10.200.2.252	-	HTTP::BROWSER	Chrome	39	0	2171	95	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36	-	-	-
+1550266482.349392	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.349471	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.349890	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.354540	10.200.2.252	-	HTTP::BROWSER	Firefox	34	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0	-	-	-
+1550266482.354628	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.354673	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.354773	10.200.2.252	-	HTTP::BROWSER	Chrome	35	0	1916	153	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36	-	-	-
+1550266482.357438	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	103	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36	-	-	-
+1550266482.357499	10.200.2.252	-	HTTP::BROWSER	Chrome	39	0	2171	95	-	Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36	-	-	-
+1550266482.357528	10.200.2.252	-	HTTP::BROWSER	Firefox	34	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0	-	-	-
+1550266482.358522	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	102	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.102 Safari/537.36	-	-	-
+1550266482.358561	10.200.2.252	-	HTTP::BROWSER	Chrome	39	0	2171	95	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36	-	-	-
+1550266482.360211	10.200.2.252	-	HTTP::BROWSER	Chrome	35	0	1916	153	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36	-	-	-
+1550266482.360257	10.200.2.252	-	HTTP::BROWSER	Chrome	38	0	2125	111	-	Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36	-	-	-
+1550266482.360301	10.200.2.252	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)	-	-	-
+1550266482.360341	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	103	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36	-	-	-
+1550266482.360576	10.200.2.252	-	HTTP::BROWSER	Firefox	35	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0	-	-	-
+1550266482.360680	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	120	-	Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36	-	-	-
+1550266482.360699	10.200.2.252	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)	-	-	-
+1550266482.365440	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.365471	10.200.2.252	-	HTTP::BROWSER	Chrome	36	0	1985	143	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36	-	-	-
+1550266482.365534	10.200.2.252	-	HTTP::BROWSER	Chrome	38	0	2125	111	-	Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36	-	-	-
+1550266482.365575	10.200.2.252	-	HTTP::BROWSER	Firefox	35	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0	-	-	-
+1550266482.366160	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.368115	10.200.2.252	-	HTTP::BROWSER	Chrome	36	0	1985	143	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36	-	-	-
+1550266482.368150	10.200.2.252	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko	-	-	-
+1550266482.369619	10.200.2.252	-	HTTP::BROWSER	Firefox	34	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0	-	-	-
+1550266482.369672	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.370612	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	120	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36	-	-	-
+1550266482.371310	10.200.2.252	-	HTTP::BROWSER	Chrome	38	0	2125	111	-	Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36	-	-	-
+1550266482.371345	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	120	-	Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36	-	-	-
+1550266482.371426	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.371450	10.200.2.252	-	HTTP::BROWSER	Chrome	39	0	2171	95	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36	-	-	-
+1550266482.371473	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.371544	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.372172	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.376886	10.200.2.252	-	HTTP::BROWSER	Firefox	34	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0	-	-	-
+1550266482.376979	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.377024	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.377399	10.200.2.252	-	HTTP::BROWSER	Chrome	35	0	1916	153	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36	-	-	-
+1550266482.379416	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	103	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36	-	-	-
+1550266482.379475	10.200.2.252	-	HTTP::BROWSER	Chrome	39	0	2171	95	-	Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36	-	-	-
+1550266482.379506	10.200.2.252	-	HTTP::BROWSER	Firefox	34	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0	-	-	-
+1550266482.381050	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	102	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.102 Safari/537.36	-	-	-
+1550266482.381085	10.200.2.252	-	HTTP::BROWSER	Chrome	39	0	2171	95	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36	-	-	-
+1550266482.382126	10.200.2.252	-	HTTP::BROWSER	Chrome	35	0	1916	153	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36	-	-	-
+1550266482.382158	10.200.2.252	-	HTTP::BROWSER	Chrome	38	0	2125	111	-	Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36	-	-	-
+1550266482.382189	10.200.2.252	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)	-	-	-
+1550266482.382226	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	103	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36	-	-	-
+1550266482.382842	10.200.2.252	-	HTTP::BROWSER	Firefox	35	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0	-	-	-
+1550266482.382927	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	120	-	Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36	-	-	-
+1550266482.382944	10.200.2.252	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)	-	-	-
+1550266482.387608	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.387631	10.200.2.252	-	HTTP::BROWSER	Chrome	36	0	1985	143	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36	-	-	-
+1550266482.387691	10.200.2.252	-	HTTP::BROWSER	Chrome	38	0	2125	111	-	Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36	-	-	-
+1550266482.387726	10.200.2.252	-	HTTP::BROWSER	Firefox	35	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0	-	-	-
+1550266482.388310	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.390247	10.200.2.252	-	HTTP::BROWSER	Chrome	36	0	1985	143	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36	-	-	-
+1550266482.390281	10.200.2.252	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko	-	-	-
+1550266482.391712	10.200.2.252	-	HTTP::BROWSER	Firefox	34	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0	-	-	-
+1550266482.391760	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.393183	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	120	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36	-	-	-
+1550266482.393400	10.200.2.252	-	HTTP::BROWSER	Chrome	38	0	2125	111	-	Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36	-	-	-
+1550266482.393434	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	120	-	Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36	-	-	-
+1550266482.393515	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.393538	10.200.2.252	-	HTTP::BROWSER	Chrome	39	0	2171	95	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36	-	-	-
+1550266482.393567	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.393637	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.394369	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.399138	10.200.2.252	-	HTTP::BROWSER	Firefox	34	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0	-	-	-
+1550266482.399219	10.200.2.252	-	HTTP::BROWSER	Firefox	33	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0	-	-	-
+1550266482.399282	10.200.2.252	-	HTTP::BROWSER	Firefox	31	0	-	-	-	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0	-	-	-
+1550266482.399379	10.200.2.252	-	HTTP::BROWSER	Chrome	35	0	1916	153	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36	-	-	-
+1550266482.401602	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	103	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36	-	-	-
+1550266482.401659	10.200.2.252	-	HTTP::BROWSER	Chrome	39	0	2171	95	-	Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36	-	-	-
+1550266482.401685	10.200.2.252	-	HTTP::BROWSER	Firefox	34	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0	-	-	-
+1550266482.403209	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	102	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.102 Safari/537.36	-	-	-
+1550266482.403244	10.200.2.252	-	HTTP::BROWSER	Chrome	39	0	2171	95	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36	-	-	-
+1550266482.404219	10.200.2.252	-	HTTP::BROWSER	Chrome	35	0	1916	153	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36	-	-	-
+1550266482.404252	10.200.2.252	-	HTTP::BROWSER	Chrome	38	0	2125	111	-	Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36	-	-	-
+1550266482.404278	10.200.2.252	-	HTTP::BROWSER	MSIE	8	0	-	-	-	Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)	-	-	-
+1550266482.404313	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	103	-	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36	-	-	-
+1550266482.404981	10.200.2.252	-	HTTP::BROWSER	Firefox	35	0	-	-	-	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0	-	-	-
+1550266482.405065	10.200.2.252	-	HTTP::BROWSER	Chrome	37	0	2062	120	-	Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36	-	-	-
+1550266482.405082	10.200.2.252	-	HTTP::BROWSER	MSIE	9	0	-	-	-	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)	-	-	-
+1550266483.207017	192.168.122.163	-	HTTP::BROWSER	MSIE	11	0	-	-	-	Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)	-	-	-

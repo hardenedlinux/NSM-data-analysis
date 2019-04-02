@@ -1,0 +1,26 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	dpd
+#open	2019-02-15-16-34-13
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	proto	analyzer	failure_reason
+#types	time	string	addr	port	addr	port	enum	string	string
+1550266453.837187	C4761k4EOsBIZBIS0e	192.168.122.149	49323	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.837228	CI4cNO24PNJroiQX56	192.168.122.149	49324	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.837278	CsptMr2cK5sTUCjdlb	192.168.122.149	49325	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.837308	Ct139KmSQyfzcFnt3	192.168.122.149	49326	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.837346	CjFZkz3TamoQtoGa92	192.168.122.149	49327	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.837386	CXjH1HYf0Ssuew1rd	192.168.122.149	49328	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.842603	C05c4w4MAraAFrXT13	192.168.122.149	49323	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.842647	CH5IoU3gf8jV3LTPXa	192.168.122.149	49324	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.842677	CgDD8W3r1NsurgWfz2	192.168.122.149	49325	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.842698	C2V4nT3XRifgL5BHkl	192.168.122.149	49326	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.842722	CThzrh3ahoFa1uosk6	192.168.122.149	49327	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.842753	C5GWbE2LthOqBH6Opi	192.168.122.149	49328	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.847818	CV27v9YC6jjLHTzXe	192.168.122.149	49323	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.847866	CCXPpm4iQWzcOU77C9	192.168.122.149	49324	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.847897	CzyACT1aCNMigsPZS2	192.168.122.149	49325	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.847922	CTGxhf2MfjvTTUrqvi	192.168.122.149	49326	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.847941	CpVcjS1fsn6Lp7zSLl	192.168.122.149	49327	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516
+1550266453.847978	CA076iG527itdKjs2	192.168.122.149	49328	69.195.71.174	443	tcp	SSL	Invalid version late in TLS connection. Packet reported version: 8516

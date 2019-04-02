@@ -1,0 +1,94 @@
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./protocols/./http/./owasp/./http_ext.bro, line 17: deprecated (split1)
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./protocols/./http/./owasp/./http_ext.bro, line 18: deprecated (split)
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./protocols/./http/./owasp/./http_ext.bro, line 22: deprecated (split1)
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./protocols/./smtp/./smtp-decode-encoded-word-subjects.bro, line 5: deprecated (split_all)
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./protocols/./smtp/./smtp-decode-encoded-word-subjects.bro, line 11: deprecated (split_all)
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./protocols/./smtp/./smtp-decode-encoded-word-subjects.bro, line 19: deprecated (split_all)
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./protocols/./smtp/./smtp-decode-encoded-word-subjects.bro, line 28: deprecated (cat_string_array)
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./protocols/./smtp/./smtp-decode-encoded-word-subjects.bro, line 31: deprecated (cat_string_array)
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./protocols/./protocols-stats.bro, line 294: deprecated (split)
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./log-passwords.bro, line 1: Discarded extraneous Broxygen comment: Periodic event used to log VLAN information
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./log-passwords.bro, line 1: Discarded extraneous Broxygen comment: Periodic event used to log VLAN information
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./log-passwords.bro, line 2: Discarded extraneous Broxygen comment: Periodic event used to log VLAN information
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 1: Discarded extraneous Broxygen comment: x509
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 1: Discarded extraneous Broxygen comment: ssl
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 1: Discarded extraneous Broxygen comment: ssh-status
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 1: Discarded extraneous Broxygen comment: Hash-fuzzing
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 1: Discarded extraneous Broxygen comment: top_dns
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 1: Discarded extraneous Broxygen comment: mqtt
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 1: Discarded extraneous Broxygen comment: Http2
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 1: Discarded extraneous Broxygen comment: protocols-stats-resp
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 1: Discarded extraneous Broxygen comment: protocols-stats-orig
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 1: Discarded extraneous Broxygen comment: ssl_ciphers
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 3: Discarded extraneous Broxygen comment: x509
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 3: Discarded extraneous Broxygen comment: ssl
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 3: Discarded extraneous Broxygen comment: ssh-status
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 3: Discarded extraneous Broxygen comment: Hash-fuzzing
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 3: Discarded extraneous Broxygen comment: top_dns
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 3: Discarded extraneous Broxygen comment: mqtt
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 3: Discarded extraneous Broxygen comment: Http2
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 3: Discarded extraneous Broxygen comment: protocols-stats-resp
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 3: Discarded extraneous Broxygen comment: protocols-stats-orig
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 3: Discarded extraneous Broxygen comment: ssl_ciphers
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 4: Discarded extraneous Broxygen comment: x509
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 4: Discarded extraneous Broxygen comment: ssl
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 4: Discarded extraneous Broxygen comment: ssh-status
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 4: Discarded extraneous Broxygen comment: Hash-fuzzing
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 4: Discarded extraneous Broxygen comment: top_dns
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 4: Discarded extraneous Broxygen comment: mqtt
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 4: Discarded extraneous Broxygen comment: Http2
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 4: Discarded extraneous Broxygen comment: protocols-stats-resp
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 4: Discarded extraneous Broxygen comment: protocols-stats-orig
+warning in /usr/local/bro/spool/installed-scripts-do-not-touch/site/packages/./hardenedlinux-bro-script/./frameworks/notice/mutlti.bro, line 4: Discarded extraneous Broxygen comment: ssl_ciphers
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 1: Discarded extraneous Broxygen comment: x509
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 1: Discarded extraneous Broxygen comment: ssl
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 1: Discarded extraneous Broxygen comment: ssh-status
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 1: Discarded extraneous Broxygen comment: Hash-fuzzing
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 1: Discarded extraneous Broxygen comment: top_dns
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 1: Discarded extraneous Broxygen comment: mqtt
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 1: Discarded extraneous Broxygen comment: Http2
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 1: Discarded extraneous Broxygen comment: protocols-stats-resp
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 1: Discarded extraneous Broxygen comment: protocols-stats-orig
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 1: Discarded extraneous Broxygen comment: ssl_ciphers
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 3: Discarded extraneous Broxygen comment: x509
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 3: Discarded extraneous Broxygen comment: ssl
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 3: Discarded extraneous Broxygen comment: ssh-status
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 3: Discarded extraneous Broxygen comment: Hash-fuzzing
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 3: Discarded extraneous Broxygen comment: top_dns
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 3: Discarded extraneous Broxygen comment: mqtt
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 3: Discarded extraneous Broxygen comment: Http2
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 3: Discarded extraneous Broxygen comment: protocols-stats-resp
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 3: Discarded extraneous Broxygen comment: protocols-stats-orig
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 3: Discarded extraneous Broxygen comment: ssl_ciphers
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 4: Discarded extraneous Broxygen comment: x509
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 4: Discarded extraneous Broxygen comment: ssl
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 4: Discarded extraneous Broxygen comment: ssh-status
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 4: Discarded extraneous Broxygen comment: Hash-fuzzing
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 4: Discarded extraneous Broxygen comment: top_dns
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 4: Discarded extraneous Broxygen comment: mqtt
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 4: Discarded extraneous Broxygen comment: Http2
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 4: Discarded extraneous Broxygen comment: protocols-stats-resp
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 4: Discarded extraneous Broxygen comment: protocols-stats-orig
+warning in /usr/local/bro/share/bro/policy/frameworks/intel/do_notice.bro, line 4: Discarded extraneous Broxygen comment: ssl_ciphers
+listening on ens192
+
+stats/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550265999.387592 conn/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266002.991800 top_talkers/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266006.402948 known_domains/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266006.403875 known_services/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266006.530947 x509/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266006.530947 files_identified/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266016.370939 dns/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266022.582924 software/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266022.991868 top_urls/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266027.570334 ssh/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266197.801455 ssl/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266222.991567 protocols-orig/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266222.991567 protocols-resp/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266315.614953 http/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266453.844595 ftp/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266453.996884 ssl-ciphers/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266473.609834 notice/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266474.065435 pe/Log::WRITER_KAFKAWRITER: Debug is turned off.
+1550266483.075663 dhcp/Log::WRITER_KAFKAWRITER: Debug is turned off.

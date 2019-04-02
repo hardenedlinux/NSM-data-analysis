@@ -1,0 +1,10 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	osquery_hosts
+#open	2019-02-15-16-25-22
+#fields	ts	source	peer	level	message
+#types	time	string	string	string	string
+0.000000	host	/bro/osquery/hosts	debug	Subscribing to event host_processes() for query 'SELECT pid,name,path,cmdline,cwd,root,uid,gid,on_disk,start_time,parent,pgroup FROM processes'
+0.000000	host	/bro/osquery/hosts	debug	Subscribing to event host_socket_events() for query 'SELECT action, pid, path, family, protocol, local_address, remote_address, local_port, remote_port, time, success FROM socket_events'

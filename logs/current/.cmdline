@@ -1,0 +1,1 @@
+-i ens192 -U .status -p broctl -p broctl-live -p standalone -p local -p bro local.bro broctl broctl/standalone broctl/auto
