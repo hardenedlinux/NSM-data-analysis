@@ -1,0 +1,10 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	top_dns
+#open	2019-09-16-05-07-42
+#fields	ts	ts_delta	record_type	top_queries	top_counts	top_epsilons
+#types	time	interval	string	vector[string]	vector[count]	vector[count]
+1568624862.094507	900.000000	A	hertertrighheg.com,foaningundthe.com,corpconor-daily.pw,sorrycorpmail.site,smtp.gmail.com,smtp.wp.pl,patrickcrouzet5.ddns.net,log.suzukiburgman.top,hattihisce.com,multifest.bit	3713,3597,689,661,643,547,505,403,381,305	113,113,21,21,75,75,25,75,113,129
+1568624862.094507	900.000000	AAAA	wpad,ise.wrccdc.org,win-2012-r2-1,myip.opendns.com,dns.msftncsi.com,pkg.cdn.trueos.org,www.msftncsi.com,1.arch.pool.ntp.org,docs.google.com,googleadapis.l.google.com	32,24,24,20,16,13,4,2,2,2	0,0,0,0,0,0,0,0,0,0

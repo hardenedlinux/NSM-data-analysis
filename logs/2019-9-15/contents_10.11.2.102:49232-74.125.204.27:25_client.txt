@@ -1,0 +1,42 @@
+EHLO outlook.com
+MAIL From: <hlaehdkkgie@outlook.com>
+RCPT To:<chiarmontejo70@gmail.com>
+RCPT To:<christinamarieowens@gmail.com>
+RCPT To:<chad0178.cg@gmail.com>
+RCPT To:<chingchingwu@gmail.com>
+RCPT To:<chris81shick@gmail.com>
+DATA
+Message-ID: <CEGRNBBZAKEKSQUKRGJZR@outlook.com>
+From: "=Trusted.Meds=" <hlaehdkkgie@outlook.com>
+Reply-To: "VIAGRA & CIALIS" <hlaehdkkgie@outlook.com>
+To: <chiarmontejo70@gmail.com>
+Subject: Your Order is Ready
+Date: Thu, 02 Nov 2017 20:24:27 -0-100
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="--1854423463276762"
+X-Priority: 1
+X-MSMail-Priority: #PRIORITY_STRING
+
+----1854423463276762
+Content-Type: text/plain;;
+Content-Transfer-Encoding: quoted-printable
+
+** Our Bestsellers! **
+
+Vigara- $0.84
+Levtira- $1.90
+Cilais- $1.84
+Female Vigara- $1.95
+Family Pack- $2.34
+Professional Pack- $3.63
+
+and more ...
+
+
+http://t.cn/RWpeFOP
+
+
+02NKrf
+----1854423463276762--
+.

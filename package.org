@@ -1,0 +1,41 @@
+#+TITLE: Package List
+#+AUTHOR: GTrunSec
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 26 September 2019
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en cn
+#+SETUPFILE: ~/org-notes/setup/.local
+#+hugo_publishdate: (0 5)
+#+hugo_auto_set_lastmod: t
+#+HUGO_categories: 
+#+HUGO_tags: 
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+* Data Analysis Library
+** python
+*** [[https://pandas.pydata.org/][Python Data Analysis Library — pandas: Python Data Analysis Library]]
+*** [[https://docs.python.org/3/library/urllib.html#module-urllib][urllib — URL handling modules — Python 3.7.4 documentation]]
+*** [[https://pypi.org/project/IPy/][IPy · PyPI]]
+*** [[https://github.com/drkjam/netaddr/][drkjam/netaddr: A network address manipulation library for Python]]
+*** [[https://github.com/john-kurkowski/tldextract][john-kurkowski/tldextract: Accurately separate the TLD from the registered domain and subdomains of a URL, using the Public Suffix List.]]
+*** [[https://github.com/networkx/networkx][networkx/networkx: Official NetworkX source code repository.]]
+* format parse 
+*** python
+**** [[https://github.com/SuperCowPowers/bat][SuperCowPowers/bat: Bro Analysis Tools (BAT): Processing and analysis of Bro network data with Pandas, scikit-learn, and Spark]] :Zeek:
+
+* Visualisations
+** R
+*** [[https://ggplot2.tidyverse.org/][Create Elegant Data Visualisations Using the Grammar of Graphics • ggplot2]]
+**** [[https://github.com/yutannihilation/gghighlight][yutannihilation/gghighlight: Highlight points and lines in ggplot2]]
+**** [[https://github.com/business-science/anomalize][business-science/anomalize: Tidy anomaly detection]]
+**** [[https://github.com/teunbrand/ggnomics][teunbrand/ggnomics: A small project to add ggplot2 extensions]]
+* time
+** R
+*** [[https://www.rdocumentation.org/packages/xts/versions/0.11-2/topics/xts][xts function | R Documentation]]
+*** [[https://github.com/business-science/timetk][business-science/timetk: A toolkit for working with time series in R]]
+* Distance/ Geoip
+** python
+*** [[https://github.com/aflc/editdistance][aflc/editdistance: Fast implementation of the edit distance(Levenshtein distance)]]
+

@@ -1,19 +1,33 @@
 #+TITLE:
+*  Introduction
+
+These instructions use the nixpkgs hash that corresponds to 19.09
+which should be released "real soon now" (TM).
+
+#+BEGIN_EXAMPLE
+nix-shell failed on Debian OS 
+#+END_EXAMPLE
+
+* Nix security analysis enviroment (Quickly start) 
+#+BEGIN_EXAMPLE
+nix-shell unstable-shell.nix
+#+END_EXAMPLE
 
 * Sources and Methods
 
-** OSIN
+** OSINT
 ** HUMINT
  Human-source intelligence
 
 ** SIGINT
 
  Signals intelligence
-
-
 * threat feeds
 ** FIles & MD5
-
-**
+* Data parsing
+[[https://attack.mitre.org/docs/MITRE_ATTACK_Enterprise_11x17.pdf][MITRE ATTACK Enterprise Placemat V9]]
+** collection
+*** Email
+    - [[https://attack.mitre.org/techniques/T1114/][Technique: Email Collection - MITRE ATT&CK™]]
+**** SMTP-zeek
 * VISUALIZING MALWARE NETWORKS
-**

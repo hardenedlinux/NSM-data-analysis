@@ -1,0 +1,24 @@
+EHLO test-xp
+AUTH LOGIN
+ZmFrZTE2M2MwbUAxNjMuY29t
+c2ZjdXNrNDg0S0s=
+MAIL FROM: <fake163c0m@163.com>
+RCPT TO: <fake163c0m@163.com>
+DATA
+Date: Wed, 18 Apr 2018 22:56:41 +0800
+From: "fake163c0m@163.com" <fake163c0m@163.com>
+To: fake163c0m <fake163c0m@163.com>
+Subject: =?utf-8?B?YmlnNeS4reaWh+e8lueggQ==?=
+X-Priority: 3
+X-Has-Attach: no
+X-Mailer: Foxmail 7.2.9.116[cn]
+Mime-Version: 1.0
+Message-ID: <201804182256297071252@163.com>
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: base64
+
+5Lit5paH57yW56CBCgoKLS0tLS0tLS0tLS0tLS0KZmFrZTE2M2MwbUAxNjMuY29t
+
+.
+QUIT
