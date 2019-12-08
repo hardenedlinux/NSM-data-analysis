@@ -51,7 +51,9 @@ let
 
   systemPackages = self: [ self.myR ];
 
-  bat = nixpkgs.callPackages ./pkgs/python/bat {};
+
+  vast = pkgs.callPackages ./pkgs/vast {};
+  zat = nixpkgs.callPackages ./pkgs/python/zat {};
   editdistance = nixpkgs.callPackages ./pkgs/python/editdistance {};
   IPy = nixpkgs.callPackages ./pkgs/python/IPy {};
   networkx = nixpkgs.callPackages ./pkgs/python/networkx {};

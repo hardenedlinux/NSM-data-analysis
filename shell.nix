@@ -3,13 +3,16 @@ let
     url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/2436c27541b2f52deea3a4c1691216a02152e729";
     sha256 = "0p98dwy3rbvdp6np596sfqnwlra11pif3rbdh02pwdyjmdvkmbvd";
   };
-  # last update 
-  pkgs = import nixpkgs { config = {}; };
+  # last update
+
+
+  pkgs = import nixpkgs { inherit config; };
   ## load static nixpkgs
   #pkgs = import ~/src/nixpkgs-channels {};
 
   ## add own-python package
-  bat = pkgs.callPackages ./pkgs/python/bat {};
+  vast = pkgs.callPackages ./pkgs/vast {};
+  zat = pkgs.callPackages ./pkgs/python/zat {};
   editdistance = pkgs.callPackages ./pkgs/python/editdistance {};
   IPy = pkgs.callPackages ./pkgs/python/IPy {};
   networkx = pkgs.callPackages ./pkgs/python/networkx {};
@@ -23,7 +26,6 @@ let
     dplyr
     doBy
     xts
-    anomalize
   ];
   my-python-packages = [ 
     (pkgs.python3.withPackages (pkgs: with pkgs; [
@@ -60,9 +62,10 @@ let
   };
 in
 pkgs.mkShell rec {
-  name = "jupyter-with-R-kernel";
+  name = "nix-nsm-data-analysis-lab";
   buildInputs = [ jupyter-R-kernel
                   pkgs.python37Packages.jupyter
+                  #vast
                 ] ++ my-python-packages;
   shellHook = ''
     export JUPYTER_PATH=${jupyter-R-kernel}/share/jupyter

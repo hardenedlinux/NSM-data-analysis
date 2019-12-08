@@ -5,13 +5,14 @@
 
 python3Packages.buildPythonPackage rec {
 
-  pname = "bat";
-  version = "v0.3.7";
+  pname = "zat";
+  version = "v0.3.8";
   src = fetchurl {
    # url = "https://github.com/SuperCowPowers/${pname}/archive/v${version}.tar.gz";
-    url = "https://github.com/SuperCowPowers/bat/archive/${version}.tar.gz";
-    sha256 = "0ag7rvldfr741n5br50i85kh5mh3zqmrvwal31xyag846i6hh5zq";
+    url = "https://github.com/SuperCowPowers/zat/archive/${version}.tar.gz";
+    sha256 = "0a5w7zglayq955rxhc1rbq9vzyi0gwln5abwnwzra13bq86yrdgw";
   };  
+
   # src = fetchPypi {
   #   inherit pname version;
   #   sha256 = "13i7mqg14zp63d52lckslvzgxi75div7864rd1m56dqyc4kwxq7d";
@@ -25,7 +26,7 @@ python3Packages.buildPythonPackage rec {
   
 
   propagatedBuildInputs = with python3Packages; [ pandas
-                                                  scikitlearn
+                                                   scikitlearn
                                                    pyarrow
                                                    requests
                                                    watchdog
