@@ -1,4 +1,4 @@
-{stdenv, fetchgit, cmake, pandoc, gcc, caf, pkgconfig, arrow-cpp, openssl, doxygen, libpcap, gperftools, clang, git}:
+{stdenv, fetchgit, cmake, pandoc, gcc, caf, pkgconfig, arrow-cpp, openssl, doxygen, libpcap, gperftools}:
 
 stdenv.mkDerivation rec {
     version = "0.2";
@@ -11,23 +11,20 @@ stdenv.mkDerivation rec {
   };
   nativeBuildInputs = [ cmake pkgconfig openssl arrow-cpp caf];
   buildInputs = [ cmake gcc caf arrow-cpp openssl doxygen libpcap pandoc
-                  gperftools clang git];
+                  gperftools];
 
 
   preConfigure = ''
  
-      export LD_LIBRARY_PATH=$PWD/build/aux/caf/lib:$LD_LIBRARY_PATH
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-build-path=$PWD/lib"
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
+      export LD_LIBRARY_PATH=$PWD/build/lib:$LD_LIBRARY_PATH
+      export PATH=$PATH:$PWD/build/bin
+      echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      build-path=$PWD/lib"
+      echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
  '';
 
-  #   preCheck = ''
-  #   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/build/lib
-  # '';
-
-# cmakeFlags = [ "-DCAF_ROOT_DIR=${caf}" ];
+  # cmakeFlags = [ "-DCAF_ROOT_DIR=${caf}" ];
 
   enableParallelBuilding = true;
 

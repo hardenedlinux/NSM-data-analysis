@@ -1,4 +1,0 @@
-warning in /usr/local/zeek/spool/installed-scripts-do-not-touch/site/packages/hardenedlinux-zeek-script/frameworks/bif/__load__.zeek, line 1: Discarded extraneous Zeekygen comment: X.224
-warning in /usr/local/zeek/spool/installed-scripts-do-not-touch/site/packages/hardenedlinux-zeek-script/frameworks/bif/./plugins/new_arp.zeek, line 1: Discarded extraneous Zeekygen comment: X.224
-listening on enp1s0
-

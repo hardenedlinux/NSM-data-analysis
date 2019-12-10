@@ -1,3 +1,0 @@
-
-MAIL FROM: <michel.nemery@telservice.be>
-RCPT TO: <t.zippel@bluetune-tezippel.de>

@@ -1,9 +1,0 @@
-#separator \x09
-#set_separator	,
-#empty_field	(empty)
-#unset_field	-
-#path	ntlm
-#open	2019-09-16-05-00-28
-#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	username	hostname	domainname	server_nb_computer_name	server_dns_computer_name	server_tree_name	success
-#types	time	string	addr	port	addr	port	string	string	string	string	string	string	bool
-1568624127.605572	CtGVBq3pN05XiDaNQ8	10.128.0.214	52392	10.47.1.218	445	-	-	-	SMARTIES	Smarties.factory.oompa.loompa	factory.oompa.loompa	-

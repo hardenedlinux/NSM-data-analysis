@@ -1,3 +1,0 @@
-
-MAIL FROM: <xuscasal@nauticareynes.com>
-RCPT TO: <t.zirnstein@kropstaedt.de>

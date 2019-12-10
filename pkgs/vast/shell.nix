@@ -11,12 +11,13 @@ stdenv.mkDerivation rec {
   };
   nativeBuildInputs = [ cmake pkgconfig openssl arrow-cpp caf];
   buildInputs = [ cmake gcc caf arrow-cpp openssl doxygen libpcap pandoc
-                  gperftools clang git];
+                  gperftools];
 
 
   preConfigure = ''
 
-     export LD_LIBRARY_PATH=$PWD/build/aux/caf/lib:$LD_LIBRARY_PATH
+     export LD_LIBRARY_PATH=$PWD/build/lib:$LD_LIBRARY_PATH
+     export PATH=$PATH:$PWD/build/bin
      echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      build-path=$PWD/lib"
      echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

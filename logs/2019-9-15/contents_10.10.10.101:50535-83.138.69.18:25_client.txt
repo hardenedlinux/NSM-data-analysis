@@ -1,3 +1,0 @@
-
-MAIL FROM: <edith.winkler@spalding.at>
-RCPT TO: <t.ziskos@signode.ca>

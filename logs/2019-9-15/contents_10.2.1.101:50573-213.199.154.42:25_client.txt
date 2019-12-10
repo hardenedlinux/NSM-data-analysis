@@ -1,3 +1,0 @@
-HELO thomaskeller.com
-MAIL FROM: <gcromwell@thomaskeller.com>
-RCPT TO: <sqj@novozymes.com>

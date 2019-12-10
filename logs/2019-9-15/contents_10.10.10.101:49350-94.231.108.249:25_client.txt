@@ -1,3 +1,0 @@
-
-MAIL FROM: <daniel@schelde.eu>
-RCPT TO: <stores@adsdecorators.co.uk>
