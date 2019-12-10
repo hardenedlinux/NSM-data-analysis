@@ -1,0 +1,9 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	resp-summary
+#open	2019-12-10-03-33-23
+#fields	start_time	traffic_breakdown
+#types	string	string
+Tue Dec 10 02:26:28 2019	 SMTP,SSL: 0.009414%,  SSL: 34.089405%,  SMTP: 0.000545%,  HTTP: 65.851778%,  DNS: 0.048858%, 

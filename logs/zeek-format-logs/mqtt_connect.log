@@ -1,0 +1,13 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	mqtt_connect
+#open	2019-12-10-03-15-30
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	proto_name	proto_version	client_id	connect_status	will_topic	will_payload
+#types	time	string	addr	port	addr	port	string	string	string	string	string	string
+1575965729.452181	CWCVJU3Uey5QHKQkk1	10.4.15.142	49224	213.136.29.144	80	-	-	-	unknown-return-code-227	-	-
+1575965775.667505	CUHRIv1d8Xi16yg64k	10.10.0.63	49166	49.51.37.168	80	-	-	-	Connection Accepted	-	-
+1575965775.667505	CUHRIv1d8Xi16yg64k	10.10.0.63	49166	49.51.37.168	80	-	-	-	unknown-return-code-39	-	-
+1575965775.667505	CUHRIv1d8Xi16yg64k	10.10.0.63	49166	49.51.37.168	80	-	-	-	unknown-return-code-43	-	-
+1575965775.667505	CUHRIv1d8Xi16yg64k	10.10.0.63	49166	49.51.37.168	80	-	-	-	unknown-return-code-254	-	-

@@ -1,0 +1,10 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	unique-host
+#open	2019-12-10-03-33-21
+#fields	start_time	epoch	net	ip_cnt
+#types	string	interval	string	count
+Tue Dec 10 03:14:47 2019	3600.000000	192.168.0.0/16	1
+Tue Dec 10 03:14:46 2019	3600.000000	10.0.0.0/8	10

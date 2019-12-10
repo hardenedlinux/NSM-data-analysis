@@ -1,0 +1,10 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	top_dns
+#open	2019-12-10-03-33-08
+#fields	ts	ts_delta	record_type	top_queries	top_counts	top_epsilons
+#types	time	interval	string	vector[string]	vector[count]	vector[count]
+1575966388.999567	900.000000	AAAA	myip.opendns.com	57	0
+1575966388.999567	900.000000	A	checkip.dyndns.org,de.tempestbytori.com,api.ipify.org,registrodelog.com,mirightover.ru,lyonperugh.ru,rowresedsi.ru,tonssoflejus.ru,johnbehat.ru,www.bing.com	4157,3662,3059,3000,2706,2704,2682,2664,2635,2360	0,0,0,0,0,0,0,0,0,0

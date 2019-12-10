@@ -1,0 +1,33 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	reporter
+#open	2019-12-10-03-14-02
+#fields	ts	level	message	location
+#types	time	enum	string	string
+1575965639.990167	Reporter::INFO	stats/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965639.991550	Reporter::INFO	reporter/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965651.728644	Reporter::INFO	werid/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965686.984054	Reporter::INFO	dns/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965686.984054	Reporter::INFO	x509/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965686.984054	Reporter::INFO	files_identified/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965686.984054	Reporter::INFO	files/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965686.984054	Reporter::INFO	notice/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965686.984054	Reporter::INFO	ssl/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965686.984054	Reporter::INFO	http/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965686.984138	Reporter::INFO	known_domains/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965687.990646	Reporter::INFO	ssl-ciphers/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965689.990357	Reporter::INFO	top_urls/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965691.988910	Reporter::INFO	conn/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965699.990311	Reporter::INFO	top_talkers/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965717.157603	Reporter::INFO	pe/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965717.158540	Reporter::INFO	known_hash/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965717.375275	Reporter::INFO	known_hosts/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965718.065856	Reporter::INFO	virustotal/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965729.452275	Reporter::INFO	mqtt_connect/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
+1575965977.420564	Reporter::ERROR	curl -s -g -o "/tmp/zeek-activehttp-FPJRh1WYIwg_body" -D "/tmp/zeek-activehttp-FPJRh1WYIwg_headers" -X "POST" -m 60 --data resource=6a67f4bf8b21d004053b78422840bddc50d60c04 --data apikey=70e5e522853b4e1f6597453bea4b723210fe9e9e601ca39d181c1bb573398b72 "https://www.virustotal.com/vtapi/v2/file/report" && touch "/tmp/zeek-activehttp-FPJRh1WYIwg_body" |/Input::READER_RAW: Child process exited with non-zero return code 28	(empty)
+1575965977.420598	Reporter::ERROR	/tmp/zeek-activehttp-FPJRh1WYIwg_body/Input::READER_RAW: Init: cannot open /tmp/zeek-activehttp-FPJRh1WYIwg_body	(empty)
+1575965977.420598	Reporter::ERROR	/tmp/zeek-activehttp-FPJRh1WYIwg_body/Input::READER_RAW: Init failed	(empty)
+1575965977.420598	Reporter::ERROR	/tmp/zeek-activehttp-FPJRh1WYIwg_body/Input::READER_RAW: terminating thread	(empty)
+1575965978.865959	Reporter::INFO	dpd/Log::WRITER_KAFKAWRITER: Debug is turned off.	(empty)
