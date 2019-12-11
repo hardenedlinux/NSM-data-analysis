@@ -1,12 +1,12 @@
 let
   nixpkgs = builtins.fetchTarball {
-    url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/2436c27541b2f52deea3a4c1691216a02152e729";
-    sha256 = "0p98dwy3rbvdp6np596sfqnwlra11pif3rbdh02pwdyjmdvkmbvd";
+    url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/60e1709baefb8498103d598ca4f14ac39719d448";
+    sha256 = "15vsi0k65vjmr57jdjihad1yx0d8i83xnc0v7fpymgrwldvjblx4";
   };
   # last update
 
 
-  pkgs = import nixpkgs { inherit config; };
+  pkgs = import nixpkgs {config = {}; };
   ## load static nixpkgs
   #pkgs = import ~/src/nixpkgs-channels {};
 
@@ -31,7 +31,7 @@ let
     (pkgs.python3.withPackages (pkgs: with pkgs; [
       setuptools
       tldextract
-      bat
+      zat
       numpy
       scikitlearn
       netaddr
@@ -65,7 +65,6 @@ pkgs.mkShell rec {
   name = "nix-nsm-data-analysis-lab";
   buildInputs = [ jupyter-R-kernel
                   pkgs.python37Packages.jupyter
-                  #vast
                 ] ++ my-python-packages;
   shellHook = ''
     export JUPYTER_PATH=${jupyter-R-kernel}/share/jupyter

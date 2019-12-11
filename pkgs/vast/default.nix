@@ -1,5 +1,5 @@
 {stdenv, fetchgit, cmake, pandoc, gcc, caf, pkgconfig, arrow-cpp, openssl, doxygen, libpcap,
-  gperftools, clang, git, python3Packages, jq, tcpdump}:
+  gperftools, clang, git, python3Packages, jq, tcpdump, gcc8Stdenv}:
 
 let
 
@@ -10,6 +10,8 @@ let
     pyyaml
     schema
   ]);
+  stdenv = gcc8Stdenv;
+
 in
 
 stdenv.mkDerivation rec {

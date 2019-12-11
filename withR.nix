@@ -11,9 +11,9 @@ let
       sha256 = "1fdnqm4vyj50jb2ydcc0nldxwn6wm7qakxfhmpf72pz2y2ld55i6";
     };
 
-
   };
 
+  ownpkgs = (import ~/.config/nixpkgs/nixos/channel/nixpkgs) { };
   rOverlay = rself: rsuper: {
     myR = rsuper.rWrapper.override {
       packages = with rsuper.rPackages; [ ggplot2 dplyr xts purrr cmaes cubature];
@@ -52,7 +52,7 @@ let
   systemPackages = self: [ self.myR ];
 
 
-  vast = pkgs.callPackages ./pkgs/vast {};
+  vast = ownpkgs.callPackages ./pkgs/vast {};
   zat = nixpkgs.callPackages ./pkgs/python/zat {};
   editdistance = nixpkgs.callPackages ./pkgs/python/editdistance {};
   IPy = nixpkgs.callPackages ./pkgs/python/IPy {};
@@ -68,7 +68,7 @@ let
                                                  ps.setuptools
                                                  ps.sqlalchemy
                                                  networkx
-                                                 bat
+                                                 zat
                                                  netaddr
                                                  editdistance
                                                  IPy
@@ -86,10 +86,11 @@ let
       --use-rtsopts="${rtsopts}" \
       && ${jupyterlab}/bin/jupyter ${cmd} ${extraArgs} "$@"
   '';
+ gcc = nixpkgs.gcc8;
 in
 nixpkgs.buildEnv {
   name = "ihaskell-with-packages";
-  buildInputs = [ nixpkgs.makeWrapper ];
+  buildInputs = [ nixpkgs.makeWrapper vast ];
   paths = [ ihaskellEnv jupyterlab ];
   postBuild = ''
     ln -s ${ihaskellJupyterCmdSh "lab" ""}/bin/ihaskell-lab $out/bin/
