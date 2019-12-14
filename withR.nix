@@ -11,9 +11,17 @@ let
       sha256 = "1fdnqm4vyj50jb2ydcc0nldxwn6wm7qakxfhmpf72pz2y2ld55i6";
     };
 
+
   };
 
-  ownpkgs = (import ~/.config/nixpkgs/nixos/channel/nixpkgs) { };
+
+  ownpkgs_git = builtins.fetchTarball {
+    url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/60e1709baefb8498103d598ca4f14ac39719d448";
+    sha256 = "15vsi0k65vjmr57jdjihad1yx0d8i83xnc0v7fpymgrwldvjblx4";
+  };
+    ownpkgs = (import ownpkgs_git) { };
+
+
   rOverlay = rself: rsuper: {
     myR = rsuper.rWrapper.override {
       packages = with rsuper.rPackages; [ ggplot2 dplyr xts purrr cmaes cubature];
