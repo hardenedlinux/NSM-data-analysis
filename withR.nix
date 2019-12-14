@@ -19,7 +19,8 @@ let
     url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/60e1709baefb8498103d598ca4f14ac39719d448";
     sha256 = "15vsi0k65vjmr57jdjihad1yx0d8i83xnc0v7fpymgrwldvjblx4";
   };
-    ownpkgs = (import ownpkgs_git) { };
+
+  ownpkgs = (import ownpkgs_git) { };
 
 
   rOverlay = rself: rsuper: {
@@ -31,7 +32,7 @@ let
   foo = self: super: {
     haskell = super.haskell // { packageOverrides =
 	    hself: hsuper: {
-        my-random-fu-multivariate = hself.callPackage ./pkgs/random-fu-multivariate { };
+        my-random-fu-multivariate = hself.callPackage ./pkgs/haskell/my-random-fu-multivariate { };
       };
     };
   };
@@ -67,6 +68,9 @@ let
   networkx = nixpkgs.callPackages ./pkgs/python/networkx {};
   netaddr = nixpkgs.callPackages ./pkgs/python/netaddr {};
   tldextract = nixpkgs.callPackages ./pkgs/python/tldextract {};
+
+  # Go packages
+  deepsea = ownpkgs.callPackages ./pkgs/go/deepsea {};
   
   jupyterlab=nixpkgs.python3.withPackages (ps: [ ps.jupyterlab
                                                  ps.pandas
@@ -94,11 +98,11 @@ let
       --use-rtsopts="${rtsopts}" \
       && ${jupyterlab}/bin/jupyter ${cmd} ${extraArgs} "$@"
   '';
- gcc = nixpkgs.gcc8;
+
 in
 nixpkgs.buildEnv {
   name = "ihaskell-with-packages";
-  buildInputs = [ nixpkgs.makeWrapper vast ];
+  buildInputs = [ nixpkgs.makeWrapper vast deepsea];
   paths = [ ihaskellEnv jupyterlab ];
   postBuild = ''
     ln -s ${ihaskellJupyterCmdSh "lab" ""}/bin/ihaskell-lab $out/bin/

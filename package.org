@@ -37,5 +37,7 @@
 *** [[https://github.com/business-science/timetk][business-science/timetk: A toolkit for working with time series in R]]
 * Distance/ Geoip
 ** python
-*** [[https://github.com/aflc/editdistance][aflc/editdistance: Fast implementation of the edit distance(Levenshtein distance)]]
-
+*** [[https://github.com/aflc/editdistance][aflc/editdistance: Fast implementation of the edit distance(Levenshtein
+* Phishing
+** SMTP/Email
+*** [[https://github.com/GTrunSec/deepsea][GTrunSec/deepsea: Deep Sea Phishing - Brave]]
