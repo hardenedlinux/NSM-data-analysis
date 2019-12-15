@@ -16,16 +16,28 @@ Tow methods: templated and hand-rolled
 #+begin_src sh :async t :exports both :results output
  ../../result/bin/deepsea --config campaign1.yaml content inline
 #+end_src
+
 #+begin_src sh :async t :exports both :results output
 ../../result/bin/deepsea --config campaign1.yaml content multipart
 #+end_src
+**** create DB and load from CSV
+create DB
+#+begin_src sh :exports both :results output
+./result/bin/deepsea -t --config campaign1.yaml storage -D test/deepsea/campaign.db manager  -T createtable
+#+end_src
+load CSV
+#+begin_src sh :async t :exports both :results output
+./result/bin/deepsea -t --config campaign1.yaml storage  -d ./campaign.db load -s ./marks.csv   
+#+end_src
+show loaded marks of table
+#+begin_src sh :async t :exports both :results output
+./result/bin/deepsea --config campaign1.yaml   storage  -d ./campaign.db manager  -T showmarks
+#+end_src
+
 **** Mail Campaign
 #+begin_src sh :async t :exports both :results output
 ../../result/bin/deepsea mailclient --config campaign1.yaml
 #+end_src
-
-#+RESULTS:
-
 
 * Sources and Methods
 ** OSINT

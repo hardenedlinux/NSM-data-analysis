@@ -75,8 +75,8 @@ mailclient:
     ## Templates can substitute dynamic variables (See. Template Section for details).
     ## Emails a multipart MIME, so both text and html versions of the email are needed.
     body:
-      html: "campaign1/message.htpl"
-      text: "campaign1/message.ttpl"
+      html: "./campaign.htpl"
+      text: "./campaign.ttpl"
 
     ## (Optional) attach: attach files to email
     attach:
