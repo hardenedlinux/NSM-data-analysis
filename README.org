@@ -14,29 +14,29 @@ nix-shell shell.nix
 **** Create Content
 Tow methods: templated and hand-rolled
 #+begin_src sh :async t :exports both :results output
- ../../result/bin/deepsea --config campaign1.yaml content inline
+ ../../result/bin/deepsea --config template.yaml content inline
 #+end_src
 
 #+begin_src sh :async t :exports both :results output
-../../result/bin/deepsea --config campaign1.yaml content multipart
+../../result/bin/deepsea --config template.yaml content multipart
 #+end_src
 **** create DB and load from CSV
 create DB
 #+begin_src sh :exports both :results output
-./result/bin/deepsea -t --config campaign1.yaml storage -D test/deepsea/campaign.db manager  -T createtable
+./result/bin/deepsea -t --config template.yaml storage -D test/deepsea/template.db manager  -T createtable
 #+end_src
 load CSV
 #+begin_src sh :async t :exports both :results output
-./result/bin/deepsea -t --config campaign1.yaml storage  -d ./campaign.db load -s ./marks.csv   
+./result/bin/deepsea -t --config template.yaml storage  -d ./template.db load -s ./marks.csv
 #+end_src
 show loaded marks of table
 #+begin_src sh :async t :exports both :results output
-./result/bin/deepsea --config campaign1.yaml   storage  -d ./campaign.db manager  -T showmarks
+./result/bin/deepsea --config template.yaml   storage  -d ./template.db manager  -T showmarks
 #+end_src
 
 **** Mail Campaign
 #+begin_src sh :async t :exports both :results output
-../../result/bin/deepsea mailclient --config campaign1.yaml
+../../result/bin/deepsea mailclient --config template.yaml
 #+end_src
 
 * Sources and Methods

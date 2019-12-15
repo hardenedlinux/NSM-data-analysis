@@ -75,8 +75,8 @@ mailclient:
     ## Templates can substitute dynamic variables (See. Template Section for details).
     ## Emails a multipart MIME, so both text and html versions of the email are needed.
     body:
-      html: "./campaign.htpl"
-      text: "./campaign.ttpl"
+      html: "./template.htpl"
+      text: "./template.ttpl"
 
     ## (Optional) attach: attach files to email
     attach:
@@ -97,14 +97,14 @@ mailclient:
 ## (Required) How marks are stored and retrieved, management of storage
 storage:
   ## (Required) SQL database file, where store records
-  DBFile: "./campaign.db"
+  DBFile: "./template.db"
 
   ## (Required) load: loader of records from a list
   load:
     ## (Required) load: loader of mark records from a CSV list
     ## <id>,email,[first name],[last name]
     SourceFile: "./marks.csv"
-    ## (Required) IdentifierRegex: Identifiers are used to track marks across the campaign.
+    ## (Required) IdentifierRegex: Identifiers are used to track marks across the template.
     ## Regex is used to construct them
     IdentifierRegex: "^[a-z0-9]{8}$"
 
@@ -121,7 +121,7 @@ content:
   ## Helps generate email templates by merging markdown with styling
   generate:
     ## [In] Markdown file with email content
-    SourceMDFile: "campaign.md"
+    SourceMDFile: "template.md"
     ## [In] Location of styling and template to merge
     SourceTemplateHTMLFile: "campaign.html.template"
     ## [Out] Email message template (Phase1)
@@ -141,7 +141,6 @@ content:
   ## Helps create multipart email from the HTML version
   multipart:
     # [In] Locaiton of a fully constructed HTML file ready for Email
-    SourceMailTemplateHTMLFile: "campaign.htpl"
+    SourceMailTemplateHTMLFile: "template.htpl"
     # [Out] Location to save the Text version of the same
-    TargetMailTemplateTXTFile: "campaign.ttpl"
-
+    TargetMailTemplateTXTFile: "template.ttpl"
