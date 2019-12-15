@@ -1,20 +1,33 @@
 #+TITLE:
-*  Introduction
-
-These instructions use the nixpkgs hash that corresponds to 19.09
-which should be released "real soon now" (TM).
-
-#+BEGIN_EXAMPLE
-nix-shell failed on Debian OS 
-#+END_EXAMPLE
-
 * Nix security analysis enviroment (Quickly start) 
+nix-build
 #+BEGIN_EXAMPLE
-nix-shell unstable-shell.nix
+nix-build with-R.nix
 #+END_EXAMPLE
+nix-shell
+#+BEGIN_EXAMPLE
+nix-shell shell.nix
+#+END_EXAMPLE
+* Phishing
+** SMTP/email
+*** Deepsea
+**** Create Content
+Tow methods: templated and hand-rolled
+#+begin_src sh :async t :exports both :results output
+ ../../result/bin/deepsea --config campaign1.yaml content inline
+#+end_src
+#+begin_src sh :async t :exports both :results output
+../../result/bin/deepsea --config campaign1.yaml content multipart
+#+end_src
+**** Mail Campaign
+#+begin_src sh :async t :exports both :results output
+../../result/bin/deepsea mailclient --config campaign1.yaml
+#+end_src
+
+#+RESULTS:
+
 
 * Sources and Methods
-
 ** OSINT
 ** HUMINT
  Human-source intelligence
@@ -31,3 +44,4 @@ nix-shell unstable-shell.nix
     - [[https://attack.mitre.org/techniques/T1114/][Technique: Email Collection - MITRE ATT&CK™]]
 **** SMTP-zeek
 * VISUALIZING MALWARE NETWORKS
+* Phi

@@ -1,5 +1,7 @@
 # Build and Release Folders
 result
+##deepsea
+test/deepsea/.*
 bin-debug/
 bin-release/
 [Oo]bj/

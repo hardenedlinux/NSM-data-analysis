@@ -105,6 +105,8 @@ nixpkgs.buildEnv {
   buildInputs = [ nixpkgs.makeWrapper vast deepsea];
   paths = [ ihaskellEnv jupyterlab ];
   postBuild = ''
+    ln -s ${vast}/bin/vast $out/bin/
+    ln -s ${deepsea}/bin/deepsea $out/bin/
     ln -s ${ihaskellJupyterCmdSh "lab" ""}/bin/ihaskell-lab $out/bin/
     ln -s ${ihaskellJupyterCmdSh "notebook" ""}/bin/ihaskell-notebook $out/bin/
     ln -s ${ihaskellJupyterCmdSh "nbconvert" ""}/bin/ihaskell-nbconvert $out/bin/
