@@ -71,21 +71,22 @@ let
 
   # Go packages
   deepsea = ownpkgs.callPackages ./pkgs/go/deepsea {};
-  
-  jupyterlab=nixpkgs.python3.withPackages (ps: [ ps.jupyterlab
-                                                 ps.pandas
-                                                 ps.matplotlib
-                                                 ps.numpy
-                                                 ps.scikitlearn
-                                                 ps.setuptools
-                                                 ps.sqlalchemy
-                                                 networkx
-                                                 zat
-                                                 netaddr
-                                                 editdistance
-                                                 IPy
-                                                 tldextract
-                                               ]);
+  brokerpy = ownpkgs.python.withPackages (ps: [
+    ps.ipaddress
+  ]);
+  jupyterlab = ownpkgs.python3.withPackages (ps: [ ps.jupyterlab
+                                                   ps.pandas
+                                                   ps.matplotlib
+                                                   ps.numpy
+                                                   ps.scikitlearn
+                                                   ps.sqlalchemy
+                                                   networkx
+                                                   zat
+                                                   netaddr
+                                                   editdistance
+                                                   IPy
+                                                   tldextract
+                                                 ]);
   rtsopts = "-M3g -N2";
 
   ihaskellJupyterCmdSh = cmd: extraArgs: nixpkgs.writeScriptBin "ihaskell-${cmd}" ''
@@ -102,12 +103,12 @@ let
 in
 nixpkgs.buildEnv {
   name = "ihaskell-with-packages";
-  buildInputs = [ nixpkgs.makeWrapper vast deepsea broker];
-  paths = [ ihaskellEnv jupyterlab ];
+  buildInputs = [ nixpkgs.makeWrapper vast deepsea];
+  paths = [ ihaskellEnv jupyterlab brokerpy];
   postBuild = ''
     ln -s ${vast}/bin/vast $out/bin/
     ln -s ${deepsea}/bin/deepsea $out/bin/
-    export PYTHONPATH="${broker}/lib/site-packages":$PYTHONPATH
+    #ln -s ${broker}/lib/python3.7/site-packages/broker/_broker.so $out/lib
     ln -s ${ihaskellJupyterCmdSh "lab" ""}/bin/ihaskell-lab $out/bin/
     ln -s ${ihaskellJupyterCmdSh "notebook" ""}/bin/ihaskell-notebook $out/bin/
     ln -s ${ihaskellJupyterCmdSh "nbconvert" ""}/bin/ihaskell-nbconvert $out/bin/
@@ -115,8 +116,8 @@ nixpkgs.buildEnv {
     for prg in $out/bin"/"*;do
       if [[ -f $prg && -x $prg ]]; then
         wrapProgram $prg --set PYTHONPATH "$(echo ${jupyterlab}/lib/*/site-packages)" \
-                    --set PYTHONPATH "${broker}/lib/python3.7/site-packages"
-      fi
+                    --set PYTHONPATH "${broker}/lib/python3.7/site-packages" 
+         fi
     done
   '';
 }

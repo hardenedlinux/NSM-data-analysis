@@ -18,9 +18,12 @@ stdenv.mkDerivation rec {
   cmakeFlags = [
     "-DPY_MOD_INSTALL_DIR=${placeholder "out"}/${python3.sitePackages}"
     "-DCMAKE_SKIP_BUILD_RPATH=OFF"
+    "-DPYTHON_EXECUTABLE=${python}/bin/python"
   ];
 
-
+  postInstall = ''
+  ln -s $out/${python3.sitePackages}/broker/_broker.so $out/lib
+'';
 
   enableParallelBuilding = true;
 
