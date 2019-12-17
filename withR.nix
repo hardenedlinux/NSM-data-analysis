@@ -82,6 +82,7 @@ let
                                                    ps.sqlalchemy
                                                    networkx
                                                    zat
+                                                   ps.ipaddress
                                                    netaddr
                                                    editdistance
                                                    IPy
