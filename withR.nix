@@ -71,9 +71,7 @@ let
 
   # Go packages
   deepsea = ownpkgs.callPackages ./pkgs/go/deepsea {};
-  brokerpy = ownpkgs.python.withPackages (ps: [
-    ps.ipaddress
-  ]);
+
   jupyterlab = ownpkgs.python3.withPackages (ps: [ ps.jupyterlab
                                                    ps.pandas
                                                    ps.matplotlib
@@ -105,7 +103,7 @@ in
 nixpkgs.buildEnv {
   name = "ihaskell-with-packages";
   buildInputs = [ nixpkgs.makeWrapper vast deepsea];
-  paths = [ ihaskellEnv jupyterlab brokerpy];
+  paths = [ ihaskellEnv jupyterlab ];
   postBuild = ''
     ln -s ${vast}/bin/vast $out/bin/
     ln -s ${deepsea}/bin/deepsea $out/bin/

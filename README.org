@@ -11,7 +11,7 @@ nix-shell shell.nix
 * Phishing
 ** SMTP/email
 *** Deepsea
-**** Create Content
+- Create Content
 Tow methods: templated and hand-rolled
 #+begin_src sh :async t :exports both :results output
  ../../result/bin/deepsea --config template.yaml content inline
@@ -20,8 +20,8 @@ Tow methods: templated and hand-rolled
 #+begin_src sh :async t :exports both :results output
 ../../result/bin/deepsea --config template.yaml content multipart
 #+end_src
-**** create DB and load from CSV
-create DB
+-  create DB and load from CSV
+
 #+begin_src sh :exports both :results output
 ./result/bin/deepsea -t --config template.yaml storage -D test/deepsea/template.db manager  -T createtable
 #+end_src
@@ -33,8 +33,7 @@ show loaded marks of table
 #+begin_src sh :async t :exports both :results output
 ./result/bin/deepsea --config template.yaml   storage  -d ./template.db manager  -T showmarks
 #+end_src
-
-**** Mail Campaign
+- Mail Campaign
 #+begin_src sh :async t :exports both :results output
 ../../result/bin/deepsea mailclient --config template.yaml
 #+end_src
@@ -56,4 +55,5 @@ show loaded marks of table
     - [[https://attack.mitre.org/techniques/T1114/][Technique: Email Collection - MITRE ATT&CK™]]
 **** SMTP-zeek
 * VISUALIZING MALWARE NETWORKS
-* Phi
+* Honeypot
+** [[https://github.com/UHH-ISS/honeygrove][UHH-ISS/honeygrove: A multi-purpose, modular medium-interaction honeypot based on Twisted. - Brave]]

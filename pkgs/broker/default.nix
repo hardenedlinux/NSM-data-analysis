@@ -1,5 +1,4 @@
-{stdenv, fetchgit, cmake, gcc, openssl, caf, python3, python}:
-
+{stdenv, fetchgit, cmake, gcc, openssl, caf, python3, ncurses5}:
 
 stdenv.mkDerivation rec {
     version = "master";
@@ -13,12 +12,12 @@ stdenv.mkDerivation rec {
 
     
   nativeBuildInputs = [ cmake openssl];
-  buildInputs = [ cmake gcc openssl caf python];
+  buildInputs = [ cmake gcc openssl caf ncurses5];
 
   cmakeFlags = [
     "-DPY_MOD_INSTALL_DIR=${placeholder "out"}/${python3.sitePackages}"
     "-DCMAKE_SKIP_BUILD_RPATH=OFF"
-    "-DPYTHON_EXECUTABLE=${python}/bin/python"
+    "-DPYTHON_EXECUTABLE=${python3}/bin/python"
   ];
 
   postInstall = ''
