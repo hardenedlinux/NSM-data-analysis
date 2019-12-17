@@ -1,0 +1,3 @@
+[submodule "3rdparty/honeygrove"]
+	path = 3rdparty/honeygrove
+	url = https://github.com/GTrunSec/honeygrove.git
