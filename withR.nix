@@ -63,7 +63,7 @@ let
   broker = ownpkgs.callPackages ./pkgs/broker {};
   vast = ownpkgs.callPackages ./pkgs/vast {};
   zat = nixpkgs.callPackages ./pkgs/python/zat {};
-  honeygrove = ownpkgs.callPackages ./pkgs/python/honeygrove {};
+  service_identity = ownpkgs.callPackages ./pkgs/python/service_identity {};
   editdistance = nixpkgs.callPackages ./pkgs/python/editdistance {};
   IPy = nixpkgs.callPackages ./pkgs/python/IPy {};
   networkx = nixpkgs.callPackages ./pkgs/python/networkx {};
@@ -81,7 +81,13 @@ let
                                                    ps.sqlalchemy
                                                    networkx
                                                    zat
+                                                   ps.twisted
+                                                   ps.cryptography
+                                                   ps.bcrypt
+                                                   ps.pyopenssl
+                                                   ps.geoip2
                                                    ps.ipaddress
+                                                   service_identity
                                                    netaddr
                                                    editdistance
                                                    IPy
