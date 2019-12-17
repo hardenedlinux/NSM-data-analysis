@@ -63,6 +63,7 @@ let
   broker = ownpkgs.callPackages ./pkgs/broker {};
   vast = ownpkgs.callPackages ./pkgs/vast {};
   zat = nixpkgs.callPackages ./pkgs/python/zat {};
+  honeygrove = ownpkgs.callPackages ./pkgs/python/honeygrove {};
   editdistance = nixpkgs.callPackages ./pkgs/python/editdistance {};
   IPy = nixpkgs.callPackages ./pkgs/python/IPy {};
   networkx = nixpkgs.callPackages ./pkgs/python/networkx {};
