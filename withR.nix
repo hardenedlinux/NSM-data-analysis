@@ -108,7 +108,7 @@ let
 
 in
 nixpkgs.buildEnv {
-  name = "ihaskell-with-packages";
+  name = "NSM-analysis-env";
   buildInputs = [ nixpkgs.makeWrapper vast deepsea];
   paths = [ ihaskellEnv jupyterlab ];
   postBuild = ''
