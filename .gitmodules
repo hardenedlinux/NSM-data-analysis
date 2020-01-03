@@ -1,3 +1,6 @@
 [submodule "3rdparty/honeygrove"]
 	path = 3rdparty/honeygrove
 	url = https://github.com/GTrunSec/honeygrove.git
+[submodule "3rdparty/HackingNeuralNetworks"]
+	path = 3rdparty/HackingNeuralNetworks
+	url = https://github.com/GTrunSec/HackingNeuralNetworks.git

@@ -104,6 +104,11 @@ let
                                                    ## Interactive Maps
                                                    #cefpython3 Failed
                                                    pyvis
+                                                   #
+                                                   ps.nltk
+                                                   ps.Keras
+                                                   ps.tensorflow
+                                                   ps.scikitimage
                                                  ]);
   rtsopts = "-M3g -N2";
 
