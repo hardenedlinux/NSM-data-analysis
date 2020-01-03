@@ -69,7 +69,9 @@ let
   networkx = nixpkgs.callPackages ./pkgs/python/networkx {};
   netaddr = nixpkgs.callPackages ./pkgs/python/netaddr {};
   tldextract = nixpkgs.callPackages ./pkgs/python/tldextract {};
-
+  pyshark = ownpkgs.callPackages ./pkgs/python/pyshark {};
+  cefpython3 = ownpkgs.callPackages ./pkgs/python/cefpython3 {};
+  pyvis = ownpkgs.callPackages ./pkgs/python/pyvis {};
   # Go packages
   deepsea = ownpkgs.callPackages ./pkgs/go/deepsea {};
 
@@ -88,10 +90,20 @@ let
                                                    ps.geoip2
                                                    ps.ipaddress
                                                    service_identity
+                                                   ps.netaddr
+                                                   ps.pillow
+                                                   ps.graphviz
+                                                   #Tor
+                                                   ps.stem
                                                    netaddr
                                                    editdistance
                                                    IPy
                                                    tldextract
+                                                   ps.scapy
+                                                   pyshark
+                                                   ## Interactive Maps
+                                                   #cefpython3 Failed
+                                                   pyvis
                                                  ]);
   rtsopts = "-M3g -N2";
 
