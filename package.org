@@ -41,3 +41,5 @@
 * Phishing
 ** SMTP/Email
 *** [[https://github.com/GTrunSec/deepsea][GTrunSec/deepsea: Deep Sea Phishing - Brave]]
+* DNS
+** [[https://github.com/dirkjanm/adidnsdump][dirkjanm/adidnsdump: Active Directory Integrated DNS dumping by any authenticated user]]
