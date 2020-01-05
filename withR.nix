@@ -72,6 +72,7 @@ let
   pyshark = ownpkgs.callPackages ./pkgs/python/pyshark {};
   cefpython3 = ownpkgs.callPackages ./pkgs/python/cefpython3 {};
   pyvis = ownpkgs.callPackages ./pkgs/python/pyvis {};
+  yarapython = ownpkgs.callPackages ./pkgs/python/yara-python {};
   # Go packages
   deepsea = ownpkgs.callPackages ./pkgs/go/deepsea {};
 
@@ -109,6 +110,9 @@ let
                                                    ps.Keras
                                                    ps.tensorflow
                                                    ps.scikitimage
+                                                   ps.elasticsearch
+                                                   ps.requests
+                                                   yarapython
                                                  ]);
   rtsopts = "-M3g -N2";
 
@@ -126,8 +130,11 @@ let
 in
 nixpkgs.buildEnv {
   name = "NSM-analysis-env";
-  buildInputs = [ nixpkgs.makeWrapper vast deepsea];
-  paths = [ ihaskellEnv jupyterlab ];
+  buildInputs = [ nixpkgs.makeWrapper
+                  vast
+                  deepsea
+                ];
+  paths = [ ihaskellEnv jupyterlab ownpkgs.yara];
   postBuild = ''
     ln -s ${vast}/bin/vast $out/bin/
     ln -s ${deepsea}/bin/deepsea $out/bin/

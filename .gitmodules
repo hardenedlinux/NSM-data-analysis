@@ -4,3 +4,6 @@
 [submodule "3rdparty/HackingNeuralNetworks"]
 	path = 3rdparty/HackingNeuralNetworks
 	url = https://github.com/GTrunSec/HackingNeuralNetworks.git
+[submodule "3rdparty/PasteHunter"]
+	path = 3rdparty/PasteHunter
+	url = https://github.com/GTrunSec/PasteHunter.git
