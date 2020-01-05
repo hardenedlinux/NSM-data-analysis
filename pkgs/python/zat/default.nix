@@ -6,12 +6,11 @@
 
 python3Packages.buildPythonPackage rec {
   pname = "zat";
-  version = "v0.3.8";
+  version = "master";
   src = fetchgit {
-   # url = "https://github.com/SuperCowPowers/${pname}/archive/v${version}.tar.gz";
     url = "https://github.com/SuperCowPowers/zat.git";
-    rev = "477bcf7f734777e3dba9aadde344f5be3e6bb8fa";
-    sha256 = "09v17rc3r7cz7jcfdf9idy16gg2jd944qp3w4j2ggiycxgamzy4m";
+    rev = "49ec5c24946a0c943a708355e7194c35b7ddd4e0";
+    sha256 = "1i9lvax3sx605jrp90d2ds8in58kv2r8jbgb854rmk4blm3fxbka";
   };  
 
 

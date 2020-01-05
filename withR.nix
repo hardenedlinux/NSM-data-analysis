@@ -62,7 +62,7 @@ let
 
   broker = ownpkgs.callPackages ./pkgs/broker {};
   vast = ownpkgs.callPackages ./pkgs/vast {};
-  zat = nixpkgs.callPackages ./pkgs/python/zat {};
+  zat = ownpkgs.callPackages ./pkgs/python/zat {};
   service_identity = ownpkgs.callPackages ./pkgs/python/service_identity {};
   editdistance = nixpkgs.callPackages ./pkgs/python/editdistance {};
   IPy = nixpkgs.callPackages ./pkgs/python/IPy {};
