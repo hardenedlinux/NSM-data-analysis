@@ -116,6 +116,10 @@ let
                                                  ]);
   rtsopts = "-M3g -N2";
 
+
+  nix.binaryCaches = [
+    https://cache.nixos.community
+   ];
   ihaskellJupyterCmdSh = cmd: extraArgs: nixpkgs.writeScriptBin "ihaskell-${cmd}" ''
     #! ${nixpkgs.stdenv.shell}
     export GHC_PACKAGE_PATH="$(echo ${ihaskellEnv}/lib/*/package.conf.d| tr ' ' ':'):$GHC_PACKAGE_PATH"
@@ -127,6 +131,7 @@ let
       && ${jupyterlab}/bin/jupyter ${cmd} ${extraArgs} "$@"
   '';
 
+  julia = (import ./pkgs/julia.nix {});
 in
 nixpkgs.buildEnv {
   name = "NSM-analysis-env";
@@ -134,7 +139,7 @@ nixpkgs.buildEnv {
                   vast
                   deepsea
                 ];
-  paths = [ ihaskellEnv jupyterlab ownpkgs.yara];
+  paths = [ ihaskellEnv jupyterlab ownpkgs.yara julia];
   postBuild = ''
     ln -s ${vast}/bin/vast $out/bin/
     ln -s ${deepsea}/bin/deepsea $out/bin/
