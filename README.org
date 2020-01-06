@@ -28,7 +28,8 @@ export NIXPKGS_ALLOW_UNFREE=1
 
 source /opt/nix-multiuser/nix/etc/profile.d/nix.sh
 #+end_src
-Also, you can add two paths to your ~.zshrc~~ or ~.bash~~ file
+Also, you can add two paths to your ~.zshrc~ or ~.bash~ file
+
 Building NSM-NIX-env
 
 
@@ -38,7 +39,7 @@ cd NSM-data-analysis
 nix-build withR.nix
 #+end_src
 
-*that will generated a ~result~ direcotry under in current directory.*
+It will generated a ~result~ direcotry under the current directory.
 
 ** Julia support
 - NVIDIA-Linux cudatoolkit 
