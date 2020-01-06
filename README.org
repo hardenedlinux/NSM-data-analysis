@@ -1,5 +1,5 @@
 #+TITLE:
-* Nix security analysis enviroment (Quickly start) 
+* Nix security analysis enviroment (Quickly start)
 nix-build
 #+BEGIN_EXAMPLE
 nix-build with-R.nix
@@ -8,6 +8,34 @@ nix-shell
 #+BEGIN_EXAMPLE
 nix-shell shell.nix
 #+END_EXAMPLE
+
+** For Debian NIX user
+#+begin_src sh :async t :exports both :results output
+wget https://github.com/Mic92/nix-fpm-multiuser/releases/download/2.2pre6572_7e617e7/nix_2.0_amd64.deb
+sudo dpkg -i nix_2.0_amd64.deb
+sudo ln -s /opt/nix-multiuser/nix/bin/nix* /usr/local/bin
+git clone https://github.com/Mic92/nix-fpm-multiuser.git --recurse-submodules
+cd nix-fpm-multiuser
+./before-remove-linux.sh
+sudo ./after-install-linux.sh
+
+nix-channel --add https://nixos.org/channels/nixos-19.09 nixpkgs
+nix-channel --update
+export NIX_PATH="$HOME/.nix-defexpr/channels/nixpkgs"
+source /opt/nix-multiuser/nix/etc/profile.d/nix.sh
+#+end_src
+
+Building NSM-NIX-env
+
+#+begin_src sh :async t :exports both :results output
+git clone https://github.com/hardenedlinux/NSM-data-analysis.git --depth=1 --recurse-submodules
+cd NSM-data-analysis
+nix-build withR.nix
+#+end_src
+
+Enjoy it!
+
+
 * Phishing
 ** SMTP/email
 *** Deepsea

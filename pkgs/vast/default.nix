@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
       url = "https://github.com/tenzir/vast.git";
       rev = "f88106e04f78ed3432898457915d859c1dfe37d5";
       deepClone = true;
-      sha256 = "07r4ffbzj7618pj265fz2n4gq6zi98xb92k7vvk08axg6dw4wh74";
+      sha256 = "02rgb8vznhywwx0qinvr1wr45iyhy7glbda45gvh28rk4c7x50p2";
     };
 
     

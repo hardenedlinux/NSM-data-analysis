@@ -5,7 +5,7 @@
 #+DESCRIPTION:
 #+KEYWORDS:
 #+LANGUAGE:  en cn
-#+SETUPFILE: ~/org-notes/setup/.local
+#+SETUPFILE: ~/Documents/my-blog/public/theme/org-html-themes/setup/theme-readtheorg.setup
 #+hugo_publishdate: (0 5)
 #+hugo_auto_set_lastmod: t
 #+HUGO_categories: 
@@ -43,3 +43,5 @@
 *** [[https://github.com/GTrunSec/deepsea][GTrunSec/deepsea: Deep Sea Phishing - Brave]]
 * DNS
 ** [[https://github.com/dirkjanm/adidnsdump][dirkjanm/adidnsdump: Active Directory Integrated DNS dumping by any authenticated user]]
+* Scanner
+** [[https://github.com/kevthehermit/PasteHunter][kevthehermit/PasteHunter: Scanning pastebin with yara rules]]
