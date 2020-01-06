@@ -131,7 +131,7 @@ let
       && ${jupyterlab}/bin/jupyter ${cmd} ${extraArgs} "$@"
   '';
 
-  julia = (import ./pkgs/julia.nix {});
+  julia = (import ./pkgs/julia-non-cuda.nix {});
 in
 nixpkgs.buildEnv {
   name = "NSM-analysis-env";

@@ -22,16 +22,37 @@ sudo ./after-install-linux.sh
 nix-channel --add https://nixos.org/channels/nixos-19.09 nixpkgs
 nix-channel --update
 export NIX_PATH="$HOME/.nix-defexpr/channels/nixpkgs"
+##for Julia CUDA
+export NIXPKGS_ALLOW_UNFREE=1
+
+
 source /opt/nix-multiuser/nix/etc/profile.d/nix.sh
 #+end_src
-
+Also, you can add two paths to your ~.zshrc~~ or ~.bash~~ file
 Building NSM-NIX-env
+
 
 #+begin_src sh :async t :exports both :results output
 git clone https://github.com/hardenedlinux/NSM-data-analysis.git --depth=1 --recurse-submodules
 cd NSM-data-analysis
 nix-build withR.nix
 #+end_src
+
+*that will generated a ~result~ direcotry under in current directory.*
+
+** Julia support
+- NVIDIA-Linux cudatoolkit 
+if you would like to use CUDA, just change ~julia-none-cuda.nix~ to ~julia.nix~
+from file(withR.nix)
+
+*Remmber* Allow unfree package
+
+#+begin_src sh :async t :exports both :results output
+export NIXPKGS_ALLOW_UNFREE=1
+
+nix-build withR 
+#+end_src
+
 
 Enjoy it!
 
