@@ -11,20 +11,15 @@ nix-shell shell.nix
 
 ** For Debian NIX user
 #+begin_src sh :async t :exports both :results output
-wget https://github.com/Mic92/nix-fpm-multiuser/releases/download/2.2pre6572_7e617e7/nix_2.0_amd64.deb
-sudo dpkg -i nix_2.0_amd64.deb
+wget https://github.com/hardenedlinux/NSM-data-analysis/releases/download/nix/nix_2.3_master_e3eecb5_amd64.deb
+sudo dpkg -i nix_2.3_master_e3eecb5_amd64.deb
 sudo ln -s /opt/nix-multiuser/nix/bin/nix* /usr/local/bin
-git clone https://github.com/Mic92/nix-fpm-multiuser.git --recurse-submodules
-cd nix-fpm-multiuser
-./before-remove-linux.sh
-sudo ./after-install-linux.sh
 
 nix-channel --add https://nixos.org/channels/nixos-19.09 nixpkgs
 nix-channel --update
 export NIX_PATH="$HOME/.nix-defexpr/channels/nixpkgs"
 ##for Julia CUDA
 export NIXPKGS_ALLOW_UNFREE=1
-
 
 source /opt/nix-multiuser/nix/etc/profile.d/nix.sh
 #+end_src
