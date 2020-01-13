@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
     src = fetchgit {
       url = "https://github.com/tenzir/vast.git";
       rev = "f88106e04f78ed3432898457915d859c1dfe37d5";
-      deepClone = true;
+      fetchSubmodules = true; = true;
       sha256 = "02rgb8vznhywwx0qinvr1wr45iyhy7glbda45gvh28rk4c7x50p2";
     };
 

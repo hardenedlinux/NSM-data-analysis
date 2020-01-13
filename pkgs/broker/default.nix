@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
     src = fetchgit {
       url = "https://github.com/zeek/broker.git";
       rev = "237c3cd2d87d467a5b9ac0517c6461ac00c7b85c";
-      deepClone = true;
+      fetchSubmodules = true; = true;
       sha256 = "0rlz55w6v6sizxdd0ixb43yi0vnx6di4ipw06y3zl9mdmh7s5hbx";
     };
 
