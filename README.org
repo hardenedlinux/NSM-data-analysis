@@ -35,9 +35,9 @@ nix-build withR.nix
 
 It will generated a ~result~ direcotry under the current directory.
 
-** load Jupyter kernals
-make sure have you cleaned up Jupyter kernal list.
-- check kernal list
+** load Jupyter kernels
+make sure have you cleaned up Jupyter kernel list.
+- check kernel list
 #+begin_src sh :async t :exports both :results output
 jupyter kernelspec list
 #+end_src
@@ -48,14 +48,14 @@ jupyter kernelspec list
 :   haskell             /home/gtrun/.local/share/jupyter/kernels/haskell
 :   julia-nodeps-1.1    /home/gtrun/.local/share/jupyter/kernels/julia-nodeps-1.1
 
-- clean up you local kernal path before you running ./result/bin/ihaskell-lab or
+- clean up you local kernel path before you running ./result/bin/ihaskell-lab or
   jupyter-notebook
 #+begin_src sh :async t :exports both :results output
 jupyter kernelspec remove python3
 jupyter kernelspec remove haskell
 jupyter kernelspec remove julia-nodeps-1.1
 #+end_src
-
+if you got all of kernel path from /nix/store/... that will be fine
 ** Julia support
 - NVIDIA-Linux cudatoolkit 
 if you would like to use CUDA, just change ~julia-none-cuda.nix~ to ~julia.nix~
