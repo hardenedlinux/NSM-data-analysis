@@ -8,7 +8,6 @@ nix-shell
 #+BEGIN_EXAMPLE
 nix-shell shell.nix
 #+END_EXAMPLE
-
 ** For Debian NIX user
 #+begin_src sh :async t :exports both :results output
 wget https://github.com/hardenedlinux/NSM-data-analysis/releases/download/nix/nix_2.3_master_e3eecb5_amd64.deb
@@ -35,6 +34,27 @@ nix-build withR.nix
 #+end_src
 
 It will generated a ~result~ direcotry under the current directory.
+
+** load Jupyter kernals
+make sure have you cleaned up Jupyter kernal list.
+- check kernal list
+#+begin_src sh :async t :exports both :results output
+jupyter kernelspec list
+#+end_src
+
+#+RESULTS:
+: Available kernels:
+:   python3             /nix/store/1nfbdgg78l3mjlxfjg8k1mps41wh3xmk-python3-3.7.6-env/lib/python3.7/site-packages/ipykernel/resources
+:   haskell             /home/gtrun/.local/share/jupyter/kernels/haskell
+:   julia-nodeps-1.1    /home/gtrun/.local/share/jupyter/kernels/julia-nodeps-1.1
+
+- clean up you local kernal path before you running ./result/bin/ihaskell-lab or
+  jupyter-notebook
+#+begin_src sh :async t :exports both :results output
+jupyter kernelspec remove python3
+jupyter kernelspec remove haskell
+jupyter kernelspec remove julia-nodeps-1.1
+#+end_src
 
 ** Julia support
 - NVIDIA-Linux cudatoolkit 
