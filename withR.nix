@@ -77,7 +77,8 @@ let
   # Go packages
   deepsea = ownpkgs.callPackages ./pkgs/go/deepsea {};
 
-  jupyterlab = ownpkgs.python3.withPackages (ps: [ ps.jupyterlab
+
+  jupyterlab = (ownpkgs.python3.withPackages (ps: [ ps.jupyterlab
                                                    ps.pandas
                                                    ps.matplotlib
                                                    ps.numpy
@@ -115,7 +116,7 @@ let
                                                    ps.elasticsearch
                                                    ps.requests
                                                    yarapython
-                                                 ]);
+                                                 ])).override (args: { ignoreCollisions = true;});
   rtsopts = "-M3g -N2";
 
 
