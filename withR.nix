@@ -63,6 +63,7 @@ let
   broker = ownpkgs.callPackages ./pkgs/broker {};
   vast = ownpkgs.callPackages ./pkgs/vast {};
   zat = ownpkgs.callPackages ./pkgs/python/zat {};
+  choochoo = ownpkgs.callPackages ./pkgs/python/choochoo {};
   service_identity = ownpkgs.callPackages ./pkgs/python/service_identity {};
   editdistance = nixpkgs.callPackages ./pkgs/python/editdistance {};
   IPy = nixpkgs.callPackages ./pkgs/python/IPy {};
@@ -84,6 +85,7 @@ let
                                                    ps.sqlalchemy
                                                    networkx
                                                    zat
+                                                   choochoo
                                                    ps.twisted
                                                    ps.cryptography
                                                    ps.bcrypt
@@ -115,6 +117,7 @@ let
                                                    yarapython
                                                  ]);
   rtsopts = "-M3g -N2";
+
 
 
   nix.binaryCaches = [
