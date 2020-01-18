@@ -55,7 +55,7 @@ jupyter kernelspec remove python3
 jupyter kernelspec remove haskell
 jupyter kernelspec remove julia-nodeps-1.1
 #+end_src
-if you got all of kernel path from /nix/store/... that will be fine
+if you got all of kernels path from /nix/store/... that will be fine
 ** Julia support
 - NVIDIA-Linux cudatoolkit 
 if you would like to use CUDA, just change ~julia-none-cuda.nix~ to ~julia.nix~

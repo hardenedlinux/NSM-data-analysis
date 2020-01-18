@@ -1,4 +1,4 @@
-{stdenv, fetchgit, cmake, pandoc, gcc, caf, pkgconfig, arrow-cpp, openssl, doxygen, libpcap,
+{stdenv, fetchFromGitHub, cmake, pandoc, gcc, caf, pkgconfig, arrow-cpp, openssl, doxygen, libpcap,
   gperftools, clang, git, python3Packages, jq, tcpdump}:
 
 let
@@ -16,11 +16,12 @@ in
 stdenv.mkDerivation rec {
     version = "0.2";
     name = "vast";
-    src = fetchgit {
-      url = "https://github.com/tenzir/vast.git";
+    src = fetchFromGitHub {
+      owner = "tenzir";
+      repo = "vast";
       rev = "f88106e04f78ed3432898457915d859c1dfe37d5";
       fetchSubmodules = true;
-      sha256 = "02rgb8vznhywwx0qinvr1wr45iyhy7glbda45gvh28rk4c7x50p2";
+      sha256 = "18zb944gzw957wy3bmflnzhz0yzkhc7m7iwbjsdfh7nh042wa4px";
     };
 
     
