@@ -16,8 +16,8 @@ let
 
 
   ownpkgs_git = builtins.fetchTarball {
-    url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/60e1709baefb8498103d598ca4f14ac39719d448";
-    sha256 = "15vsi0k65vjmr57jdjihad1yx0d8i83xnc0v7fpymgrwldvjblx4";
+    url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/bea1a232c615aba177e0ef56600d5f847ad3bbd9";
+    sha256 = "1zakg4qrby56j28p9jifsplj3xbda2pmg1cw2zfr1y8wcab61p25";
   };
 
   ownpkgs = (import ownpkgs_git) { };
@@ -74,49 +74,72 @@ let
   cefpython3 = ownpkgs.callPackages ./pkgs/python/cefpython3 {};
   pyvis = ownpkgs.callPackages ./pkgs/python/pyvis {};
   yarapython = ownpkgs.callPackages ./pkgs/python/yara-python {};
+  pyOpenSSL = ownpkgs.callPackages ./pkgs/python/pyOpenSSL {};
+  python-pptx = ownpkgs.callPackages ./pkgs/python/python-pptx {};
+  adblockparser = ownpkgs.callPackages ./pkgs/python/adblockparser {};
+  python-whois = ownpkgs.callPackages ./pkgs/python/python-whois {};
+  CherryPy = ownpkgs.callPackages ./pkgs/python/CherryPy {};
+  pygexf = ownpkgs.callPackages ./pkgs/python/pygexf {};
+  PyPDF2 = ownpkgs.callPackages ./pkgs/python/PyPDF2 {};
+  ipwhois = ownpkgs.callPackages ./pkgs/python/ipwhois {};
+  secure = ownpkgs.callPackages ./pkgs/python/secure {};
   # Go packages
   deepsea = ownpkgs.callPackages ./pkgs/go/deepsea {};
 
-
   jupyterlab = (ownpkgs.python3.withPackages (ps: [ ps.jupyterlab
-                                                   ps.pandas
-                                                   ps.matplotlib
-                                                   ps.numpy
-                                                   ps.scikitlearn
-                                                   ps.sqlalchemy
-                                                   networkx
-                                                   zat
-                                                   choochoo
-                                                   ps.twisted
-                                                   ps.cryptography
-                                                   ps.bcrypt
-                                                   ps.pyopenssl
-                                                   ps.geoip2
-                                                   ps.ipaddress
-                                                   service_identity
-                                                   ps.netaddr
-                                                   ps.pillow
-                                                   ps.graphviz
-                                                   #Tor
-                                                   ps.stem
-                                                   netaddr
-                                                   editdistance
-                                                   IPy
-                                                   tldextract
-                                                   ps.scapy
-                                                   pyshark
-                                                   ## Interactive Maps
-                                                   #cefpython3 Failed
-                                                   pyvis
-                                                   #
-                                                   ps.nltk
-                                                   ps.Keras
-                                                   ps.tensorflow
-                                                   ps.scikitimage
-                                                   ps.elasticsearch
-                                                   ps.requests
-                                                   yarapython
-                                                 ])).override (args: { ignoreCollisions = true;});
+                                                    ps.pandas
+                                                    ps.matplotlib
+                                                    ps.Mako
+                                                    ps.numpy
+                                                    ps.scikitlearn
+                                                    ps.sqlalchemy
+                                                    secure
+                                                    ps.dnspython
+                                                    ps.exifread
+                                                    ps.pysocks
+                                                    ps.phonenumbers
+                                                    ps.future
+                                                    ipwhois
+                                                    ps.python-docx
+                                                    PyPDF2
+                                                    CherryPy
+                                                    adblockparser
+                                                    python-whois
+                                                    networkx
+                                                    zat
+                                                    python-pptx
+                                                    pyOpenSSL
+                                                    choochoo
+                                                    ps.twisted
+                                                    ps.cryptography
+                                                    ps.bcrypt
+                                                    ps.pyopenssl
+                                                    ps.geoip2
+                                                    ps.ipaddress
+                                                    service_identity
+                                                    ps.netaddr
+                                                    ps.pillow
+                                                    ps.graphviz
+                                                    #Tor
+                                                    ps.stem
+                                                    netaddr
+                                                    editdistance
+                                                    IPy
+                                                    tldextract
+                                                    ps.scapy
+                                                    pyshark
+                                                    ## Interactive Maps
+                                                    #cefpython3 Failed
+                                                    pyvis
+                                                    #
+                                                    ps.nltk
+                                                    ps.Keras
+                                                    ps.tensorflow
+                                                    ps.scikitimage
+                                                    ps.elasticsearch
+                                                    ps.requests
+                                                    yarapython
+                                                  ])).override (args: { ignoreCollisions = true;});
   rtsopts = "-M3g -N2";
 
 

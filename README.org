@@ -1,5 +1,5 @@
 #+TITLE:
-* Nix security analysis enviroment (Quickly start)
+* Nix security analysis environment (Quickly start)
 nix-build
 #+BEGIN_EXAMPLE
 nix-build with-R.nix
@@ -71,7 +71,6 @@ nix-build withR
 
 
 Enjoy it!
-
 
 * Phishing
 ** SMTP/email

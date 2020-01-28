@@ -7,3 +7,6 @@
 [submodule "3rdparty/PasteHunter"]
 	path = 3rdparty/PasteHunter
 	url = https://github.com/GTrunSec/PasteHunter.git
+[submodule "3rdparty/spiderfoot"]
+	path = 3rdparty/spiderfoot
+	url = https://github.com/GTrunSec/spiderfoot.git

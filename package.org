@@ -49,3 +49,5 @@
 ** [[https://github.com/kevthehermit/PasteHunter][kevthehermit/PasteHunter: Scanning pastebin with yara rules]]
 * Data Geoip & Calender
 ** [[https://andrewcooke.github.io/choochoo/getting-started][Getting Started | choochoo]]
+* OSINT
+** [[https://www.spiderfoot.net/][Overview - SpiderFoot - Brave]]
