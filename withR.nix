@@ -85,6 +85,7 @@ let
   secure = ownpkgs.callPackages ./pkgs/python/secure {};
   # Go packages
   deepsea = ownpkgs.callPackages ./pkgs/go/deepsea {};
+  nvdtools = ownpkgs.callPackages ./pkgs/go/nvdtools {};
 
   jupyterlab = (ownpkgs.python3.withPackages (ps: [ ps.jupyterlab
                                                     ps.pandas
@@ -165,11 +166,13 @@ nixpkgs.buildEnv {
   buildInputs = [ nixpkgs.makeWrapper
                   vast
                   deepsea
+                  nvdtools
                 ];
   paths = [ ihaskellEnv jupyterlab ownpkgs.yara julia];
   postBuild = ''
     ln -s ${vast}/bin/vast $out/bin/
     ln -s ${deepsea}/bin/deepsea $out/bin/
+    ln -s ${nvdtools}/bin/cpe2cve $out/bin/
     #ln -s ${broker}/lib/python3.7/site-packages/broker/_broker.so $out/lib
     ln -s ${ihaskellJupyterCmdSh "lab" ""}/bin/ihaskell-lab $out/bin/
     ln -s ${ihaskellJupyterCmdSh "notebook" ""}/bin/ihaskell-notebook $out/bin/
