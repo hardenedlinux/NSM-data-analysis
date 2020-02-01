@@ -25,7 +25,7 @@
 *** python
 **** [[https://github.com/SuperCowPowers/bat][SuperCowPowers/bat: Bro Analysis Tools (BAT): Processing and analysis of Bro network data with Pandas, scikit-learn, and Spark]] :Zeek:
 
-* Visualisations
+* Visualizations
 ** R
 *** [[https://ggplot2.tidyverse.org/][Create Elegant Data Visualisations Using the Grammar of Graphics • ggplot2]]
 **** [[https://github.com/yutannihilation/gghighlight][yutannihilation/gghighlight: Highlight points and lines in ggplot2]]

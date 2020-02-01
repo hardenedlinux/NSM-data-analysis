@@ -1,5 +1,8 @@
 # Build and Release Folders
 result
+
+#R
+.RData
 ##deepsea
 test/deepsea/.*
 bin-debug/

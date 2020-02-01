@@ -22,7 +22,6 @@ let
 
   ownpkgs = (import ownpkgs_git) { };
 
-
   rOverlay = rself: rsuper: {
     myR = rsuper.rWrapper.override {
       packages = with rsuper.rPackages; [ ggplot2 dplyr xts purrr cmaes cubature];
@@ -60,128 +59,45 @@ let
 
   systemPackages = self: [ self.myR ];
 
-  broker = ownpkgs.callPackages ./pkgs/broker {};
   vast = ownpkgs.callPackages ./pkgs/vast {};
-  zat = ownpkgs.callPackages ./pkgs/python/zat {};
-  choochoo = ownpkgs.callPackages ./pkgs/python/choochoo {};
-  service_identity = ownpkgs.callPackages ./pkgs/python/service_identity {};
-  editdistance = nixpkgs.callPackages ./pkgs/python/editdistance {};
-  IPy = nixpkgs.callPackages ./pkgs/python/IPy {};
-  networkx = nixpkgs.callPackages ./pkgs/python/networkx {};
-  netaddr = nixpkgs.callPackages ./pkgs/python/netaddr {};
-  tldextract = nixpkgs.callPackages ./pkgs/python/tldextract {};
-  pyshark = ownpkgs.callPackages ./pkgs/python/pyshark {};
-  cefpython3 = ownpkgs.callPackages ./pkgs/python/cefpython3 {};
-  pyvis = ownpkgs.callPackages ./pkgs/python/pyvis {};
-  yarapython = ownpkgs.callPackages ./pkgs/python/yara-python {};
-  pyOpenSSL = ownpkgs.callPackages ./pkgs/python/pyOpenSSL {};
-  python-pptx = ownpkgs.callPackages ./pkgs/python/python-pptx {};
-  adblockparser = ownpkgs.callPackages ./pkgs/python/adblockparser {};
-  python-whois = ownpkgs.callPackages ./pkgs/python/python-whois {};
-  CherryPy = ownpkgs.callPackages ./pkgs/python/CherryPy {};
-  pygexf = ownpkgs.callPackages ./pkgs/python/pygexf {};
-  PyPDF2 = ownpkgs.callPackages ./pkgs/python/PyPDF2 {};
-  ipwhois = ownpkgs.callPackages ./pkgs/python/ipwhois {};
-  secure = ownpkgs.callPackages ./pkgs/python/secure {};
-  # Go packages
-  deepsea = ownpkgs.callPackages ./pkgs/go/deepsea {};
-  nvdtools = ownpkgs.callPackages ./pkgs/go/nvdtools {};
 
-  jupyterlab = (ownpkgs.python3.withPackages (ps: [ ps.jupyterlab
-                                                    ps.pandas
-                                                    ps.matplotlib
-                                                    ps.Mako
-                                                    ps.numpy
-                                                    ps.scikitlearn
-                                                    ps.sqlalchemy
-                                                    secure
-                                                    ps.dnspython
-                                                    ps.exifread
-                                                    ps.pysocks
-                                                    ps.phonenumbers
-                                                    ps.future
-                                                    ipwhois
-                                                    ps.python-docx
-                                                    PyPDF2
-                                                    CherryPy
-                                                    adblockparser
-                                                    python-whois
-                                                    networkx
-                                                    zat
-                                                    python-pptx
-                                                    pyOpenSSL
-                                                    choochoo
-                                                    ps.twisted
-                                                    ps.cryptography
-                                                    ps.bcrypt
-                                                    ps.pyopenssl
-                                                    ps.geoip2
-                                                    ps.ipaddress
-                                                    service_identity
-                                                    ps.netaddr
-                                                    ps.pillow
-                                                    ps.graphviz
-                                                    #Tor
-                                                    ps.stem
-                                                    netaddr
-                                                    editdistance
-                                                    IPy
-                                                    tldextract
-                                                    ps.scapy
-                                                    pyshark
-                                                    ## Interactive Maps
-                                                    #cefpython3 Failed
-                                                    pyvis
-                                                    #
-                                                    ps.nltk
-                                                    ps.Keras
-                                                    ps.tensorflow
-                                                    ps.scikitimage
-                                                    ps.elasticsearch
-                                                    ps.requests
-                                                    yarapython
-                                                  ])).override (args: { ignoreCollisions = true;});
   rtsopts = "-M3g -N2";
 
+  my-python = (import ./pkgs/python.nix {});
+  julia = (import ./pkgs/julia-non-cuda.nix {});
+  broker = ownpkgs.callPackages ./pkgs/broker {};
+  my-go =  (import ./pkgs/go.nix {});
+  my-R = (import ./pkgs/R.nix {});
 
-
-  nix.binaryCaches = [
-    https://cache.nixos.community
-   ];
   ihaskellJupyterCmdSh = cmd: extraArgs: nixpkgs.writeScriptBin "ihaskell-${cmd}" ''
     #! ${nixpkgs.stdenv.shell}
     export GHC_PACKAGE_PATH="$(echo ${ihaskellEnv}/lib/*/package.conf.d| tr ' ' ':'):$GHC_PACKAGE_PATH"
     export R_LIBS_SITE=${builtins.readFile r-libs-site}
-    export PATH="${nixpkgs.stdenv.lib.makeBinPath ([ ihaskellEnv jupyterlab ] ++ systemPackages nixpkgs)}''${PATH:+:}$PATH"
+    export PATH="${nixpkgs.stdenv.lib.makeBinPath ([ ihaskellEnv my-python my-R ] ++ systemPackages nixpkgs)}''${PATH:+:}$PATH"
     ${ihaskellEnv}/bin/ihaskell install \
       -l $(${ihaskellEnv}/bin/ghc --print-libdir) \
       --use-rtsopts="${rtsopts}" \
-      && ${jupyterlab}/bin/jupyter ${cmd} ${extraArgs} "$@"
+      && ${my-python}/bin/jupyter ${cmd} ${extraArgs} "$@"
   '';
 
-  julia = (import ./pkgs/julia-non-cuda.nix {});
+
 in
 nixpkgs.buildEnv {
   name = "NSM-analysis-env";
   buildInputs = [ nixpkgs.makeWrapper
                   vast
-                  deepsea
-                  nvdtools
                 ];
-  paths = [ ihaskellEnv jupyterlab ownpkgs.yara julia];
+  paths = [ ihaskellEnv my-python ownpkgs.yara julia my-go my-R];
   postBuild = ''
     ln -s ${vast}/bin/vast $out/bin/
-    ln -s ${deepsea}/bin/deepsea $out/bin/
-    ln -s ${nvdtools}/bin/cpe2cve $out/bin/
-    #ln -s ${broker}/lib/python3.7/site-packages/broker/_broker.so $out/lib
     ln -s ${ihaskellJupyterCmdSh "lab" ""}/bin/ihaskell-lab $out/bin/
     ln -s ${ihaskellJupyterCmdSh "notebook" ""}/bin/ihaskell-notebook $out/bin/
     ln -s ${ihaskellJupyterCmdSh "nbconvert" ""}/bin/ihaskell-nbconvert $out/bin/
     ln -s ${ihaskellJupyterCmdSh "console" "--kernel=haskell"}/bin/ihaskell-console $out/bin/
     for prg in $out/bin"/"*;do
       if [[ -f $prg && -x $prg ]]; then
-        wrapProgram $prg --set PYTHONPATH "$(echo ${jupyterlab}/lib/*/site-packages)" \
-                    --set PYTHONPATH "${broker}/lib/python3.7/site-packages" 
+        wrapProgram $prg --set PYTHONPATH "$(echo ${my-python}/lib/*/site-packages)" \
+                    --set PYTHONPATH "${broker}/lib/python3.7/site-packages"
          fi
     done
   '';
