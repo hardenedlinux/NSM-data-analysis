@@ -110,16 +110,18 @@ let
   ];
   
   R-with-my-packages = ownpkgs.rWrapper.override{
-    packages = customRPackages;
+    packages = with ownpkgs.rPackages; customRPackages ++ [ JuniperKernel ];
   };
 
-in
+  in
 ownpkgs.buildEnv rec {
   name = "my-R";
   buildInputs = [
     ownpkgs.makeWrapper
+    ownpkgs.python3Packages.notebook
     ] ;
-  paths = [ R-with-my-packages ];
+  paths = [ R-with-my-packages];
   postBuild = ''
+
   '';
 }
