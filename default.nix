@@ -74,7 +74,7 @@ let
     #! ${nixpkgs.stdenv.shell}
     export GHC_PACKAGE_PATH="$(echo ${ihaskellEnv}/lib/*/package.conf.d| tr ' ' ':'):$GHC_PACKAGE_PATH"
     export R_LIBS_SITE=${builtins.readFile r-libs-site}
-    export PATH="${nixpkgs.stdenv.lib.makeBinPath ([ ihaskellEnv my-python my-R jupyter-R-kernel ] ++ systemPackages nixpkgs)}''${PATH:+:}$PATH"
+    export PATH="${nixpkgs.stdenv.lib.makeBinPath ([ ihaskellEnv my-python my-R ] ++ systemPackages nixpkgs)}''${PATH:+:}$PATH"
     ${ihaskellEnv}/bin/ihaskell install \
       -l $(${ihaskellEnv}/bin/ghc --print-libdir) \
       --use-rtsopts="${rtsopts}" \
@@ -87,7 +87,7 @@ nixpkgs.buildEnv {
   buildInputs = [ nixpkgs.makeWrapper
                   vast
                 ];
-  paths = [ ihaskellEnv my-python ownpkgs.yara julia my-go my-R   jupyter-R-kernel];
+  paths = [ ihaskellEnv my-python ownpkgs.yara julia my-go my-R ];
   postBuild = ''
     ln -s ${vast}/bin/vast $out/bin/
     ln -s ${ihaskellJupyterCmdSh "lab" ""}/bin/ihaskell-lab $out/bin/

@@ -1,12 +1,12 @@
 #+TITLE:
 * Nix security analysis environment (Quickly start)
-nix-build
+nix-build with Julia internal R and Haskell, Python
 #+BEGIN_EXAMPLE
-nix-build with-R.nix
+nix-build 
 #+END_EXAMPLE
-nix-shell
+nix-shell with R-jupyter-kernal
 #+BEGIN_EXAMPLE
-nix-shell shell.nix
+nix-shell r-shell.nix
 #+END_EXAMPLE
 ** For Debian NIX user
 #+begin_src sh :async t :exports both :results output
@@ -30,7 +30,7 @@ Building NSM-NIX-env
 #+begin_src sh :async t :exports both :results output
 git clone https://github.com/hardenedlinux/NSM-data-analysis.git --depth=1 --recurse-submodules
 cd NSM-data-analysis
-nix-build withR.nix
+nix-build 
 #+end_src
 
 It will generated a ~result~ direcotry under the current directory.
@@ -59,7 +59,7 @@ if you got all of kernels path from /nix/store/... that will be fine
 ** Julia support
 - NVIDIA-Linux cudatoolkit 
 if you would like to use CUDA, just change ~julia-none-cuda.nix~ to ~julia.nix~
-from file(withR.nix)
+from file(default.nix)
 
 *Remmber* Allow unfree package
 
