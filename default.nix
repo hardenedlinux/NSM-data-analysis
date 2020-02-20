@@ -11,13 +11,12 @@ let
       sha256 = "1fdnqm4vyj50jb2ydcc0nldxwn6wm7qakxfhmpf72pz2y2ld55i6";
     };
 
-
   };
 
 
   ownpkgs_git = builtins.fetchTarball {
-    url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/bea1a232c615aba177e0ef56600d5f847ad3bbd9";
-    sha256 = "1zakg4qrby56j28p9jifsplj3xbda2pmg1cw2zfr1y8wcab61p25";
+    url    = "https://github.com/GTrunSec/nixpkgs/tarball/f4c40e65d13052c8ca63684dc830e0282ced9d4b";
+    sha256 = "1iw689qgycilgf2jncks6s0vb69dw9jbspzlqqm8y8vv2phjksvv";
   };
 
   ownpkgs = (import ownpkgs_git) { };

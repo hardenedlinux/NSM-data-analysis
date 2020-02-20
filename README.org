@@ -8,6 +8,17 @@ nix-shell with R-jupyter-kernal
 #+BEGIN_EXAMPLE
 nix-shell r-shell.nix
 #+END_EXAMPLE
+
+Using Binary cache to speed nix-build
+#+BEGIN_EXAMPLE
+nix-env -iA cachix -f https://cachix.org/api/v1/install
+sudo mkdir -p /etc/nix
+echo "trusted-users = root $USER" | sudo tee -a /etc/nix/nix.conf
+sudo pkill nix-daemon
+cachix use nsm-data-analysis
+nix-build --option substituters "https://cache.nixos.org https://nsm-data-analysis.cachix.org"
+#+END_EXAMPLE
+
 ** For Debian NIX user
 #+begin_src sh :async t :exports both :results output
 wget https://github.com/hardenedlinux/NSM-data-analysis/releases/download/nix/nix_2.3_master_e3eecb5_amd64.deb
