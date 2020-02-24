@@ -1,6 +1,6 @@
 { pkgs ? import (builtins.fetchTarball "https://github.com/nixos/nixpkgs/tarball/f4c40e65d13052c8ca63684dc830e0282ced9d4b") }:
 let
-  julia = pkgs.julia_11;
+  julia = pkgs.julia_13.overrideAttrs(oldAttrs: {checkTarget = "";});
   d = version: "v${pkgs.lib.concatStringsSep "." (pkgs.lib.take 2 (pkgs.lib.splitString "." version))}";
   extraLibs = with pkgs;[
     # IJulia.jl
