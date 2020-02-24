@@ -46,11 +46,46 @@ nix-build
 #+end_src
 
 It will generated a ~result~ direcotry under the current directory.
-***  RPM package
+***  For RPM install User
 #+BEGIN_EXAMPLE
 wget https://github.com/hardenedlinux/NSM-data-analysis/releases/download/nix/nix-2.3-1.x86_64.rpm
 #+END_EXAMPLE
+** load Jupyter kernels
+make sure have you cleaned up Jupyter kernel list.
+- check kernel list
+#+begin_src sh :async t :exports both :results output
+jupyter kernelspec list
+#+end_src
 
+#+RESULTS:
+: Available kernels:
+:   python3             /nix/store/1nfbdgg78l3mjlxfjg8k1mps41wh3xmk-python3-3.7.6-env/lib/python3.7/site-packages/ipykernel/resources
+:   haskell             /home/gtrun/.local/share/jupyter/kernels/haskell
+:   julia-nodeps-1.1    /home/gtrun/.local/share/jupyter/kernels/julia-nodeps-1.1
+
+- clean up you local kernel path before you running ./result/bin/ihaskell-lab or
+  jupyter-notebook
+#+begin_src sh :async t :exports both :results output
+jupyter kernelspec remove python3
+jupyter kernelspec remove haskell
+jupyter kernelspec remove julia-nodeps-1.1
+#+end_src
+if you got all of kernels path from /nix/store/... that will be fine
+** Julia support
+- NVIDIA-Linux cudatoolkit 
+if you would like to use CUDA, just change ~julia-none-cuda.nix~ to ~julia.nix~
+from file(default.nix)
+
+*Remmber* Allow unfree package
+
+#+begin_src sh :async t :exports both :results output
+export NIXPKGS_ALLOW_UNFREE=1
+
+nix-build withR 
+#+end_src
+
+
+Enjoy it!
 
 * Phishing
 ** SMTP/email
