@@ -14,14 +14,14 @@ let
 in
 
 stdenv.mkDerivation rec {
-    version = "0.2";
+    version = "2020.02.27";
     name = "vast";
     src = fetchFromGitHub {
       owner = "tenzir";
       repo = "vast";
-      rev = "f88106e04f78ed3432898457915d859c1dfe37d5";
+      rev = "bffaeada156a6dd4fee4f61f8e24cce593d892ca";
       fetchSubmodules = true;
-      sha256 = "18zb944gzw957wy3bmflnzhz0yzkhc7m7iwbjsdfh7nh042wa4px";
+      sha256 = "1d29r89pzmhz6jvanndlscyb9q58x14n8ilbkg4bic5smndfgdsq";
     };
 
     
@@ -34,6 +34,7 @@ stdenv.mkDerivation rec {
     "-DNO_AUTO_LIBCPP=ON"
     "-DENABLE_ZEEK_TO_VAST=OFF"
     "-DNO_UNIT_TESTS=ON"
+    "-DVAST_VERSION_TAG=${version}"
   ];
 
 

@@ -15,8 +15,8 @@ let
 
 
   ownpkgs_git = builtins.fetchTarball {
-    url    = "https://github.com/GTrunSec/nixpkgs/tarball/f4c40e65d13052c8ca63684dc830e0282ced9d4b";
-    sha256 = "1iw689qgycilgf2jncks6s0vb69dw9jbspzlqqm8y8vv2phjksvv";
+    url    = "https://github.com/GTrunSec/nixpkgs/tarball/806fac5d109cdc6653c33a18924dac31ac477a2b";
+    sha256 = "0b1aksy1070xh9wn7mwdgyz2hpfljr4jxs6qj90x7pnxj3m3p7a4";
   };
 
   ownpkgs = (import ownpkgs_git) { };
@@ -58,16 +58,16 @@ let
 
   systemPackages = self: [ self.myR ];
 
-  vast = ownpkgs.callPackages ./pkgs/vast {};
 
   rtsopts = "-M3g -N2";
 
+  vast = ownpkgs.callPackages ./pkgs/vast {};
   my-python = (import ./pkgs/python.nix {});
   julia = (import ./pkgs/julia-non-cuda.nix {});
   broker = ownpkgs.callPackages ./pkgs/broker {};
   my-go =  (import ./pkgs/go.nix {});
   my-R = (import ./pkgs/R.nix {});
-
+  zeek = ownpkgs.callPackages ./pkgs/zeek {};
 
   ihaskellJupyterCmdSh = cmd: extraArgs: nixpkgs.writeScriptBin "ihaskell-${cmd}" ''
     #! ${nixpkgs.stdenv.shell}
@@ -85,10 +85,12 @@ nixpkgs.buildEnv {
   name = "NSM-analysis-env";
   buildInputs = [ nixpkgs.makeWrapper
                   vast
+                  zeek
                 ];
   paths = [ ihaskellEnv my-python ownpkgs.yara julia my-go my-R ];
   postBuild = ''
     ln -s ${vast}/bin/vast $out/bin/
+    ln -s ${zeek}/bin/* $out/bin/
     ln -s ${ihaskellJupyterCmdSh "lab" ""}/bin/ihaskell-lab $out/bin/
     ln -s ${ihaskellJupyterCmdSh "notebook" ""}/bin/ihaskell-notebook $out/bin/
     ln -s ${ihaskellJupyterCmdSh "nbconvert" ""}/bin/ihaskell-nbconvert $out/bin/
