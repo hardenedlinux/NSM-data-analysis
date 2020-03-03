@@ -3,6 +3,8 @@ result
 
 #R
 .RData
+
+test/sybilhunter
 ##deepsea
 test/deepsea/.*
 bin-debug/

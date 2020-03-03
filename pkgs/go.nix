@@ -22,7 +22,7 @@ ownpkgs.stdenv.mkDerivation rec {
     ];
   phases = [ "installPhase" ];
   installPhase = ''
-    makeWrapper ${deepsea}/bin/deepsea $out/bin/deepsee
+    makeWrapper ${deepsea}/bin/deepsea $out/bin/deepsea
     makeWrapper ${nvdtools}/bin/cpe2cve $out/bin/cpe2cve
     makeWrapper ${sybilhunter}/bin/sybilhunter $out/bin/sybilhunter
 '';

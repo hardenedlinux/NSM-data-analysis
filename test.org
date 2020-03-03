@@ -1,0 +1,35 @@
+#+TITLE: Test
+#+AUTHOR: GTrunSec
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE:  3 March 2020
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en cn
+#+SETUPFILE: ~/Documents/my-blog/public/theme/org-html-themes/setup/theme-readtheorg.setup
+#+hugo_publishdate: (0 5)
+#+hugo_auto_set_lastmod: t
+#+HUGO_categories:
+#+HUGO_tags:
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+* Tor
+** sybilhunter
+#+begin_src sh :async t :exports both :results output
+cd test
+mkdir -p sybilhunter
+cd sybilhunter
+wget https://collector.torproject.org/archive/relay-descriptors/consensuses/consensuses-2015-08.tar.xz
+tar -xvf consensuses-2015-08.tar.xz
+#+end_src
+
+#+RESULTS:
+#+begin_src sh :exports both :results output
+./result/bin/sybilhunter -data test/sybilhunter/consensuses-2015-08 -print ls -U | head -4
+#+end_src
+
+#+RESULTS:
+: fingerprint,nickname,ip_addr,or_port,dir_port,flags,published,version
+: CDDEC3CC4B0FD5054C99B2D2843DE8B609A4CABA,rotorstator,192.187.106.146|443|80,Fast|HSDir|Stable|Running|Valid|V2Dir,2015-07-31T22:08:58Z,0.2.6.9
+: D64366987CB39F61AD21DBCF8142FA0577B92811,kasperskytor01,37.221.162.226|9001|9030,Fast|Guard|Stable|Running|Valid|V2Dir,2015-07-31T15:05:29Z,0.2.6.10
+: E8F0476EF5D56CC2A5255A14AAE6DFD491D82BAA,kuzlatko,109.74.195.190|9001|0,Fast|Stable|Running|Valid,2015-07-31T10:51:52Z,0.2.4.24
