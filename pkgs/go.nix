@@ -9,6 +9,7 @@ let
   # Go packages
   deepsea = ownpkgs.callPackages ./go/deepsea {};
   nvdtools = ownpkgs.callPackages ./go/nvdtools {};
+  sybilhunter = ownpkgs.callPackages ./go/sybilhunter {};
 
 in
 ownpkgs.stdenv.mkDerivation rec {
@@ -17,10 +18,12 @@ ownpkgs.stdenv.mkDerivation rec {
     ownpkgs.makeWrapper
     deepsea
     nvdtools
+    sybilhunter
     ];
   phases = [ "installPhase" ];
   installPhase = ''
-    makeWrapper ${deepsea}/bin/deepsea $out/bin/deepsea
+    makeWrapper ${deepsea}/bin/deepsea $out/bin/deepsee
     makeWrapper ${nvdtools}/bin/cpe2cve $out/bin/cpe2cve
+    makeWrapper ${sybilhunter}/bin/sybilhunter $out/bin/sybilhunter
 '';
 }

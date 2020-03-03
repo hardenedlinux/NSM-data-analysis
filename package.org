@@ -53,3 +53,5 @@
 ** [[https://www.spiderfoot.net/][Overview - SpiderFoot - Brave]]
 * CVE manager
 ** [[https://github.com/GTrunSec/nvdtools][GTrunSec/nvdtools: A set of tools to work with the feeds (vulnerabilities, CPE dictionary etc.) distributed by National Vulnerability Database (NVD) - Brave]]
+* Tor
+** https://github.com/NullHypothesis/sybilhunter :anomalies:Tor:
