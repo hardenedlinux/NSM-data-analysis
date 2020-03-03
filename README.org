@@ -8,6 +8,12 @@ nix-shell with R-jupyter-kernal
 #+BEGIN_EXAMPLE
 nix-shell r-shell.nix
 #+END_EXAMPLE
+Global nix config setting
+~Notice~ if you have another ~config~~ setting in ~config.nix~, Do not copy
+~config.nix~ to PATH. just extended the ~config.nix~
+#+BEGIN_EXAMPLE
+cp config.nix ~/.config/nixpkgs/.
+#+END_EXAMPLE
 
 Using Binary cache to speed nix-build
 #+BEGIN_EXAMPLE

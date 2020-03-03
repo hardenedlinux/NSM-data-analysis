@@ -10,3 +10,6 @@
 [submodule "3rdparty/spiderfoot"]
 	path = 3rdparty/spiderfoot
 	url = https://github.com/GTrunSec/spiderfoot.git
+[submodule "3rdparty/clx"]
+	path = 3rdparty/clx
+	url = https://github.com/rapidsai/clx

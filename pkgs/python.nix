@@ -4,9 +4,17 @@ let
       url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/bea1a232c615aba177e0ef56600d5f847ad3bbd9";
       sha256 = "1zakg4qrby56j28p9jifsplj3xbda2pmg1cw2zfr1y8wcab61p25";
   };
-
   ownpkgs = (import ownpkgs_git) { };
 
+
+  cuda_git = builtins.fetchTarball {
+      url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/42f0be81ae05a8fe6d6e8e7f1c28652e7746e046";
+      sha256 = "1rxb5kmghkzazqcv4d8yczdiv2srs4r7apx4idc276lcikm0hdmf";
+  };
+
+  cudapkgs = (import cuda_git) { };
+  cudf = ownpkgs.callPackages ./python/cudf {};
+  clx = ownpkgs.callPackages ./python/clx {};
   zat = ownpkgs.callPackages ./python/zat {};
   choochoo = ownpkgs.callPackages ./python/choochoo {};
   service_identity = ownpkgs.callPackages ./python/service_identity {};
@@ -37,7 +45,7 @@ let
   #   ]))
   # ];
   broker = ownpkgs.callPackages ./broker {};
- 
+  my-cuda-packages = (cudapkgs.python3.withPackages (ps: [ cudf]));
   my-python-packages = (ownpkgs.python3.withPackages (ps: [ ps.jupyterlab
                                                             ps.pandas
                                                             ps.matplotlib
@@ -91,6 +99,7 @@ let
                                                             ps.elasticsearch
                                                             ps.requests
                                                             yarapython
+                                                            clx
                                                           ])).override (args: { ignoreCollisions = true;});
 in
 ownpkgs.buildEnv rec {
