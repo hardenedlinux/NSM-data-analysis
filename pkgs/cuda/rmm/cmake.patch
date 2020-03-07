@@ -1,0 +1,10 @@
+diff --git a/cmake/Modules/ConfigureGoogleTest.cmake b/cmake/Modules/ConfigureGoogleTest.cmake
+index d2f2f2c..eb58cdd 100644
+--- a/cmake/Modules/ConfigureGoogleTest.cmake
++++ b/cmake/Modules/ConfigureGoogleTest.cmake
+@@ -1,1 +1,1 @@
+-set(GTEST_ROOT "${CMAKE_BINARY_DIR}/googletest")
++set(GTEST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/googletest")
+
+ set(GTEST_CMAKE_ARGS "")
+                     # " -Dgtest_build_samples=ON"

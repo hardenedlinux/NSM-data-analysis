@@ -14,6 +14,7 @@ let
 
   cudapkgs = (import cuda_git) { };
   cudf = ownpkgs.callPackages ./python/cudf {};
+  rmm = ownpkgs.callPackages ./cuda/rmm {};
   clx = ownpkgs.callPackages ./python/clx {};
   zat = ownpkgs.callPackages ./python/zat {};
   choochoo = ownpkgs.callPackages ./python/choochoo {};

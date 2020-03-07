@@ -22,8 +22,10 @@ sudo mkdir -p /etc/nix
 echo "trusted-users = root $USER" | sudo tee -a /etc/nix/nix.conf
 sudo pkill nix-daemon
 cachix use nsm-data-analysis
-nix-build --option substituters "https://cache.nixos.org https://nsm-data-analysis.cachix.org"
 sudo systemctl restart nix-daemon.service
+git clone https://github.com/hardenedlinux/NSM-data-analysis.git
+cd NSM-data-analysis/
+nix-build --option substituters "https://cache.nixos.org https://nsm-data-analysis.cachix.org"
 #+END_EXAMPLE
 
 ** For Debian NIX user

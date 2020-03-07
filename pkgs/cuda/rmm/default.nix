@@ -1,23 +1,37 @@
-{stdenv, fetchFromGitHub, cmake, gcc, python3, cudatoolkit, git, cacert}:
+{stdenv, fetchFromGitHub, fetchgit, cmake, gcc, python3, cudatoolkit, git, cacert}:
+let
 
+  googletest = fetchFromGitHub{
+    url = "https://github.com/google/googletest.git";
+    owner = "google";
+    repo = "googletest";
+    rev = "e588eb1ff9ff6598666279b737b27f983156ad85";
+    sha256 = "17fd11mk31s72cyirp4c3pmddxz4wl07447kg44kc5jn1zawffwn";
+  };
+in
 stdenv.mkDerivation rec {
 
   name = "rmm";
   version = "0.13.0";
   src = fetchFromGitHub{
-    owner = "rapidsai";
+    url = "https://github.com/GTrunSec/rmm.git";
+    owner = "GTrunSec";
     repo = "rmm";
-    rev = "264672ffaba81028752f3391e0c244daa5a1376a";
-    sha256 = "0cm9izkim88w4yrlx0gi2z59nyns1i1a482msxn6cqhw3mi0m66c";
+    rev = "538c3079d555f36d2aaf2952c32cb4624532a5d0";
+    sha256 = "0b3y1cll4jrsljfx7dac4dl37b155gixdr3imklzc4d6dpiwy3f4";
+    fetchSubmodules = true;
   };
 
 
-  ## replace git clone gtest to 3rdparty
+  ## replace git clone gtest to 3rdparty. Do not downlaod when using cmake
   nativeBuildInputs = [ cmake ];
   buildInputs = [ cmake gcc cudatoolkit git];
+
+  patches = [ ./cmake.patch ];
+
   preConfigure = ''
       export CUDA_HOME=${cudatoolkit}
-     '';
+         '';
 
   preferLocalBuild = true;
   SSL_CERT_FILE = "${cacert}/etc/ssl/certs/ca-bundle.crt";
