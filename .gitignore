@@ -1,6 +1,8 @@
 # Build and Release Folders
 result
 
+#zeek test
+zeek-log
 #R
 .RData
 
