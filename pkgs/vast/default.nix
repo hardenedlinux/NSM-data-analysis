@@ -1,7 +1,8 @@
-{stdenv, fetchFromGitHub, cmake, pandoc, gcc, caf, pkgconfig, arrow-cpp, openssl, doxygen, libpcap,
-  gperftools, clang, git, python3Packages, jq, tcpdump}:
+{stdenv, fetchurl, cmake, pandoc, gcc, caf, pkgconfig, arrow-cpp, openssl, doxygen, libpcap,
+  gperftools, clang, git, python3Packages, jq, tcpdump, lib}:
 
 let
+  isCross = stdenv.buildPlatform != stdenv.hostPlatform;
 
   python = python3Packages.python.withPackages( ps: with ps; [
     coloredlogs
@@ -16,12 +17,16 @@ in
 stdenv.mkDerivation rec {
     version = "2020.02.27";
     name = "vast";
-    src = fetchFromGitHub {
-      owner = "tenzir";
-      repo = "vast";
-      rev = "bffaeada156a6dd4fee4f61f8e24cce593d892ca";
-      fetchSubmodules = true;
-      sha256 = "1d29r89pzmhz6jvanndlscyb9q58x14n8ilbkg4bic5smndfgdsq";
+    # src = fetchFromGitHub {
+    #   owner = "tenzir";
+    #   repo = "vast";
+    #   rev = "bffaeada156a6dd4fee4f61f8e24cce593d892ca";
+    #   fetchSubmodules = true;
+    #   sha256 = "1d29r89pzmhz6jvanndlscyb9q58x14n8ilbkg4bic5smndfgdsq";
+    # };
+    src = fetchurl {
+      url = "https://github.com/tenzir/vast/archive/2020.02.27.tar.gz";
+      sha256 = "14v5h40a2sppl37dix5rq8879q3r8ph5wic2qfprd4p1w120iq0n";
     };
 
     
@@ -38,9 +43,17 @@ stdenv.mkDerivation rec {
   ];
 
 
-  preConfigure = ''
-     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/lib
- '';
+ preConfigure = ''
+    substituteInPlace cmake/FindPCAP.cmake \
+      --replace /bin/sh "${stdenv.shell}" \
+      --replace nm "''${NM}"
+  '';
+
+ dontStrip = isCross;
+ postFixup = lib.optionalString isCross ''
+   ${stdenv.cc.targetPrefix}strip -s $out/bin/vast
+   ${stdenv.cc.targetPrefix}strip -s $out/bin/zeek-to-vast
+  '';
 
    installCheckInputs = [ jq python tcpdump ];
 

@@ -3,6 +3,10 @@ result
 
 #zeek test
 zeek-log
+
+#vast
+vast.log
+vast.db
 #R
 .RData
 
