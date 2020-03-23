@@ -138,3 +138,11 @@ Enjoy it!
 * VISUALIZING MALWARE NETWORKS
 * Honeypot
 ** [[https://github.com/UHH-ISS/honeygrove][UHH-ISS/honeygrove: A multi-purpose, modular medium-interaction honeypot based on Twisted. - Brave]]
+* cache
+mkdir -p $out/{tbin,spool}
+  touch $out/spool/state.db
+  ls -l aux/zeekctl/tbin/
+  cp aux/zeekctl/bin/zeekctl.in $out/bin/
+#+begin_src sh :async t :exports both :results output
+
+#+end_src
