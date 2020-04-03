@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
     description = "Zeek's Messaging Library";
     homepage = http://zeek.org;
     license = licenses.bsd3;
-    maintainers = with maintainers; [ GTrunSec ];
+    maintainers = [ maintainers.GTrunSec ];
     platforms = with platforms; linux;
   };
 }
