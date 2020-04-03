@@ -32,6 +32,5 @@ stdenv.mkDerivation rec {
     homepage = http://zeek.org;
     license = licenses.bsd3;
     platforms = with platforms; linux;
-    maintainers = with maintainers; [ GTrunSec ];
   };
 }

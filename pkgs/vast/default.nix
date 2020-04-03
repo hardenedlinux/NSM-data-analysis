@@ -68,6 +68,5 @@ stdenv.mkDerivation rec {
     homepage = http://vast.io;
     license = licenses.bsd3;
     platforms = with platforms; linux;
-    maintainers = with maintainers; [ GTrunSec ];
   };
 }

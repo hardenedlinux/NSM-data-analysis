@@ -33,6 +33,5 @@ stdenv.mkDerivation rec {
     homepage = https://www.bro.org/;
     license = licenses.bsd3;
     platforms = with platforms; linux;
-    maintainers = with maintainers; [ GTrunSec ];
   };
 }
