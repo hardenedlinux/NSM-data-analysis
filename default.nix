@@ -6,8 +6,8 @@ let
     };
 
     nixpkgs = builtins.fetchTarball {
-      url    = "https://github.com/GTrunSec/nixpkgs/tarball/806fac5d109cdc6653c33a18924dac31ac477a2b";
-      sha256 = "0b1aksy1070xh9wn7mwdgyz2hpfljr4jxs6qj90x7pnxj3m3p7a4";
+      url    = "https://github.com/GTrunSec/nixpkgs/tarball/e405fe40cc826bdecb1f22b5cb8c7291293530e2";
+      sha256 = "0k9w1klirra841bvr3ahmc5w9r6pnldn1h98f9w2y7ji7k2w6xgs";
     };
   };
 
@@ -35,7 +35,7 @@ let
   nixpkgs  = import pkgs.nixpkgs { overlays = [ rOverlay foo]; };
 
   r-libs-site = nixpkgs.runCommand "r-libs-site" {
-    buildInputs = with nixpkgs; [ R
+    buildInputs = with ownpkgs; [ R
                                    rPackages.ggplot2 rPackages.dplyr rPackages.xts rPackages.purrr rPackages.cmaes rPackages.cubature
                                   rPackages.reshape2
                                  ];
@@ -50,6 +50,7 @@ let
     # we can re-introduce this when it gets fixed
     # self.hmatrix-sundials
     self.random-fu
+    self.lens
     self.my-random-fu-multivariate
   ];
   }).passthru.ihaskellEnv;
@@ -79,7 +80,7 @@ let
   '';
 
 in
-nixpkgs.buildEnv {
+ownpkgs.buildEnv {
   name = "NSM-analysis-env";
   buildInputs = [ nixpkgs.makeWrapper
                   vast
