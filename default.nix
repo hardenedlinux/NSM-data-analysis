@@ -1,16 +1,14 @@
 let
   pkgs = {
     ihaskell = builtins.fetchTarball {
-      url = "https://github.com/gibiansky/IHaskell/tarball/bb2500c448c35ca79bddaac30b799d42947e8774";
-      sha256 = "1n4yqxaf2xcnjfq0r1v7mzjhrizx7z5b2n6gj1kdk2yi37z672py";
+      url = "https://github.com/gibiansky/IHaskell/tarball/6063c58c169b626596be72051d9583cb31621fb1";
+      sha256 = "1ibhldhhjxhc24ilzqav12j6ywzwl6in8qhy832bw1k2blq8ah6k";
     };
 
-    #ghc864
     nixpkgs = builtins.fetchTarball {
-      url = "https://github.com/NixOS/nixpkgs-channels/tarball/49dc8087a20e0d742d38be5f13333a03d171006a";
-      sha256 = "1fdnqm4vyj50jb2ydcc0nldxwn6wm7qakxfhmpf72pz2y2ld55i6";
+      url    = "https://github.com/GTrunSec/nixpkgs/tarball/806fac5d109cdc6653c33a18924dac31ac477a2b";
+      sha256 = "0b1aksy1070xh9wn7mwdgyz2hpfljr4jxs6qj90x7pnxj3m3p7a4";
     };
-
   };
 
 
@@ -44,7 +42,7 @@ let
   } ''echo $R_LIBS_SITE > $out'';
 
   ihaskellEnv = (import "${pkgs.ihaskell}/release.nix" {
-    compiler = "ghc864";
+    compiler = "ghc865";
     nixpkgs  = nixpkgs;
   packages = self: [
     self.inline-r
