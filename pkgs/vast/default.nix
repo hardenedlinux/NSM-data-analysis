@@ -67,7 +67,7 @@ stdenv.mkDerivation rec {
     description = " Visibility Across Space and Time";
     homepage = http://vast.io;
     license = licenses.bsd3;
-    maintainers = [ maintainers.GTrunSec ];
+    #maintainers = [ maintainers.GTrunSec ];
     platforms = with platforms; linux;
   };
 }
