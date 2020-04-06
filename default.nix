@@ -6,18 +6,10 @@ let
     };
 
     nixpkgs = builtins.fetchTarball {
-      url    = "https://github.com/GTrunSec/nixpkgs/tarball/e405fe40cc826bdecb1f22b5cb8c7291293530e2";
-      sha256 = "0k9w1klirra841bvr3ahmc5w9r6pnldn1h98f9w2y7ji7k2w6xgs";
+      url    = "https://github.com/GTrunSec/nixpkgs/tarball/39247f8d04c04b3ee629a1f85aeedd582bf41cac";
+      sha256 = "1q7asvk73w7287d2ghgya2hnvn01szh65n8xczk4x2b169c5rfv0";
     };
   };
-
-
-  ownpkgs_git = builtins.fetchTarball {
-    url    = "https://github.com/GTrunSec/nixpkgs/tarball/806fac5d109cdc6653c33a18924dac31ac477a2b";
-    sha256 = "0b1aksy1070xh9wn7mwdgyz2hpfljr4jxs6qj90x7pnxj3m3p7a4";
-  };
-
-  ownpkgs = (import ownpkgs_git) { };
 
   rOverlay = rself: rsuper: {
     myR = rsuper.rWrapper.override {
@@ -35,21 +27,21 @@ let
   nixpkgs  = import pkgs.nixpkgs { overlays = [ rOverlay foo]; };
 
   r-libs-site = nixpkgs.runCommand "r-libs-site" {
-    buildInputs = with ownpkgs; [ R
+    buildInputs = with nixpkgs; [ R
                                    rPackages.ggplot2 rPackages.dplyr rPackages.xts rPackages.purrr rPackages.cmaes rPackages.cubature
                                   rPackages.reshape2
                                  ];
   } ''echo $R_LIBS_SITE > $out'';
 
-  ihaskellEnv = (import "${pkgs.ihaskell}/release.nix" {
-    compiler = "ghc865";
+  ihaskellEnv = (import "${pkgs.ihaskell}/release-8.8.nix" {
+    compiler = "ghc881";
     nixpkgs  = nixpkgs;
   packages = self: [
-    self.inline-r
+    #self.inline-r
     self.hmatrix
     # we can re-introduce this when it gets fixed
     # self.hmatrix-sundials
-    self.random-fu
+    #self.random-fu
     self.lens
     self.my-random-fu-multivariate
   ];
@@ -60,13 +52,13 @@ let
 
   rtsopts = "-M3g -N2";
 
-  vast = ownpkgs.callPackage ./pkgs/vast {};
+  vast = nixpkgs.callPackage ./pkgs/vast {};
   my-python = (import ./pkgs/python.nix {});
   julia = (import ./pkgs/julia-non-cuda.nix {});
-  broker = ownpkgs.callPackage ./pkgs/broker {};
+  broker = nixpkgs.callPackage ./pkgs/broker {};
   my-go =  (import ./pkgs/go.nix {});
   my-R = (import ./pkgs/R.nix {});
-  zeek = ownpkgs.callPackage ./pkgs/zeek {};
+  zeek = nixpkgs.callPackage ./pkgs/zeek {};
 
   ihaskellJupyterCmdSh = cmd: extraArgs: nixpkgs.writeScriptBin "ihaskell-${cmd}" ''
     #! ${nixpkgs.stdenv.shell}
@@ -80,13 +72,13 @@ let
   '';
 
 in
-ownpkgs.buildEnv {
+nixpkgs.buildEnv {
   name = "NSM-analysis-env";
   buildInputs = [ nixpkgs.makeWrapper
                   vast
                   zeek
                 ];
-  paths = [ ihaskellEnv my-python ownpkgs.yara julia my-go my-R ];
+  paths = [ ihaskellEnv my-python nixpkgs.yara julia my-go my-R ];
   postBuild = ''
     ln -s ${vast}/bin/vast $out/bin/
     ln -s ${zeek}/bin/* $out/bin/
