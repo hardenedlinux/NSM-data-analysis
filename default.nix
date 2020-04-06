@@ -60,13 +60,13 @@ let
 
   rtsopts = "-M3g -N2";
 
-  vast = ownpkgs.callPackages ./pkgs/vast {};
+  vast = ownpkgs.callPackage ./pkgs/vast {};
   my-python = (import ./pkgs/python.nix {});
   julia = (import ./pkgs/julia-non-cuda.nix {});
-  broker = ownpkgs.callPackages ./pkgs/broker {};
+  broker = ownpkgs.callPackage ./pkgs/broker {};
   my-go =  (import ./pkgs/go.nix {});
   my-R = (import ./pkgs/R.nix {});
-  zeek = ownpkgs.callPackages ./pkgs/zeek {};
+  zeek = ownpkgs.callPackage ./pkgs/zeek {};
 
   ihaskellJupyterCmdSh = cmd: extraArgs: nixpkgs.writeScriptBin "ihaskell-${cmd}" ''
     #! ${nixpkgs.stdenv.shell}

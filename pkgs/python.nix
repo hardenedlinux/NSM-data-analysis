@@ -1,53 +1,39 @@
 { pkgs ? import <nixpkgs> {} }:
 let
-  ownpkgs_git = builtins.fetchTarball {
-      url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/bea1a232c615aba177e0ef56600d5f847ad3bbd9";
-      sha256 = "1zakg4qrby56j28p9jifsplj3xbda2pmg1cw2zfr1y8wcab61p25";
-  };
-  ownpkgs = (import ownpkgs_git) { };
-
-
-  cuda_git = builtins.fetchTarball {
-      url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/42f0be81ae05a8fe6d6e8e7f1c28652e7746e046";
-      sha256 = "1rxb5kmghkzazqcv4d8yczdiv2srs4r7apx4idc276lcikm0hdmf";
-  };
-
-  cudapkgs = (import cuda_git) { };
-  cudf = ownpkgs.callPackages ./python/cudf {};
-  rmm = ownpkgs.callPackages ./cuda/rmm {};
-  clx = ownpkgs.callPackages ./python/clx {};
-  zat = ownpkgs.callPackages ./python/zat {};
-  choochoo = ownpkgs.callPackages ./python/choochoo {};
-  service_identity = ownpkgs.callPackages ./python/service_identity {};
-  editdistance = ownpkgs.callPackages ./python/editdistance {};
-  IPy = ownpkgs.callPackages ./python/IPy {};
-  networkx = ownpkgs.callPackages ./python/networkx {};
-  netaddr = ownpkgs.callPackages ./python/netaddr {};
-  tldextract = ownpkgs.callPackages ./python/tldextract {};
-  pyshark = ownpkgs.callPackages ./python/pyshark {};
-  cefpython3 = ownpkgs.callPackages ./python/cefpython3 {};
-  pyvis = ownpkgs.callPackages ./python/pyvis {};
-  yarapython = ownpkgs.callPackages ./python/yara-python {};
-  pyOpenSSL = ownpkgs.callPackages ./python/pyOpenSSL {};
-  python-pptx = ownpkgs.callPackages ./python/python-pptx {};
-  adblockparser = ownpkgs.callPackages ./python/adblockparser {};
-  python-whois = ownpkgs.callPackages ./python/python-whois {};
-  CherryPy = ownpkgs.callPackages ./python/CherryPy {};
-  pygexf = ownpkgs.callPackages ./python/pygexf {};
-  PyPDF2 = ownpkgs.callPackages ./python/PyPDF2 {};
-  ipwhois = ownpkgs.callPackages ./python/ipwhois {};
-  secure = ownpkgs.callPackages ./python/secure {};
+  cudf = pkgs.callPackage ./python/cudf {};
+  rmm = pkgs.callPackage ./cuda/rmm {};
+  clx = pkgs.callPackage ./python/clx {};
+  zat = pkgs.callPackage ./python/zat {};
+  choochoo = pkgs.callPackage ./python/choochoo {};
+  service_identity = pkgs.callPackage ./python/service_identity {};
+  editdistance = pkgs.callPackage ./python/editdistance {};
+  IPy = pkgs.callPackage ./python/IPy {};
+  networkx = pkgs.callPackage ./python/networkx {};
+  netaddr = pkgs.callPackage ./python/netaddr {};
+  tldextract = pkgs.callPackage ./python/tldextract {};
+  pyshark = pkgs.callPackage ./python/pyshark {};
+  cefpython3 = pkgs.callPackage ./python/cefpython3 {};
+  pyvis = pkgs.callPackage ./python/pyvis {};
+  yarapython = pkgs.callPackage ./python/yara-python {};
+  pyOpenSSL = pkgs.callPackage ./python/pyOpenSSL {};
+  python-pptx = pkgs.callPackage ./python/python-pptx {};
+  adblockparser = pkgs.callPackage ./python/adblockparser {};
+  python-whois = pkgs.callPackage ./python/python-whois {};
+  CherryPy = pkgs.callPackage ./python/CherryPy {};
+  pygexf = pkgs.callPackage ./python/pygexf {};
+  PyPDF2 = pkgs.callPackage ./python/PyPDF2 {};
+  ipwhois = pkgs.callPackage ./python/ipwhois {};
+  secure = pkgs.callPackage ./python/secure {};
 
 
   # my-python-packages = [
-  #   (ownpkgs.python3.withPackages (pkgs: with pkgs; [
+  #   (pkgs.python3.withPackages (pkgs: with pkgs; [
   #     setuptools
   #     zat
   #   ]))
   # ];
-  broker = ownpkgs.callPackages ./broker {};
-  my-cuda-packages = (cudapkgs.python3.withPackages (ps: [ cudf]));
-  my-python-packages = (ownpkgs.python3.withPackages (ps: [ ps.jupyterlab
+  broker = pkgs.callPackage ./broker {};
+  my-python-packages = (pkgs.python3.withPackages (ps: [ ps.jupyterlab
                                                             ps.pandas
                                                             ps.matplotlib
                                                             ps.Mako
@@ -103,10 +89,10 @@ let
                                                             clx
                                                           ])).override (args: { ignoreCollisions = true;});
 in
-ownpkgs.buildEnv rec {
+pkgs.buildEnv rec {
   name = "my-python";
   buildInputs = [
-    ownpkgs.makeWrapper
+    pkgs.makeWrapper
     ] ;
   paths = [ my-python-packages ];
   postBuild = ''

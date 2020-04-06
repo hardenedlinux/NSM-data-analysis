@@ -1,12 +1,6 @@
 { pkgs ? import <nixpkgs> {} }:
 let
-  ownpkgs_git = builtins.fetchTarball {
-      url    = "https://github.com/GTrunSec/nixpkgs-channels/tarball/bea1a232c615aba177e0ef56600d5f847ad3bbd9";
-      sha256 = "1zakg4qrby56j28p9jifsplj3xbda2pmg1cw2zfr1y8wcab61p25";
-  };
-
-  ownpkgs = (import ownpkgs_git) { };
-  customRPackages = with ownpkgs.rPackages;[
+  customRPackages = with pkgs.rPackages;[
     bookdown
     devtools
     (let
@@ -109,16 +103,16 @@ let
     #lwgeom
   ];
   
-  R-with-my-packages = ownpkgs.rWrapper.override{
-    packages = with ownpkgs.rPackages; customRPackages ++ [ JuniperKernel ];
+  R-with-my-packages = pkgs.rWrapper.override{
+    packages = with pkgs.rPackages; customRPackages;
   };
 
   in
-ownpkgs.buildEnv rec {
+pkgs.buildEnv rec {
   name = "my-R";
   buildInputs = [
-    ownpkgs.makeWrapper
-    ownpkgs.python3Packages.notebook
+    pkgs.makeWrapper
+    pkgs.python3Packages.notebook
     ] ;
   paths = [ R-with-my-packages];
   postBuild = ''
