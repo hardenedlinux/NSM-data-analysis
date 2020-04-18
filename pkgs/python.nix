@@ -8,14 +8,14 @@ let
   service_identity = pkgs.callPackage ./python/service_identity {};
   editdistance = pkgs.callPackage ./python/editdistance {};
   IPy = pkgs.callPackage ./python/IPy {};
-  networkx = pkgs.callPackage ./python/networkx {};
-  netaddr = pkgs.callPackage ./python/netaddr {};
+  #networkx = pkgs.callPackage ./python/networkx {};
+  #netaddr = pkgs.callPackage ./python/netaddr {};
   tldextract = pkgs.callPackage ./python/tldextract {};
   pyshark = pkgs.callPackage ./python/pyshark {};
   cefpython3 = pkgs.callPackage ./python/cefpython3 {};
   pyvis = pkgs.callPackage ./python/pyvis {};
   yarapython = pkgs.callPackage ./python/yara-python {};
-  pyOpenSSL = pkgs.callPackage ./python/pyOpenSSL {};
+  #pyOpenSSL = pkgs.callPackage ./python/pyOpenSSL {};
   python-pptx = pkgs.callPackage ./python/python-pptx {};
   adblockparser = pkgs.callPackage ./python/adblockparser {};
   python-whois = pkgs.callPackage ./python/python-whois {};
@@ -52,10 +52,9 @@ let
                                                             CherryPy
                                                             adblockparser
                                                             python-whois
-                                                            networkx
+                                                            ps.networkx
                                                             zat
                                                             python-pptx
-                                                            pyOpenSSL
                                                             choochoo
                                                             ps.twisted
                                                             ps.cryptography
@@ -69,7 +68,6 @@ let
                                                             ps.graphviz
                                                             #Tor
                                                             ps.stem
-                                                            netaddr
                                                             editdistance
                                                             IPy
                                                             tldextract

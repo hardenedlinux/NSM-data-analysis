@@ -5,10 +5,10 @@
 with python3.pkgs;
 python3Packages.buildPythonPackage rec {
   pname = "CherryPy";
-  version = "18.5.0";
+  version = "18.6.0";
   src = fetchPypi {
     inherit pname version;
-    sha256 = "63b2f61c38c469112145bd4e4e2385cd18f3233799e7a33bd447df468916d22b";
+    sha256 = "16f410izp2c4qhn4n3l5l3qirmkf43h2amjqms8hkl0shgfqwq2n";
   };
   doCheck = false;
   propagatedBuildInputs = with python3Packages; [ setuptools_scm
