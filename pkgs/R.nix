@@ -1,4 +1,4 @@
-{ pkgs ? import (builtins.fetchTarball "https://github.com/GTrunSec/nixpkgs/tarball/39247f8d04c04b3ee629a1f85aeedd582bf41cac"){}
+{ pkgs ? import ./ownpkgs.nix {}
 }:
 let
   customRPackages = with pkgs.rPackages;[

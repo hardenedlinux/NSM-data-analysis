@@ -1,4 +1,6 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import ./ownpkgs.nix {}
+}:
+
 let
 
   deepsea = pkgs.callPackage ./go/deepsea {};

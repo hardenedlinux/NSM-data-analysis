@@ -1,4 +1,4 @@
-{ pkgs ? import (builtins.fetchTarball "https://github.com/nixos/nixpkgs/tarball/f4c40e65d13052c8ca63684dc830e0282ced9d4b"){}
+{ pkgs ? import ./ownpkgs.nix {}
 }:
 let
   #issue https://github.com/NixOS/nixpkgs/pull/79174#issuecomment-590566953

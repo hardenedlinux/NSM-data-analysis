@@ -1,20 +1,18 @@
 { stdenv
 , python3Packages
 , python3
+, fetchurl
 }:
-with python3.pkgs;
 python3Packages.buildPythonPackage rec {
 
   pname = "Axelrod";
-  version = "4.9.1";
-  src = fetchPypi {
-    inherit pname version;
-    format = "wheel";
-    python = "py2.py3";
-    platform = "any";
-    sha256 = "00274jaa6cxviq1zdlyvd4mcgmrishdfw901gamcy7xlc1mdf0zf";
+  version = "v4.9.1";
+  src = fetchurl {
+    url = "https://github.com/Axelrod-Python/Axelrod/archive/${version}.tar.gz";
+    sha256 = "01v0vc7hqfmyyrmd5w7bqb7nifa1wx468gxlh9hya2ccd5pmpgf3";
   };
-  propagatedBuildInputs = with python3Packages; [ 
+
+  propagatedBuildInputs = with python3Packages; [    pathlib
                                                 ];
   doCheck = false;
   

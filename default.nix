@@ -5,10 +5,10 @@ let
       sha256 = "1ibhldhhjxhc24ilzqav12j6ywzwl6in8qhy832bw1k2blq8ah6k";
     };
 
-    nixpkgs = builtins.fetchTarball {
-      url    = "https://github.com/GTrunSec/nixpkgs/tarball/39247f8d04c04b3ee629a1f85aeedd582bf41cac";
-      sha256 = "1q7asvk73w7287d2ghgya2hnvn01szh65n8xczk4x2b169c5rfv0";
-    };
+    # nixpkgs = builtins.fetchTarball {
+    #   url    = "https://github.com/GTrunSec/nixpkgs/tarball/39247f8d04c04b3ee629a1f85aeedd582bf41cac";
+    #   sha256 = "1q7asvk73w7287d2ghgya2hnvn01szh65n8xczk4x2b169c5rfv0";
+    # };
   };
 
   rOverlay = rself: rsuper: {
@@ -25,7 +25,7 @@ let
     };
   };
 
-  nixpkgs  = import pkgs.nixpkgs { overlays = [ rOverlay foo]; };
+  nixpkgs  = import ./pkgs/ownpkgs.nix { overlays = [ rOverlay foo]; };
 
   r-libs-site = nixpkgs.runCommand "r-libs-site" {
     buildInputs = with nixpkgs; [ R

@@ -1,4 +1,5 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import ./ownpkgs.nix {}
+}:
 let
   cudf = pkgs.callPackage ./python/cudf {};
   rmm = pkgs.callPackage ./cuda/rmm {};
@@ -79,13 +80,13 @@ let
                                                          #
                                                          ps.nltk
                                                          ps.Keras
-                                                         ps.tensorflow
+                                                         ps.tensorflow# does not support python 3.8
                                                          ps.scikitimage
                                                          ps.elasticsearch
                                                          ps.requests
                                                          yarapython
                                                          clx
-                                                         #axelrod
+                                                         #axelrod pathlib 1.0.1 does not support 3.7
                                                        ])).override (args: { ignoreCollisions = true;});
 in
 pkgs.buildEnv rec {
