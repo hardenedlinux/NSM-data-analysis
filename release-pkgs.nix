@@ -9,13 +9,30 @@ in {
   zeek = pkgs.callPackage ./pkgs/zeek {};
   broker = pkgs.callPackage ./pkgs/broker {};
   vast = pkgs.callPackage ./pkgs/vast {};
-  nsm-data-analysis-pkgs = pkgs.buildEnv {
-  name = "nsm-data-analysis-pkgs";
+
+  nsm-data-analysis-R = pkgs.buildEnv {
+  name = "nsm-data-analysis-R";
+  paths = with pkgs; [
+    my-go
+  ];
+  };
+  nsm-data-analysis-Julia = pkgs.buildEnv {
+  name = "nsm-data-analysis-Julia";
   paths = with pkgs; [
     my-julia
-    my-go
-    my-R
+  ];
+  };
+
+  nsm-data-analysis-python = pkgs.buildEnv {
+  name = "nsm-data-analysis-python";
+  paths = with pkgs; [
     my-python
+  ];
+  };
+  nsm-data-analysis-go = pkgs.buildEnv {
+  name = "nsm-data-analysis-go";
+  paths = with pkgs; [
+    my-go
   ];
   };
 }

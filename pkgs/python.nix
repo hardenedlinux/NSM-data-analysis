@@ -24,7 +24,7 @@ let
   PyPDF2 = pkgs.callPackage ./python/PyPDF2 {};
   ipwhois = pkgs.callPackage ./python/ipwhois {};
   secure = pkgs.callPackage ./python/secure {};
-
+  axelrod = pkgs.callPackage ./python/axelrod {};
 
   # my-python-packages = [
   #   (pkgs.python3.withPackages (pkgs: with pkgs; [
@@ -34,58 +34,59 @@ let
   # ];
   broker = pkgs.callPackage ./broker {};
   my-python-packages = (pkgs.python3.withPackages (ps: [ ps.jupyterlab
-                                                            ps.pandas
-                                                            ps.matplotlib
-                                                            ps.Mako
-                                                            ps.numpy
-                                                            ps.scikitlearn
-                                                            ps.sqlalchemy
-                                                            secure
-                                                            ps.dnspython
-                                                            ps.exifread
-                                                            ps.pysocks
-                                                            ps.phonenumbers
-                                                            ps.future
-                                                            ipwhois
-                                                            ps.python-docx
-                                                            PyPDF2
-                                                            CherryPy
-                                                            adblockparser
-                                                            python-whois
-                                                            ps.networkx
-                                                            zat
-                                                            python-pptx
-                                                            choochoo
-                                                            ps.twisted
-                                                            ps.cryptography
-                                                            ps.bcrypt
-                                                            ps.pyopenssl
-                                                            ps.geoip2
-                                                            ps.ipaddress
-                                                            service_identity
-                                                            ps.netaddr
-                                                            ps.pillow
-                                                            ps.graphviz
-                                                            #Tor
-                                                            ps.stem
-                                                            editdistance
-                                                            IPy
-                                                            tldextract
-                                                            ps.scapy
-                                                            pyshark
-                                                            ## Interactive Maps
-                                                            #cefpython3 Failed
-                                                            pyvis
-                                                            #
-                                                            ps.nltk
-                                                            ps.Keras
-                                                            ps.tensorflow
-                                                            ps.scikitimage
-                                                            ps.elasticsearch
-                                                            ps.requests
-                                                            yarapython
-                                                            clx
-                                                          ])).override (args: { ignoreCollisions = true;});
+                                                         ps.pandas
+                                                         ps.matplotlib
+                                                         ps.Mako
+                                                         ps.numpy
+                                                         ps.scikitlearn
+                                                         ps.sqlalchemy
+                                                         secure
+                                                         ps.dnspython
+                                                         ps.exifread
+                                                         ps.pysocks
+                                                         ps.phonenumbers
+                                                         ps.future
+                                                         ipwhois
+                                                         ps.python-docx
+                                                         PyPDF2
+                                                         CherryPy
+                                                         adblockparser
+                                                         python-whois
+                                                         ps.networkx
+                                                         zat
+                                                         python-pptx
+                                                         choochoo
+                                                         ps.twisted
+                                                         ps.cryptography
+                                                         ps.bcrypt
+                                                         ps.pyopenssl
+                                                         ps.geoip2
+                                                         ps.ipaddress
+                                                         service_identity
+                                                         ps.netaddr
+                                                         ps.pillow
+                                                         ps.graphviz
+                                                         #Tor
+                                                         ps.stem
+                                                         editdistance
+                                                         IPy
+                                                         tldextract
+                                                         ps.scapy
+                                                         pyshark
+                                                         ## Interactive Maps
+                                                         #cefpython3 Failed
+                                                         pyvis
+                                                         #
+                                                         ps.nltk
+                                                         ps.Keras
+                                                         ps.tensorflow
+                                                         ps.scikitimage
+                                                         ps.elasticsearch
+                                                         ps.requests
+                                                         yarapython
+                                                         clx
+                                                         #axelrod
+                                                       ])).override (args: { ignoreCollisions = true;});
 in
 pkgs.buildEnv rec {
   name = "my-python";

@@ -24,6 +24,7 @@ let
       };
     };
   };
+
   nixpkgs  = import pkgs.nixpkgs { overlays = [ rOverlay foo]; };
 
   r-libs-site = nixpkgs.runCommand "r-libs-site" {
