@@ -27,7 +27,7 @@ let
   ipwhois = pkgs.callPackage ./python/ipwhois {};
   secure = pkgs.callPackage ./python/secure {};
   axelrod = pkgs.callPackage ./python/axelrod {};
-
+  voila = pkgs.callPackage ./python/voila {};
   # my-python-packages = [
   #   (pkgs.python3.withPackages (pkgs: with pkgs; [
   #     setuptools
@@ -38,6 +38,7 @@ let
   my-python-packages = (pkgs.python3.withPackages (ps: [ ps.jupyterlab
                                                          ps.pandas
                                                          beakerx
+                                                         voila
                                                          ps.matplotlib
                                                          ps.Mako
                                                          ps.numpy
