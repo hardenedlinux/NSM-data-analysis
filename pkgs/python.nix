@@ -1,6 +1,7 @@
 { pkgs ? import ./ownpkgs.nix {}
 }:
 let
+  beakerx = pkgs.callPackage ./python/beakerx {};
   cudf = pkgs.callPackage ./python/cudf {};
   rmm = pkgs.callPackage ./cuda/rmm {};
   clx = pkgs.callPackage ./python/clx {};
@@ -36,6 +37,7 @@ let
   broker = pkgs.callPackage ./broker {};
   my-python-packages = (pkgs.python3.withPackages (ps: [ ps.jupyterlab
                                                          ps.pandas
+                                                         beakerx
                                                          ps.matplotlib
                                                          ps.Mako
                                                          ps.numpy
