@@ -1,1 +1,0 @@
-{"argv":["/nix/store/ri80ypfwdp204fmmw6982rijb39n6hxd-R-3.6.3-wrapper}/bin/R","--slave","-e","IRkernel::main()","--args","{connection_file}"],"language":"R"}
