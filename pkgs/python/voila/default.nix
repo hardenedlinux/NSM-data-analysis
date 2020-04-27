@@ -11,12 +11,7 @@ let
       sha256 = "121q60ilx0i8fh0ixzj835cv1naaakivckwmvw9mxnmqrb6fdf1y";
     };
     doCheck = false;
-    postPatch = ''
-       substituteInPlace setup.py \
-       --replace "jupyter_client>=6.1.1" "jupyter_client"
-    ''
-    ;
-    #pipInstallFlags = ["--no-deps"];
+
     propagatedBuildInputs = with python3Packages; [ nbformat
                                                     tornado
                                                     ipykernel
@@ -70,6 +65,5 @@ pname = "voila";
     doCheck = false;
     propagatedBuildInputs = with python3Packages; [ async_generator
                                                     jupyter_server
-
-    ];
+                                                  ];
 }

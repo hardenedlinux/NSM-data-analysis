@@ -66,6 +66,17 @@ let
       --use-rtsopts="${rtsopts}" \
       && ${my-python}/bin/jupyter ${cmd} ${extraArgs} "$@"
   '';
+  
+
+  KernelsBin = nixpkgs.writeScriptBin "Kernels-NSM" ''
+    ${my-python}/bin/python -m ipykernel install --user --name "Python-NSM" "$@"
+    mkdir -p $HOME/.local/share/jupyter/kernels/ir_my/
+    cp ${my-R}/kernels/ir_nsm/* $HOME/.local/share/jupyter/kernels/ir_my/
+    chmod 777 $HOME/.local/share/jupyter/kernels/ir_my/*
+  '';
+
+
+  generateDirectory = nixpkgs.writeScriptBin "generate-directory" (import ./pkgs/generate-directory.nix { inherit nixpkgs; });
 
 in
 nixpkgs.buildEnv {
@@ -74,7 +85,7 @@ nixpkgs.buildEnv {
                   vast
                   zeek
                 ];
-  paths = [ ihaskellEnv my-python nixpkgs.yara julia my-go my-R ];
+  paths = [ ihaskellEnv my-python nixpkgs.yara julia my-go my-R KernelsBin generateDirectory ];
   postBuild = ''
     ln -s ${vast}/bin/vast $out/bin/
     ln -s ${zeek}/bin/* $out/bin/

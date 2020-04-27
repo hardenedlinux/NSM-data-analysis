@@ -7,7 +7,7 @@ let
   unpackPhase = ":";
   installPhase = ''
   export HOME=$TMP
-    ${R-with-my-packages}/bin/R --slave -e "JuniperKernel::installJuniper(prefix='$out')"
+#    ${R-with-my-packages}/bin/R --slave -e "IRkernel::installspec(prefix='$HOME')"
   '';
 };
 in

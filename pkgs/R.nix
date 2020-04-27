@@ -108,6 +108,35 @@ let
     packages = with pkgs.rPackages; customRPackages;
   };
 
+  customRPackage = import ./R-kernel-list.nix {inherit pkgs;};
+  
+  kernelEnv = pkgs.rWrapper.override{ packages = [ (customRPackage pkgs.rPackages) pkgs.rPackages.IRkernel] ; };
+  
+  kernelFile = {
+    argv = [
+      "${kernelEnv}/bin/R"
+      "--slave"
+      "-e"
+      "IRkernel::main()"
+      "--args"
+      "{connection_file}"
+    ];
+    language = "R";
+    display_name = "R - NSM" ;
+    logo64 = "logo-64x64.png";
+  };
+
+  IRkernel = pkgs.stdenv.mkDerivation {
+    name = "IRkernel";
+    phases = "installPhase";
+    src = ./misc/ir.svg;
+    buildInputs = [];
+    installPhase = ''
+      mkdir -p $out/kernels/ir_nsm
+      cp $src $out/kernels/ir_nsm/logo-64x64.svg
+      echo '${builtins.toJSON kernelFile}' > $out/kernels/ir_nsm/kernel.json
+    '';
+  };
   in
 pkgs.buildEnv rec {
   name = "my-R";
@@ -115,8 +144,7 @@ pkgs.buildEnv rec {
     pkgs.makeWrapper
     pkgs.python3Packages.notebook
     ] ;
-  paths = [ R-with-my-packages];
+  paths = [ R-with-my-packages IRkernel];
   postBuild = ''
-
   '';
 }

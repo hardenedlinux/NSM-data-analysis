@@ -1,6 +1,6 @@
 # Build and Release Folders
 result
-
+jupyterlab
 #zeek test
 zeek
 zeek-log
