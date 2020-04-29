@@ -5,7 +5,7 @@ buildGoPackage rec {
   version = "master";
   rev = "fb7a240403148b3ff2baa91b7b6420b9c67a3927";
 
-  goPackagePath = "src/nvdtools";
+  goPackagePath = "github.com/GTrunSec/nvdtools";
   src = fetchgit {
     inherit rev;
     url = "https://github.com/GTrunSec/nvdtools";

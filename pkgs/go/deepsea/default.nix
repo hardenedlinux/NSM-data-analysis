@@ -5,7 +5,7 @@ buildGoPackage rec {
   version = "master";
   rev = "dafd8c60fcbe33e398a0cea01447f16a61476165";
 
-  goPackagePath = "src/deepsea";
+  goPackagePath = "github.com/dsnezhkov/deepsea";
   src = fetchgit {
     inherit rev;
     url = "https://github.com/dsnezhkov/deepsea";

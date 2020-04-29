@@ -5,7 +5,7 @@ buildGoPackage rec {
   version = "master";
   rev = "2f0a8f09308f7de51ce1095353f4af82a8a15f88";
 
-  goPackagePath = "src/sybilhunter";
+  goPackagePath = "github.com/NullHypothesis/sybilhunter";
   src = fetchgit {
     inherit rev;
     url = "https://github.com/NullHypothesis/sybilhunter";

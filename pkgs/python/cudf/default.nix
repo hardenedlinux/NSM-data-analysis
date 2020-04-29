@@ -2,14 +2,15 @@
 , python3Packages
 , fetchurl
 , cudatoolkit
+, rmm
 }:
 python3Packages.buildPythonPackage rec {
 
   pname = "cudf";
   version = "0.12.0";
   src = fetchurl {
-    url = "https://github.com/rapidsai/cudf/archive/v${version}.tar.gz";
-    sha256 = "0b09si7jalv4jq6jf41qcja7msbhgsysra9qv9jgm9nqfamryg9p";
+    url = "https://github.com/rapidsai/cudf/archive/cfb1f6b6e00964ce51a781223b29650d6801f818.tar.gz";
+    sha256 = "1fdzzvxr5smrp9ia96plvqicxfpy7jxiirbqz921iafjd5j8v4ir";
   };  
 
   preConfigure = ''
@@ -20,20 +21,21 @@ python3Packages.buildPythonPackage rec {
   propagatedBuildInputs = with python3Packages; [ numpy
                                                   versioneer
                                                   setuptools
-                                                  (cython.overrideDerivation (oldAttrs: {
-                                                    src = fetchPypi {
-                                                      pname = "Cython";
-                                                      version = "0.29.15";
-                                                      sha256 = "0c5cjyxfvba6c0vih1fvhywp8bpz30vwvbjqdm1q1k55xzhmkn30";
-                                                     };
-                                                  }))
+                                                  # (cython.overrideDerivation (oldAttrs: {
+                                                  #   src = fetchPypi {
+                                                  #     pname = "Cython";
+                                                  #     version = "0.29.15";
+                                                  #     sha256 = "0c5cjyxfvba6c0vih1fvhywp8bpz30vwvbjqdm1q1k55xzhmkn30";
+                                                  #    };
+                                                  # }))
                                                   cysignals
+                                                  cython
                                                   tables
                                                   cupy
                                                   pyarrow
                                                   pandas
-                                                  rmm
                                                   numba
+                                                  rmm
                                                 ];
   doCheck = false;
   
