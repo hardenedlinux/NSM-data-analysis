@@ -1,43 +1,59 @@
 let
   pkgs = {
     ihaskell = builtins.fetchTarball {
-      url = "https://github.com/gibiansky/IHaskell/tarball/6063c58c169b626596be72051d9583cb31621fb1";
-      sha256 = "1ibhldhhjxhc24ilzqav12j6ywzwl6in8qhy832bw1k2blq8ah6k";
+      url = "https://github.com/gibiansky/IHaskell/tarball/0ef1f37fcedb7146786638488d38b812ca41352e";
+      sha256 = "147k1crdafpshimw5xsn2cfzifghbvwflq6h20iqgbh0k516q6yx";
     };
   };
 
+
   rOverlay = rself: rsuper: {
     myR = rsuper.rWrapper.override {
-      packages = with rsuper.rPackages; [ ggplot2 dplyr xts purrr cmaes cubature];
+      packages = with rsuper.rPackages; [ my-R];
     };
   };
 
   foo = self: super: {
     haskell = super.haskell // { packageOverrides =
 	    hself: hsuper: {
+        hmatrix-sundials = hself.callCabal2nix "hmatrix-sundials" (builtins.fetchGit {
+          url = "https://github.com/haskell-numerics/hmatrix-sundials.git";
+          rev = "9b6ec2b5fc509f74c5e61657dfc638a2c7ebced0";
+        }) { sundials_arkode = haskell-pkgs.sundials; sundials_cvode = haskell-pkgs.sundials; };
+
         my-random-fu-multivariate = hself.callPackage ./pkgs/haskell/my-random-fu-multivariate { };
+        i-inline-c = hself.callHackage "inline-c" "0.8.0.1" {};
+        i-inline-r = hself.callHackage "inline-r" "0.10.2" {};
       };
     };
   };
 
-  nixpkgs  = import ./pkgs/ownpkgs.nix { overlays = [ rOverlay foo]; };
+  nixpkgs  = import ./pkgs/ownpkgs.nix { overlays = [ rOverlay ]; config={ allowUnfree=true; allowBroken=true; ignoreCollisions = true;};};
+  haskell-pkgs  = import ./pkgs/haskell-pkgs.nix { overlays = [ foo];  config={ allowUnfree=true; allowBroken=true; ignoreCollisions = true;};};
+
+  vast = nixpkgs.callPackage ./pkgs/vast {};
+  my-python = (import ./pkgs/python.nix {});
+  julia = (import ./pkgs/julia-non-cuda.nix {});
+  broker = nixpkgs.callPackage ./pkgs/broker {};
+  my-go =  (import ./pkgs/go.nix {});
+  my-R = (import ./pkgs/R.nix {});
+  zeek = nixpkgs.callPackage ./pkgs/zeek {};
 
   r-libs-site = nixpkgs.runCommand "r-libs-site" {
     buildInputs = with nixpkgs; [ R
-                                   rPackages.ggplot2 rPackages.dplyr rPackages.xts rPackages.purrr rPackages.cmaes rPackages.cubature
+                                  rPackages.ggplot2 rPackages.dplyr rPackages.xts rPackages.purrr rPackages.cmaes rPackages.cubature
                                   rPackages.reshape2
-                                 ];
+                                ];
   } ''echo $R_LIBS_SITE > $out'';
 
-  ihaskellEnv = (import "${pkgs.ihaskell}/release-8.8.nix" {
-    compiler = "ghc881";
-    nixpkgs  = nixpkgs;
+  ihaskellEnv = (import "${pkgs.ihaskell}/release-8.6.nix" {
+    compiler = "ghc865";
+    nixpkgs  = haskell-pkgs;
   packages = self: [
-    #self.inline-r
+    self.inline-r
     self.hmatrix
-    # we can re-introduce this when it gets fixed
-    # self.hmatrix-sundials
-    #self.random-fu
+    self.hmatrix-sundials
+    self.random-fu
     self.lens
     self.my-random-fu-multivariate
   ];
@@ -47,14 +63,6 @@ let
 
 
   rtsopts = "-M3g -N2";
-
-  vast = nixpkgs.callPackage ./pkgs/vast {};
-  my-python = (import ./pkgs/python.nix {});
-  julia = (import ./pkgs/julia-non-cuda.nix {});
-  broker = nixpkgs.callPackage ./pkgs/broker {};
-  my-go =  (import ./pkgs/go.nix {});
-  my-R = (import ./pkgs/R.nix {});
-  zeek = nixpkgs.callPackage ./pkgs/zeek {};
 
   ihaskellJupyterCmdSh = cmd: extraArgs: nixpkgs.writeScriptBin "ihaskell-${cmd}" ''
     #! ${nixpkgs.stdenv.shell}
