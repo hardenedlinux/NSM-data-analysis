@@ -23,7 +23,7 @@ let
 
   haskell-pkgs  = import <haskell-pkgs> { overlays = [ foo];  config={ allowUnfree=true; allowBroken=true; ignoreCollisions = true;};};
 
-  ihaskellEnv = (import <ihaskell> + "release-8.6.nix" {
+  ihaskellEnv = (import (<ihaskell> + "/release-8.6.nix") {
     compiler = "ghc865";
     nixpkgs  = haskell-pkgs;
   packages = self: [
