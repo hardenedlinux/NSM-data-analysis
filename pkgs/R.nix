@@ -102,6 +102,7 @@ let
     glue
     pbdZMQ
     #lwgeom
+    tidyquant
   ];
   
   R-with-my-packages = pkgs.rWrapper.override{

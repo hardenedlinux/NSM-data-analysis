@@ -1,5 +1,4 @@
-{ pkgs ? import ./ownpkgs.nix {}
-}:
+{pkgs}:
 let
   beakerx = pkgs.callPackage ./python/beakerx {};
   cudf = pkgs.callPackage ./python/cudf {inherit rmm;};
@@ -29,6 +28,8 @@ let
   secure = pkgs.callPackage ./python/secure {};
   axelrod = pkgs.callPackage ./python/axelrod {};
   voila = pkgs.callPackage ./python/voila {};
+  fastai = pkgs.callPackage ./python/fast-ai {};
+  fastai2 = pkgs.callPackage ./python/fastai2 {};
   # my-python-packages = [
   #   (pkgs.python3.withPackages (pkgs: with pkgs; [
   #     setuptools
@@ -40,6 +41,8 @@ let
                                                          ps.pandas
                                                          beakerx
                                                          voila
+                                                         fastai
+                                                         fastai2
                                                          ps.matplotlib
                                                          ps.Mako
                                                          ps.numpy
