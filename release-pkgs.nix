@@ -9,11 +9,6 @@ let
   foo = self: super: {
     haskell = super.haskell // { packageOverrides =
 	    hself: hsuper: {
-        hmatrix-sundials = hself.callCabal2nix "hmatrix-sundials" (builtins.fetchGit {
-          url = "https://github.com/haskell-numerics/hmatrix-sundials.git";
-          rev = "9b6ec2b5fc509f74c5e61657dfc638a2c7ebced0";
-        }) { sundials_arkode = haskell-pkgs.sundials; sundials_cvode = haskell-pkgs.sundials; };
-
         my-random-fu-multivariate = hself.callPackage ./pkgs/haskell/my-random-fu-multivariate { };
         i-inline-c = hself.callHackage "inline-c" "0.8.0.1" {};
         i-inline-r = hself.callHackage "inline-r" "0.10.2" {};
@@ -29,7 +24,6 @@ let
   packages = self: [
     self.inline-r
     self.hmatrix
-    self.hmatrix-sundials
     self.random-fu
     self.lens
     self.my-random-fu-multivariate
