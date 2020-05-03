@@ -1,6 +1,11 @@
+{metron-bro-plugin-kafka}:
 ''
-    #substituteInPlace zeek-config.in --subst-var ZEEK_DIST
-    #export PATH=$PATH:$out/bin
+   substituteInPlace zeek-config.in --subst-var ZEEK_DIST
+  #  mkdir -p /build/metron-bro-plugin-kafka
+  #  cp -r ${metron-bro-plugin-kafka}/* /build/metron-bro-plugin-kafka/
+  #  cd /build/metron-bro-plugin-kafka
+  #  ls -li /build
+  # ./configure --bro-dist=/build/zeek-3.1.2
    sed -i "1i##! test dpd" $PWD/scripts/base/frameworks/dpd/__load__.zeek
    sed -i "1i##! test x509" $PWD/scripts/base/files/x509/__load__.zeek
    sed -i "1i##! test files-extract" $PWD/scripts/base/files/extract/__load__.zeek

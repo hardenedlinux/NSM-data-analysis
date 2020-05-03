@@ -34,6 +34,7 @@ let
   nixpkgs  = import ./pkgs/ownpkgs.nix { inherit overlays; config={ allowUnfree=true; allowBroken=true; ignoreCollisions = true;};};
   haskell-pkgs  = import ./pkgs/haskell-pkgs.nix { overlays = [ foo];  config={ allowUnfree=true; allowBroken=true; ignoreCollisions = true;};};
 
+
   vast = nixpkgs.callPackage ./pkgs/vast {};
   my-python = (import ./pkgs/python.nix {pkgs=nixpkgs;});
   julia = (import ./pkgs/julia-non-cuda.nix {});
