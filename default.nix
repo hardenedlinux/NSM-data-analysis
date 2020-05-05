@@ -73,8 +73,7 @@ let
     export GHC_PACKAGE_PATH="$(echo ${ihaskellEnv}/lib/*/package.conf.d| tr ' ' ':'):$GHC_PACKAGE_PATH"
     export R_LIBS_SITE=${builtins.readFile r-libs-site}
     export PATH="${nixpkgs.stdenv.lib.makeBinPath ([ ihaskellEnv my-python my-R ] ++ systemPackages nixpkgs)}''${PATH:+:}$PATH"
-    ${ihaskellEnv}/bin/ihaskell install
-\
+    ${ihaskellEnv}/bin/ihaskell install \
       -l $(${ihaskellEnv}/bin/ghc --print-libdir) \
       --use-rtsopts="${rtsopts}" \
       && ${my-python}/bin/jupyter ${cmd} ${extraArgs} "$@"

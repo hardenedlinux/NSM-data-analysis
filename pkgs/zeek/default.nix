@@ -1,5 +1,5 @@
 {stdenv, fetchurl, cmake, flex, bison, openssl, libpcap, zlib, file, curl
-, libmaxminddb, gperftools, python, swig, fetchpatch, caf,  rdkafka, postgresql, fetchFromGitHub, writeScript, makeWrapper, openssh }:
+, libmaxminddb, gperftools, python, swig, fetchpatch, caf,  rdkafka, postgresql, fetchFromGitHub, writeScript, makeWrapper }:
 
 let
   preConfigure = (import ./shell.nix { inherit metron-bro-plugin-kafka; });
@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake flex bison file ];
   buildInputs = [ openssl libpcap zlib curl libmaxminddb gperftools python swig  rdkafka postgresql
-                  makeWrapper caf openssh
+                  makeWrapper caf
                 ];
 
   ZEEK_DIST = "${placeholder "out"}";
