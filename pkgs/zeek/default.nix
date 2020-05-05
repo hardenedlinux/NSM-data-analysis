@@ -1,5 +1,5 @@
 {stdenv, fetchurl, cmake, flex, bison, openssl, libpcap, zlib, file, curl
-, libmaxminddb, gperftools, python, swig, fetchpatch, caf,  rdkafka, postgresql, fetchFromGitHub, writeScript, makeWrapper }:
+, libmaxminddb, gperftools, python, swig, fetchpatch, caf,  rdkafka, postgresql, fetchFromGitHub, writeScript, makeWrapper, openssh }:
 
 let
   preConfigure = (import ./shell.nix { inherit metron-bro-plugin-kafka; });
@@ -11,7 +11,7 @@ in
 stdenv.mkDerivation rec {
   pname = "zeek";
   version = "3.0.5";
-  confdir = "/var/lib/zeek/${pname}";
+  confdir = "/var/lib/zeek";
   
   src = fetchurl {
     url = "https://download.zeek.org/zeek-${version}.tar.gz";
@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake flex bison file ];
   buildInputs = [ openssl libpcap zlib curl libmaxminddb gperftools python swig  rdkafka postgresql
-                  makeWrapper caf
+                  makeWrapper caf openssh
                 ];
 
   ZEEK_DIST = "${placeholder "out"}";
