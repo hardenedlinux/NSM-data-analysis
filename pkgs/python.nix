@@ -30,12 +30,7 @@ let
   voila = pkgs.callPackage ./python/voila {};
   fastai = pkgs.callPackage ./python/fast-ai {};
   fastai2 = pkgs.callPackage ./python/fastai2 {};
-  # my-python-packages = [
-  #   (pkgs.python3.withPackages (pkgs: with pkgs; [
-  #     setuptools
-  #     zat
-  #   ]))
-  # ];
+  aiohttp = pkgs.callPackage ./python/aiohttp {};
   broker = pkgs.callPackage ./broker {};
   my-python-packages = (pkgs.python3.withPackages (ps: [ ps.jupyterlab
                                                          ps.pandas
@@ -65,6 +60,7 @@ let
                                                          python-pptx
                                                          choochoo
                                                          ps.twisted
+                                                         ps.pyspark
                                                          ps.cryptography
                                                          ps.bcrypt
                                                          ps.pyopenssl
@@ -101,7 +97,11 @@ pkgs.buildEnv rec {
   buildInputs = [
     pkgs.makeWrapper
     ] ;
-  paths = [ my-python-packages ];
+  paths = [ my-python-packages
+            (pkgs.python38.withPackages (pkgs: with pkgs; [aiohttp
+                                                          ]))
+          ];
+  ignoreCollisions = true;
   postBuild = ''
     #ln -s ${broker}/lib/python3.7/site-packages/broker/_broker.so $out/lib
 '';
