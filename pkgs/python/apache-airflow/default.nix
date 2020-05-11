@@ -85,45 +85,21 @@ python3Packages.buildPythonPackage rec {
     lxml
     lazy-object-proxy
     markdown
-      pandas
-      (buildPythonPackage rec {
-        pname = "pendulum";
-        version = "1.4.4";
-
-        src = fetchPypi {
-          inherit pname version;
-          sha256 = "0p5c7klnfjw8f63x258rzbhnl1p0hn83lqdnhhblps950k5m47k0";
-        };
-
-        propagatedBuildInputs = [ dateutil pytzdata
-                                  (buildPythonPackage rec {
-                                    pname = "tzlocal";
-                                    version = "1.5.1";
-                                    propagatedBuildInputs = [ pytz ];
-                                    src = fetchPypi {
-                                      inherit pname version;
-                                      sha256 = "0kiciwiqx0bv0fbc913idxibc4ygg4cb7f8rcpd9ij2shi4bigjf";
-                                    };
-
-                                    # test fail (timezone test fail)
-                                    doCheck = false;})
-
-                                ] ++ lib.optional (pythonOlder "3.5") typing;
-        doCheck = false;
-
-      })
-      psutil
-      pygments
-      python-daemon
-      python-dateutil
-      requests
-      setproctitle
-      sqlalchemy
-      tabulate
-      tenacity
-      termcolor
-      text-unidecode
+    pandas
+    pendulum
+    psutil
+    pygments
+    python-daemon
+    python-dateutil
+    requests
+    setproctitle
+    sqlalchemy
+    tabulate
+    tenacity
+    termcolor
+    text-unidecode
     thrift
+    tzlocal
     unicodecsv
     werkzeug
     zope_deprecation
@@ -135,16 +111,13 @@ python3Packages.buildPythonPackage rec {
   ];
 
   postPatch = ''
-
-    substituteInPlace  airflow/settings.py \
-    --replace "TIMEZONE = pendulum.timezone('UTC')"  "TIMEZONE = pendulum.timezone('Asia/Shanghai')"
     substituteInPlace setup.py \
       --replace "flask>=1.1.0, <2.0" "flask" \
       --replace "jinja2>=2.10.1, <2.11.0" "jinja2" \
       --replace "pandas>=0.17.1, <1.0.0" "pandas" \
-      --replace "pendulum>=2" "pendulum" \
       --replace "flask-caching>=1.3.3, <1.4.0" "flask-caching" \
       --replace "flask-appbuilder>=1.12.5, <2.0.0" "flask-appbuilder" \
+      --replace "pendulum==1.4.4" "pendulum" \
       --replace "cached_property~=1.5" "cached_property" \
       --replace "dill>=0.2.2, <0.3" "dill" \
       --replace "configparser>=3.5.0, <3.6.0" "configparser" \
