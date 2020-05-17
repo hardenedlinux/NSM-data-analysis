@@ -37,11 +37,11 @@ let
 
   vast = nixpkgs.callPackage ./pkgs/vast {};
   my-python = (import ./pkgs/python.nix {pkgs=nixpkgs;});
-  julia = (import ./pkgs/julia-non-cuda.nix {});
+  julia = (import ./pkgs/julia.nix {});
   broker = nixpkgs.callPackage ./pkgs/broker {};
-  my-go =  (import ./pkgs/go.nix {});
-  my-R = (import ./pkgs/R.nix {});
-  zeek = nixpkgs.callPackage ./pkgs/zeek {};
+  my-go =  (import ./pkgs/go.nix {pkgs=nixpkgs;});
+  my-R = (import ./pkgs/R.nix {pkgs=nixpkgs;});
+  zeek = nixpkgs.callPackage ./pkgs/zeek { };
 
   r-libs-site = nixpkgs.runCommand "r-libs-site" {
     buildInputs = with nixpkgs; [ R
@@ -95,7 +95,7 @@ nixpkgs.buildEnv {
   name = "NSM-analysis-env";
   buildInputs = [ nixpkgs.makeWrapper
                   vast
-                  zeek
+                  (zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true;})
                 ];
   paths = [ ihaskellEnv my-python nixpkgs.yara julia my-go my-R KernelsBin generateDirectory ];
   postBuild = ''

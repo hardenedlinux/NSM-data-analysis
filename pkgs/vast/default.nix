@@ -15,18 +15,11 @@ let
 in
 
 stdenv.mkDerivation rec {
-    version = "2020.02.27";
+    version = "2020.04.29";
     name = "vast";
-    # src = fetchFromGitHub {
-    #   owner = "tenzir";
-    #   repo = "vast";
-    #   rev = "bffaeada156a6dd4fee4f61f8e24cce593d892ca";
-    #   fetchSubmodules = true;
-    #   sha256 = "1d29r89pzmhz6jvanndlscyb9q58x14n8ilbkg4bic5smndfgdsq";
-    # };
     src = fetchurl {
-      url = "https://github.com/tenzir/vast/archive/2020.02.27.tar.gz";
-      sha256 = "14v5h40a2sppl37dix5rq8879q3r8ph5wic2qfprd4p1w120iq0n";
+      url = "https://github.com/tenzir/vast/archive/${version}.tar.gz";
+      sha256 = "0935r513si84l46dmnsj7p4gc2b3ih3x2qqcg9air9b53ahrc2ic";
     };
 
     

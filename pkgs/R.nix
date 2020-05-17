@@ -1,5 +1,4 @@
-{ pkgs ? import ./ownpkgs.nix {}
-}:
+{ pkgs }:
 let
   customRPackages = with pkgs.rPackages;[
     bookdown
@@ -57,7 +56,7 @@ let
       llr
       webreadr
       patchwork
-      emo
+      #emo failed
     ])
     ##--------------------------------------
     dplyr

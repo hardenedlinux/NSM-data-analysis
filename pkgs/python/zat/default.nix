@@ -9,8 +9,8 @@ python3Packages.buildPythonPackage rec {
   version = "master";
   src = fetchgit {
     url = "https://github.com/SuperCowPowers/zat.git";
-    rev = "953c437a64a940673092c868628642db9726e27a";
-    sha256 = "1gdy823zxdlk8r8jmawi2d9m3hy6xdsx2kxfms6l9bzqpigc6ywh";
+    rev = "b22c908f1b46aa52f9677885e5001e22ec1cfb56";
+    sha256 = "0c6dzz0vri5k4ff8bdcf696biiccrgz1npj3d3xrmcsfcg5xl9ij";
   };  
 
 

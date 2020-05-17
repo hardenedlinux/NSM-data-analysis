@@ -1,31 +1,39 @@
 {stdenv, fetchurl, cmake, flex, bison, openssl, libpcap, zlib, file, curl
-, libmaxminddb, gperftools, python, swig, fetchpatch, caf,  rdkafka, postgresql, fetchFromGitHub, writeScript, makeWrapper }:
-
+, libmaxminddb, gperftools, python, swig, fetchpatch, caf,  rdkafka, postgresql, fetchFromGitHub, coreutils
+,  callPackage
+,  PostgresqlPlugin ? false
+,  KafkaPlugin ? false
+,  zeekctl ? true
+}:
 let
-  preConfigure = (import ./shell.nix { inherit metron-bro-plugin-kafka; });
-  zeek-postgresql = fetchFromGitHub (builtins.fromJSON (builtins.readFile ./zeek-plugin.json)).zeek-postgresql;
-  metron-bro-plugin-kafka = fetchFromGitHub (builtins.fromJSON (builtins.readFile ./zeek-plugin.json)).metron-bro-plugin-kafka;
-  install_plugin = writeScript "install_plugin" (import ./install_plugin.nix {});
+  preConfigure = (import ./script.nix {inherit coreutils;});
 
+  pname = "zeek";
+  version = "3.0.6";
+  confdir = "/var/lib/${pname}";
+
+  plugin = callPackage ./plugin.nix {
+    inherit rdkafka postgresql version confdir PostgresqlPlugin KafkaPlugin zeekctl;
+  };
 in
 stdenv.mkDerivation rec {
-  pname = "zeek";
-  version = "3.0.5";
-  confdir = "/var/lib/zeek";
-  
+  inherit pname version;
+
   src = fetchurl {
     url = "https://download.zeek.org/zeek-${version}.tar.gz";
-    sha256 = "031q56hxg9girl9fay6kqbx7li5kfm4s30aky4s1irv2b25cl6w2";
+    sha256 = "1lcanyf5gdfqr7d6cc8ygdpvmn3g94slhw2zwvixnm8w3b15dkap";
   };
 
   nativeBuildInputs = [ cmake flex bison file ];
-  buildInputs = [ openssl libpcap zlib curl libmaxminddb gperftools python swig  rdkafka postgresql
-                  makeWrapper caf
+  buildInputs = [ openssl libpcap zlib curl libmaxminddb gperftools python swig caf
+                   rdkafka postgresql  
                 ];
 
   ZEEK_DIST = "${placeholder "out"}";
   #see issue https://github.com/zeek/zeek/issues/804 to modify hardlinking duplicate files.
   inherit preConfigure;
+
+  enableParallelBuilding = true;
 
   patches = stdenv.lib.optionals stdenv.cc.isClang [
     # Fix pybind c++17 build with Clang. See: https://github.com/pybind/pybind11/issues/1604
@@ -37,9 +45,6 @@ stdenv.mkDerivation rec {
     })
   ];
 
-
-  enableParallelBuilding = true;
-
   cmakeFlags = [
     "-DPY_MOD_INSTALL_DIR=${placeholder "out"}/${python.sitePackages}"
     "-DENABLE_PERFTOOLS=true"
@@ -49,25 +54,13 @@ stdenv.mkDerivation rec {
     "-DCAF_ROOT_DIR=${caf}"
   ];
 
-    postFixup = ''
-        substituteInPlace $out/etc/zeekctl.cfg \
-         --replace "CfgDir = $out/etc" "CfgDir = ${confdir}/etc" \
-         --replace "SpoolDir = $out/spool" "SpoolDir = ${confdir}/spool" \
-         --replace "LogDir = $out/logs" "LogDir = ${confdir}/logs"
-         echo "scriptsdir = ${confdir}/scripts" >> $out/etc/zeekctl.cfg
-         echo "helperdir = ${confdir}/scripts/helpers" >> $out/etc/zeekctl.cfg
-         ## default disable sendmail
-         echo "sendmail=" >> $out/etc/zeekctl.cfg
-         ##INSTALL ZEEK Plugins
-         bash ${install_plugin} metron-bro-plugin-kafka ${metron-bro-plugin-kafka} ${version}
-         bash ${install_plugin} zeek-postgresql ${zeek-postgresql} ${version}
-  '';
-
-
+  inherit (plugin) postFixup;
+  
   meta = with stdenv.lib; {
     description = "Powerful network analysis framework much different from a typical IDS";
-    homepage = https://www.bro.org/;
+    homepage = "https://www.zeek.org";
     license = licenses.bsd3;
-    platforms = with platforms; unix;
+    maintainers = with maintainers; [ pSub marsam tobim ];
+    platforms = platforms.unix;
   };
 }

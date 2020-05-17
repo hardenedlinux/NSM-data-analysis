@@ -32,7 +32,6 @@ let
   fastai = pkgs.callPackage ./python/fast-ai {};
   fastai2 = pkgs.callPackage ./python/fastai2 {};
   aiohttp = pkgs.callPackage ./python/aiohttp {};
-  own-airflow = pkgs.callPackage ./python/apache-airflow {};
   broker = pkgs.callPackage ./broker {};
   my-python-packages = (pkgs.python3.withPackages (ps: [ ps.jupyterlab
                                                          ps.pandas
@@ -90,7 +89,6 @@ let
                                                          ps.elasticsearch
                                                          ps.requests
                                                          yarapython
-                                                         own-airflow
                                                          #cudf ../include/rmm/detail/memory_manager.hpp:37:10: fatal error: rmm/detail/cnmem.h: No such file or directory
                                                          #axelrod pathlib 1.0.1 does not support 3.7
                                                        ])).override (args: { ignoreCollisions = true;});
@@ -106,6 +104,6 @@ pkgs.buildEnv rec {
           ];
   ignoreCollisions = true;
   postBuild = ''
-  wrapProgram $out/bin/airflow --set PYTHONPATH "$(echo ${my-python-packages}/lib/*/site-packages)"
+
 '';
 }
