@@ -1,5 +1,4 @@
-{ pkgs ? import ./ownpkgs.nix {}
-}:
+{ pkgs }:
 let
   beakerx = pkgs.callPackage ./python/beakerx {};
   cudf = pkgs.callPackage ./python/cudf {inherit rmm;};
@@ -33,7 +32,7 @@ let
   fastai2 = pkgs.callPackage ./python/fastai2 {};
   aiohttp = pkgs.callPackage ./python/aiohttp {};
   broker = pkgs.callPackage ./broker {};
-  my-python-packages = (pkgs.python3.withPackages (ps: [ ps.jupyterlab
+  my-python-packages = (pkgs.python3.withPackages (ps: [ ps.jupyterlab 
                                                          ps.pandas
                                                          beakerx
                                                          voila
