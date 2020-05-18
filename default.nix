@@ -1,14 +1,20 @@
 let
+  haskTorchSrc = builtins.fetchGit {
+    url = https://github.com/hasktorch/hasktorch;
+    rev = "7e017756fd9861218bf2f804d1f7eaa4d618eb01";
+    ref = "master";
+  };
+
+  hasktorchOverlay = (import (haskTorchSrc + "/nix/shared.nix") { compiler = "ghc865"; }).overlayShared;
   haskellOverlay = import ./pkgs/overlay/haskell-overlay.nix;
   jupyter-overlays = [
     # Only necessary for Haskell kernel
     (import ./pkgs/overlay/python.nix)
     haskellOverlay
-    #hasktorchOverlay
+    hasktorchOverlay
   ];
 
-  nixpkgsPath = jupyterLib + "/nix";
-
+  nixpkgsPath = jupyterLib + "/nix/nixpkgs.nix";
 
   jupyter-pkgs = import nixpkgsPath { overlays=jupyter-overlays; config={ allowUnfree=true; allowBroken=true; };};
 
@@ -49,8 +55,8 @@ let
 
   iHaskell = jupyter.kernels.iHaskellWith {
     name = "ihaskell-NSM-env";
-    haskellPackages = nixpkgs.haskell.packages.ghc881;
-    packages = import ./pkgs/overlay/haskell-list.nix {pkgs=nixpkgs;};
+    haskellPackages = jupyter-pkgs.haskell.packages.ghc865;
+    packages = import ./pkgs/overlay/haskell-list.nix {pkgs=jupyter-pkgs;};
     Rpackages = p: with p; [ ggplot2 dplyr xts purrr cmaes cubature
                              reshape2
                            ];
@@ -59,7 +65,7 @@ let
 
   jupyterEnvironment =
     jupyter.jupyterlabWith {
-      kernels = [ iPython IRkernel ];
+      kernels = [ iPython IRkernel iHaskell ];
       directory = ./jupyterlab;
     };
 

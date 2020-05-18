@@ -32,7 +32,7 @@ let
   fastai2 = pkgs.callPackage ./python/fastai2 {};
   aiohttp = pkgs.callPackage ./python/aiohttp {};
   broker = pkgs.callPackage ./broker {};
-  my-python-packages = (pkgs.python3.withPackages (ps: [ ps.jupyterlab 
+  my-python-packages = (pkgs.python3.withPackages (ps: [ 
                                                          ps.pandas
                                                          beakerx
                                                          voila
@@ -101,8 +101,8 @@ pkgs.buildEnv rec {
             (pkgs.python38.withPackages (pkgs: with pkgs; [aiohttp
                                                           ]))
           ];
+
   ignoreCollisions = true;
   postBuild = ''
-
 '';
 }

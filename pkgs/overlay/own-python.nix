@@ -9,7 +9,6 @@ let
 in
 python3.override {
   packageOverrides = self: super: rec {
-    editdistance =  self.callPackage "${my-overlay}/pkgs/python/editdistance" {};
-    voila =  self.callPackage "${my-overlay}/pkgs/python/voila" {};
+    editdistance =  self.callPackage ../python/editdistance {};
   };
 }
