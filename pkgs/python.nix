@@ -31,10 +31,14 @@ let
   fastai = pkgs.callPackage ./python/fast-ai {};
   fastai2 = pkgs.callPackage ./python/fastai2 {};
   aiohttp = pkgs.callPackage ./python/aiohttp {};
+  jupyterlab_git = pkgs.callPackage ./python/jupyterlab-git {};
+  jupyter-lsp = pkgs.callPackage ./python/jupyter-lsp {};
   broker = pkgs.callPackage ./broker {};
   my-python-packages = (pkgs.python3.withPackages (ps: [ 
                                                          ps.pandas
                                                          beakerx
+                                                         jupyter-lsp
+                                                         jupyterlab_git
                                                          voila
                                                          fastai
                                                          fastai2
