@@ -33,10 +33,12 @@ let
   aiohttp = pkgs.callPackage ./python/aiohttp {};
   jupyterlab_git = pkgs.callPackage ./python/jupyterlab-git {};
   jupyter-lsp = pkgs.callPackage ./python/jupyter-lsp {};
+  elastalert = pkgs.callPackage ./python/elastalert {};
   broker = pkgs.callPackage ./broker {};
   my-python-packages = (pkgs.python3.withPackages (ps: [ 
                                                          ps.pandas
                                                          beakerx
+                                                         elastalert
                                                          jupyter-lsp
                                                          jupyterlab_git
                                                          voila
