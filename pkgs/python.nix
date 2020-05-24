@@ -34,10 +34,19 @@ let
   jupyterlab_git = pkgs.callPackage ./python/jupyterlab-git {};
   jupyter-lsp = pkgs.callPackage ./python/jupyter-lsp {};
   elastalert = pkgs.callPackage ./python/elastalert {};
+
+  timesketch = nixpkgs.callPackage ./timesketch {};
   broker = pkgs.callPackage ./broker {};
-  my-python-packages = (pkgs.python3.withPackages (ps: [ 
+  overlays = [
+    (import ./overlay/time-python.nix)
+  ];
+
+  nixpkgs  = import ./ownpkgs.nix { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
+  time-python-packages = (nixpkgs.python3.withPackages (ps: [ timesketch]));
+  my-python-packages = (pkgs.python3.withPackages (ps: [
                                                          ps.pandas
                                                          beakerx
+
                                                          elastalert
                                                          jupyter-lsp
                                                          jupyterlab_git
@@ -104,6 +113,7 @@ pkgs.buildEnv rec {
     pkgs.makeWrapper
     ] ;
   paths = [ my-python-packages
+            time-python-packages
             (pkgs.python38.withPackages (pkgs: with pkgs; [aiohttp
                                                           ]))
           ];
