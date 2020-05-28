@@ -13,6 +13,6 @@ jobs:
         skip_adding_nixpkgs_channel: true
     - uses: cachix/cachix-action@v6
       with:
-        name: NSM-data-analysis
+        name: nsm-data-analysis
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
     - run: nix-build default.nix
