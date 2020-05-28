@@ -5,6 +5,12 @@ let
     ref = "master";
   };
 
+  jupyterLib = builtins.fetchGit {
+    url = https://github.com/GTrunSec/jupyterWith;
+    rev = "da7d92c3277f370c7439ff54beec8d632f0c9f82";
+    ref = "current";
+  };
+
   hasktorchOverlay = (import (haskTorchSrc + "/nix/shared.nix") { compiler = "ghc883"; }).overlayShared;
   haskellOverlay = import ./pkgs/overlay/haskell-overlay.nix;
   jupyter-overlays = [
@@ -20,12 +26,7 @@ let
 
   jupyter = import jupyterLib {pkgs=jupyter-pkgs;};
 
-  jupyterLib = builtins.fetchGit {
-    url = https://github.com/GTrunSec/jupyterWith;
-    rev = "da7d92c3277f370c7439ff54beec8d632f0c9f82";
-    ref = "current";
-  };
-
+  ## 
   overlays1 = [
     (import ./pkgs/overlay/time-python.nix)
   ];
