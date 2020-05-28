@@ -26,15 +26,18 @@ let
     ref = "current";
   };
 
+  overlays1 = [
+    (import ./pkgs/overlay/time-python.nix)
+  ];
 
   overlays = [
     (import ./pkgs/Python-overlay.nix)
   ];
   
   nixpkgs  = import ./pkgs/ownpkgs.nix { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
-
+  timepkgs  = import ./pkgs/ownpkgs.nix { overlays=overlays1; config={ allowUnfree=true; allowBroken=true; };};
   vast = nixpkgs.callPackage ./pkgs/vast {};
-  my-python = (import ./pkgs/python.nix {pkgs=nixpkgs;});
+  my-python = (import ./pkgs/python.nix {pkgs=nixpkgs; inherit timepkgs;});
   broker = nixpkgs.callPackage ./pkgs/broker {};
   my-go =  (import ./pkgs/go.nix {pkgs=nixpkgs;});
   my-R = (import ./pkgs/R.nix {pkgs=nixpkgs;});

@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, timepkgs }:
 let
   beakerx = pkgs.callPackage ./python/beakerx {};
   cudf = pkgs.callPackage ./python/cudf {inherit rmm;};
@@ -35,14 +35,10 @@ let
   jupyter-lsp = pkgs.callPackage ./python/jupyter-lsp {};
   elastalert = pkgs.callPackage ./python/elastalert {};
 
-  timesketch = nixpkgs.callPackage ./timesketch {};
   broker = pkgs.callPackage ./broker {};
-  overlays = [
-    (import ./overlay/time-python.nix)
-  ];
 
-  nixpkgs  = import ./ownpkgs.nix { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
-  time-python-packages = (nixpkgs.python3.withPackages (ps: [ timesketch]));
+  timesketch = timepkgs.callPackage ./timesketch {};
+  time-python-packages = (timepkgs.python3.withPackages (ps: [ timesketch]));
   my-python-packages = (pkgs.python3.withPackages (ps: [
                                                          ps.pandas
                                                          beakerx
