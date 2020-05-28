@@ -1,6 +1,7 @@
 # Build and Release Folders
 result
 DIRECTORY
+jupyterlab
 #zeek test
 zeek-log
 #vast
