@@ -3,11 +3,10 @@ result
 jupyterlab
 DIRECTORY
 #zeek test
-zeek
 zeek-log
-
 #vast
 vast.log
+zeek
 vast.db
 #R
 .RData
