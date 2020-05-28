@@ -4,22 +4,8 @@ let
   ihaskellSrc = pkgs.fetchFromGitHub {
     owner = "gibiansky";
     repo = "IHaskell";
-    rev = "2318ee2a90cfc98390651657aec434586b963235";
-    sha256 = "0svjzs81i77s710cfb7pxkfdi979mhjazpc2l9k9ha752spz04cj";
-  };
-
-  monadBayesSrc = pkgs.fetchFromGitHub {
-    owner = "adscib";
-    repo = "monad-bayes";
-    rev = "fb87bf039bab35dcc82de8ccf8963a7a576af355";
-    sha256 = "0jz7lswdzxzn5zzwypdawdj7j0y20aakmqggv9pw4sknajdqqqyf";
-  };
-
-  hVegaSrc = pkgs.fetchFromGitHub {
-    owner = "DougBurke";
-    repo = "hvega";
-    rev = "hvega-0.4.0.0";
-    sha256 = "1pg655a36nsz7h2l1sbyk4zzzjjw4dlah8794bc0flpigr7iik13";
+    rev = "d7dc460a421abaa41e04fe150e264bc2bab5cbad";
+    sha256 = "157mqfprjbjal5mvrqwpgnfvc93fn1pqwwkhfpcs7jm5c34bkv3q";
   };
 
   overrides = self: hspkgs:
@@ -33,9 +19,6 @@ let
       dontHaddock = pkgs.haskell.lib.dontHaddock;
     in
     {
-      monad-bayes = hspkgs.callCabal2nix "monad-bayes" "${monadBayesSrc}" {};
-      hvega = hspkgs.callCabal2nix "hvega" "${hVegaSrc}/hvega" {};
-      ihaskell-hvega = hspkgs.callCabal2nix "ihaskell-hvega" "${hVegaSrc}/ihaskell-hvega" {};
       ihaskell = pkgs.haskell.lib.overrideCabal
         (hspkgs.callCabal2nix "ihaskell" ihaskellSrc {})
         (_drv: {
@@ -65,41 +48,22 @@ let
       ihaskell-rlangqq = callDisplayPackage "rlangqq";
       ihaskell-static-canvas = callDisplayPackage "static-canvas";
       ihaskell-widgets = callDisplayPackage "widgets";
-      ihaskell-inline-r = callDisplayPackage "R-inline-r";
-      # Marked as broken in this version of Nixpkgs.
-      chell = hspkgs.callHackage "chell" "0.4.0.2" {};
-      patience = hspkgs.callHackage "patience" "0.1.1" {};
 
-      # Version compatible with ghc-lib-parser.
-      hlint = hspkgs.callHackage "hlint" "2.2.1" {};
+      # Marked as broken in this version of Nixpkgs.
+      #chell = hspkgs.callHackage "chell" "0.4.0.2" {};
+      #patience = hspkgs.callHackage "patience" "0.1.1" {};
 
       # Tests not passing.
-      Diff = dontCheck hspkgs.Diff;
-      zeromq4-haskell = dontCheck hspkgs.zeromq4-haskell;
-      funflow = dontCheck hspkgs.funflow;
-
-      i-inline-c = hspkgs.callHackage "inline-c" "0.8.0.1" {};
-      i-inline-r = hspkgs.callHackage "inline-r" "0.10.2" {};
-      # Haddocks not building.
-      ghc-lib-parser = dontHaddock hspkgs.ghc-lib-parser;
-
-      inline-r = pkgs.haskell.lib.addBuildDepends self.i-inline-r [self.i-inline-c];
-      # Missing dependency.
-      aeson = pkgs.haskell.lib.addBuildDepends hspkgs.aeson [ self.contravariant ];
-
-
+      #Diff = dontCheck hspkgs.Diff;
+      #zeromq4-haskell = dontCheck hspkgs.zeromq4-haskell;
     };
 in
 
 {
-  haskell = pkgs.haskell // {
-    packages = pkgs.haskell.packages // {
-      "ghc865" = pkgs.haskell.packages.ghc865.override (old: {
-        overrides =
-          pkgs.lib.composeExtensions
-            (old.overrides or (_: _: {}))
-            overrides;}
-      );
-    };
-  };
+  haskellPackages = pkgs.haskellPackages.override (old: {
+    overrides =
+      pkgs.lib.composeExtensions
+        (old.overrides or (_: _: {}))
+        overrides;
+  });
 }

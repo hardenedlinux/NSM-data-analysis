@@ -20,7 +20,7 @@
                                                           foldl
                                                           hlint
                                                           histogram-fill
-                                                          funflow
+                                                          #funflow
                                                           JuicyPixels
                                                           lens
                                                           random-fu

@@ -1,11 +1,11 @@
 let
   haskTorchSrc = builtins.fetchGit {
     url = https://github.com/hasktorch/hasktorch;
-    rev = "7e017756fd9861218bf2f804d1f7eaa4d618eb01";
+    rev = "5f905f7ac62913a09cbb214d17c94dbc64fc8c7b";
     ref = "master";
   };
 
-  hasktorchOverlay = (import (haskTorchSrc + "/nix/shared.nix") { compiler = "ghc865"; }).overlayShared;
+  hasktorchOverlay = (import (haskTorchSrc + "/nix/shared.nix") { compiler = "ghc883"; }).overlayShared;
   haskellOverlay = import ./pkgs/overlay/haskell-overlay.nix;
   jupyter-overlays = [
     # Only necessary for Haskell kernel
@@ -22,7 +22,7 @@ let
 
   jupyterLib = builtins.fetchGit {
     url = https://github.com/GTrunSec/jupyterWith;
-    rev = "8df01f073116b8b88c7a2d659c075401e187121b";
+    rev = "da7d92c3277f370c7439ff54beec8d632f0c9f82";
     ref = "current";
   };
 
@@ -35,7 +35,6 @@ let
 
   vast = nixpkgs.callPackage ./pkgs/vast {};
   my-python = (import ./pkgs/python.nix {pkgs=nixpkgs;});
-  julia = (import ./pkgs/julia.nix {});
   broker = nixpkgs.callPackage ./pkgs/broker {};
   my-go =  (import ./pkgs/go.nix {pkgs=nixpkgs;});
   my-R = (import ./pkgs/R.nix {pkgs=nixpkgs;});
@@ -55,7 +54,7 @@ let
 
   iHaskell = jupyter.kernels.iHaskellWith {
     name = "ihaskell-NSM-env";
-    haskellPackages = jupyter-pkgs.haskell.packages.ghc865;
+    haskellPackages = jupyter-pkgs.haskell.packages.ghc883;
     packages = import ./pkgs/overlay/haskell-list.nix {pkgs=jupyter-pkgs;};
     Rpackages = p: with p; [ ggplot2 dplyr xts purrr cmaes cubature
                              reshape2
@@ -63,9 +62,25 @@ let
     inline-r = true;
   };
 
+  currentDir = builtins.getEnv "PWD";
+  iJulia = jupyter.kernels.iJuliaWith {
+    name =  "Julia-data-env";
+    directory = currentDir + "/.julia_pkgs";
+    nixpkgs =  import (builtins.fetchTarball "https://github.com/GTrunSec/nixpkgs/tarball/39247f8d04c04b3ee629a1f85aeedd582bf41cac"){};
+    NUM_THREADS = 8;
+    extraPackages = p: with p;[   # GZip.jl # Required by DataFrames.jl
+      gzip
+      zlib
+    ];
+  };
+
+  iNix = jupyter.kernels.iNixKernel {
+    name = "nix-kernel";
+  };
+
   jupyterEnvironment =
     jupyter.jupyterlabWith {
-      kernels = [ iPython IRkernel iHaskell ];
+      kernels = [ iPython IRkernel iHaskell iNix iJulia ];
       directory = ./jupyterlab;
     };
 
@@ -77,8 +92,11 @@ nixpkgs.buildEnv {
                   vast
                   (zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true;})
                 ];
-  paths = [ my-python nixpkgs.yara julia my-go my-R 
+  paths = [ my-python nixpkgs.yara  my-go my-R
             jupyterEnvironment
+            iJulia.InstalliJulia
+            iJulia.julia_wrapped
+            iJulia.Install_JuliaCUDA
           ];
   ignoreCollisions = true;
   postBuild = ''
