@@ -11,7 +11,7 @@ nix-shell with R-jupyter-kernal
 nix-shell r-shell.nix
 #+END_EXAMPLE
 Global nix config setting
-~Notice~ if you have another ~config~~ setting in ~config.nix~, Do not copy
+~Notice~ if you have another ~config~ setting in ~config.nix~, Do not copy
 ~config.nix~ to PATH. just extended the ~config.nix~
 
 #+BEGIN_EXAMPLE
@@ -34,7 +34,7 @@ nix-build --option substituters "https://cache.nixos.org https://nsm-data-analys
 - Using JupyterLab extensions
 
 
-using the `generate-directory` executable
+using the ~generate-directory~ executable
 
 - install extensions
 
@@ -52,6 +52,11 @@ generate-directory [EXTENSIONS]
 ./result/bin/jupyter lab --app-dir=./jupyterlab
 #+end_src
 
+- enable git and lsp in jupyterlab
+#+begin_src sh :async t :exports both :results output
+    ./result/bin/jupyter serverextension enable --py jupyterlab_git
+    ./result/bin/jupyter serverextension enable --py jupyter_lsp
+#+end_src
 ** For Debian NIX user
 #+begin_src sh :async t :exports both :results output
 wget https://github.com/hardenedlinux/NSM-data-analysis/releases/download/nix/nix_2.3_master_e3eecb5_amd64.deb
@@ -83,34 +88,6 @@ It will generated a ~result~ direcotry under the current directory.
 #+BEGIN_EXAMPLE
 wget https://github.com/hardenedlinux/NSM-data-analysis/releases/download/nix/nix-2.3-1.x86_64.rpm
 #+END_EXAMPLE
-** load Jupyter kernels
-make sure have you cleaned up Jupyter kernel list.
-
-- check kernel list
-
-
-#+begin_src sh :async t :exports both :results output
-jupyter kernelspec list
-#+end_src
-
-#+RESULTS:
-: Available kernels:
-:   python3             /nix/store/1nfbdgg78l3mjlxfjg8k1mps41wh3xmk-python3-3.7.6-env/lib/python3.7/site-packages/ipykernel/resources
-:   haskell             /home/gtrun/.local/share/jupyter/kernels/haskell
-:   julia-nodeps-1.1    /home/gtrun/.local/share/jupyter/kernels/julia-nodeps-1.1
-
-- clean up you local kernel path before you running ./result/bin/ihaskell-lab or
-  jupyter-notebook
-
-
-#+begin_src sh :async t :exports both :results output
-jupyter kernelspec remove python3
-jupyter kernelspec remove haskell
-jupyter kernelspec remove julia-nodeps-1.1
-#+end_src
-
-if you got all of kernels path from /nix/store/... that will be fine
-
 ** Julia support
 - NVIDIA-Linux cudatoolkit 
 
@@ -122,8 +99,6 @@ from file(default.nix)
 
 #+begin_src sh :async t :exports both :results output
 export NIXPKGS_ALLOW_UNFREE=1
-
-nix-build withR 
 #+end_src
 
 Enjoy it!

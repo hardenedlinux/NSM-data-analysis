@@ -31,8 +31,6 @@ let
   fastai = pkgs.callPackage ./python/fast-ai {};
   fastai2 = pkgs.callPackage ./python/fastai2 {};
   aiohttp = pkgs.callPackage ./python/aiohttp {};
-  jupyterlab_git = pkgs.callPackage ./python/jupyterlab-git {};
-  jupyter-lsp = pkgs.callPackage ./python/jupyter-lsp {};
   elastalert = pkgs.callPackage ./python/elastalert {};
 
   broker = pkgs.callPackage ./broker {};
@@ -44,8 +42,6 @@ let
                                                          beakerx
 
                                                          elastalert
-                                                         jupyter-lsp
-                                                         jupyterlab_git
                                                          voila
                                                          fastai
                                                          fastai2
