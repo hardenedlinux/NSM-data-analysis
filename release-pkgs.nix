@@ -30,14 +30,13 @@ in {
   nsm-data-analysis-vast = pkgs.buildEnv {
     name = "nsm-vast";
     paths = with pkgs; [
-      zeek
-      broker
+      vast
     ];
   };
   nsm-data-analysis-zeek = pkgs.buildEnv {
     name = "nsm-zeek";
     paths = with pkgs; [
-      vast
+      zeek
     ];
   };
   nsm-data-analysis-R = pkgs.buildEnv {
