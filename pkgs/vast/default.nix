@@ -1,5 +1,6 @@
-{stdenv, fetchurl, cmake, pandoc, gcc, caf, pkgconfig, arrow-cpp, openssl, doxygen, libpcap,
-  gperftools, clang, git, python3Packages, jq, tcpdump, lib}:
+{stdenv, fetchFromGitHub, cmake, pandoc, gcc, caf, pkgconfig, arrow-cpp, openssl, doxygen, libpcap,
+  gperftools, clang, git, python3Packages, jq, tcpdump, lib
+, static ? stdenv.hostPlatform.isMusl}:
 
 let
   isCross = stdenv.buildPlatform != stdenv.hostPlatform;
@@ -15,25 +16,27 @@ let
 in
 
 stdenv.mkDerivation rec {
-    version = "2020.04.29";
+    version = "2020.05.28";
     name = "vast";
-    src = fetchurl {
-      url = "https://github.com/tenzir/vast/archive/${version}.tar.gz";
-      sha256 = "0935r513si84l46dmnsj7p4gc2b3ih3x2qqcg9air9b53ahrc2ic";
+    src = fetchFromGitHub {
+      owner = "tenzir";
+      repo = "vast";
+      rev = "2fc75850336b1b44b4ecd06bbbe2ce6f94fd145e";
+      fetchSubmodules = true;
+      sha256 = "0m2lg3rsnrl7sni0n5cz9by8za5zqgczb5qnxsfh5ddrmpl930k7";
     };
 
-    
   nativeBuildInputs = [ cmake pkgconfig openssl arrow-cpp caf];
-  buildInputs = [ cmake gcc caf arrow-cpp openssl doxygen libpcap pandoc
-                  gperftools];
 
-   cmakeFlags = [
+  buildInputs = [ cmake gcc caf arrow-cpp openssl doxygen libpcap pandoc
+                  gperftools ];
+
+  cmakeFlags = [
     "-DCMAKE_SKIP_BUILD_RPATH=OFF"
     "-DNO_AUTO_LIBCPP=ON"
     "-DENABLE_ZEEK_TO_VAST=OFF"
-    "-DNO_UNIT_TESTS=ON"
     "-DVAST_VERSION_TAG=${version}"
-  ];
+  ] ++ lib.optional static "-DVAST_STATIC_EXECUTABLE:BOOL=ON";
 
 
  preConfigure = ''
