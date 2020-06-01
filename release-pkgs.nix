@@ -32,11 +32,20 @@ in {
     paths = with pkgs; [
       vast
     ];
+    ignoreCollisions = true; ##for broker
   };
   nsm-data-analysis-zeek = pkgs.buildEnv {
     name = "nsm-zeek";
     paths = with pkgs; [
       zeek
+      broker
+    ];
+  };
+
+  nsm-data-analysis-broker = pkgs.buildEnv {
+    name = "broker";
+    paths = with pkgs; [
+      broker
     ];
   };
   nsm-data-analysis-R = pkgs.buildEnv {
