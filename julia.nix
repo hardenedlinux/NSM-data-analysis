@@ -1,7 +1,12 @@
-with import <nixpkgs> {};
- stdenv.mkDerivation {
-  name = "julia_13";
-  buildInputs = [
-    pkgs.julia_13
-  ];
+{ ... }:
+let
+  pkgs = (import <nixpkgs> {});
+in
+{
+  nsm-data-analysis-Julia = pkgs.buildEnv {
+    name = "nsm-data-analysis-Julia";
+    paths = with pkgs; [
+      pkgs.julia_13
+    ];
+  };
 }
