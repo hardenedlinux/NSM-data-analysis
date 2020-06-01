@@ -46,12 +46,12 @@ in {
     my-go
   ];
   };
-  nsm-data-analysis-Julia = pkgs.buildEnv {
-  name = "nsm-data-analysis-Julia";
-  paths = with pkgs; [
-    my-julia
-  ];
-  };
+  # nsm-data-analysis-Julia = pkgs.buildEnv {
+  # name = "nsm-data-analysis-Julia";
+  # paths = with pkgs; [
+  #   my-julia
+  # ];
+  # };
 
   nsm-data-analysis-python = pkgs.buildEnv {
   name = "nsm-data-analysis-python";
