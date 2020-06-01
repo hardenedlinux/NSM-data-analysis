@@ -1,7 +1,6 @@
 { ... }:
 let
   pkgs = (import <nixpkgs> {});
-  my-julia = (import ./pkgs/julia-non-cuda.nix {inherit pkgs;});
   my-python = (import ./pkgs/python.nix {inherit pkgs;});
   my-go =  (import ./pkgs/go.nix {inherit pkgs;});
   my-R = (import ./pkgs/R.nix {inherit pkgs;});
