@@ -1,0 +1,20 @@
+#+TITLE: hydra list 
+#+AUTHOR: GTrunSec
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE:  5 June 2020
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en cn
+#+SETUPFILE: ~/Documents/my-blog/public/theme/org-html-themes/setup/theme-readtheorg.setup
+#+hugo_publishdate: (0 5)
+#+hugo_auto_set_lastmod: t
+#+HUGO_categories: 
+#+HUGO_tags: 
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+* julia
+#+begin_src nix :async t :exports both :results output
+{ pkgs ? import (builtins.fetchTarball "https://github.com/nixos/nixpkgs/tarball/f4c40e65d13052c8ca63684dc830e0282ced9d4b"){}
+
+#+end_src
