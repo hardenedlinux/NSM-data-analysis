@@ -1,10 +1,10 @@
 { ... }:
 let
-  overlays1 = [
+  overlays = [
     (import ../../nix/overlay/python-packages-overlay.nix)
   ];
 
-  pkgs = (import <nixpkgs> {});
+  pkgs = import <nixpkgs> {inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
   ##
   overlays1 = [
     (import ../../nix/overlay/time-python.nix)
