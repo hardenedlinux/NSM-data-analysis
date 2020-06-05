@@ -2,7 +2,8 @@
 let
   pypi_fetcher_src = pkgs.fetchgit {
     name = "nix-pypi-fetcher";
-    url = "https://github.com/DavHau/nix-pypi-fetcher/tarball/236f107a1f36a2cf91e502edb8b06a526768f1c7";
+    url = "https://github.com/DavHau/nix-pypi-fetcher";
+    rev = "236f107a1f36a2cf91e502edb8b06a526768f1c7";
     # Hash obtained using `nix-prefetch-url --unpack <url>`
     sha256 = "1jkllah8z8zb34k4322n7fadxvjh3a2gkfgam5hpdkxyrv4ylv0r";
   };
