@@ -1,14 +1,12 @@
 { pkgs, timepkgs }:
 let
-  broker = pkgs.callPackage ./broker {};
   timesketch = timepkgs.callPackage ./timesketch {};
   time-python-packages = (timepkgs.python3.withPackages (ps: [ timesketch]));
   my-python-packages = (pkgs.python3.withPackages (ps: [
                                                          ps.pandas
                                                          ps.beakerx
-
                                                          ps.elastalert
-                                                         #ps.voila
+                                                         ps.voila
                                                          ps.fastai
                                                          ps.fastai2
                                                          ps.matplotlib

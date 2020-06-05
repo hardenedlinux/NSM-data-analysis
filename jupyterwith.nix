@@ -38,8 +38,8 @@ let
   ];
 
   #nixpkgs = import ~/.config/nixpkgs/nixos/channel/nixpkgs  { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
-  nixpkgs  = import ./nix/ownpkgs.nix { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
-  timepkgs  = import ./nix/ownpkgs.nix { overlays=overlays1; config={ allowUnfree=true; allowBroken=true; };};
+  nixpkgs  = import ./nix/nixpkgs.nix { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
+  timepkgs  = import ./nix/nixpkgs.nix { overlays=overlays1; config={ allowUnfree=true; allowBroken=true; };};
 
   my-python = (import ./pkgs/python.nix {pkgs=nixpkgs; inherit timepkgs;});
   my-go =  (import ./pkgs/go.nix {pkgs=nixpkgs;});

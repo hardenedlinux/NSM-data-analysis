@@ -2,7 +2,7 @@
 let
   src = builtins.fetchTarball {
     url    = "https://github.com/GTrunSec/nixpkgs/tarball/fde7ed20222a3a3661d80d0a81dcae2de067baa7";
-    sha256 = "1b3dgc6dwh9fk05fngwszib2zbil7nkbn4kmf2nxn76dc8dvhr3f";
+    sha256 = "1xa5hg7cws4l7ssxmmq2ahlk447w6hna5ik8jkrbyw7g7rmqpv7z";
   };
 in
 import src

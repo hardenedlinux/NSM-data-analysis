@@ -5,10 +5,10 @@
 with python3.pkgs;
 python3Packages.buildPythonPackage rec {
    pname = "jupyter_server";
-    version = "0.3.0";
-    src = python3Packages.fetchPypi {
+    version = "0.1.1";
+    src = fetchPypi {
       inherit pname version;
-      sha256 = "0k3yynaajs7rgv4s22bcyryj37wr0cph0wxw2wbx10ww74dsrn48";
+      sha256 = "121q60ilx0i8fh0ixzj835cv1naaakivckwmvw9mxnmqrb6fdf1y";
     };
     doCheck = false;
     propagatedBuildInputs = with python3Packages; [ nbformat
@@ -41,5 +41,12 @@ python3Packages.buildPythonPackage rec {
                                                     terminado
                                                     prometheus_client
                                                     jupyter_client
+                                                    pytest
                                                   ];
+
+    postPatch = ''
+    substituteInPlace setup.py \
+    --replace "nbconvert" "pytest"
+    '';
+
 }
