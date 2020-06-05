@@ -34,16 +34,15 @@ let
   overlays = [
     (import ./pkgs/Python-overlay.nix)
     (import ./nix/python-packages-overlay.nix)
+    (import ./nix/packages-overlay.nix)
   ];
   
   nixpkgs  = import ./nix/ownpkgs.nix { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
   timepkgs  = import ./nix/ownpkgs.nix { overlays=overlays1; config={ allowUnfree=true; allowBroken=true; };};
-  vast = nixpkgs.callPackage ./pkgs/vast {};
+
   my-python = (import ./pkgs/python.nix {pkgs=nixpkgs; inherit timepkgs;});
-  broker = nixpkgs.callPackage ./pkgs/broker {};
   my-go =  (import ./pkgs/go.nix {pkgs=nixpkgs;});
   my-R = (import ./pkgs/R.nix {pkgs=nixpkgs;});
-  zeek = nixpkgs.callPackage ./pkgs/zeek { };
 
   iPython = jupyter.kernels.iPythonWith {
     python3 = nixpkgs.callPackage ./nix/overlay/own-python.nix { pkgs=nixpkgs;};
@@ -96,8 +95,8 @@ in
 nixpkgs.buildEnv {
   name = "NSM-analysis-env";
   buildInputs = [ nixpkgs.makeWrapper
-                  vast
-                  (zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true;})
+                  nixpkgs.vast
+                  (nixpkgs.zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true;})
                 ];
   paths = [ my-python nixpkgs.yara  my-go my-R
             jupyterEnvironment
