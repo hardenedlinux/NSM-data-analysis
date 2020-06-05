@@ -13,8 +13,24 @@
 #+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
+* Nixpkgs
+**  [2020-06-05 Fri 13:40]
+#+begin_src sh :async t :exports both :results output
+nixpkgs https://github.com/GTrunSec/nixpkgs fde7ed20222a3a3661d80d0a81dcae2de067baa7
+old 
+#+end_src
+** 
 * julia
+** current
+#+begin_src nix :async t :exports both :results output
+nixpkgs https://github.com/GTrunSec/nixpkgs  fde7ed20222a3a3661d80d0a81dcae2de067baa7
+#+end_src
+** cache
 #+begin_src nix :async t :exports both :results output
 { pkgs ? import (builtins.fetchTarball "https://github.com/nixos/nixpkgs/tarball/f4c40e65d13052c8ca63684dc830e0282ced9d4b"){}
 
+#+end_src
+#+begin_src sh :async t :exports both :results output
+curl: (22) The requested URL returned error: 404                                                                                         
+error: cannot download py4j-0.10.9.zip from any mirror    
 #+end_src

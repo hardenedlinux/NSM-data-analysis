@@ -36,7 +36,8 @@ let
     (import ./nix/python-packages-overlay.nix)
     (import ./nix/packages-overlay.nix)
   ];
-  
+
+  #nixpkgs = import ~/.config/nixpkgs/nixos/channel/nixpkgs  { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
   nixpkgs  = import ./nix/ownpkgs.nix { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
   timepkgs  = import ./nix/ownpkgs.nix { overlays=overlays1; config={ allowUnfree=true; allowBroken=true; };};
 
@@ -98,7 +99,9 @@ nixpkgs.buildEnv {
                   nixpkgs.vast
                   (nixpkgs.zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true;})
                 ];
-  paths = [ my-python nixpkgs.yara  my-go my-R
+  paths = [ my-python nixpkgs.yara
+            my-go
+            my-R
             jupyterEnvironment
             iJulia.InstalliJulia
             iJulia.julia_wrapped

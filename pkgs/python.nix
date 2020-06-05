@@ -8,7 +8,7 @@ let
                                                          ps.beakerx
 
                                                          ps.elastalert
-                                                         ps.voila
+                                                         #ps.voila
                                                          ps.fastai
                                                          ps.fastai2
                                                          ps.matplotlib
