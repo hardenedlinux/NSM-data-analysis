@@ -1,7 +1,8 @@
 { ... }:
 let
   overlays = [
-    (import ../../nix/overlay/python-packages-overlay.nix)
+    (import ../../nix/python-packages-overlay.nix)
+    (import ../../nix/packages-overlay.nix)
   ];
 
   pkgs = import <nixpkgs> {inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
@@ -9,15 +10,12 @@ let
   overlays1 = [
     (import ../../nix/overlay/time-python.nix)
   ];
+
   timepkgs  = import <nixpkgs> { overlays=overlays1; config={ allowUnfree=true; allowBroken=true; };};
-  my-python = (import ./pkgs/python.nix {inherit pkgs timepkgs;});
-  my-go =  (import ./pkgs/go.nix {inherit pkgs;});
-  my-R = (import ./pkgs/R.nix {inherit pkgs;});
 
-
-
-  zeek = pkgs.callPackage ./pkgs/zeek {};
-  vast = pkgs.callPackage ./pkgs/vast {};
+  my-python = (import ../../pkgs/python.nix {inherit pkgs timepkgs;});
+  my-go =  (import ../../pkgs/go.nix {inherit pkgs;});
+  my-R = (import ../../pkgs/R.nix {inherit pkgs;});
 
 in {
   
