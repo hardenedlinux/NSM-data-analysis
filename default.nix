@@ -106,7 +106,7 @@ nixpkgs.buildEnv {
           ];
   ignoreCollisions = true;
   postBuild = ''
-    ln -s ${vast}/bin/vast $out/bin/
-    ln -s ${zeek}/bin/* $out/bin/
+    ln -s ${nixpkgs.vast}/bin/vast $out/bin/
+    ln -s ${nixpkgs.zeek}/bin/* $out/bin/
   '';
 }

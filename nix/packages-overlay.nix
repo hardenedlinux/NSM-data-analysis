@@ -1,6 +1,6 @@
 self: super:
 {
   vast = super.callPackage ../pkgs/vast {};
-  broker = pkgs.callPackage ../pkgs/broker {};
-  zeek = pkgs.callPackage ./pkgs/zeek { };
+  broker = super.callPackage ../pkgs/broker {};
+  zeek = super.callPackage ../pkgs/zeek { };
 }

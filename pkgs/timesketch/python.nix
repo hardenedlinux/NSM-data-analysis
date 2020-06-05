@@ -1,5 +1,5 @@
 let
-  result = import ./machnix.nix;
+  result = import ./machnix.nix {pkgs=pkgs;};
   # nixpkgs_commit = "14dd961b8d5a2d2d3b2cf6526d47cbe5c3e97039";
   # nixpkgs_sha256 = "07nc06mff31hwg6d7spnabfbipxjxhg856z1gcwbyr1cx299y996";
   pkgs = (import <nixpkgs> { config = {}; overlays = []; });
