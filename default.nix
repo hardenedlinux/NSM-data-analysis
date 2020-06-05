@@ -12,10 +12,10 @@ let
   };
 
   hasktorchOverlay = (import (haskTorchSrc + "/nix/shared.nix") { compiler = "ghc883"; }).overlayShared;
-  haskellOverlay = import ./pkgs/overlay/haskell-overlay.nix;
+  haskellOverlay = import ./nix/overlay/haskell-overlay.nix;
   jupyter-overlays = [
     # Only necessary for Haskell kernel
-    (import ./pkgs/overlay/python.nix)
+    (import ./nix/overlay/python.nix)
     haskellOverlay
     hasktorchOverlay
   ];
@@ -28,15 +28,16 @@ let
 
   ## 
   overlays1 = [
-    (import ./pkgs/overlay/time-python.nix)
+    (import ./nix/overlay/time-python.nix)
   ];
 
   overlays = [
     (import ./pkgs/Python-overlay.nix)
+    (import ./nix/python-packages-overlay.nix)
   ];
   
-  nixpkgs  = import ./pkgs/ownpkgs.nix { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
-  timepkgs  = import ./pkgs/ownpkgs.nix { overlays=overlays1; config={ allowUnfree=true; allowBroken=true; };};
+  nixpkgs  = import ./nix/ownpkgs.nix { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
+  timepkgs  = import ./nix/ownpkgs.nix { overlays=overlays1; config={ allowUnfree=true; allowBroken=true; };};
   vast = nixpkgs.callPackage ./pkgs/vast {};
   my-python = (import ./pkgs/python.nix {pkgs=nixpkgs; inherit timepkgs;});
   broker = nixpkgs.callPackage ./pkgs/broker {};
@@ -45,21 +46,21 @@ let
   zeek = nixpkgs.callPackage ./pkgs/zeek { };
 
   iPython = jupyter.kernels.iPythonWith {
-    python3 = nixpkgs.callPackage ./pkgs/overlay/own-python.nix { pkgs=nixpkgs;};
+    python3 = nixpkgs.callPackage ./nix/overlay/own-python.nix { pkgs=nixpkgs;};
     name = "Python-NSM-env";
-    packages = import ./pkgs/overlay/python-list.nix { pkgs=nixpkgs;};
+    packages = import ./nix/overlay/python-list.nix { pkgs=nixpkgs;};
     ignoreCollisions = true;
   };
 
   IRkernel = jupyter.kernels.iRWith {
     name = "IRkernel-NSM-env";
-    packages = import ./pkgs/overlay/R-list.nix {pkgs=nixpkgs;};
+    packages = import ./nix/overlay/R-list.nix {pkgs=nixpkgs;};
    };
 
   iHaskell = jupyter.kernels.iHaskellWith {
     name = "ihaskell-NSM-env";
     haskellPackages = jupyter-pkgs.haskell.packages.ghc883;
-    packages = import ./pkgs/overlay/haskell-list.nix {pkgs=jupyter-pkgs;};
+    packages = import ./nix/overlay/haskell-list.nix {pkgs=jupyter-pkgs;};
     Rpackages = p: with p; [ ggplot2 dplyr xts purrr cmaes cubature
                              reshape2
                            ];

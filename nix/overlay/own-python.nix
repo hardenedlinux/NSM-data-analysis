@@ -9,6 +9,6 @@ let
 in
 python3.override {
   packageOverrides = self: super: rec {
-    editdistance =  self.callPackage ../python/editdistance {};
+    editdistance =  self.callPackage ../../pkgs/python/editdistance {};
   };
 }

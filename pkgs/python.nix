@@ -1,71 +1,37 @@
 { pkgs, timepkgs }:
 let
-  beakerx = pkgs.callPackage ./python/beakerx {};
-  cudf = pkgs.callPackage ./python/cudf {inherit rmm;};
-  rmm = pkgs.callPackage ./python/rmm {};
-  clx = pkgs.callPackage ./python/clx { inherit python-whois;};
-  libclx = pkgs.callPackage ./pkgs-lib/libclx { };
-  zat = pkgs.callPackage ./python/zat {};
-  choochoo = pkgs.callPackage ./python/choochoo {};
-  service_identity = pkgs.callPackage ./python/service_identity {};
-  editdistance = pkgs.callPackage ./python/editdistance {};
-  IPy = pkgs.callPackage ./python/IPy {};
-  #networkx = pkgs.callPackage ./python/networkx {};
-  #netaddr = pkgs.callPackage ./python/netaddr {};
-  tldextract = pkgs.callPackage ./python/tldextract {};
-  pyshark = pkgs.callPackage ./python/pyshark {};
-  cefpython3 = pkgs.callPackage ./python/cefpython3 {};
-  pyvis = pkgs.callPackage ./python/pyvis {};
-  yarapython = pkgs.callPackage ./python/yara-python {};
-  #pyOpenSSL = pkgs.callPackage ./python/pyOpenSSL {};
-  python-pptx = pkgs.callPackage ./python/python-pptx {};
-  adblockparser = pkgs.callPackage ./python/adblockparser {};
-  python-whois = pkgs.callPackage ./python/python-whois {};
-  CherryPy = pkgs.callPackage ./python/CherryPy {};
-  pygexf = pkgs.callPackage ./python/pygexf {};
-  PyPDF2 = pkgs.callPackage ./python/PyPDF2 {};
-  ipwhois = pkgs.callPackage ./python/ipwhois {};
-  secure = pkgs.callPackage ./python/secure {};
-  axelrod = pkgs.callPackage ./python/axelrod {};
-  voila = pkgs.callPackage ./python/voila {};
-  fastai = pkgs.callPackage ./python/fast-ai {};
-  fastai2 = pkgs.callPackage ./python/fastai2 {};
-  aiohttp = pkgs.callPackage ./python/aiohttp {};
-  elastalert = pkgs.callPackage ./python/elastalert {};
-
   broker = pkgs.callPackage ./broker {};
-
   timesketch = timepkgs.callPackage ./timesketch {};
   time-python-packages = (timepkgs.python3.withPackages (ps: [ timesketch]));
   my-python-packages = (pkgs.python3.withPackages (ps: [
                                                          ps.pandas
-                                                         beakerx
+                                                         ps.beakerx
 
-                                                         elastalert
-                                                         voila
-                                                         fastai
-                                                         fastai2
+                                                         ps.elastalert
+                                                         ps.voila
+                                                         ps.fastai
+                                                         ps.fastai2
                                                          ps.matplotlib
                                                          ps.Mako
                                                          ps.numpy
                                                          ps.scikitlearn
                                                          ps.sqlalchemy
-                                                         secure
+                                                         ps.secure
                                                          ps.dnspython
                                                          ps.exifread
                                                          ps.pysocks
                                                          ps.phonenumbers
                                                          ps.future
-                                                         ipwhois
+                                                         ps.ipwhois
                                                          ps.python-docx
-                                                         PyPDF2
-                                                         CherryPy
-                                                         adblockparser
-                                                         python-whois
+                                                         ps.PyPDF2
+                                                         ps.CherryPy
+                                                         ps.adblockparser
+                                                         ps.python-whois
                                                          ps.networkx
-                                                         zat
-                                                         python-pptx
-                                                         choochoo
+                                                         ps.zat
+                                                         ps.python-pptx
+                                                         ps.choochoo
                                                          ps.twisted
                                                          ps.pyspark
                                                          ps.cryptography
@@ -73,20 +39,21 @@ let
                                                          ps.pyopenssl
                                                          ps.geoip2
                                                          ps.ipaddress
-                                                         service_identity
+                                                         ps.service_identity
                                                          ps.netaddr
                                                          ps.pillow
                                                          ps.graphviz
                                                          #Tor
                                                          ps.stem
-                                                         editdistance
-                                                         IPy
-                                                         tldextract
+                                                         ps.editdistance
+                                                         ps.IPy
+                                                         ps.tldextract
                                                          ps.scapy
-                                                         pyshark
+
+                                                         ps.pyshark
                                                          ## Interactive Maps
                                                          #cefpython3 Failed
-                                                         pyvis
+                                                         ps.pyvis
                                                          #
                                                          ps.nltk
                                                          ps.Keras
@@ -94,7 +61,7 @@ let
                                                          ps.scikitimage
                                                          ps.elasticsearch
                                                          ps.requests
-                                                         yarapython
+                                                         ps.yarapython
                                                          #cudf ../include/rmm/detail/memory_manager.hpp:37:10: fatal error: rmm/detail/cnmem.h: No such file or directory
                                                          #axelrod pathlib 1.0.1 does not support 3.7
                                                        ])).override (args: { ignoreCollisions = true;});
@@ -106,8 +73,6 @@ pkgs.buildEnv rec {
     ] ;
   paths = [ my-python-packages
             time-python-packages
-            (pkgs.python38.withPackages (pkgs: with pkgs; [aiohttp
-                                                          ]))
           ];
 
   ignoreCollisions = true;

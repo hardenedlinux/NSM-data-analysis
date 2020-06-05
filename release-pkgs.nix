@@ -1,10 +1,13 @@
 { ... }:
 let
-  pkgs = (import <nixpkgs> {});
+  overlays1 = [
+    (import ./nix/overlay/python-packages-overlay.nix)
+  ];
 
+  pkgs = (import <nixpkgs> {});
   ##
   overlays1 = [
-    (import ./pkgs/overlay/time-python.nix)
+    (import ./nix/overlay/time-python.nix)
   ];
   timepkgs  = import <nixpkgs> { overlays=overlays1; config={ allowUnfree=true; allowBroken=true; };};
   my-python = (import ./pkgs/python.nix {inherit pkgs timepkgs;});
@@ -14,7 +17,6 @@ let
 
 
   zeek = pkgs.callPackage ./pkgs/zeek {};
-  broker = pkgs.callPackage ./pkgs/broker {};
   vast = pkgs.callPackage ./pkgs/vast {};
 
 in {
@@ -38,7 +40,6 @@ in {
     name = "nsm-zeek";
     paths = with pkgs; [
       zeek
-      broker
     ];
   };
 
