@@ -3,10 +3,10 @@ let
   pkgs = (import <nixpkgs> {});
 in
 {
-  nsm-data-analysis-Julia = pkgs.buildEnv {
-    name = "nsm-data-analysis-Julia";
+  Pkg-Julia = pkgs.buildEnv {
+    name = "Julia";
     paths = with pkgs; [
-      pkgs.julia_13
+      (pkgs.julia_13.overrideAttrs(oldAttrs: {checkTarget = "";});)
     ];
   };
 }

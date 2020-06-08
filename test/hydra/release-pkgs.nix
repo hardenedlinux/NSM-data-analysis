@@ -20,48 +20,48 @@ let
 in {
   
 
-  # nsm-data-analysis-haskell = pkgs.buildEnv {
-  # name = "nsm-data-analysis-haskell";
+  # Env-haskell = pkgs.buildEnv {
+  # name = "Env-haskell";
   # paths =  [
   #   ihaskellEnv
   # ];
   # };
 
-  nsm-data-analysis-vast = pkgs.buildEnv {
+  Env-vast = pkgs.buildEnv {
     name = "nsm-vast";
     paths = with pkgs; [
-      vast
+      pkgs.vast
     ];
     ignoreCollisions = true; ##for broker
   };
-  nsm-data-analysis-zeek = pkgs.buildEnv {
+  Env-zeek = pkgs.buildEnv {
     name = "nsm-zeek";
     paths = with pkgs; [
       zeek
     ];
   };
 
-  nsm-data-analysis-broker = pkgs.buildEnv {
+  Env-broker = pkgs.buildEnv {
     name = "broker";
     paths = with pkgs; [
       broker
     ];
   };
-  nsm-data-analysis-R = pkgs.buildEnv {
-    name = "nsm-data-analysis-R";
+  Env-R = pkgs.buildEnv {
+    name = "Env-R";
     paths = with pkgs; [
       my-go
     ];
   };
 
-  nsm-data-analysis-python = pkgs.buildEnv {
-    name = "nsm-data-analysis-python";
+  Env-python = pkgs.buildEnv {
+    name = "Env-python";
     paths = with pkgs; [
       my-python
     ];
   };
-  nsm-data-analysis-go = pkgs.buildEnv {
-    name = "nsm-data-analysis-go";
+  Env-go = pkgs.buildEnv {
+    name = "Env-go";
     paths = with pkgs; [
       my-go
     ];
