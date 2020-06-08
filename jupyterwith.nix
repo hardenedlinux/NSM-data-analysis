@@ -7,7 +7,7 @@ let
 
   jupyterLib = builtins.fetchGit {
     url = https://github.com/GTrunSec/jupyterWith;
-    rev = "da7d92c3277f370c7439ff54beec8d632f0c9f82";
+    rev = "ce6b72643cf74c2c278224cb29c59a24fedf7c25";
     ref = "current";
   };
 
@@ -20,11 +20,11 @@ let
     hasktorchOverlay
   ];
 
-  nixpkgsPath = jupyterLib + "/nix/nixpkgs.nix";
 
-  jupyter-pkgs = import nixpkgsPath { overlays=jupyter-overlays; config={ allowUnfree=true; allowBroken=true; };};
+  env = (import (jupyterLib + "/lib/directory.nix")){ inherit pkgs;};
+  pkgs = (import (jupyterLib + "/nix/nixpkgs.nix")) { overlays=jupyter-overlays; config={ allowUnfree=true; allowBroken=true; };};
 
-  jupyter = import jupyterLib {pkgs=jupyter-pkgs;};
+  jupyter = import jupyterLib {pkgs=pkgs;};
 
   ## 
   overlays1 = [
@@ -59,8 +59,8 @@ let
 
   iHaskell = jupyter.kernels.iHaskellWith {
     name = "ihaskell-NSM-env";
-    haskellPackages = jupyter-pkgs.haskell.packages.ghc883;
-    packages = import ./nix/overlay/haskell-list.nix {pkgs=jupyter-pkgs;};
+    haskellPackages = pkgs.haskell.packages.ghc883;
+    packages = import ./nix/overlay/haskell-list.nix {pkgs=pkgs;};
     Rpackages = p: with p; [ ggplot2 dplyr xts purrr cmaes cubature
                              reshape2
                            ];
@@ -68,10 +68,12 @@ let
   };
 
   currentDir = builtins.getEnv "PWD";
+  overlay_julia = [ (import ./nix/overlay/julia.nix)
+                  ];
   iJulia = jupyter.kernels.iJuliaWith {
     name =  "Julia-data-env";
     directory = currentDir + "/.julia_pkgs";
-    nixpkgs =  import (builtins.fetchTarball "https://github.com/GTrunSec/nixpkgs/tarball/39247f8d04c04b3ee629a1f85aeedd582bf41cac"){};
+    nixpkgs =  import (builtins.fetchTarball "https://github.com/GTrunSec/nixpkgs/tarball/3fac6bbcf173596dbd2707fe402ab6f65469236e"){ overlays=overlay_julia;};
     NUM_THREADS = 8;
     extraPackages = p: with p;[   # GZip.jl # Required by DataFrames.jl
       gzip
@@ -91,25 +93,32 @@ let
       extraJupyterPath = p: "${p.python3Packages.jupyterlab_git}/lib/python3.7/site-packages:${p.python3Packages.jupyter_lsp}/lib/python3.7/site-packages:${p.python3Packages.python-language-server}/lib/python3.7/site-packages";
     };
 
-  generateDirectory = nixpkgs.writeScriptBin "generate-directory" (import ./pkgs/generate-directory.nix { inherit nixpkgs; });
-in
-nixpkgs.buildEnv {
-  name = "NSM-analysis-env";
-  buildInputs = [ nixpkgs.makeWrapper
-                  nixpkgs.vast
-                  (nixpkgs.zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true;})
-                ];
-  paths = [ my-python nixpkgs.yara
-            my-go
-            my-R
-            jupyterEnvironment
-            iJulia.InstalliJulia
-            iJulia.julia_wrapped
-            iJulia.Install_JuliaCUDA
-          ];
-  ignoreCollisions = true;
-  postBuild = ''
-    ln -s ${nixpkgs.vast}/bin/vast $out/bin/
-    ln -s ${nixpkgs.zeek}/bin/* $out/bin/
-  '';
-}
+ in
+   nixpkgs.mkShell rec {
+     name = "Jupyter-data-Env";
+     buildInputs = [ jupyterEnvironment
+                     nixpkgs.python3Packages.ipywidgets
+                     nixpkgs.python3Packages.jupyterlab_git
+                     nixpkgs.python3Packages.python-language-server
+                     nixpkgs.python3Packages.jupyter_lsp
+                     env.generateDirectory
+                     iJulia.InstalliJulia
+                     iJulia.julia_wrapped
+                     iJulia.Install_JuliaCUDA
+                   ];
+
+     shellok = ''
+     ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter nbextension install --py widgetsnbextensi --user
+     ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter nbextension enable --py widgetsnbtension
+      ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter serverextension enable --py jupytlab_git
+      ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter serverextension enable --py juter_lsp
+      if [ ! -f "./jupyterlab/extensions/ihaskell_jupyterlab-0.0.7.tgz]; then
+        if [ ! -f "./jupyterlab/extensions/jupyter-widgets-jupyterlab-manager-2.0.0.tgz]; then
+       ${env.generateDirectory}/bin/generate-directory @jupyter-widgets/jupyterlab-mager@2.0
+       ${env.generateDirectory}/bin/generate-directory @jupytlab/git
+       ${env.generateDirectory}/bin/generate-directory @krassowski/jupytlab-lsp
+  fi
+    #${jupyterEnvironment}/bin/juter-lab
+    '';
+   }
+

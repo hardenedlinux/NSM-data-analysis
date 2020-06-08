@@ -35,6 +35,8 @@ rec {
       fastai2 = super.python3Packages.callPackage ../pkgs/python/fastai2 {};
       elastalert = super.python3Packages.callPackage ../pkgs/python/elastalert {};
       jupyter_server = super.python3Packages.callPackage ../pkgs/python/jupyter-server {};
+      jupyterlab_git =  super.pythonPackages.callPackage ../pkgs/python/jupyterlab-git {};
+      jupyter_lsp =  super.python3Packages.callPackage ../pkgs/python/jupyter-lsp {};
       #aiohttp = super.python3Packages.callPackage ../pkgs/python/aiohttp {};
     };
   };
