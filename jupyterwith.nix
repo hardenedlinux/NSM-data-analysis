@@ -107,18 +107,18 @@ let
                      iJulia.Install_JuliaCUDA
                    ];
 
-     shellok = ''
-     ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter nbextension install --py widgetsnbextensi --user
-     ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter nbextension enable --py widgetsnbtension
-      ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter serverextension enable --py jupytlab_git
-      ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter serverextension enable --py juter_lsp
+  shellHook = ''
+     ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter nbextension install --py widgetsnbextension --user
+     ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter nbextension enable --py widgetsnbextension
+      ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter serverextension enable --py jupyterlab_git
+      ${nixpkgs.python3Packages.jupyter_core}/bin/jupyter serverextension enable --py jupyter_lsp
       if [ ! -f "./jupyterlab/extensions/ihaskell_jupyterlab-0.0.7.tgz]; then
         if [ ! -f "./jupyterlab/extensions/jupyter-widgets-jupyterlab-manager-2.0.0.tgz]; then
        ${env.generateDirectory}/bin/generate-directory @jupyter-widgets/jupyterlab-mager@2.0
        ${env.generateDirectory}/bin/generate-directory @jupytlab/git
        ${env.generateDirectory}/bin/generate-directory @krassowski/jupytlab-lsp
   fi
-    #${jupyterEnvironment}/bin/juter-lab
+    #${jupyterEnvironment}/bin/jupyter-lab
     '';
    }
 
