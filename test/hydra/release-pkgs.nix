@@ -37,7 +37,7 @@ in {
   Env-zeek = pkgs.buildEnv {
     name = "nsm-zeek";
     paths = with pkgs; [
-      zeek
+      (zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true;})
     ];
   };
 
