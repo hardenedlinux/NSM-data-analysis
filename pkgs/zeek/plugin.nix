@@ -1,9 +1,11 @@
-{ fetchFromGitHub, writeScript, postgresql, rdkafka, version, confdir, PostgresqlPlugin, KafkaPlugin, zeekctl }:
+{ fetchFromGitHub, writeScript, postgresql, rdkafka, version, confdir, PostgresqlPlugin, KafkaPlugin, zeekctl, Http2Plugin}:
 
 rec {
   install_plugin = writeScript "install_plugin" (import ./install_plugin.nix { });
   zeek-postgresql = fetchFromGitHub (builtins.fromJSON (builtins.readFile ./zeek-plugin.json)).zeek-postgresql;
   metron-bro-plugin-kafka = fetchFromGitHub (builtins.fromJSON (builtins.readFile ./zeek-plugin.json)).metron-bro-plugin-kafka;
+  bro-http2 = fetchFromGitHub (builtins.fromJSON (builtins.readFile ./zeek-plugin.json)).bro-http2;
+  
   postFixup =  (if zeekctl then ''
          substituteInPlace $out/etc/zeekctl.cfg \
          --replace "CfgDir = $out/etc" "CfgDir = ${confdir}/etc" \
@@ -21,6 +23,10 @@ rec {
   (if KafkaPlugin then ''
          ##INSTALL ZEEK Plugins
        bash ${install_plugin} metron-bro-plugin-kafka ${metron-bro-plugin-kafka} ${version}
+         '' else "") +
+  (if Http2Plugin then ''
+         ##INSTALL ZEEK Plugins
+       bash ${install_plugin} bro-http2 ${bro-http2} ${version}
          '' else "") +
   (if PostgresqlPlugin then ''
              bash ${install_plugin} zeek-postgresql ${zeek-postgresql} ${version}

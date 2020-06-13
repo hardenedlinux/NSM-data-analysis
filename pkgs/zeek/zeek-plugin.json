@@ -6,6 +6,13 @@
         "sha256": "1r6nxxkpcb8d8mxm5nafvaixclll1xfslnzqhadl89kzvy4z6z00"
     },
 
+    "bro-http2": {
+        "owner": "MITRECND",
+        "repo": "bro-http2",
+        "rev": "c1f3eb812c7190d3b68865edd2094de8e2ea350e",
+        "sha256": "0jimmrlny9335ich1z0qpnczqq0pwpvzm2wrv9pxqdylgwd5bl8p"
+    },
+
     "metron-bro-plugin-kafka": {
         "owner": "apache",
         "repo": "metron-bro-plugin-kafka",

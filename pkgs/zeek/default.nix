@@ -1,8 +1,9 @@
 {stdenv, fetchurl, cmake, flex, bison, openssl, libpcap, zlib, file, curl
 , libmaxminddb, gperftools, python, swig, fetchpatch, caf,  rdkafka, postgresql, fetchFromGitHub, coreutils
-,  callPackage
+,  callPackage, libnghttp2, brotli
 ,  PostgresqlPlugin ? false
 ,  KafkaPlugin ? false
+,  Http2Plugin ? false
 ,  zeekctl ? true
 }:
 let
@@ -13,7 +14,7 @@ let
   confdir = "/var/lib/${pname}";
 
   plugin = callPackage ./plugin.nix {
-    inherit rdkafka postgresql version confdir PostgresqlPlugin KafkaPlugin zeekctl;
+    inherit rdkafka postgresql version confdir PostgresqlPlugin KafkaPlugin zeekctl Http2Plugin;
   };
 in
 stdenv.mkDerivation rec {
@@ -26,8 +27,8 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake flex bison file ];
   buildInputs = [ openssl libpcap zlib curl libmaxminddb gperftools python swig caf
-                   rdkafka postgresql  
-                ];
+
+                ] ++ [ rdkafka postgresql libnghttp2 brotli ];
 
   ZEEK_DIST = "${placeholder "out"}";
   #see issue https://github.com/zeek/zeek/issues/804 to modify hardlinking duplicate files.
