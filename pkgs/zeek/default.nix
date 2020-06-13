@@ -10,7 +10,7 @@ let
   preConfigure = (import ./script.nix {inherit coreutils;});
 
   pname = "zeek";
-  version = "3.0.6";
+  version = "3.0.7";
   confdir = "/var/lib/${pname}";
 
   plugin = callPackage ./plugin.nix {
@@ -19,10 +19,9 @@ let
 in
 stdenv.mkDerivation rec {
   inherit pname version;
-
   src = fetchurl {
     url = "https://download.zeek.org/zeek-${version}.tar.gz";
-    sha256 = "1lcanyf5gdfqr7d6cc8ygdpvmn3g94slhw2zwvixnm8w3b15dkap";
+    sha256 = "1c0pxb2r8fhvnq2zbmw5z5q6asifipj6y5hpcqnsawy3q0ghv244";
   };
 
   nativeBuildInputs = [ cmake flex bison file ];
