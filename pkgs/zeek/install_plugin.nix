@@ -8,6 +8,7 @@ install_plugin(){
     mkdir -p /build/$1
     cp -r $2/* /build/$1/
     cd /build/$name/
+    mkdir -p /.ccache/tmp
     if [ $name == 'spicy' ] ; then
     ./configure --with-zeek=$out --generator=Ninja --enable-ccache
     make -j8 all && make install

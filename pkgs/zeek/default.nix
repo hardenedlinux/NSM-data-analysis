@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
     "--with-python=${python}/bin"
     "--with-python-lib=${python}/${python.sitePackages}"
   ];
-
+  ##for spicy ccache
+  HOME = ".";
+  
   nativeBuildInputs = [ cmake flex bison file ] ++ lib.optionals SpicyPlugin [ python38 ];
   buildInputs = [ openssl libpcap zlib curl libmaxminddb gperftools python swig caf ]
                 ++ lib.optionals KafkaPlugin
