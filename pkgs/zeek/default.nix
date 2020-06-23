@@ -1,9 +1,12 @@
 {stdenv, fetchurl, cmake, flex, bison, openssl, libpcap, zlib, file, curl
-, libmaxminddb, gperftools, python, swig, fetchpatch, caf,  rdkafka, postgresql, fetchFromGitHub, coreutils
-,  callPackage, libnghttp2, brotli
+, libmaxminddb, gperftools, python, swig, fetchpatch, caf
+## Plugin dependencies
+,  rdkafka, postgresql, fetchFromGitHub, coreutils
+,  callPackage, libnghttp2, brotli, ninja, git, python38, llvm, clang_9, which, geoip, lib
 ,  PostgresqlPlugin ? false
 ,  KafkaPlugin ? false
 ,  Http2Plugin ? false
+,  SpicyPlugin ? false
 ,  zeekctl ? true
 }:
 let
@@ -14,7 +17,7 @@ let
   confdir = "/var/lib/${pname}";
 
   plugin = callPackage ./plugin.nix {
-    inherit rdkafka postgresql version confdir PostgresqlPlugin KafkaPlugin zeekctl Http2Plugin;
+    inherit version confdir PostgresqlPlugin KafkaPlugin zeekctl Http2Plugin SpicyPlugin;
   };
 in
 stdenv.mkDerivation rec {
@@ -24,11 +27,23 @@ stdenv.mkDerivation rec {
     sha256 = "1c0pxb2r8fhvnq2zbmw5z5q6asifipj6y5hpcqnsawy3q0ghv244";
   };
 
-  nativeBuildInputs = [ cmake flex bison file ];
-  buildInputs = [ openssl libpcap zlib curl libmaxminddb gperftools python swig caf
+  configureFlags = [
+    "--with-geoip=${geoip}"
+    "--with-python=${python}/bin"
+    "--with-python-lib=${python}/${python.sitePackages}"
+  ];
 
-                ] ++ [ rdkafka postgresql libnghttp2 brotli ];
-
+  nativeBuildInputs = [ cmake flex bison file ] ++ lib.optionals SpicyPlugin [ python38 ];
+  buildInputs = [ openssl libpcap zlib curl libmaxminddb gperftools python swig caf ]
+                ++ lib.optionals KafkaPlugin
+                  [ rdkafka ]
+                ++ lib.optionals PostgresqlPlugin
+                  [ postgresql ]
+                ++ lib.optionals Http2Plugin
+                  [ libnghttp2 brotli ]
+                ++ lib.optionals SpicyPlugin
+                  [ ninja llvm clang_9 git which ];
+  
   ZEEK_DIST = "${placeholder "out"}";
   #see issue https://github.com/zeek/zeek/issues/804 to modify hardlinking duplicate files.
   inherit preConfigure;
@@ -46,6 +61,9 @@ stdenv.mkDerivation rec {
   ];
 
   cmakeFlags = [
+    "-DPYTHON_EXECUTABLE=${python}/bin/python2.7"
+    "-DPYTHON_INCLUDE_DIR=${python}/include"
+    "-DPYTHON_LIBRARY=${python}/lib"
     "-DPY_MOD_INSTALL_DIR=${placeholder "out"}/${python.sitePackages}"
     "-DENABLE_PERFTOOLS=true"
     "-DINSTALL_AUX_TOOLS=true"
