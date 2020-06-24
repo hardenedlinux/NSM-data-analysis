@@ -17,7 +17,7 @@ pkgs.stdenv.mkDerivation rec {
   nativeBuildInputs = with pkgs;[ cmake flex bison  python38 zlib
                                   llvmPackages_9.clang-unwrapped llvmPackages_9.llvm
                                 ];
-  buildInputs = [ which llvmPackages_9.lld ninja ];
+  buildInputs = [ which llvmPackages_9.lld ];
 
   preConfigure = ''
    patchShebangs ./scripts/autogen-type-erased

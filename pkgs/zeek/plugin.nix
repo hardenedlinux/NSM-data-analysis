@@ -31,7 +31,7 @@ rec {
   (if SpicyPlugin then ''
     mkdir -p /build/spicy
     cp -r ${Spicy}/* /build/spicy
-    chmod 777  /build/spicy/scripts/
+    chmod 777  /build/spicy/*
     patchShebangs /build/spicy/scripts/autogen-type-erased
     patchShebangs /build/spicy/scripts/autogen-dispatchers
     bash ${install_plugin} spicy ${Spicy} ${version}

@@ -2,7 +2,7 @@
 , libmaxminddb, gperftools, python, swig, fetchpatch, caf
 ## Plugin dependencies
 ,  rdkafka, postgresql, fetchFromGitHub, coreutils
-,  callPackage, libnghttp2, brotli, ninja, git, python38, llvmPackages_9, which, geoip, lib, ccache
+,  callPackage, libnghttp2, brotli, python38, llvmPackages_9, which, geoip, lib, ccache
 ,  PostgresqlPlugin ? false
 ,  KafkaPlugin ? false
 ,  Http2Plugin ? false
@@ -44,7 +44,7 @@ stdenv.mkDerivation rec {
                 ++ lib.optionals Http2Plugin
                   [ libnghttp2 brotli ]
                 ++ lib.optionals SpicyPlugin
-                  [ ninja git which ccache llvmPackages_9.lld llvmPackages_9.clang-unwrapped llvmPackages_9.llvm ];
+                  [ which ccache llvmPackages_9.lld llvmPackages_9.clang-unwrapped llvmPackages_9.llvm ];
   
   ZEEK_DIST = "${placeholder "out"}";
   #see issue https://github.com/zeek/zeek/issues/804 to modify hardlinking duplicate files.
