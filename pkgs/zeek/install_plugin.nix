@@ -10,7 +10,7 @@ install_plugin(){
     cd /build/$name/
     if [ $name == 'spicy' ] ; then
     mkdir -p /.ccache/tmp
-    ./configure --with-zeek=$out --generator=Ninja --enable-ccache --with-cxx-compiler=${llvmPackages_9.clang}/bin/clang++ --with-c-compiler=${llvmPackages_9.clang}/bin/clang
+    ./configure --with-zeek=$out --enable-ccache --with-cxx-compiler=${llvmPackages_9.clang}/bin/clang++ --with-c-compiler=${llvmPackages_9.clang}/bin/clang
     make -j $NIX_BUILD_CORES -l $NIX_BUILD_CORES && make install
     fi
     if [ $name == 'metron-bro-plugin-kafka' ] || [ $name == 'asd' ]; then
