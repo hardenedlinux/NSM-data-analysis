@@ -32,6 +32,7 @@ rec {
     mkdir -p /build/spicy
     cp -r ${Spicy}/* /build/spicy
     chmod 777  /build/spicy/*
+    find /build/spicy/test -type d -exec chmod 777 {} \;
     patchShebangs /build/spicy/scripts/autogen-type-erased
     patchShebangs /build/spicy/scripts/autogen-dispatchers
     bash ${install_plugin} spicy ${Spicy} ${version}
