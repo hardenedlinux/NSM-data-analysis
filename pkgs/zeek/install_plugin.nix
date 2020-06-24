@@ -17,7 +17,7 @@ install_plugin(){
         ./configure --bro-dist=/build/zeek-$3
          make -j$(NIX_BUILD_CORES) && make install
     fi
-    if [ $name == 'zeek-postgresql' ] || [ $name == 'bro-http2']; then
+    if [ $name == 'zeek-postgresql' ] || [ $name == 'bro-http2' ]; then
        ./configure --zeek-dist=/build/zeek-$3
         make -j$(NIX_BUILD_CORES) && make install
     fi
