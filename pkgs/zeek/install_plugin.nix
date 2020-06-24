@@ -1,4 +1,4 @@
-{ }:
+{ llvmPackages_9 }:
 ''
 
 install_plugin(){
@@ -8,18 +8,18 @@ install_plugin(){
     mkdir -p /build/$1
     cp -r $2/* /build/$1/
     cd /build/$name/
-    mkdir -p /.ccache/tmp
     if [ $name == 'spicy' ] ; then
-    ./configure --with-zeek=$out --generator=Ninja --enable-ccache
-    make -j8 all && make install
+    mkdir -p /.ccache/tmp
+    ./configure --with-zeek=$out --generator=Ninja --enable-ccache --with-cxx-compiler=${llvmPackages_9.clang}/bin/clang++ --with-c-compiler=${llvmPackages_9.clang}/bin/clang
+    make -j $NIX_BUILD_CORES -l $NIX_BUILD_CORES && make install
     fi
     if [ $name == 'metron-bro-plugin-kafka' ] || [ $name == 'asd' ]; then
         ./configure --bro-dist=/build/zeek-$3
-        make -j8 all && make install
+         make -j $NIX_BUILD_CORES -l $NIX_BUILD_CORES && make install
     fi
     if [ $name == 'zeek-postgresql' ] || [ $name == 'bro-http2']; then
        ./configure --zeek-dist=/build/zeek-$3
-        make -j8 all && make install
+        make -j $NIX_BUILD_CORES -l $NIX_BUILD_CORES && make install
     fi
 
 }

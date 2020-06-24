@@ -1,7 +1,7 @@
-{ fetchFromGitHub, writeScript, version, confdir, PostgresqlPlugin, KafkaPlugin, zeekctl, Http2Plugin, SpicyPlugin}:
+{ fetchFromGitHub, writeScript, version, confdir, PostgresqlPlugin, KafkaPlugin, zeekctl, Http2Plugin, SpicyPlugin, llvmPackages_9}:
 
 rec {
-  install_plugin = writeScript "install_plugin" (import ./install_plugin.nix { });
+  install_plugin = writeScript "install_plugin" (import ./install_plugin.nix { inherit llvmPackages_9; });
   zeek-postgresql = fetchFromGitHub (builtins.fromJSON (builtins.readFile ./zeek-plugin.json)).zeek-postgresql;
   metron-bro-plugin-kafka = fetchFromGitHub (builtins.fromJSON (builtins.readFile ./zeek-plugin.json)).metron-bro-plugin-kafka;
   bro-http2 = fetchFromGitHub (builtins.fromJSON (builtins.readFile ./zeek-plugin.json)).bro-http2;
@@ -29,6 +29,11 @@ rec {
        bash ${install_plugin} bro-http2 ${bro-http2} ${version}
          '' else "") +
   (if SpicyPlugin then ''
+    mkdir -p /build/spicy
+    cp -r ${Spicy}/* /build/spicy
+    chmod 777  /build/spicy/scripts/
+    patchShebangs /build/spicy/scripts/autogen-type-erased
+    patchShebangs /build/spicy/scripts/autogen-dispatchers
     bash ${install_plugin} spicy ${Spicy} ${version}
             '' else "") +
   (if PostgresqlPlugin then ''
