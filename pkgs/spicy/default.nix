@@ -7,9 +7,9 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "zeek";
     repo = "spicy";
-    rev = "ff5b3c233461835070aa8abd4cc3cbd24e0ad2bf";
+    rev = "ce1a239d91f2df411814a594a3b3d8058c3e6192";
     fetchSubmodules = true;
-    sha256 = "1701bj5l9pc6cnbjwj8m27mwclrwbjalgfi8wzm2dyfpcx1c5vx7";
+    sha256 = "0gd57y1sdg7i2k9bacnqlakcm41s36311ngi2sqgk1phzmqaslv1";
   };
 
 
