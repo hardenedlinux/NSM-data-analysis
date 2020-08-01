@@ -1,8 +1,8 @@
 { pkgs, timepkgs }:
 let
   timesketch = timepkgs.callPackage ./timesketch {};
-  time-python-packages = (timepkgs.python3.withPackages (ps: [ timesketch]));
-  my-python-packages = (pkgs.python3.withPackages (ps: [
+  time-python-packages = (timepkgs.python37.withPackages (ps: [ timesketch]));
+  my-python-packages = (pkgs.python37.withPackages (ps: [
                                                          ps.pandas
                                                          ps.beakerx
                                                          ps.elastalert

@@ -2,7 +2,6 @@ self: super:
 rec {
   python3 = super.python3.override {
     packageOverrides = selfPythonPackages: pythonPackages: {
-
       beakerx = super.python3Packages.callPackage ../pkgs/python/beakerx {};
       #cudf = super.python3Packages.callPackage ../pkgs/python/cudf {inherit rmm;};
       rmm = super.python3Packages.callPackage ../pkgs/python/rmm {};
