@@ -9,13 +9,14 @@ let
 in
 python3Packages.buildPythonPackage rec {
       pname = "timesketch";
-      version = "20200507";
-      doCheck = false;
-
-      src = pythonPackages.fetchPypi {
-        inherit pname version;
-        sha256 = "1b50pksaah4jc61hx8fbz993qx5v5zff77060hsdf6cwqmmv3lj3";
+      version = "20200710";
+      src = fetchFromGitHub {
+        owner = "google";
+        repo = "timesketch";
+        rev = "19e7a036e0a0172bf6e714379c95399f9d745a79";
+        sha256 = "sha256-KuFNsfoCk/z3HBIIg1YiGO13RFfCl8WQ2Dn/Kg5T71A=";
       };
+      doCheck = false;
 
       propagatedBuildInputs = with python3Packages; [ timesketch_dep
                                                     ];

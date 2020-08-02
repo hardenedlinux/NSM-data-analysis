@@ -1,6 +1,6 @@
 { pkgs }:
 let
-  my-python-packages = (pkgs.python3.withPackages (ps: [
+   my-python-packages = (pkgs.python3.withPackages (ps: [
                                                          ps.pandas
                                                          ps.beakerx
                                                          ps.elastalert
@@ -68,7 +68,8 @@ pkgs.buildEnv rec {
   buildInputs = [
     pkgs.makeWrapper
     ] ;
-  paths = [ my-python-packages
+  paths = [
+     my-python-packages
           ];
 
   ignoreCollisions = true;
