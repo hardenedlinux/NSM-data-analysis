@@ -10,7 +10,7 @@ in {
   hardenedlinux-pkgs-R = pkgs.buildEnv {
     name = "hardenedlinux-pkgs-R";
     paths = with pkgs; [
-      hardenedlinux-pkgs-go
+      hardenedlinux-pkgs-R
     ];
   };
 }
