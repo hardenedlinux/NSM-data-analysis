@@ -1,5 +1,6 @@
 # Build and Release Folders
 result
+result-*
 DIRECTORY
 jupyterlab
 #zeek test
