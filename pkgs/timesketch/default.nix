@@ -18,7 +18,6 @@ python3Packages.buildPythonPackage rec {
       };
 
       propagatedBuildInputs = with python3Packages; [ timesketch_dep
-                                                      pip
                                                     ];
       postPatch = ''
       substituteInPlace requirements.txt \

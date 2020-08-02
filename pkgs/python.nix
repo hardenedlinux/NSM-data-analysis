@@ -1,7 +1,5 @@
-{ pkgs, timepkgs }:
+{ pkgs }:
 let
-  timesketch = timepkgs.callPackage ./timesketch {};
-  time-python-packages = (timepkgs.python3.withPackages (ps: [ timesketch]));
   my-python-packages = (pkgs.python3.withPackages (ps: [
                                                          ps.pandas
                                                          ps.beakerx
@@ -12,6 +10,7 @@ let
                                                          ps.matplotlib
                                                          ps.Mako
                                                          ps.numpy
+                                                         ps.timesketch
                                                          ps.scikitlearn
                                                          ps.sqlalchemy
                                                          ps.secure
