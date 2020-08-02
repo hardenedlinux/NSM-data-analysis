@@ -1,8 +1,8 @@
 { pkgs, timepkgs }:
 let
   timesketch = timepkgs.callPackage ./timesketch {};
-  time-python-packages = (timepkgs.python37.withPackages (ps: [ timesketch]));
-  my-python-packages = (pkgs.python37.withPackages (ps: [
+  time-python-packages = (timepkgs.python3.withPackages (ps: [ timesketch]));
+  my-python-packages = (pkgs.python3.withPackages (ps: [
                                                          ps.pandas
                                                          ps.beakerx
                                                          ps.elastalert
@@ -55,7 +55,7 @@ let
                                                          #
                                                          ps.nltk
                                                          ps.Keras
-                                                         ps.tensorflow# does not support python 3.8
+                                                         #ps.tensorflow# does not support python 3.8
                                                          ps.scikitimage
                                                          ps.elasticsearch
                                                          ps.requests
@@ -70,7 +70,6 @@ pkgs.buildEnv rec {
     pkgs.makeWrapper
     ] ;
   paths = [ my-python-packages
-            time-python-packages
           ];
 
   ignoreCollisions = true;
