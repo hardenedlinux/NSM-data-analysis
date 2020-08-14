@@ -25,7 +25,7 @@ python3Packages.buildPythonPackage rec {
                                                 ];
   doCheck = false;
 
-    postPatch = ''
+  postPatch = ''
     cd python
     pytest
       '';
