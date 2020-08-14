@@ -8,10 +8,15 @@ stdenv.mkDerivation rec {
     rev = "6cbe4830ac2a5f151445df1f33404d1949716bfd";
     sha256 = "0mnh57p4jc9bjczbkyqqzfy4mpzdqz1ypmam2lyh61p0xrgqrvsr";
   };
-  preConfigure = ''
-  cd cpp
+
+  configurePhase = ''
+  export CUDA_PATH="${cudatoolkit}"
+  export INSTALL_PREFIX=$out
+  mkdir -p ./cpp/build
+  cd cpp/build
+  cmake .. -DCMAKE_INSTALL_PREFIX=$out
   '';
-    nativeBuildInputs = [ cmake cudatoolkit python3 clang];
+  nativeBuildInputs = [ cmake cudatoolkit python3 clang ];
   buildInputs = [ cmake ];
 
   enableParallelBuilding = true;

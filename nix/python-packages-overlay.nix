@@ -6,6 +6,7 @@ rec {
                   #cudf = super.python3Packages.callPackage ../pkgs/python/cudf {inherit rmm;};
                   rmm = super.python3Packages.callPackage ../pkgs/python/rmm {};
                   clx = super.python3Packages.callPackage ../pkgs/python/clx { };
+                  cudf = super.python3Packages.callPackage ../pkgs/python/cudf { };
                   libclx = super.python3Packages.callPackage ./pkgs-lib/libclx { };
                   zat = super.python3Packages.callPackage ../pkgs/python/zat {};
                   choochoo = super.python3Packages.callPackage ../pkgs/python/choochoo {};

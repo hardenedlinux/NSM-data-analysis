@@ -10,7 +10,7 @@ python3Packages.buildPythonPackage rec {
   version = "0.12.0";
   src = fetchurl {
     url = "https://github.com/rapidsai/cudf/archive/cfb1f6b6e00964ce51a781223b29650d6801f818.tar.gz";
-    sha256 = "1fdzzvxr5smrp9ia96plvqicxfpy7jxiirbqz921iafjd5j8v4ir";
+    sha256 = "sha256-CRHf8wbS53zB1yehTPhbbC3FHFhcrSrKt/xWqJ1n1OY=";
   };  
 
   preConfigure = ''
