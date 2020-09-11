@@ -13,7 +13,7 @@ let
   preConfigure = (import ./script.nix {inherit coreutils;});
 
   pname = "zeek";
-  version = "3.0.7";
+  version = "3.0.10";
   confdir = "/var/lib/${pname}";
 
   plugin = callPackage ./plugin.nix {
@@ -24,7 +24,7 @@ stdenv.mkDerivation rec {
   inherit pname version;
   src = fetchurl {
     url = "https://download.zeek.org/zeek-${version}.tar.gz";
-    sha256 = "1c0pxb2r8fhvnq2zbmw5z5q6asifipj6y5hpcqnsawy3q0ghv244";
+    sha256 = "sha256-VaQ7NIk0Gsxv0ONMgPwfmgZeY+i2hQR0stoYft1CMZ4=";
   };
 
   configureFlags = [

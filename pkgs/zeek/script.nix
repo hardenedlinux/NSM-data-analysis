@@ -38,6 +38,7 @@
    sed -i "1i##! test dns" $PWD/scripts/base/protocols/dns/__load__.zeek
    sed -i "1i##! test ftp" $PWD/scripts/base/protocols/ftp/__load__.zeek
    sed -i "1i##! test http" $PWD/scripts/base/protocols/http/__load__.zeek
+   sed -i "1i##! test http" $PWD/scripts/base/protocols/tunnels/__load__.zeek
    sed -i "1i##! test imap" $PWD/scripts/base/protocols/imap/__load__.zeek
    sed -i "1i##! test irc" $PWD/scripts/base/protocols/irc/__load__.zeek
    sed -i "1i##! test krb" $PWD/scripts/base/protocols/krb/__load__.zeek
