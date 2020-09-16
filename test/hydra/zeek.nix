@@ -4,12 +4,15 @@ let
   ];
 
   pkgs = (import <nixpkgs>) { inherit overlays;};
+  #nixpkgs = (import ~/.config/nixpkgs/nixos/channel/nixpkgs) { };
+  zeekWithSpicy = (pkgs.zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true; Http2Plugin = true; SpicyPlugin = true;});
 in
 {
   hardenedlinux-zeek = pkgs.buildEnv {
     name = "nsm-zeek";
     paths = with pkgs; [
       (zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true; Http2Plugin = true;})
+      zeekWithSpicy
     ];
   };
 }
