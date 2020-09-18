@@ -34,6 +34,7 @@ stdenv.mkDerivation rec {
   ];
   ##for spicy ccache
   HOME = ".";
+
   ZEEK_DIST = "${placeholder "out"}";
 
   nativeBuildInputs = [ cmake flex bison file ] ++ lib.optionals SpicyPlugin [ python38 ];
