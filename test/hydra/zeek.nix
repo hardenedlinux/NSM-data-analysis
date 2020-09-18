@@ -12,7 +12,6 @@ in
     name = "nsm-zeek";
     paths = with pkgs; [
       (zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true; Http2Plugin = true;})
-      zeekWithSpicy
     ];
   };
 }
