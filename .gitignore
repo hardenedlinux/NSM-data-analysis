@@ -7,7 +7,6 @@ jupyterlab
 zeek-log
 #vast
 vast.log
-zeek
 vast.db
 #R
 .RData
