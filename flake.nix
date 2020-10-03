@@ -20,11 +20,13 @@
               overlays = [
                 self.python-packages-overlay
                 self.packages-overlay
-          ];
+              ];
+              config = { allowUnsupportedSystem = true;
+                         allowBroken = true;};
         };
           in
-          {
-            devShell = import ./shell.nix { inherit pkgs; };
+            {
+              devShell = import ./shell.nix { inherit pkgs; };
           }
         )
     );

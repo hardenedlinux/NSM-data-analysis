@@ -1,4 +1,4 @@
-{stdenv, cmake, flex, bison, python38, zlib, llvmPackages_9, fetchFromGitHub, which, ninja}:
+{stdenv, cmake, flex, bison, python38, zlib, llvmPackages_9, fetchFromGitHub, which, ninja, git}:
 
 stdenv.mkDerivation rec {
   version = "master";
@@ -6,9 +6,9 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "zeek";
     repo = "spicy";
-    rev = "193742cd1d197910dbc2b905e1e3ada7d968d480";
+    rev = "abd410f6cbb3398d4f1c1890871cb2ccdf3694db";
     fetchSubmodules = true;
-    sha256 = "sha256-7OaKsiyqLAR/eeVWwT/sk2KZYnI2yqjB4DuQH7b2/to=";
+    sha256 = "sha256-pcioxNO/fis8o1YQEX7qq1+pbxy90AaFw7oE/dVwTMU=";
   };
 
 
@@ -16,6 +16,7 @@ stdenv.mkDerivation rec {
   buildInputs = [ which
                   # ninja
                   python38
+                  git
                   llvmPackages_9.clang-unwrapped
                   llvmPackages_9.llvm
                   llvmPackages_9.lld
