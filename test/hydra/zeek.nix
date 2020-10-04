@@ -11,7 +11,9 @@ in
   hardenedlinux-zeek = pkgs.buildEnv {
     name = "nsm-zeek";
     paths = with pkgs; [
-      (zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true; Http2Plugin = true;})
+      (zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true; Http2Plugin = true;
+                      communityIdPlugin = true; ikev2Plugin = true;
+                    })
     ];
   };
 }
