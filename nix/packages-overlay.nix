@@ -1,9 +1,14 @@
-self: super:
+final: prev:
 {
-  vast = super.callPackage ../pkgs/vast {};
-  broker = super.callPackage ../pkgs/broker {};
-  zeek = super.callPackage ../pkgs/zeek { };
-  spicy = super.callPackage ../pkgs/spicy { stdenv = super.llvmPackages_9.stdenv; };
-  libclx = super.callPackage ../pkgs/pkgs-lib/libclx {};
-  librmm = super.callPackage ../pkgs/pkgs-lib/librmm {};
+  vast = prev.callPackage ../pkgs/vast {};
+  broker = prev.callPackage ../pkgs/broker {};
+  zeek = prev.callPackage ../pkgs/zeek { };
+  spicy = prev.callPackage ../pkgs/spicy { stdenv = prev.llvmPackages_9.stdenv; };
+  libclx = prev.callPackage ../pkgs/pkgs-lib/libclx {};
+  librmm = prev.callPackage ../pkgs/pkgs-lib/librmm {};
+
+  deepsea = prev.callPackage ../pkgs/go/deepsea {};
+  nvdtools = prev.callPackage ../pkgs/go/nvdtools {};
+  sybilhunter = prev.callPackage ../pkgs/go/sybilhunter {};
+  zq = prev.callPackage ../pkgs/go/zq {};
 }

@@ -1,12 +1,12 @@
 { stdenv
 , python3Packages
 , fetchgit
+, callPackage
 }:
-
-
 python3Packages.buildPythonPackage rec {
   pname = "zat";
   version = "master";
+
   src = fetchgit {
     url = "https://github.com/SuperCowPowers/zat.git";
     rev = "d6d015662e8f8e1b2e8c3f540c466187116f1072";
@@ -22,7 +22,7 @@ python3Packages.buildPythonPackage rec {
                                                   watchdog
                                                   numpy
                                                   pyspark
-                                                 ];
+                                                ];
   doCheck = false;
   
   meta = with stdenv.lib; {
