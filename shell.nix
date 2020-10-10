@@ -4,7 +4,7 @@ let
    hardenedlinux-python-packages = (pkgs.python3.withPackages (ps: [
                                                          # ps.pandas
                                                          # ps.beakerx
-                                                         # ps.elastalert
+                                                         ps.elastalert
                                                          # #ps.voila failing with notebook 3.8
                                                          # ps.btest
                                                          # ps.fastai

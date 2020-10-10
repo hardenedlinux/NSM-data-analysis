@@ -67,8 +67,8 @@ python3Packages.buildPythonPackage rec {
   version = "master";
   src = fetchgit {
     url = "https://github.com/Yelp/elastalert";
-    rev = "c6524a3c8dac223a022658f30e5926f5bb124cea";
-    sha256 = "0h8mcbj6fij3byb6sy0m5nlkxx396z2r252xn0v4rds52cvvxnhn";
+    rev = "ea62cf4bd1a62be3616f40992d088e58e2727f40";
+    sha256 = "sha256-cqr22uPHzknaei7iq/8FyGimxgRMf1wujBH8UvxdD8g=";
   };
 
   nativeBuildInputs = [ python3.pkgs.pytest  ];
