@@ -4,14 +4,12 @@ let
                                                          ps.pandas
                                                          ps.beakerx
                                                          ps.elastalert
-                                                         ps.voila
                                                          ps.btest
                                                          ps.fastai
                                                          ps.fastai2
                                                          ps.matplotlib
                                                          ps.Mako
                                                          ps.numpy
-                                                         ps.timesketch
                                                          ps.scikitlearn
                                                          ps.sqlalchemy
                                                          ps.secure
