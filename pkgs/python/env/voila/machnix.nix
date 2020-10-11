@@ -1,16 +1,13 @@
-{pkgs}:
 with builtins;
 let
-  pypi_fetcher_src = import (pkgs.fetchurl {
+  pypi_fetcher_src = builtins.fetchTarball {
     name = "nix-pypi-fetcher";
-    url = "https://github.com/DavHau/nix-pypi-fetcher/archives/0d94c66e7b259f4dba0a7c5121d1f611f93bdfc8.tar.gz";
-    # Hash obtained using Symbol’s value as variable is void: nix-prefetch-url
-    sha256 = "1s1jag3cm2i05jraa9g42hfd3ya1x9ca3zdb2g5nnvzq5x52wwnx";
-  }){inherit pkgs;};
-
-  fetchPypi =  pypi_fetcher_src.fetchPypi;
-  fetchPypiWheel = pypi_fetcher_src.fetchPypiWheel;
-
+    url = "https://github.com/DavHau/nix-pypi-fetcher/tarball/ee15c7ad091761b5e2ca1d26a42974e6bafb1180";
+    # Hash obtained using `nix-prefetch-url --unpack <url>`
+    sha256 = "014vb7x2nrbab82r79cxw44nc0v952z1apbbr0qap2i9p6hqdxxz";
+  };
+  fetchPypi = (import pypi_fetcher_src).fetchPypi;
+  fetchPypiWheel = (import pypi_fetcher_src).fetchPypiWheel;
   try_get = obj: name:
     if hasAttr name obj
     then obj."${name}"
