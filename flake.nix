@@ -11,6 +11,7 @@
     {
       python-packages-overlay = import ./nix/python-packages-overlay.nix;
       packages-overlay = import ./nix/packages-overlay.nix;
+      python37-overlay = import ./nix/python37-overlay.nix;
     }
     //
     (flake-utils.lib.eachDefaultSystem
@@ -25,10 +26,18 @@
               ];
               config = { allowUnsupportedSystem = true;
                          allowBroken = true;};
-        };
+            };
+            pyPkgs = import nixpkgs {
+              inherit system;
+              overlays = [
+                self.python37-overlay
+              ];
+              config = { allowUnsupportedSystem = true;
+                         allowBroken = true;};
+            };
           in
             {
-              devShell = import ./shell.nix { inherit pkgs; };
+              devShell = import ./shell.nix { inherit pkgs pyPkgs; };
           }
         )
     );

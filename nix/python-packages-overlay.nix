@@ -31,7 +31,6 @@ rec {
                   ipwhois = prev.python3Packages.callPackage ../pkgs/python/ipwhois {};
                   secure = prev.python3Packages.callPackage ../pkgs/python/secure {};
                   axelrod = prev.python3Packages.callPackage ../pkgs/python/axelrod {};
-                  voila = prev.python3Packages.callPackage ../pkgs/python/voila {};
                   fastai = prev.python3Packages.callPackage ../pkgs/python/fast-ai {};
                   fastai2 = prev.python3Packages.callPackage ../pkgs/python/fastai2 {};
                   elastalert = prev.python3Packages.callPackage ../pkgs/python/elastalert {};
@@ -43,4 +42,5 @@ rec {
                   #aiohttp = prev.python3Packages.callPackage ../pkgs/python/aiohttp {};
             };
       };
+
 }
