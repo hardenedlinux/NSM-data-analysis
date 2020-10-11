@@ -1,4 +1,3 @@
-
 let
   result = import ./machnix.nix;
   nixpkgs_commit = "441a7da8080352881bb52f85e910d8855e83fc55";
