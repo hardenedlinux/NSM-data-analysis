@@ -37,7 +37,6 @@ rec {
                   jupyter_server = prev.python3Packages.callPackage ../pkgs/python/jupyter-server {};
                   jupyterlab_git =  prev.pythonPackages.callPackage ../pkgs/python/jupyterlab-git {};
                   jupyter_lsp =  prev.python3Packages.callPackage ../pkgs/python/jupyter-lsp {};
-                  timesketch = prev.python3Packages.callPackage ../pkgs/timesketch {};
                   scikitlearn = prev.python3Packages.callPackage ../pkgs/python/scikitlearn {};
                   #aiohttp = prev.python3Packages.callPackage ../pkgs/python/aiohttp {};
             };
