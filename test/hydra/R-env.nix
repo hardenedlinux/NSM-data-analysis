@@ -1,4 +1,3 @@
-{ ... }:
 let
   overlays = [
     (import ../../nix/packages-overlay.nix)

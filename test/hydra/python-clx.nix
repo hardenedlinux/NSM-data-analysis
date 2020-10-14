@@ -10,7 +10,7 @@ in
   hardenedlinux-pkg-python-clx-env = pkgs.buildEnv {
     name = "python-clx";
     paths = with pkgs; [
-      (pkgs.python3.withPackages (ps: [ ps.voila ]))
+      (pkgs.python3.withPackages (ps: [ ps.clx ]))
     ];
   };
 }
