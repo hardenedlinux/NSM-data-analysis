@@ -2,13 +2,12 @@
 { pkgs ? import <nixpkgs> {}}:
 with pkgs;
 let
-      hardenedlinux-python-packages = (pkgs.python3.withPackages (ps: [
+      hardenedlinux-python-packages = (pkgs.python37.withPackages (ps: [
             # ps.pandas
             # ps.beakerx
             # ps.elastalert
             # ps.btest
-            # # ps.fastai
-            # # ps.fastai2 pythnon3.8 failure
+            ps.fastai
             # ps.matplotlib
             # ps.Mako
             # ps.numpy
@@ -67,10 +66,11 @@ let
 in
 mkShell {
       buildInputs = [
-            hardenedlinux-python-packages
+            #hardenedlinux-python-packages
             #timesketch
             #vast
             # broker
+            zeek
             deepsea
             nvdtools
             sybilhunter
