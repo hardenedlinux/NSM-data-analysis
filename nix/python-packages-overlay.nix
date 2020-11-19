@@ -31,8 +31,7 @@ rec {
                   ipwhois = prev.python3Packages.callPackage ../pkgs/python/ipwhois {};
                   secure = prev.python3Packages.callPackage ../pkgs/python/secure {};
                   axelrod = prev.python3Packages.callPackage ../pkgs/python/axelrod {};
-                  fastai = prev.python3Packages.callPackage ../pkgs/python/fast-ai {};
-                  fastai2 = prev.python3Packages.callPackage ../pkgs/python/fastai2 {};
+                  fastai = prev.python3Packages.callPackage ../pkgs/python/fastai {};
                   elastalert = prev.python3Packages.callPackage ../pkgs/python/elastalert {};
                   jupyter_server = prev.python3Packages.callPackage ../pkgs/python/jupyter-server {};
                   jupyterlab_git =  prev.pythonPackages.callPackage ../pkgs/python/jupyterlab-git {};
