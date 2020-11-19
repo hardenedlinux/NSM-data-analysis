@@ -2,7 +2,6 @@ final: prev:
 rec {
       packageOverrides = selfPythonPackages: pythonPackages: {
             beakerx = prev.python3Packages.callPackage ../pkgs/python/beakerx {};
-            #cudf = prev.python3Packages.callPackage ../pkgs/python/cudf {inherit rmm;};
             btest = prev.python3Packages.callPackage ../pkgs/python/btest {};
             rmm = prev.python3Packages.callPackage ../pkgs/python/rmm {};
             clx = prev.python3Packages.callPackage ../pkgs/python/clx { };
@@ -35,7 +34,6 @@ rec {
             jupyter_server = prev.python3Packages.callPackage ../pkgs/python/jupyter-server {};
             jupyterlab_git =  prev.pythonPackages.callPackage ../pkgs/python/jupyterlab-git {};
             jupyter_lsp =  prev.python3Packages.callPackage ../pkgs/python/jupyter-lsp {};
-            scikitlearn = prev.python3Packages.callPackage ../pkgs/python/scikitlearn {};
             #aiohttp = prev.python3Packages.callPackage ../pkgs/python/aiohttp {};
       };
 }
