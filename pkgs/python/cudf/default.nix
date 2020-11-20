@@ -3,7 +3,18 @@
 , fetchgit
 , cudatoolkit
 , linuxPackages
+, spdlog
+, arrow-cpp
+, pyarrow
 }:
+let
+  rmm-src = fetchgit {
+    url = "https://github.com/rapidsai/rmm";
+    rev = "e7f07268373652f9f36f68b284af8ca0637c6e08";
+    sha256 = "sha256-lmACOAJtWIjKWe82GTfD8XOADo+q9nrtNQraJlwPau0=";
+  };
+
+in
 python3Packages.buildPythonPackage rec {
 
   pname = "cudf";
@@ -16,21 +27,20 @@ python3Packages.buildPythonPackage rec {
 
   preConfigure = ''
   export CUDA_HOME=${cudatoolkit}
+  export LD_LIBRARY_PATH=${cudatoolkit}/lib
+
+  ln -s ${rmm-src}//include/rmm cpp/include/rmm
   cd python/cudf
   '';
 
   nativeBuildInputs = [ cudatoolkit  ];
-  buildInputs = [ linuxPackages.nvidia_x11 ];
+  buildInputs = [ linuxPackages.nvidia_x11 spdlog
+                  cudatoolkit arrow-cpp pyarrow
+                 ];
   propagatedBuildInputs = with python3Packages; [ numpy
                                                   versioneer
                                                   setuptools
-                                                  # (cython.overrideDerivation (oldAttrs: {
-                                                  #   src = fetchPypi {
-                                                  #     pname = "Cython";
-                                                  #     version = "0.29.15";
-                                                  #     sha256 = "0c5cjyxfvba6c0vih1fvhywp8bpz30vwvbjqdm1q1k55xzhmkn30";
-                                                  #    };
-                                                  # }))
+                                                  protobuf
                                                   cysignals
                                                   cython
                                                   tables
@@ -39,6 +49,7 @@ python3Packages.buildPythonPackage rec {
                                                   pandas
                                                   numba
                                                   rmm
+                                                  arrow
                                                 ];
   doCheck = false;
   

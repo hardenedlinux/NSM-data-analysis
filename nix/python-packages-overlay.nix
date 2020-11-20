@@ -34,6 +34,7 @@ rec {
             jupyter_server = prev.python3Packages.callPackage ../pkgs/python/jupyter-server {};
             jupyterlab_git =  prev.pythonPackages.callPackage ../pkgs/python/jupyterlab-git {};
             jupyter_lsp =  prev.python3Packages.callPackage ../pkgs/python/jupyter-lsp {};
+            textblob=  prev.python3Packages.callPackage ../pkgs/python/textblob {};
             #aiohttp = prev.python3Packages.callPackage ../pkgs/python/aiohttp {};
       };
 }
