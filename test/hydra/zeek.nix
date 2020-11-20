@@ -3,8 +3,8 @@ let
     (import ../../nix/packages-overlay.nix)
   ];
 
-  pkgs = (import <nixpkgs>) { inherit overlays;};
-  #nixpkgs = (import ~/.config/nixpkgs/nixos/channel/nixpkgs) { };
+  pkgs = (import <nixpkgs>) { inherit overlays;}
+    #nixpkgs = (import ~/.config/nixpkgs/nixos/channel/nixpkgs) { };
   zeekWithSpicy = (pkgs.zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true; Http2Plugin = true; SpicyPlugin = true;});
 in
 {

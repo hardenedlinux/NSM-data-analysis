@@ -2,6 +2,9 @@
 , python3Packages
 , fetchgit
 , cudatoolkit
+, cnmem
+, spdlog
+, linuxPackages
 }:
 
 python3Packages.buildPythonPackage rec {
@@ -10,16 +13,26 @@ python3Packages.buildPythonPackage rec {
   version = "0.2.0";
   src = fetchgit {
     url = "https://github.com/rapidsai/rmm";
-    rev = "83f474b7f222de9e4c8f970cc26c32b94cd9c52b";
-    sha256 = "071m9mh51gmy2y65c4c790zr4fwr0s3fn0p8b77sms20rr0nx4gs";
+    rev = "e7f07268373652f9f36f68b284af8ca0637c6e08";
+    sha256 = "sha256-lmACOAJtWIjKWe82GTfD8XOADo+q9nrtNQraJlwPau0=";
   };
 
-  nativeBuildInputs = [ cudatoolkit  ];
-  propagatedBuildInputs = with python3Packages; [
-                                                     cython
+  nativeBuildInputs = [ cudatoolkit ];
+  propagatedBuildInputs = with python3Packages; [ cython
+                                                  numba
                                                 ];
   doCheck = false;
+
+
+  buildInputs = [ spdlog cnmem cudatoolkit
+                  linuxPackages.nvidia_x11
+                ];
+
   postPatch = ''
+  export CUDA_PATH="${cudatoolkit}"
+  export LD_LIBRARY_PATH=${cudatoolkit}/lib
+
+  ln -s ${cnmem}/include/cnmem.h include/rmm/detail
     cd python
       '';
   meta = with stdenv.lib; {

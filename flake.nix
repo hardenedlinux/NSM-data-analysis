@@ -3,7 +3,7 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "nixpkgs/302ef60620d277fc87a8aa58c5c561b62c925651";
+    nixpkgs.url = "nixpkgs/af787d41a536ccf8f7919e819a53fe476f2b53a7";
     zeek-nix = { url = "github:hardenedlinux/zeek-nix"; flake = false;};
   };
 

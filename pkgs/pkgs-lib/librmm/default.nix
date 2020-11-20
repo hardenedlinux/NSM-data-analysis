@@ -1,12 +1,19 @@
-{stdenv, pkgs, fetchgit, cmake, clang, python3, cudatoolkit}:
+{stdenv, pkgs, fetchgit, cmake, python3, cudatoolkit }:
+let
+  cnmem = fetchgit {
+    url = "https://github.com/NVIDIA/cnmem";
+    rev = "37896cc9bfc6536a8c878a1e675835c22d827821";
+    sha256 = "sha256-Xpr0idhBhCxFC0yDWpZwwD29FRMGdTrD5RzgluwuonM=";
+  };
 
+in
 stdenv.mkDerivation rec {
   version = "master";
   name = "librmm";
   src = fetchgit {
     url = "https://github.com/rapidsai/rmm";
-    rev = "cfbb2975f96bced32ad9cd2d8e6cfb7bb00701f1";
-    sha256 = "sha256-o5E4IadrX6lpj1qCe+uWBPvXIxiN1PixiOpcvHfn4qU=";
+    rev = "1bcc7b1f4f757fc79d4d20fbfd4a688eac5cab61";
+    sha256 = "sha256-nUoOZmTxtHcyFY5CTBRevxAkOkfsp5G1tJPanypXZTc=";
   };
 
   configurePhase = ''
@@ -15,8 +22,8 @@ stdenv.mkDerivation rec {
   export INSTALL_PREFIX=$out
   bash ./build.sh -n librmm
   '';
-  nativeBuildInputs = [ cmake cudatoolkit python3 clang ];
-  buildInputs = [ cmake ];
+  nativeBuildInputs = [ cmake  ];
+  buildInputs = [ cudatoolkit python3 ];
 
   enableParallelBuilding = true;
 

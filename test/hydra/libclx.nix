@@ -8,7 +8,8 @@ in {
   hardenedlinux-pkgs-libclx = pkgs.buildEnv {
     name = "nsm-libclx";
     paths = with pkgs; [
-      pkgs.libclx
+      #pkgs.libclx
+      pkgs.cnmem
     ];
   };
 }

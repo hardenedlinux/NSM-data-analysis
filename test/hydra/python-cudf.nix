@@ -1,9 +1,10 @@
 let
   overlays = [
     (import ../../nix/python-packages-overlay.nix)
+    (import ../../nix/packages-overlay.nix)
   ];
 
-  pkgs = import <nixpkgs-test> {inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
+  pkgs = import <nixpkgs> {inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
   
 in
 {
