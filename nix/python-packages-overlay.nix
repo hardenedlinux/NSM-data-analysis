@@ -2,6 +2,7 @@ final: prev:
 rec {
       packageOverrides = selfPythonPackages: pythonPackages: {
             beakerx = prev.python3Packages.callPackage ../pkgs/python/beakerx {};
+            zqd = prev.python3Packages.callPackage ../pkgs/python/zqd {};
             btest = prev.python3Packages.callPackage ../pkgs/python/btest {};
             rmm = prev.python3Packages.callPackage ../pkgs/python/rmm {};
             clx = prev.python3Packages.callPackage ../pkgs/python/clx { };
