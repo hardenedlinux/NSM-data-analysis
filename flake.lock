@@ -34,7 +34,24 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
+        "vast": "vast",
         "zeek-nix": "zeek-nix"
+      }
+    },
+    "vast": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1607952675,
+        "narHash": "sha256-HbaWail8v7zMiZISvGRP6s3AWhGsdK1SLMUEiob8Tq4=",
+        "owner": "tenzir",
+        "repo": "vast",
+        "rev": "eac68316f0d4e28b97d9f0722b64b8ea2157e7c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tenzir",
+        "repo": "vast",
+        "type": "github"
       }
     },
     "zeek-nix": {

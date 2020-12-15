@@ -1,7 +1,7 @@
 final: prev:
 {
-  vast = prev.callPackage ../pkgs/vast {};
-  broker = prev.callPackage ../pkgs/broker {};
+  #vast = prev.callPackage ../pkgs/vast {};
+  #broker = prev.callPackage ../pkgs/broker {};
   zeek = prev.callPackage ../pkgs/zeek/nix { };
   spicy = prev.callPackage ../pkgs/spicy { stdenv = prev.llvmPackages_9.stdenv; };
   libclx = prev.callPackage ../pkgs/pkgs-lib/libclx {};
