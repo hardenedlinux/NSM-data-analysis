@@ -1,15 +1,3 @@
-[submodule "3rdparty/honeygrove"]
-	path = 3rdparty/honeygrove
-	url = https://github.com/GTrunSec/honeygrove.git
-[submodule "3rdparty/HackingNeuralNetworks"]
-	path = 3rdparty/HackingNeuralNetworks
-	url = https://github.com/GTrunSec/HackingNeuralNetworks.git
-[submodule "3rdparty/PasteHunter"]
-	path = 3rdparty/PasteHunter
-	url = https://github.com/GTrunSec/PasteHunter.git
-[submodule "3rdparty/spiderfoot"]
-	path = 3rdparty/spiderfoot
-	url = https://github.com/GTrunSec/spiderfoot.git
 [submodule "pkgs/zeek"]
 	path = pkgs/zeek
 	url = https://github.com/hardenedlinux/zeek-nix.git

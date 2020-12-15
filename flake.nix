@@ -15,23 +15,28 @@
     }
     //
     (flake-utils.lib.eachDefaultSystem
-        (system:
-          let
-            pkgs = import nixpkgs {
-              inherit system;
-              overlays = [
-                self.python-packages-overlay
-                self.packages-overlay
-                (import (zeek-nix + "/overlay.nix"))
-                (import (vast + "/nix/overlay.nix"))
-              ];
-              config = { allowUnsupportedSystem = true;
-                         allowBroken = true;};
+      (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [
+              self.python-packages-overlay
+              self.packages-overlay
+              (import (zeek-nix + "/overlay.nix"))
+              (import (vast + "/nix/overlay.nix"))
+            ];
+            config = { allowUnsupportedSystem = true;
+                       allowBroken = true;};
+          };
+        in
+          {
+            devShell = import ./shell.nix { inherit pkgs;};
+            packages = {
+              inherit (pkgs)
+                zeek
+                vast;
             };
-           in
-            {
-              devShell = import ./shell.nix { inherit pkgs;};
           }
-        )
+      )
     );
-  }
+}
