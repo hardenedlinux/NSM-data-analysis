@@ -17,6 +17,12 @@ python3Packages.buildPythonPackage rec {
                                                   mock
                                                   lxml
                                                 ];
+
+  postPatch = ''
+    substituteInPlace setup.py \
+        --replace "py4j==0.10.9" "py4j"
+    '';
+
   doCheck = false;
   
   meta = with stdenv.lib; {

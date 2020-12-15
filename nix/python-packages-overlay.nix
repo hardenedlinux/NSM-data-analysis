@@ -13,14 +13,11 @@ rec {
             service_identity = prev.python3Packages.callPackage ../pkgs/python/service_identity {};
             editdistance = prev.python3Packages.callPackage ../pkgs/python/editdistance {};
             IPy = prev.python3Packages.callPackage ../pkgs/python/IPy {};
-            #networkx = prev.python3Packages.callPackage ../pkgs/python/networkx {};
-            #netaddr = prev.python3Packages.callPackage ../pkgs/python/netaddr {};
             tldextract = prev.python3Packages.callPackage ../pkgs/python/tldextract {};
             pyshark = prev.python3Packages.callPackage ../pkgs/python/pyshark {};
             cefpython3 = prev.python3Packages.callPackage ../pkgs/python/cefpython3 {};
             pyvis = prev.python3Packages.callPackage ../pkgs/python/pyvis {};
             yarapython = prev.python3Packages.callPackage ../pkgs/python/yara-python {};
-            #pyOpenSSL = prev.python3Packages.callPackage ../pkgs/python/pyOpenSSL {};
             python-pptx = prev.python3Packages.callPackage ../pkgs/python/python-pptx {};
             adblockparser = prev.python3Packages.callPackage ../pkgs/python/adblockparser {};
             python-whois = prev.python3Packages.callPackage ../pkgs/python/python-whois {};
@@ -35,7 +32,7 @@ rec {
             jupyter_server = prev.python3Packages.callPackage ../pkgs/python/jupyter-server {};
             jupyterlab_git =  prev.pythonPackages.callPackage ../pkgs/python/jupyterlab-git {};
             jupyter_lsp =  prev.python3Packages.callPackage ../pkgs/python/jupyter-lsp {};
-            textblob=  prev.python3Packages.callPackage ../pkgs/python/textblob {};
+            textblob =  prev.python3Packages.callPackage ../pkgs/python/textblob {};
             #aiohttp = prev.python3Packages.callPackage ../pkgs/python/aiohttp {};
       };
 }
