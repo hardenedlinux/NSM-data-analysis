@@ -1,15 +1,33 @@
-{ stdenv, fetchFromGitHub, cmake, pandoc, gcc, caf, pkgconfig, arrow-cpp, openssl, doxygen, libpcap
-, flatbuffers, libyamlcpp, jemalloc
-, gperftools, clang, git, python3Packages, jq, tcpdump, lib, callPackage
+{ stdenv
+, fetchFromGitHub
+, cmake
+, pandoc
+, gcc
+, caf
+, pkgconfig
+, arrow-cpp
+, openssl
+, doxygen
+, libpcap
+, flatbuffers
+, libyamlcpp
+, jemalloc
+, gperftools
+, clang
+, git
+, python3Packages
+, jq
+, tcpdump
+, lib
+, callPackage
 , static ? stdenv.hostPlatform.isMusl
 , disableTests ? true
 }:
-
 let
-  broker = callPackage ../broker {};
+  broker = callPackage ../broker { };
   sCross = stdenv.buildPlatform != stdenv.hostPlatform;
 
-  python = python3Packages.python.withPackages( ps: with ps; [
+  python = python3Packages.python.withPackages (ps: with ps; [
     coloredlogs
     jsondiff
     pyarrow
@@ -18,7 +36,6 @@ let
   ]);
 
 in
-
 stdenv.mkDerivation rec {
   version = "2020.09.30";
   name = "vast";
@@ -30,10 +47,23 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-ZnF4/0SyJ2V0yCyWPLdWgeN5ytFURw+EfRizuqLLgvI=";
   };
 
-  nativeBuildInputs = [ cmake pkgconfig openssl arrow-cpp caf];
+  nativeBuildInputs = [ cmake pkgconfig openssl arrow-cpp caf ];
 
-  buildInputs = [ cmake gcc caf arrow-cpp openssl doxygen libpcap pandoc
-                  gperftools flatbuffers libyamlcpp jemalloc broker ];
+  buildInputs = [
+    cmake
+    gcc
+    caf
+    arrow-cpp
+    openssl
+    doxygen
+    libpcap
+    pandoc
+    gperftools
+    flatbuffers
+    libyamlcpp
+    jemalloc
+    broker
+  ];
 
   cmakeFlags = [
     "-DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc"

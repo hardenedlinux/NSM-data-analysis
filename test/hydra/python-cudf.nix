@@ -4,8 +4,8 @@ let
     (import ../../nix/packages-overlay.nix)
   ];
 
-  pkgs = import <nixpkgs> {inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
-  
+  pkgs = import <nixpkgs> { inherit overlays; config = { allowUnfree = true; allowBroken = true; }; };
+
 in
 {
   hardenedlinux-pkg-python-clx-env = pkgs.buildEnv {

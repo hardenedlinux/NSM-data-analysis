@@ -10,12 +10,14 @@ python3Packages.buildPythonPackage rec {
   src = fetchurl {
     url = "https://github.com/john-kurkowski/tldextract/archive/${version}.tar.gz";
     sha256 = "137hwn7q3nblgcd985lbr2ia02aa5r08zh8r748ifwjqzf50xid2";
-  };  
+  };
 
-  propagatedBuildInputs = with python3Packages; [requests
-                                                requests-file];
+  propagatedBuildInputs = with python3Packages; [
+    requests
+    requests-file
+  ];
   doCheck = false;
-  
+
   meta = with stdenv.lib; {
     description = "Accurately separate the TLD from the registered domain and subdomains of a URL, using the Public Suffix List.";
     homepage = "https://github.com/john-kurkowski/tldextract/releases";

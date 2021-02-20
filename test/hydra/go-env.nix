@@ -3,10 +3,11 @@ let
     (import ../../nix/packages-overlay.nix)
   ];
 
-  pkgs = import <nixpkgs> {inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
-  hardenedlinux-pkgs-go =  (import ../../pkgs/go.nix {inherit pkgs;});
+  pkgs = import <nixpkgs> { inherit overlays; config = { allowUnfree = true; allowBroken = true; }; };
+  hardenedlinux-pkgs-go = (import ../../pkgs/go.nix { inherit pkgs; });
 
-in {
+in
+{
   hardenedlinux-pkgs-vast = pkgs.buildEnv {
     name = "nsm-vast";
     paths = with pkgs; [

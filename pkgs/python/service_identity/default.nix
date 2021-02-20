@@ -13,13 +13,14 @@ python3Packages.buildPythonPackage rec {
   };
 
 
-  propagatedBuildInputs = with python3Packages; [ bcrypt
-                                                  pyopenssl
-                                                  pyasn1-modules
-                                                  attrs
-                                                ];
+  propagatedBuildInputs = with python3Packages; [
+    bcrypt
+    pyopenssl
+    pyasn1-modules
+    attrs
+  ];
   doCheck = false;
-  
+
   meta = with stdenv.lib; {
     description = "Service identity verification for pyOpenSSL & cryptography.";
     homepage = "https://service-identity.readthedocs.io/en/stable/";

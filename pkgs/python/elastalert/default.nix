@@ -3,9 +3,8 @@
 , fetchgit
 , python3
 }:
-
 let
-    aws-requests-auth = python3Packages.buildPythonPackage rec {
+  aws-requests-auth = python3Packages.buildPythonPackage rec {
     pname = "aws-requests-auth";
     version = "0.4.2";
     src = python3Packages.fetchPypi {
@@ -14,9 +13,9 @@ let
     };
     doCheck = false;
     propagatedBuildInputs = with python3Packages; [ requests ];
-    };
+  };
 
-    exotel = python3Packages.buildPythonPackage rec {
+  exotel = python3Packages.buildPythonPackage rec {
     pname = "exotel";
     version = "0.1.5";
     src = python3Packages.fetchPypi {
@@ -24,10 +23,10 @@ let
       sha256 = "1x3bhkpablbm6ps897db1ylkyyax0xf7gik4fd2xl575b6vf95nv";
     };
     doCheck = false;
-    propagatedBuildInputs = with python3Packages; [  ];
-    };
+    propagatedBuildInputs = with python3Packages; [ ];
+  };
 
-    PyStaticConfiguration = python3Packages.buildPythonPackage rec {
+  PyStaticConfiguration = python3Packages.buildPythonPackage rec {
     pname = "PyStaticConfiguration";
     version = "0.10.5";
     src = python3Packages.fetchPypi {
@@ -36,9 +35,9 @@ let
     };
     doCheck = false;
     propagatedBuildInputs = with python3Packages; [ six ];
-    };
+  };
 
-    envparse = python3Packages.buildPythonPackage rec {
+  envparse = python3Packages.buildPythonPackage rec {
     pname = "envparse";
     version = "0.2.0";
     src = python3Packages.fetchPypi {
@@ -46,19 +45,19 @@ let
       sha256 = "1dvf0m2jc49s3150b6hwi644apn0zq3g1bdl9q97zljmpckrlfsg";
     };
     doCheck = false;
-    propagatedBuildInputs = with python3Packages; [  ];
-    };
+    propagatedBuildInputs = with python3Packages; [ ];
+  };
 
-    stomp-py = python3Packages.buildPythonPackage rec {
-      pname = "stomp.py";
-      version = "6.0.0";
-      src = python3Packages.fetchPypi {
-        inherit pname version;
-        sha256 = "06y0qcmxbsmdc4z9pldqfr14df0yl4li165vn2c8wa5akbp9yqsf";
-      };
-      doCheck = false;
-      propagatedBuildInputs = with python3Packages; [ docopt ];
+  stomp-py = python3Packages.buildPythonPackage rec {
+    pname = "stomp.py";
+    version = "6.0.0";
+    src = python3Packages.fetchPypi {
+      inherit pname version;
+      sha256 = "06y0qcmxbsmdc4z9pldqfr14df0yl4li165vn2c8wa5akbp9yqsf";
     };
+    doCheck = false;
+    propagatedBuildInputs = with python3Packages; [ docopt ];
+  };
 
 in
 python3Packages.buildPythonPackage rec {
@@ -71,40 +70,41 @@ python3Packages.buildPythonPackage rec {
     sha256 = "sha256-cqr22uPHzknaei7iq/8FyGimxgRMf1wujBH8UvxdD8g=";
   };
 
-  nativeBuildInputs = [ python3.pkgs.pytest  ];
-  propagatedBuildInputs = with python3Packages; [    APScheduler
-                                                     aws-requests-auth
-                                                     blist
-                                                     boto3
-                                                     cffi
-                                                     configparser
-                                                     croniter
-                                                     elasticsearch
-                                                     envparse
-                                                     exotel
-                                                     jira
-                                                     jsonschema
-                                                     mock
-                                                     prison
-                                                     PyStaticConfiguration
-                                                     python-dateutil
-                                                     python_magic
-                                                     pyyaml
-                                                     requests
-                                                     stomp-py
-                                                     texttable
-                                                     twilio
+  nativeBuildInputs = [ python3.pkgs.pytest ];
+  propagatedBuildInputs = with python3Packages; [
+    APScheduler
+    aws-requests-auth
+    blist
+    boto3
+    cffi
+    configparser
+    croniter
+    elasticsearch
+    envparse
+    exotel
+    jira
+    jsonschema
+    mock
+    prison
+    PyStaticConfiguration
+    python-dateutil
+    python_magic
+    pyyaml
+    requests
+    stomp-py
+    texttable
+    twilio
 
-                                                ];
+  ];
   doCheck = false;
 
   postPatch = ''
-  substituteInPlace setup.py \
-  --replace "python-dateutil>=2.6.0,<2.7.0" "python-dateutil" \
-  --replace "elasticsearch==7.0.0" "elasticsearch" \
-  --replace "twilio>=6.0.0,<6.1" "twilio"
+    substituteInPlace setup.py \
+    --replace "python-dateutil>=2.6.0,<2.7.0" "python-dateutil" \
+    --replace "elasticsearch==7.0.0" "elasticsearch" \
+    --replace "twilio>=6.0.0,<6.1" "twilio"
 
-      '';
+  '';
   meta = with stdenv.lib; {
     description = "Easy & Flexible Alerting With ElasticSearch";
     homepage = "https://github.com/Yelp/elastalert";

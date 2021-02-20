@@ -15,20 +15,21 @@ python3Packages.buildPythonPackage rec {
     sha256 = "0mnh57p4jc9bjczbkyqqzfy4mpzdqz1ypmam2lyh61p0xrgqrvsr";
   };
 
-  nativeBuildInputs = [ python3.pkgs.pytest  ];
-  propagatedBuildInputs = with python3Packages; [    confluent-kafka
-                                                     cython
-                                                     transformers
-                                                     requests
-                                                     mockito
-                                                     python-whois
-                                                ];
+  nativeBuildInputs = [ python3.pkgs.pytest ];
+  propagatedBuildInputs = with python3Packages; [
+    confluent-kafka
+    cython
+    transformers
+    requests
+    mockito
+    python-whois
+  ];
   doCheck = false;
 
   postPatch = ''
     cd python
     pytest
-      '';
+  '';
   meta = with stdenv.lib; {
     description = "A collection of RAPIDS examples for security analysts, data scientists, and engineers to quickly get started applying RAPIDS and GPU acceleration to real-world cybersecurity use cases.
 ";

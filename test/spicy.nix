@@ -1,5 +1,5 @@
 let
-  pkgs = (import ../nix/nixpkgs.nix ) {};
+  pkgs = (import ../nix/nixpkgs.nix) { };
 in
 with pkgs;
 pkgs.stdenv.mkDerivation rec {
@@ -14,15 +14,21 @@ pkgs.stdenv.mkDerivation rec {
   };
 
 
-  nativeBuildInputs = with pkgs;[ cmake flex bison  python38 zlib
-                                  llvmPackages_9.clang-unwrapped llvmPackages_9.llvm
-                                ];
+  nativeBuildInputs = with pkgs;[
+    cmake
+    flex
+    bison
+    python38
+    zlib
+    llvmPackages_9.clang-unwrapped
+    llvmPackages_9.llvm
+  ];
   buildInputs = [ which llvmPackages_9.lld ];
 
   preConfigure = ''
-   patchShebangs ./scripts/autogen-type-erased
-   patchShebangs ./scripts/autogen-dispatchers
-'';
+    patchShebangs ./scripts/autogen-type-erased
+    patchShebangs ./scripts/autogen-dispatchers
+  '';
 
 
   cmakeFlags = [

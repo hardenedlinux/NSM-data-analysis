@@ -11,26 +11,26 @@ let
   try_get = obj: name:
     if hasAttr name obj
     then obj."${name}"
-    else [];
+    else [ ];
   is_py_module = pkg:
     isAttrs pkg && hasAttr "pythonModule" pkg;
   filter_deps = oldAttrs: inputs_type:
     filter (pkg: ! is_py_module pkg) (try_get oldAttrs inputs_type);
   override = pkg:
     if hasAttr "overridePythonAttrs" pkg then
-        pkg.overridePythonAttrs
+      pkg.overridePythonAttrs
     else
-        pkg.overrideAttrs;
+      pkg.overrideAttrs;
   get_passthru = python: pname:
-    if hasAttr "${pname}" python then 
-      let result = (tryEval 
+    if hasAttr "${pname}" python then
+      let result = (tryEval
         (if isNull python."${pname}" then
-          {}
+          { }
         else
-          python."${pname}".passthru)); 
+          python."${pname}".passthru));
       in
-        if result.success then result.value else {}
-    else {};
+      if result.success then result.value else { }
+    else { };
   select_pkgs = ps: [
     ps."bqplot"
     ps."ipympl"
@@ -374,7 +374,7 @@ let
       passthru = (get_passthru python-super "kiwisolver") // { provider = "wheel"; };
       nativeBuildInputs = [ autoPatchelfHook ];
       autoPatchelfIgnoreNotFound = true;
-      propagatedBuildInputs = with python-self; manylinux1 ++ [  ];
+      propagatedBuildInputs = with python-self; manylinux1 ++ [ ];
     };
     "markupsafe" = python-self.buildPythonPackage {
       pname = "markupsafe";
@@ -387,7 +387,7 @@ let
       passthru = (get_passthru python-super "markupsafe") // { provider = "wheel"; };
       nativeBuildInputs = [ autoPatchelfHook ];
       autoPatchelfIgnoreNotFound = true;
-      propagatedBuildInputs = with python-self; manylinux1 ++ [  ];
+      propagatedBuildInputs = with python-self; manylinux1 ++ [ ];
     };
     "matplotlib" = python-self.buildPythonPackage {
       pname = "matplotlib";
@@ -477,7 +477,7 @@ let
       passthru = (get_passthru python-super "numpy") // { provider = "wheel"; };
       nativeBuildInputs = [ autoPatchelfHook ];
       autoPatchelfIgnoreNotFound = true;
-      propagatedBuildInputs = with python-self; manylinux1 ++ [  ];
+      propagatedBuildInputs = with python-self; manylinux1 ++ [ ];
     };
     "packaging" = python-self.buildPythonPackage {
       pname = "packaging";
@@ -503,7 +503,7 @@ let
       autoPatchelfIgnoreNotFound = true;
       propagatedBuildInputs = with python-self; manylinux1 ++ [ numpy python-dateutil pytz ];
     };
-    "pandocfilters" = override python-super.pandocfilters ( oldAttrs: {
+    "pandocfilters" = override python-super.pandocfilters (oldAttrs: {
       pname = "pandocfilters";
       version = "1.4.2";
       passthru = (get_passthru python-super "pandocfilters") // { provider = "sdist"; };
@@ -553,7 +553,7 @@ let
       passthru = (get_passthru python-super "pillow") // { provider = "wheel"; };
       nativeBuildInputs = [ autoPatchelfHook ];
       autoPatchelfIgnoreNotFound = true;
-      propagatedBuildInputs = with python-self; manylinux1 ++ [  ];
+      propagatedBuildInputs = with python-self; manylinux1 ++ [ ];
     };
     "prometheus_client" = python-self.buildPythonPackage {
       pname = "prometheus-client";
@@ -616,7 +616,7 @@ let
       dontStrip = true;
       passthru = (get_passthru python-super "pyparsing") // { provider = "wheel"; };
     };
-    "pyrsistent" = override python-super.pyrsistent ( oldAttrs: {
+    "pyrsistent" = override python-super.pyrsistent (oldAttrs: {
       pname = "pyrsistent";
       version = "0.17.3";
       passthru = (get_passthru python-super "pyrsistent") // { provider = "sdist"; };
@@ -667,7 +667,7 @@ let
       passthru = (get_passthru python-super "pyzmq") // { provider = "wheel"; };
       nativeBuildInputs = [ autoPatchelfHook ];
       autoPatchelfIgnoreNotFound = true;
-      propagatedBuildInputs = with python-self; manylinux1 ++ [  ];
+      propagatedBuildInputs = with python-self; manylinux1 ++ [ ];
     };
     "requests" = python-self.buildPythonPackage {
       pname = "requests";
@@ -703,7 +703,7 @@ let
       dontStrip = true;
       passthru = (get_passthru python-super "send2trash") // { provider = "wheel"; };
     };
-    "setuptools" = override python-super.setuptools ( oldAttrs: {
+    "setuptools" = override python-super.setuptools (oldAttrs: {
       pname = "setuptools";
       version = "47.3.1";
       passthru = (get_passthru python-super "setuptools") // { provider = "nixpkgs"; };
@@ -741,7 +741,7 @@ let
       dontStrip = true;
       passthru = (get_passthru python-super "testpath") // { provider = "wheel"; };
     };
-    "tornado" = override python-super.tornado ( oldAttrs: {
+    "tornado" = override python-super.tornado (oldAttrs: {
       pname = "tornado";
       version = "6.0.4";
       passthru = (get_passthru python-super "tornado") // { provider = "sdist"; };

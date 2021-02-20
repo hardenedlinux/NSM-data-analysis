@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, python3 , python3Packages}:
+{ stdenv, fetchFromGitHub, python3, python3Packages }:
 with python3.pkgs;
 let
   fastcore = python3Packages.buildPythonPackage rec {
@@ -29,12 +29,12 @@ let
     };
     doCheck = false;
 
-    propagatedBuildInputs = with python3Packages; [ numpy
-                                                  ];
+    propagatedBuildInputs = with python3Packages; [
+      numpy
+    ];
   };
 
 in
-
 python3Packages.buildPythonPackage rec {
   pname = "fastai2";
   version = "2.1.5";
@@ -46,15 +46,25 @@ python3Packages.buildPythonPackage rec {
     sha256 = "sha256-1eO95riB+ffiCORgOyb5I5im8KlJRuIBlGQU/nBt7y0=";
   };
 
-  propagatedBuildInputs = with python3Packages; [ pytorch
-                                                  torchvision matplotlib pandas requests pyyaml
-                                                  pillow scikitlearn scipy spacy fastcore fastprogress
-                                                ];
+  propagatedBuildInputs = with python3Packages; [
+    pytorch
+    torchvision
+    matplotlib
+    pandas
+    requests
+    pyyaml
+    pillow
+    scikitlearn
+    scipy
+    spacy
+    fastcore
+    fastprogress
+  ];
 
   postPatch = ''
-        substituteInPlace settings.ini \
-         --replace "torch>=1.7.0" "torch" \
-         --replace "torchvision>=0.8" "torchvision"
+    substituteInPlace settings.ini \
+     --replace "torch>=1.7.0" "torch" \
+     --replace "torchvision>=0.8" "torchvision"
   '';
   dontUseSetuptoolsCheck = true;
 

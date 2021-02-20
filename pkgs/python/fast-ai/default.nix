@@ -3,7 +3,6 @@
 , python3
 , fetchFromGitHub
 }:
-
 let
   nvidia-ml-py3 = python3Packages.buildPythonPackage rec {
     pname = "nvidia-ml-py3";
@@ -15,7 +14,7 @@ let
     doCheck = false;
 
     propagatedBuildInputs = with python3Packages; [
-                                                  ];
+    ];
   };
 
   fastprogress = python3Packages.buildPythonPackage rec {
@@ -28,9 +27,9 @@ let
     doCheck = false;
 
     propagatedBuildInputs = with python3Packages; [
-                                                  ];
+    ];
   };
-  in
+in
 with python3.pkgs;
 python3Packages.buildPythonPackage rec {
   pname = "fastai";
@@ -40,14 +39,15 @@ python3Packages.buildPythonPackage rec {
     sha256 = "1h96nkn02zbn6qd2nkfxkhbx6jspgj9y7d9cx6p645573f2cajza";
   };
   doCheck = false;
-  propagatedBuildInputs = with python3Packages; [ pyarrow
-                                                  scikitimage
-                                                  pytest
-                                                  pytestrunner
-                                                  fastprogress
-                                                  torchvision
-                                                  nvidia-ml-py3
-                                                  spacy
-                                                  pytorch
-                                                ];
+  propagatedBuildInputs = with python3Packages; [
+    pyarrow
+    scikitimage
+    pytest
+    pytestrunner
+    fastprogress
+    torchvision
+    nvidia-ml-py3
+    spacy
+    pytorch
+  ];
 }

@@ -3,9 +3,9 @@ let
     (import ../../nix/python-packages-overlay.nix)
   ];
 
-  hardenedlinux-pkgs-python = (import ../../pkgs/python.nix {inherit pkgs ;});
-  pkgs = import <nixpkgs> {inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
-  
+  hardenedlinux-pkgs-python = (import ../../pkgs/python.nix { inherit pkgs; });
+  pkgs = import <nixpkgs> { inherit overlays; config = { allowUnfree = true; allowBroken = true; }; };
+
 in
 {
   hardenedlinux-pkg-python-env = pkgs.buildEnv {

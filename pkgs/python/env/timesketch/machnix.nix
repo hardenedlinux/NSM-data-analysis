@@ -11,26 +11,26 @@ let
   try_get = obj: name:
     if hasAttr name obj
     then obj."${name}"
-    else [];
+    else [ ];
   is_py_module = pkg:
     isAttrs pkg && hasAttr "pythonModule" pkg;
   filter_deps = oldAttrs: inputs_type:
     filter (pkg: ! is_py_module pkg) (try_get oldAttrs inputs_type);
   override = pkg:
     if hasAttr "overridePythonAttrs" pkg then
-        pkg.overridePythonAttrs
+      pkg.overridePythonAttrs
     else
-        pkg.overrideAttrs;
+      pkg.overrideAttrs;
   get_passthru = python: pname:
-    if hasAttr "${pname}" python then 
-      let result = (tryEval 
+    if hasAttr "${pname}" python then
+      let result = (tryEval
         (if isNull python."${pname}" then
-          {}
+          { }
         else
-          python."${pname}".passthru)); 
+          python."${pname}".passthru));
       in
-        if result.success then result.value else {}
-    else {};
+      if result.success then result.value else { }
+    else { };
   select_pkgs = ps: [
     ps."alembic"
     ps."altair"
@@ -276,7 +276,7 @@ let
       passthru = (get_passthru python-super "flask") // { provider = "wheel"; };
       propagatedBuildInputs = with python-self; [ click itsdangerous jinja2 werkzeug ];
     };
-    "flask-bcrypt" = override python-super.flask-bcrypt ( oldAttrs: {
+    "flask-bcrypt" = override python-super.flask-bcrypt (oldAttrs: {
       pname = "flask-bcrypt";
       version = "0.7.1";
       passthru = (get_passthru python-super "flask-bcrypt") // { provider = "sdist"; };
@@ -318,7 +318,7 @@ let
       passthru = (get_passthru python-super "flask-restful") // { provider = "wheel"; };
       propagatedBuildInputs = with python-self; [ aniso8601 flask pytz six ];
     };
-    "flask_script" = override python-super.flask_script ( oldAttrs: {
+    "flask_script" = override python-super.flask_script (oldAttrs: {
       pname = "flask-script";
       version = "2.0.6";
       passthru = (get_passthru python-super "flask_script") // { provider = "sdist"; };
@@ -479,7 +479,7 @@ let
       passthru = (get_passthru python-super "markupsafe") // { provider = "wheel"; };
       nativeBuildInputs = [ autoPatchelfHook ];
       autoPatchelfIgnoreNotFound = true;
-      propagatedBuildInputs = with python-self; manylinux1 ++ [  ];
+      propagatedBuildInputs = with python-self; manylinux1 ++ [ ];
     };
     "neo4jrestclient" = python-self.buildPythonPackage {
       pname = "neo4jrestclient";
@@ -501,7 +501,7 @@ let
       passthru = (get_passthru python-super "numpy") // { provider = "wheel"; };
       nativeBuildInputs = [ autoPatchelfHook ];
       autoPatchelfIgnoreNotFound = true;
-      propagatedBuildInputs = with python-self; manylinux1 ++ [  ];
+      propagatedBuildInputs = with python-self; manylinux1 ++ [ ];
     };
     "oauthlib" = python-self.buildPythonPackage {
       pname = "oauthlib";
@@ -526,7 +526,7 @@ let
       autoPatchelfIgnoreNotFound = true;
       propagatedBuildInputs = with python-self; manylinux1 ++ [ numpy python-dateutil pytz ];
     };
-    "pip" = override python-super.pip ( oldAttrs: {
+    "pip" = override python-super.pip (oldAttrs: {
       pname = "pip";
       version = "20.1.1";
       passthru = (get_passthru python-super "pip") // { provider = "nixpkgs"; };
@@ -596,7 +596,7 @@ let
       passthru = (get_passthru python-super "pymisp") // { provider = "wheel"; };
       propagatedBuildInputs = with python-self; [ deprecated jsonschema python-dateutil requests ];
     };
-    "pyrsistent" = override python-super.pyrsistent ( oldAttrs: {
+    "pyrsistent" = override python-super.pyrsistent (oldAttrs: {
       pname = "pyrsistent";
       version = "0.17.3";
       passthru = (get_passthru python-super "pyrsistent") // { provider = "sdist"; };
@@ -646,7 +646,7 @@ let
       dontStrip = true;
       passthru = (get_passthru python-super "pytz") // { provider = "wheel"; };
     };
-    "pyyaml" = override python-super.pyyaml ( oldAttrs: {
+    "pyyaml" = override python-super.pyyaml (oldAttrs: {
       pname = "pyyaml";
       version = "5.3.1";
       passthru = (get_passthru python-super "pyyaml") // { provider = "sdist"; };
@@ -697,7 +697,7 @@ let
       passthru = (get_passthru python-super "rsa") // { provider = "wheel"; };
       propagatedBuildInputs = with python-self; [ pyasn1 ];
     };
-    "setuptools" = override python-super.setuptools ( oldAttrs: {
+    "setuptools" = override python-super.setuptools (oldAttrs: {
       pname = "setuptools";
       version = "47.3.1";
       passthru = (get_passthru python-super "setuptools") // { provider = "nixpkgs"; };
@@ -736,7 +736,7 @@ let
       passthru = (get_passthru python-super "sqlalchemy") // { provider = "wheel"; };
       nativeBuildInputs = [ autoPatchelfHook ];
       autoPatchelfIgnoreNotFound = true;
-      propagatedBuildInputs = with python-self; manylinux1 ++ [  ];
+      propagatedBuildInputs = with python-self; manylinux1 ++ [ ];
     };
     "tabulate" = python-self.buildPythonPackage {
       pname = "tabulate";
@@ -748,7 +748,7 @@ let
       dontStrip = true;
       passthru = (get_passthru python-super "tabulate") // { provider = "wheel"; };
     };
-    "toolz" = override python-super.toolz ( oldAttrs: {
+    "toolz" = override python-super.toolz (oldAttrs: {
       pname = "toolz";
       version = "0.10.0";
       passthru = (get_passthru python-super "toolz") // { provider = "sdist"; };
@@ -786,7 +786,7 @@ let
       dontStrip = true;
       passthru = (get_passthru python-super "werkzeug") // { provider = "wheel"; };
     };
-    "wrapt" = override python-super.wrapt ( oldAttrs: {
+    "wrapt" = override python-super.wrapt (oldAttrs: {
       pname = "wrapt";
       version = "1.12.1";
       passthru = (get_passthru python-super "wrapt") // { provider = "sdist"; };

@@ -1,4 +1,4 @@
-{stdenv, cmake, flex, bison, python38, zlib, llvmPackages_9, fetchFromGitHub, which, ninja, git}:
+{ stdenv, cmake, flex, bison, python38, zlib, llvmPackages_9, fetchFromGitHub, which, ninja, git }:
 
 stdenv.mkDerivation rec {
   version = "master";
@@ -13,18 +13,19 @@ stdenv.mkDerivation rec {
 
 
   nativeBuildInputs = [ cmake flex bison ];
-  buildInputs = [ which
-                  # ninja
-                  python38
-                  git
-                  llvmPackages_9.clang-unwrapped
-                  llvmPackages_9.llvm
-                  llvmPackages_9.lld
-                ];
+  buildInputs = [
+    which
+    # ninja
+    python38
+    git
+    llvmPackages_9.clang-unwrapped
+    llvmPackages_9.llvm
+    llvmPackages_9.lld
+  ];
 
   preConfigure = ''
-   patchShebangs ./scripts
-   '';
+    patchShebangs ./scripts
+  '';
 
   cmakeFlags = [
     # "-DCMAKE_CXX_COMPILER=${llvmPackages_9.clang}/bin/clang++"

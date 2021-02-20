@@ -26,33 +26,38 @@ python3Packages.buildPythonPackage rec {
   };
 
   preConfigure = ''
-  export CUDA_HOME=${cudatoolkit}
-  export LD_LIBRARY_PATH=${cudatoolkit}/lib
+    export CUDA_HOME=${cudatoolkit}
+    export LD_LIBRARY_PATH=${cudatoolkit}/lib
 
-  ln -s ${rmm-src}//include/rmm cpp/include/rmm
-  cd python/cudf
+    ln -s ${rmm-src}//include/rmm cpp/include/rmm
+    cd python/cudf
   '';
 
-  nativeBuildInputs = [ cudatoolkit  ];
-  buildInputs = [ linuxPackages.nvidia_x11 spdlog
-                  cudatoolkit arrow-cpp pyarrow
-                 ];
-  propagatedBuildInputs = with python3Packages; [ numpy
-                                                  versioneer
-                                                  setuptools
-                                                  protobuf
-                                                  cysignals
-                                                  cython
-                                                  tables
-                                                  cupy
-                                                  pyarrow
-                                                  pandas
-                                                  numba
-                                                  rmm
-                                                  arrow
-                                                ];
+  nativeBuildInputs = [ cudatoolkit ];
+  buildInputs = [
+    linuxPackages.nvidia_x11
+    spdlog
+    cudatoolkit
+    arrow-cpp
+    pyarrow
+  ];
+  propagatedBuildInputs = with python3Packages; [
+    numpy
+    versioneer
+    setuptools
+    protobuf
+    cysignals
+    cython
+    tables
+    cupy
+    pyarrow
+    pandas
+    numba
+    rmm
+    arrow
+  ];
   doCheck = false;
-  
+
   meta = with stdenv.lib; {
     description = "cuDF - GPU DataFrame Library ";
     homepage = "https://github.com/rapidsai/cudf";

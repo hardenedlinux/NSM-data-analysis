@@ -15,13 +15,13 @@ python3Packages.buildPythonPackage rec {
   };
 
   propagatedBuildInputs = with python3Packages; [
-                                                     requests
-                                                ];
+    requests
+  ];
   doCheck = false;
 
   postPatch = ''
     cd python/zqd
-      '';
+  '';
 
   meta = with stdenv.lib; {
     description = "Search and analysis tooling for structured logs";

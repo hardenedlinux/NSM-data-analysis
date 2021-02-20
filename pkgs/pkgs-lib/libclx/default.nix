@@ -1,4 +1,4 @@
-{stdenv, fetchgit, cmake, clang, python3, cudatoolkit}:
+{ stdenv, fetchgit, cmake, clang, python3, cudatoolkit }:
 
 stdenv.mkDerivation rec {
   version = "master";
@@ -10,11 +10,11 @@ stdenv.mkDerivation rec {
   };
 
   configurePhase = ''
-  export CUDA_PATH="${cudatoolkit}"
-  export INSTALL_PREFIX=$out
-  mkdir -p ./cpp/build
-  cd cpp/build
-  cmake .. -DCMAKE_INSTALL_PREFIX=$out
+    export CUDA_PATH="${cudatoolkit}"
+    export INSTALL_PREFIX=$out
+    mkdir -p ./cpp/build
+    cd cpp/build
+    cmake .. -DCMAKE_INSTALL_PREFIX=$out
   '';
   nativeBuildInputs = [ cmake cudatoolkit python3 clang ];
   buildInputs = [ cmake ];

@@ -4,19 +4,19 @@
   {
     goPackagePath = "deepsea";
     fetch = {
-    type = "git";
-    rev = "dafd8c60fcbe33e398a0cea01447f16a61476165";
-    url = "https://github.com/dsnezhkov/deepsea";
-    sha256 = "0b40dci28i5i2ap39dz9xpcnmr2nvasck4z2464zsg4qz8l9f803";
+      type = "git";
+      rev = "dafd8c60fcbe33e398a0cea01447f16a61476165";
+      url = "https://github.com/dsnezhkov/deepsea";
+      sha256 = "0b40dci28i5i2ap39dz9xpcnmr2nvasck4z2464zsg4qz8l9f803";
     };
   }
   {
     goPackagePath = "github.com/matcornic/hermes";
     fetch = {
-    type = "git";
-    rev = "45fe33052640768503d32fe459a08b83c317f1b3";
-    url = "https://github.com/matcornic/hermes";
-    sha256 = "0gaadcmfbq18jfmagkzabw516hqdrggjnswmfw49fyc9q2l7m9kz";
+      type = "git";
+      rev = "45fe33052640768503d32fe459a08b83c317f1b3";
+      url = "https://github.com/matcornic/hermes";
+      sha256 = "0gaadcmfbq18jfmagkzabw516hqdrggjnswmfw49fyc9q2l7m9kz";
     };
   }
 

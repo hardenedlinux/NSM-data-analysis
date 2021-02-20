@@ -1,4 +1,4 @@
-{stdenv, pkgs, fetchgit, cmake, python3, cudatoolkit }:
+{ stdenv, pkgs, fetchgit, cmake, python3, cudatoolkit }:
 let
   cnmem = fetchgit {
     url = "https://github.com/NVIDIA/cnmem";
@@ -17,12 +17,12 @@ stdenv.mkDerivation rec {
   };
 
   configurePhase = ''
-  export CUDA_PATH="${cudatoolkit}"
-  export LD_LIBRARY_PATH=${cudatoolkit}/lib
-  export INSTALL_PREFIX=$out
-  bash ./build.sh -n librmm
+    export CUDA_PATH="${cudatoolkit}"
+    export LD_LIBRARY_PATH=${cudatoolkit}/lib
+    export INSTALL_PREFIX=$out
+    bash ./build.sh -n librmm
   '';
-  nativeBuildInputs = [ cmake  ];
+  nativeBuildInputs = [ cmake ];
   buildInputs = [ cudatoolkit python3 ];
 
   enableParallelBuilding = true;

@@ -1,19 +1,19 @@
-{stdenv, fetchFromGitHub, cmake, gcc, openssl, caf, python3, ncurses5}:
+{ stdenv, fetchFromGitHub, cmake, gcc, openssl, caf, python3, ncurses5 }:
 
 stdenv.mkDerivation rec {
-    version = "master";
-    name = "broker";
-    src = fetchFromGitHub {
-      owner = "zeek";
-      repo = "broker";      
-      rev = "4e509c0b35014e7fb79442e0e61a0ae0f67ffcb5";
-      fetchSubmodules = true;
-      sha256 = "095kdnfj1d3fxnfqf5qm19qs2nsrkxsf1mnwa6hvr39ni6aymv4a";
-    };
+  version = "master";
+  name = "broker";
+  src = fetchFromGitHub {
+    owner = "zeek";
+    repo = "broker";
+    rev = "4e509c0b35014e7fb79442e0e61a0ae0f67ffcb5";
+    fetchSubmodules = true;
+    sha256 = "095kdnfj1d3fxnfqf5qm19qs2nsrkxsf1mnwa6hvr39ni6aymv4a";
+  };
 
-    
-  nativeBuildInputs = [ cmake openssl];
-  buildInputs = [ cmake gcc openssl caf ncurses5];
+
+  nativeBuildInputs = [ cmake openssl ];
+  buildInputs = [ cmake gcc openssl caf ncurses5 ];
 
   cmakeFlags = [
     "-DPY_MOD_INSTALL_DIR=${placeholder "out"}/${python3.sitePackages}"
@@ -22,8 +22,8 @@ stdenv.mkDerivation rec {
   ];
 
   postInstall = ''
-  ln -s $out/${python3.sitePackages}/broker/_broker.so $out/lib
-'';
+    ln -s $out/${python3.sitePackages}/broker/_broker.so $out/lib
+  '';
 
   enableParallelBuilding = true;
 

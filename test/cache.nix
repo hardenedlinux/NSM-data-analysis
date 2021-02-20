@@ -16,9 +16,9 @@ let
 
   nixpkgsPath = jupyterLib + "/nix/nixpkgs.nix";
 
-  jupyter-pkgs = import nixpkgsPath { overlays=jupyter-overlays; config={ allowUnfree=true; allowBroken=true; };};
+  jupyter-pkgs = import nixpkgsPath { overlays = jupyter-overlays; config = { allowUnfree = true; allowBroken = true; }; };
 
-  jupyter = import jupyterLib {pkgs=jupyter-pkgs;};
+  jupyter = import jupyterLib { pkgs = jupyter-pkgs; };
 
   jupyterLib = builtins.fetchGit {
     url = https://github.com/GTrunSec/jupyterWith;
@@ -33,45 +33,52 @@ let
   overlays = [
     (import ../pkgs/Python-overlay.nix)
   ];
-  
-  nixpkgs  = import ../pkgs/ownpkgs.nix { inherit overlays; config={ allowUnfree=true; allowBroken=true; };};
-  timepkgs  = import ../pkgs/ownpkgs.nix { overlays=overlays1; config={ allowUnfree=true; allowBroken=true; };};
-  vast = nixpkgs.callPackage ../pkgs/vast {};
-  my-python = (import ../pkgs/python.nix {pkgs=nixpkgs; inherit timepkgs;});
-  broker = nixpkgs.callPackage ../pkgs/broker {};
-  my-go =  (import ../pkgs/go.nix {pkgs=nixpkgs;});
-  my-R = (import ../pkgs/R.nix {pkgs=nixpkgs;});
+
+  nixpkgs = import ../pkgs/ownpkgs.nix { inherit overlays; config = { allowUnfree = true; allowBroken = true; }; };
+  timepkgs = import ../pkgs/ownpkgs.nix { overlays = overlays1; config = { allowUnfree = true; allowBroken = true; }; };
+  vast = nixpkgs.callPackage ../pkgs/vast { };
+  my-python = (import ../pkgs/python.nix { pkgs = nixpkgs; inherit timepkgs; });
+  broker = nixpkgs.callPackage ../pkgs/broker { };
+  my-go = (import ../pkgs/go.nix { pkgs = nixpkgs; });
+  my-R = (import ../pkgs/R.nix { pkgs = nixpkgs; });
   zeek = nixpkgs.callPackage ../pkgs/zeek { };
 
   iPython = jupyter.kernels.iPythonWith {
-    python3 = nixpkgs.callPackage ../pkgs/overlay/own-python.nix { pkgs=nixpkgs;};
+    python3 = nixpkgs.callPackage ../pkgs/overlay/own-python.nix { pkgs = nixpkgs; };
     name = "Python-NSM-env";
-    packages = import ../pkgs/overlay/python-list.nix { pkgs=nixpkgs;};
+    packages = import ../pkgs/overlay/python-list.nix { pkgs = nixpkgs; };
     ignoreCollisions = true;
   };
 
   IRkernel = jupyter.kernels.iRWith {
     name = "IRkernel-NSM-env";
-    packages = import ../pkgs/overlay/R-list.nix {pkgs=nixpkgs;};
-   };
+    packages = import ../pkgs/overlay/R-list.nix { pkgs = nixpkgs; };
+  };
 
   iHaskell = jupyter.kernels.iHaskellWith {
     name = "ihaskell-NSM-env";
     haskellPackages = jupyter-pkgs.haskell.packages.ghc883;
-    packages = import ../pkgs/overlay/haskell-list.nix {pkgs=jupyter-pkgs;};
-    Rpackages = p: with p; [ ggplot2 dplyr xts purrr cmaes cubature
-                             reshape2
-                           ];
+    packages = import ../pkgs/overlay/haskell-list.nix { pkgs = jupyter-pkgs; };
+    Rpackages = p: with p; [
+      ggplot2
+      dplyr
+      xts
+      purrr
+      cmaes
+      cubature
+      reshape2
+    ];
     inline-r = true;
   };
 
   currentDir = builtins.getEnv "PWD";
   iJulia = jupyter.kernels.iJuliaWith {
-    name =  "Julia-data-env";
+    name = "Julia-data-env";
     directory = currentDir + "/.julia_pkgs";
-    nixpkgs =  import (builtins.fetchTarball "https://github.com/GTrunSec/nixpkgs/tarball/39247f8d04c04b3ee629a1f85aeedd582bf41cac"){};
+    nixpkgs = import (builtins.fetchTarball "https://github.com/GTrunSec/nixpkgs/tarball/39247f8d04c04b3ee629a1f85aeedd582bf41cac") { };
     NUM_THREADS = 8;
-    extraPackages = p: with p;[   # GZip.jl # Required by DataFrames.jl
+    extraPackages = p: with p;[
+      # GZip.jl # Required by DataFrames.jl
       gzip
       zlib
     ];
@@ -90,16 +97,21 @@ let
 in
 nixpkgs.buildEnv {
   name = "NSM-analysis-env";
-  buildInputs = [ nixpkgs.makeWrapper
-                  vast
-                  (zeek.override{ KafkaPlugin = true; PostgresqlPlugin = true;})
-                ];
-  paths = [ my-python nixpkgs.yara  my-go my-R
-            jupyterEnvironment
-            iJulia.InstalliJulia
-            iJulia.julia_wrapped
-            iJulia.Install_JuliaCUDA
-          ];
+  buildInputs = [
+    nixpkgs.makeWrapper
+    vast
+    (zeek.override { KafkaPlugin = true; PostgresqlPlugin = true; })
+  ];
+  paths = [
+    my-python
+    nixpkgs.yara
+    my-go
+    my-R
+    jupyterEnvironment
+    iJulia.InstalliJulia
+    iJulia.julia_wrapped
+    iJulia.Install_JuliaCUDA
+  ];
   ignoreCollisions = true;
   postBuild = ''
     ln -s ${vast}/bin/vast $out/bin/

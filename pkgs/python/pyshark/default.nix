@@ -10,21 +10,22 @@ python3Packages.buildPythonPackage rec {
   src = fetchurl {
     url = "https://github.com/KimiNewt/pyshark/archive/v0.4.2.11.tar.gz";
     sha256 = "0jlpbk0w9xlir1f82z6512v54214c555q6zcn8v1nkm0xkdgsna3";
-  };  
+  };
   preConfigure = "cd src";
-  propagatedBuildInputs = with python3Packages; [ py
-                                                  pytest
-                                                  mock
-                                                  lxml
-                                                ];
+  propagatedBuildInputs = with python3Packages; [
+    py
+    pytest
+    mock
+    lxml
+  ];
 
   postPatch = ''
     substituteInPlace setup.py \
         --replace "py4j==0.10.9" "py4j"
-    '';
+  '';
 
   doCheck = false;
-  
+
   meta = with stdenv.lib; {
     description = "Python wrapper for tshark, allowing python packet parsing using wireshark dissectors";
     homepage = "https://github.com/KimiNewt/pyshark";

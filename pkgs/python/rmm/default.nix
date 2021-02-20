@@ -18,23 +18,27 @@ python3Packages.buildPythonPackage rec {
   };
 
   nativeBuildInputs = [ cudatoolkit ];
-  propagatedBuildInputs = with python3Packages; [ cython
-                                                  numba
-                                                ];
+  propagatedBuildInputs = with python3Packages; [
+    cython
+    numba
+  ];
   doCheck = false;
 
 
-  buildInputs = [ spdlog cnmem cudatoolkit
-                  linuxPackages.nvidia_x11
-                ];
+  buildInputs = [
+    spdlog
+    cnmem
+    cudatoolkit
+    linuxPackages.nvidia_x11
+  ];
 
   postPatch = ''
-  export CUDA_PATH="${cudatoolkit}"
-  export LD_LIBRARY_PATH=${cudatoolkit}/lib
+    export CUDA_PATH="${cudatoolkit}"
+    export LD_LIBRARY_PATH=${cudatoolkit}/lib
 
-  ln -s ${cnmem}/include/cnmem.h include/rmm/detail
-    cd python
-      '';
+    ln -s ${cnmem}/include/cnmem.h include/rmm/detail
+      cd python
+  '';
   meta = with stdenv.lib; {
     description = "RAPIDS Memory Manager";
     homepage = "https://github.com/rapidsai/rmm";
