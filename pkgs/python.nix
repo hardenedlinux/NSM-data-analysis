@@ -6,7 +6,6 @@ let
     ps.elastalert
     ps.btest
     ps.fastai
-    ps.fastai2
     ps.matplotlib
     ps.Mako
     ps.numpy

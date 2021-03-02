@@ -55,6 +55,7 @@
               zq
             ];
           };
+
           packages = {
             inherit (pkgs)
               hardenedlinux-go-env
@@ -84,7 +85,7 @@
       overlay = final: prev: {
         hardenedlinux-go-env = prev.callPackage ./pkgs/go.nix { };
         hardenedlinux-r-env = prev.callPackage ./pkgs/R.nix { };
-        hardenedlinux-python-env = prev.callPackage ./pkgs/R.nix { };
+        hardenedlinux-python-env = prev.callPackage ./pkgs/python.nix { };
       };
     };
 }

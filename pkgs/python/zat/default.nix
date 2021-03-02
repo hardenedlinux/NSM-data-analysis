@@ -24,13 +24,14 @@ python3Packages.buildPythonPackage rec {
     numpy
     pyspark
   ];
+
   doCheck = false;
 
   meta = with stdenv.lib; {
     description = "Bro Analysis Tools (BAT): Processing and analysis of Bro network data with Pandas, scikit-learn, and Spark";
     homepage = "https://github.com/SuperCowPowers/bat";
     license = licenses.asl20;
-    
+
   };
 
 }

@@ -107,6 +107,10 @@ let
     tidyquant
   ];
 
+  R-with-packages = pkgs.rWrapper.override {
+    packages = customRPackages;
+  };
+
 in
 pkgs.buildEnv rec {
   name = "hardenedlinux-R";
@@ -114,6 +118,4 @@ pkgs.buildEnv rec {
     pkgs.makeWrapper
   ];
   paths = [ customRPackages ];
-  postBuild = ''
-  '';
 }
