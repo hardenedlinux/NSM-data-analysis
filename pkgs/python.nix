@@ -1,6 +1,6 @@
 { pkgs }:
 let
-  my-python-packages = (pkgs.python3.withPackages (ps: [
+  custom-python-packages = (pkgs.python3.withPackages (ps: [
     ps.pandas
     ps.beakerx
     ps.elastalert
@@ -63,12 +63,12 @@ let
   ])).override (args: { ignoreCollisions = true; });
 in
 pkgs.buildEnv rec {
-  name = "my-python";
+  name = "hardenedlinux-python";
   buildInputs = [
     pkgs.makeWrapper
   ];
   paths = [
-    my-python-packages
+    custom-python-packages
   ];
 
   ignoreCollisions = true;

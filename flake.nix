@@ -3,7 +3,7 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "nixpkgs/af787d41a536ccf8f7919e819a53fe476f2b53a7";
+    nixpkgs.url = "nixpkgs/7ff5e241a2b96fff7912b7d793a06b4374bd846c";
     zeek-nix = { url = "github:hardenedlinux/zeek-nix"; flake = false; };
     vast = { url = "github:tenzir/vast"; flake = false; };
   };
@@ -22,6 +22,7 @@
             overlays = [
               self.python-packages-overlay
               self.packages-overlay
+              self.overlay
               (import (zeek-nix + "/overlay.nix"))
               (import (vast + "/nix/overlay.nix"))
             ];
@@ -31,7 +32,7 @@
             };
           };
         in
-        {
+        rec {
           devShell = with pkgs; mkShell {
             buildInputs = [
               (pkgs.python37.withPackages (ps: with ps;[
@@ -63,10 +64,34 @@
           packages = {
             inherit (pkgs)
               zeek
-              #vast
+              hardenedlinux-go-env
+              hardenedlinux-r-env
+              hardenedlinux-python-env
               ;
           };
+
+          hydraJobs = {
+            inherit packages;
+          };
+
+          defaultPackage =
+            with pkgs;
+            buildEnv rec {
+              name = "nixpkgs-hardenedlinux";
+              paths = [
+                hardenedlinux-go-env
+                hardenedlinux-r-env
+                hardenedlinux-python-env
+              ];
+            };
         }
       )
-    );
+    ) //
+    {
+      overlay = final: prev: {
+        hardenedlinux-go-env = prev.callPackage ./pkgs/go.nix { };
+        hardenedlinux-r-env = prev.callPackage ./pkgs/R.nix { };
+        hardenedlinux-python-env = prev.callPackage ./pkgs/R.nix { };
+      };
+    };
 }

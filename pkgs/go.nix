@@ -1,5 +1,4 @@
-{ pkgs ? import ./ownpkgs.nix { }
-}:
+{ pkgs }:
 let
   deepsea = pkgs.callPackage ./go/deepsea { };
   nvdtools = pkgs.callPackage ./go/nvdtools { };
@@ -7,7 +6,7 @@ let
   zq = pkgs.callPackage ./go/zq { };
 in
 pkgs.stdenv.mkDerivation rec {
-  name = "my-go";
+  name = "hardenedlinux-go";
   buildInputs = [
     pkgs.makeWrapper
     deepsea
@@ -15,7 +14,9 @@ pkgs.stdenv.mkDerivation rec {
     sybilhunter
     zq
   ];
+
   phases = [ "installPhase" ];
+
   installPhase = ''
     makeWrapper ${deepsea}/bin/deepsea $out/bin/deepsea
     makeWrapper ${nvdtools}/bin/cpe2cve $out/bin/cpe2cve

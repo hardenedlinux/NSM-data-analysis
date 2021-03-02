@@ -109,10 +109,9 @@ let
 
 in
 pkgs.buildEnv rec {
-  name = "my-R";
+  name = "hardenedlinux-R";
   buildInputs = [
     pkgs.makeWrapper
-    pkgs.python3Packages.notebook
   ];
   paths = [ customRPackages ];
   postBuild = ''
