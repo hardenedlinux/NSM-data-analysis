@@ -1,14 +1,14 @@
 { stdenv, fetchFromGitHub, cmake, gcc, openssl, caf, python3, ncurses5 }:
 
 stdenv.mkDerivation rec {
-  version = "master";
+  version = "2021-02-26";
   name = "broker";
   src = fetchFromGitHub {
     owner = "zeek";
     repo = "broker";
-    rev = "4e509c0b35014e7fb79442e0e61a0ae0f67ffcb5";
+    rev = "41d2109da960312995f54fae491e867c0621cc0e";
     fetchSubmodules = true;
-    sha256 = "095kdnfj1d3fxnfqf5qm19qs2nsrkxsf1mnwa6hvr39ni6aymv4a";
+    sha256 = "0l0vs4623z33cmfp8pkk5jrhy9d2jp6yrjcy88b41pkzg62bgnhb";
   };
 
 
