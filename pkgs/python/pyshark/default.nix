@@ -30,7 +30,7 @@ python3Packages.buildPythonPackage rec {
     description = "Python wrapper for tshark, allowing python packet parsing using wireshark dissectors";
     homepage = "https://github.com/KimiNewt/pyshark";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }

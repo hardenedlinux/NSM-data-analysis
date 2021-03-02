@@ -22,7 +22,7 @@ python3Packages.buildPythonPackage rec {
     description = "Fast implementation of the edit distance(Levenshtein distance)";
     homepage = "https://github.com/aflc/editdistance";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }

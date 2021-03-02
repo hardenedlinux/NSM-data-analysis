@@ -22,7 +22,7 @@ python3Packages.buildPythonPackage rec {
 
   meta = with stdenv.lib; {
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }

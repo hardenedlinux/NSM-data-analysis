@@ -35,7 +35,7 @@ python3Packages.buildPythonPackage rec {
 ";
     homepage = "https://github.com/rapidsai/clx";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }

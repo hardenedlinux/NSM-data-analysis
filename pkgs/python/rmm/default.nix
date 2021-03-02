@@ -43,7 +43,7 @@ python3Packages.buildPythonPackage rec {
     description = "RAPIDS Memory Manager";
     homepage = "https://github.com/rapidsai/rmm";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }

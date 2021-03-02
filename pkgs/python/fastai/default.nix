@@ -72,6 +72,6 @@ python3Packages.buildPythonPackage rec {
     description = "The fastai deep learning library";
     homepage = "https://github.com/fastai/fastai";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 }

@@ -62,7 +62,7 @@ python3Packages.buildPythonPackage rec {
     description = "cuDF - GPU DataFrame Library ";
     homepage = "https://github.com/rapidsai/cudf";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }

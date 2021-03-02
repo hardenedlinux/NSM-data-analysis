@@ -22,7 +22,7 @@ python3Packages.buildPythonPackage rec {
     description = "Accurately separate the TLD from the registered domain and subdomains of a URL, using the Public Suffix List.";
     homepage = "https://github.com/john-kurkowski/tldextract/releases";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }

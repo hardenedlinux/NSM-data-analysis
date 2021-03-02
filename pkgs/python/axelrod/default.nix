@@ -20,7 +20,7 @@ python3Packages.buildPythonPackage rec {
   meta = with stdenv.lib; {
     description = "https://github.com/Axelrod-Python/Axelrod";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }

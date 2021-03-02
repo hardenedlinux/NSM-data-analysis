@@ -25,7 +25,7 @@ python3Packages.buildPythonPackage rec {
     description = "Service identity verification for pyOpenSSL & cryptography.";
     homepage = "https://service-identity.readthedocs.io/en/stable/";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }

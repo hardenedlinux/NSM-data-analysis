@@ -104,7 +104,7 @@ python3Packages.buildPythonPackage rec {
     description = "Data Science for Training'";
     homepage = "https://github.com/andrewcooke/choochoo";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }

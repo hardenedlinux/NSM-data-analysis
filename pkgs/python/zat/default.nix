@@ -30,7 +30,7 @@ python3Packages.buildPythonPackage rec {
     description = "Bro Analysis Tools (BAT): Processing and analysis of Bro network data with Pandas, scikit-learn, and Spark";
     homepage = "https://github.com/SuperCowPowers/bat";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }

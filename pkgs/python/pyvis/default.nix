@@ -21,7 +21,7 @@ python3Packages.buildPythonPackage rec {
   meta = with stdenv.lib; {
     description = "A Python network visualization library";
     license = licenses.asl20;
-    maintainers = with maintainers; [ gtrunsec ];
+    
   };
 
 }
