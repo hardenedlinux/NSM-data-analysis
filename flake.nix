@@ -4,11 +4,9 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "nixpkgs/7ff5e241a2b96fff7912b7d793a06b4374bd846c";
-    zeek-nix = { url = "github:hardenedlinux/zeek-nix"; flake = false; };
-    vast = { url = "github:tenzir/vast"; flake = false; };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, zeek-nix, vast }:
+  outputs = inputs@{ self, nixpkgs, flake-utils }:
     {
       python-packages-overlay = import ./nix/python-packages-overlay.nix;
       packages-overlay = import ./nix/packages-overlay.nix;
@@ -23,8 +21,6 @@
               self.python-packages-overlay
               self.packages-overlay
               self.overlay
-              (import (zeek-nix + "/overlay.nix"))
-              (import (vast + "/nix/overlay.nix"))
             ];
             config = {
               allowUnsupportedSystem = true;
@@ -53,17 +49,14 @@
                 # cudf ../include/rmm/detail/memory_manager.hpp:37:10: fatal error: rmm/detail/cnmem.h: No such file or directory
                 # axelrod pathlib 1.0.1 does not support 3.7
               ]))
-              zeek
               deepsea
               nvdtools
               sybilhunter
               zq
-              vast
             ];
           };
           packages = {
             inherit (pkgs)
-              zeek
               hardenedlinux-go-env
               hardenedlinux-r-env
               hardenedlinux-python-env

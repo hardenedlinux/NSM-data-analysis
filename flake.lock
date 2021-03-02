@@ -33,41 +33,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs",
-        "vast": "vast",
-        "zeek-nix": "zeek-nix"
-      }
-    },
-    "vast": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1607952675,
-        "narHash": "sha256-HbaWail8v7zMiZISvGRP6s3AWhGsdK1SLMUEiob8Tq4=",
-        "owner": "tenzir",
-        "repo": "vast",
-        "rev": "eac68316f0d4e28b97d9f0722b64b8ea2157e7c9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tenzir",
-        "repo": "vast",
-        "type": "github"
-      }
-    },
-    "zeek-nix": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1602297382,
-        "narHash": "sha256-o+OhyMhE8D21CJ7D+jA4XefQGIFJ8JSZeQHaMYK7FeA=",
-        "owner": "hardenedlinux",
-        "repo": "zeek-nix",
-        "rev": "37d4bd43d79ff11814819146ecb9d3a2dd1ae52d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hardenedlinux",
-        "repo": "zeek-nix",
-        "type": "github"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
