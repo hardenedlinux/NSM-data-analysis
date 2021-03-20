@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , python3
 }:
@@ -12,7 +13,6 @@ python3Packages.buildPythonPackage rec {
     inherit pname version;
     format = "wheel";
     platform = "manylinux1_x86_64";
-    #sha256 = "0az5l32p2f8rbgxfj32y5m1b21pjyfgyl1d297mbr26g9x6zjhxn";
     sha256 = "03j11cxrmfj09yjfwzly708fsq2gw0dnkq70ap3n1qmfnp1ii04v";
   };
   #preConfigure = "cd src";
@@ -20,9 +20,9 @@ python3Packages.buildPythonPackage rec {
   ];
   doCheck = false;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     license = licenses.asl20;
-    
+
   };
 
 }

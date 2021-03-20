@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, python3, python3Packages }:
+{ stdenv, lib, fetchFromGitHub, python3, python3Packages }:
 with python3.pkgs;
 let
   fastcore = python3Packages.buildPythonPackage rec {
@@ -68,10 +68,10 @@ python3Packages.buildPythonPackage rec {
   '';
   dontUseSetuptoolsCheck = true;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "The fastai deep learning library";
     homepage = "https://github.com/fastai/fastai";
     license = licenses.asl20;
-    
+
   };
 }

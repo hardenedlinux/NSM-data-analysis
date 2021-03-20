@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , fetchgit
 , python3
@@ -23,11 +24,11 @@ python3Packages.buildPythonPackage rec {
     cd python/zqd
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Search and analysis tooling for structured logs";
     homepage = "https://github.com/brimsec/zq";
     license = licenses.bsd3;
-    
+
   };
 
 }

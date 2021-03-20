@@ -1,16 +1,17 @@
 { stdenv
+, lib
 , python3Packages
 , fetchgit
 , callPackage
 }:
 python3Packages.buildPythonPackage rec {
   pname = "zat";
-  version = "master";
+  version = "2021-03-08";
 
   src = fetchgit {
     url = "https://github.com/SuperCowPowers/zat.git";
-    rev = "80ed0e7169cf544e9613b13d3bd3485f1dae9b92";
-    sha256 = "sha256-2IHyiGdKJhNRAUx+/7OncmrE0L9VdaYBAobuoBOvBB4=";
+    rev = "62718471a2f2d77c4c13b93f665f1eb9a892fa10";
+    sha256 = "0ynhkdfb0ypxk23a89rmvf6bvck2jh00qgx9qrvadvc2k3mhlcm1";
   };
 
 
@@ -27,7 +28,7 @@ python3Packages.buildPythonPackage rec {
 
   doCheck = false;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Bro Analysis Tools (BAT): Processing and analysis of Bro network data with Pandas, scikit-learn, and Spark";
     homepage = "https://github.com/SuperCowPowers/bat";
     license = licenses.asl20;

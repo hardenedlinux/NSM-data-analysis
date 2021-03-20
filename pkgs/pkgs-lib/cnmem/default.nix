@@ -1,4 +1,4 @@
-{ stdenv, pkgs, fetchgit, cmake, cudatoolkit }:
+{ stdenv, lib, pkgs, fetchgit, cmake, cudatoolkit }:
 
 stdenv.mkDerivation rec {
   version = "master";
@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "cnmem";
   };
 }

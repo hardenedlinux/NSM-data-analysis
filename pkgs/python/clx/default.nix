@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , fetchgit
 , python-whois
@@ -30,12 +31,12 @@ python3Packages.buildPythonPackage rec {
     cd python
     pytest
   '';
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "A collection of RAPIDS examples for security analysts, data scientists, and engineers to quickly get started applying RAPIDS and GPU acceleration to real-world cybersecurity use cases.
 ";
     homepage = "https://github.com/rapidsai/clx";
     license = licenses.asl20;
-    
+
   };
 
 }

@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , fetchurl
 }:
@@ -18,11 +19,11 @@ python3Packages.buildPythonPackage rec {
   ];
   doCheck = false;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Fast implementation of the edit distance(Levenshtein distance)";
     homepage = "https://github.com/aflc/editdistance";
     license = licenses.asl20;
-    
+
   };
 
 }

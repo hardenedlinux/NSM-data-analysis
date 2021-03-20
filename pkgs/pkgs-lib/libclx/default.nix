@@ -1,4 +1,4 @@
-{ stdenv, fetchgit, cmake, clang, python3, cudatoolkit }:
+{ stdenv, lib, fetchgit, cmake, clang, python3, cudatoolkit }:
 
 stdenv.mkDerivation rec {
   version = "master";
@@ -21,7 +21,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "clx";
   };
 }

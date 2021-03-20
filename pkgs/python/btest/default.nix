@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , python3
 }:
@@ -15,7 +16,7 @@ python3Packages.buildPythonPackage rec {
 
   doCheck = false;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "A Simple Driver for Basic Unit Tests";
     homepage = "https://github.com/zeek/btest";
     license = licenses.bsd3;

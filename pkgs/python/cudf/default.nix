@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , fetchgit
 , cudatoolkit
@@ -58,11 +59,11 @@ python3Packages.buildPythonPackage rec {
   ];
   doCheck = false;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "cuDF - GPU DataFrame Library ";
     homepage = "https://github.com/rapidsai/cudf";
     license = licenses.asl20;
-    
+
   };
 
 }

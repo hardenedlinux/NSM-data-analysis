@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , fetchgit
 , cudatoolkit
@@ -39,11 +40,11 @@ python3Packages.buildPythonPackage rec {
     ln -s ${cnmem}/include/cnmem.h include/rmm/detail
       cd python
   '';
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "RAPIDS Memory Manager";
     homepage = "https://github.com/rapidsai/rmm";
     license = licenses.asl20;
-    
+
   };
 
 }

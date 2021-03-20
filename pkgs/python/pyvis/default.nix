@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , python3
 }:
@@ -18,10 +19,10 @@ python3Packages.buildPythonPackage rec {
   ];
   doCheck = false;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "A Python network visualization library";
     license = licenses.asl20;
-    
+
   };
 
 }

@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , fetchurl
 }:
@@ -23,7 +24,7 @@ python3Packages.buildPythonPackage rec {
 
   doCheck = false;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Python wrapper for tshark, allowing python packet parsing using wireshark dissectors";
     homepage = "https://github.com/KimiNewt/pyshark";
     license = licenses.asl20;

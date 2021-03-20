@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , fetchgit
 }:
@@ -21,11 +22,11 @@ python3Packages.buildPythonPackage rec {
   ];
   doCheck = false;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Service identity verification for pyOpenSSL & cryptography.";
     homepage = "https://service-identity.readthedocs.io/en/stable/";
     license = licenses.asl20;
-    
+
   };
 
 }

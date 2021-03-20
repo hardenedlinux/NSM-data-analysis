@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , fetchgit
 , python3
@@ -105,7 +106,7 @@ python3Packages.buildPythonPackage rec {
     --replace "twilio>=6.0.0,<6.1" "twilio"
 
   '';
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Easy & Flexible Alerting With ElasticSearch";
     homepage = "https://github.com/Yelp/elastalert";
     license = licenses.asl20;

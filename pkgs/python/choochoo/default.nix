@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , python3
 }:
@@ -100,11 +101,11 @@ python3Packages.buildPythonPackage rec {
   ];
   doCheck = false;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Data Science for Training'";
     homepage = "https://github.com/andrewcooke/choochoo";
     license = licenses.asl20;
-    
+
   };
 
 }

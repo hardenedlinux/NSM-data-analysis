@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, cmake, gcc, openssl, caf, python3, ncurses5 }:
+{ stdenv, lib, fetchFromGitHub, cmake, gcc, openssl, caf, python3, ncurses5 }:
 
 stdenv.mkDerivation rec {
   version = "2021-02-26";
@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Zeek's Messaging Library";
     homepage = http://zeek.org;
     license = licenses.bsd3;

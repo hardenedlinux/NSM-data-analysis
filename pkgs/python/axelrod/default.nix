@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , python3Packages
 , python3
 , fetchurl
@@ -17,10 +18,10 @@ python3Packages.buildPythonPackage rec {
   ];
   doCheck = false;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "https://github.com/Axelrod-Python/Axelrod";
     license = licenses.asl20;
-    
+
   };
 
 }

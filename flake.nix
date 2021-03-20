@@ -3,7 +3,7 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "nixpkgs/7ff5e241a2b96fff7912b7d793a06b4374bd846c";
+    nixpkgs.url = "nixpkgs";
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils }:
@@ -62,6 +62,9 @@
               hardenedlinux-r-env
               hardenedlinux-python-env
               nvdtools
+              broker
+              deepsea
+              zq
               ;
           };
 

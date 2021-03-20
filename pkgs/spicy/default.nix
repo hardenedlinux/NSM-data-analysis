@@ -61,7 +61,7 @@ stdenv.mkDerivation rec {
      done
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "C++ parser generator for dissecting protocols & files";
     homepage = https://docs.zeek.org/projects/spicy/en/latest/;
     license = licenses.bsd3;
