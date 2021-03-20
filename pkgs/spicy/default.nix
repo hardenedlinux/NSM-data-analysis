@@ -1,45 +1,70 @@
-{ stdenv, cmake, flex, bison, python38, zlib, llvmPackages_9, fetchFromGitHub, which, ninja, git }:
+{ stdenv
+, cmake
+, flex
+, bison
+, python38
+, zlib
+, llvmPackages_9
+, fetchFromGitHub
+, which
+, ninja
+, lib
+, makeWrapper
+, glibc
+}:
 
 stdenv.mkDerivation rec {
-  version = "master";
+  version = "2021-03-18";
   name = "spicy";
   src = fetchFromGitHub {
     owner = "zeek";
     repo = "spicy";
-    rev = "abd410f6cbb3398d4f1c1890871cb2ccdf3694db";
+    rev = "9915a5f38d6dc6993984dfd93f8b441cb094b83d";
     fetchSubmodules = true;
-    sha256 = "sha256-pcioxNO/fis8o1YQEX7qq1+pbxy90AaFw7oE/dVwTMU=";
+    sha256 = "1wnf8gh4xl1160vign87qikp0qi355lr080ip7a03cdw0r3c3v7r";
   };
 
 
-  nativeBuildInputs = [ cmake flex bison ];
+  nativeBuildInputs = [
+    cmake
+    flex
+    bison
+    python38
+    zlib
+    #ninja
+  ];
   buildInputs = [
     which
-    # ninja
-    python38
-    git
     llvmPackages_9.clang-unwrapped
     llvmPackages_9.llvm
-    llvmPackages_9.lld
+    makeWrapper
   ];
 
   preConfigure = ''
-    patchShebangs ./scripts
+    patchShebangs ./scripts/autogen-type-erased
+    patchShebangs ./scripts/autogen-dispatchers
   '';
 
+  patches = [ ./version.patch ];
+
   cmakeFlags = [
-    # "-DCMAKE_CXX_COMPILER=${llvmPackages_9.clang}/bin/clang++"
-    # "-DCMAKE_C_COMPILER=${llvmPackages_9.clang}/bin/clang"
-    # "-DCXX_SYSTEM_INCLUDE_DIRS=${llvmPackages_9.libcxx}/include/c++/v1"
-    "-DHILTI_HAVE_JIT=true"
+    "-DCMAKE_CXX_COMPILER=${llvmPackages_9.clang}/bin/clang++"
+    "-DCMAKE_C_COMPILER=${llvmPackages_9.clang}/bin/clang"
   ];
 
-  enableParallelBuilding = true;
+  postFixup = ''
+    for e in $(cd $out/bin && ls); do
+      wrapProgram $out/bin/$e \
+        --set CLANG_PATH      "${llvmPackages_9.clang}/bin/clang" \
+        --set CLANGPP_PATH    "${llvmPackages_9.clang}/bin/clang++" \
+        --set LIBRARY_PATH    "${lib.makeLibraryPath [ flex bison python38 zlib glibc llvmPackages_9.libclang llvmPackages_9.libcxxabi llvmPackages_9.libcxx ]}"
+     done
+  '';
 
   meta = with stdenv.lib; {
     description = "C++ parser generator for dissecting protocols & files";
     homepage = https://docs.zeek.org/projects/spicy/en/latest/;
     license = licenses.bsd3;
-    platforms = with platforms; linux;
+    platforms = with platforms; unix;
   };
 }
