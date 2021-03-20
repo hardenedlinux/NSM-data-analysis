@@ -61,7 +61,7 @@
               hardenedlinux-go-env
               hardenedlinux-r-env
               hardenedlinux-python-env
-              broker
+              nvdtools
               ;
           };
 

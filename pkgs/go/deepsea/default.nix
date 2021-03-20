@@ -6,6 +6,7 @@ buildGoPackage rec {
   rev = "dafd8c60fcbe33e398a0cea01447f16a61476165";
 
   goPackagePath = "github.com/dsnezhkov/deepsea";
+
   src = fetchgit {
     inherit rev;
     url = "https://github.com/dsnezhkov/deepsea";
@@ -14,7 +15,6 @@ buildGoPackage rec {
 
   goDeps = ./deps.nix;
 
-  # TODO: add metadata https://nixos.org/nixpkgs/manual/#sec-standard-meta-attributes
   meta = {
     description = "Deep Sea Phishing https://dsnezhkov.github.io/deepsea/";
     homepage = "https://github.com/GTrunSec/deepsear";
