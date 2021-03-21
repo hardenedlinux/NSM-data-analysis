@@ -2,7 +2,7 @@ final: prev:
 {
   broker = prev.callPackage ../pkgs/broker { };
   zeek = prev.callPackage ../pkgs/zeek/nix { };
-  spicy = prev.callPackage ../pkgs/spicy { stdenv = prev.llvmPackages_9.stdenv; };
+  spicy = prev.callPackage ../pkgs/spicy { llvmPackages = prev.llvmPackages_10; };
   libclx = prev.callPackage ../pkgs/pkgs-lib/libclx { };
   librmm = prev.callPackage ../pkgs/pkgs-lib/librmm { };
   cnmem = prev.callPackage ../pkgs/pkgs-lib/cnmem { };

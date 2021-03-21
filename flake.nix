@@ -4,9 +4,10 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "nixpkgs";
+    flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, flake-compat }:
     {
       python-packages-overlay = import ./nix/python-packages-overlay.nix;
       packages-overlay = import ./nix/packages-overlay.nix;
@@ -65,7 +66,7 @@
               broker
               deepsea
               zq
-              spciy
+              spicy
               ;
           };
 

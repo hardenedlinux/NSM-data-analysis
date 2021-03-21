@@ -4,7 +4,7 @@
 , bison
 , python38
 , zlib
-, llvmPackages_9
+, llvmPackages
 , fetchFromGitHub
 , which
 , ninja
@@ -35,8 +35,8 @@ stdenv.mkDerivation rec {
   ];
   buildInputs = [
     which
-    llvmPackages_9.clang-unwrapped
-    llvmPackages_9.llvm
+    llvmPackages.clang-unwrapped
+    llvmPackages.llvm
     makeWrapper
   ];
 
@@ -48,16 +48,16 @@ stdenv.mkDerivation rec {
   patches = [ ./version.patch ];
 
   cmakeFlags = [
-    "-DCMAKE_CXX_COMPILER=${llvmPackages_9.clang}/bin/clang++"
-    "-DCMAKE_C_COMPILER=${llvmPackages_9.clang}/bin/clang"
+    "-DCMAKE_CXX_COMPILER=${llvmPackages.clang}/bin/clang++"
+    "-DCMAKE_C_COMPILER=${llvmPackages.clang}/bin/clang"
   ];
 
   postFixup = ''
     for e in $(cd $out/bin && ls); do
       wrapProgram $out/bin/$e \
-        --set CLANG_PATH      "${llvmPackages_9.clang}/bin/clang" \
-        --set CLANGPP_PATH    "${llvmPackages_9.clang}/bin/clang++" \
-        --set LIBRARY_PATH    "${lib.makeLibraryPath [ flex bison python38 zlib glibc llvmPackages_9.libclang llvmPackages_9.libcxxabi llvmPackages_9.libcxx ]}"
+        --set CLANG_PATH      "${llvmPackages.clang}/bin/clang" \
+        --set CLANGPP_PATH    "${llvmPackages.clang}/bin/clang++" \
+        --set LIBRARY_PATH    "${lib.makeLibraryPath [ flex bison python38 zlib glibc llvmPackages.libclang llvmPackages.libcxxabi llvmPackages.libcxx ]}"
      done
   '';
 

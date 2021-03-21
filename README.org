@@ -11,6 +11,11 @@ nix flake show github:hardenedlinux/nixpkgs-hardenedlinux
 nix build github:hardenedlinux/nixpkgs-hardenedlinux#<package name>
 #+end_src
 
+For Example: (Build Spicy)
+
+#+begin_src sh :async t :exports both :results output
+nix build github:hardenedlinux/nixpkgs-hardenedlinux#spicy
+#+end_src
 
 * Phishing
 ** SMTP/email
