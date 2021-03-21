@@ -1,5 +1,4 @@
-{ stdenv
-, lib
+{ lib
 , python3Packages
 , fetchgit
 , python3
@@ -64,11 +63,11 @@ in
 python3Packages.buildPythonPackage rec {
 
   pname = "elastalert";
-  version = "master";
+  version = "2020-11-09";
   src = fetchgit {
     url = "https://github.com/Yelp/elastalert";
-    rev = "ea62cf4bd1a62be3616f40992d088e58e2727f40";
-    sha256 = "sha256-cqr22uPHzknaei7iq/8FyGimxgRMf1wujBH8UvxdD8g=";
+    rev = "1dc4f30f30d39a689f419ce19c7e2e4d67a50be3";
+    sha256 = "0azmaznr1v4qrgzkvfb8dm3sxdg0wk96wshhxm9af999iqfi5yrc";
   };
 
   nativeBuildInputs = [ python3.pkgs.pytest ];

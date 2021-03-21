@@ -1,14 +1,13 @@
-{ stdenv
-, python3Packages
+{ python3Packages
 , python3
 }:
 with python3.pkgs;
 python3Packages.buildPythonPackage rec {
   pname = "ipwhois";
-  version = "1.1.0";
+  version = "1.2.0";
   src = fetchPypi {
     inherit pname version;
-    sha256 = "904efbd8d5fbb3319fc7e3aa33923fdd272bb81fd5a04bd56fd9125be6437a71";
+    sha256 = "831e3fef3b8041201a048e9456e3b80f45c6c8b7174f34ed211f66b596c84bbe";
   };
   doCheck = false;
   propagatedBuildInputs = with python3Packages; [ dnspython ];

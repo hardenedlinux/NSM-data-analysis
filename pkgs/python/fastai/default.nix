@@ -1,15 +1,15 @@
-{ stdenv, lib, fetchFromGitHub, python3, python3Packages }:
+{ lib, fetchFromGitHub, python3, python3Packages }:
 with python3.pkgs;
 let
   fastcore = python3Packages.buildPythonPackage rec {
+    version = "2021-02-04";
     pname = "fastcore";
-    version = "1.3.6";
 
     src = fetchFromGitHub {
       owner = "fastai";
-      repo = pname;
-      rev = "0204823d0cd2e66d0f6ad3aa716a9c37d41859c3";
-      sha256 = "sha256-GH9kmnt5DEQDb7lNscy0BSY4KqJcRzawMqDufMS7kRU=";
+      repo = "fastcore";
+      rev = "875988a7ed359a3eb16fd2166bf8fb42b190881c";
+      sha256 = "031526i4wj9n124079r6gm4dqncf8vvpz9x6if4k9gw3hppa36c4";
     };
 
     propagatedBuildInputs = with python3Packages;[
@@ -20,6 +20,7 @@ let
     dontUseSetuptoolsCheck = true;
 
   };
+
   fastprogress = python3Packages.buildPythonPackage rec {
     pname = "fastprogress";
     version = "1.0.0";
@@ -36,14 +37,14 @@ let
 
 in
 python3Packages.buildPythonPackage rec {
-  pname = "fastai2";
-  version = "2.1.5";
+  pname = "fastai";
+  version = "2021-03-19";
 
   src = fetchFromGitHub {
     owner = "fastai";
     repo = "fastai";
-    rev = "e9d8aa82d9fafd662a3669c25e0cbc8f389ab236";
-    sha256 = "sha256-1eO95riB+ffiCORgOyb5I5im8KlJRuIBlGQU/nBt7y0=";
+    rev = "186e02d2b20ca3ad295b4a0c101632364eeabe5c";
+    sha256 = "1fsclvr4kl11087q0yvz465aiwh8ml1dns5yq2322daf2gd0ljq8";
   };
 
   propagatedBuildInputs = with python3Packages; [
@@ -63,8 +64,8 @@ python3Packages.buildPythonPackage rec {
 
   postPatch = ''
     substituteInPlace settings.ini \
-     --replace "torch>=1.7.0" "torch" \
-     --replace "torchvision>=0.8" "torchvision"
+     --replace "torch>=1.7.0,<1.8" "torch" \
+     --replace "torchvision>=0.8,<0.9" "torchvision"
   '';
   dontUseSetuptoolsCheck = true;
 

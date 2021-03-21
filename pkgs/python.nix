@@ -52,11 +52,12 @@ let
     #
     ps.nltk
     ps.Keras
-    #ps.tensorflow# does not support python 3.8
     ps.scikitimage
     ps.elasticsearch
     ps.requests
     ps.yarapython
+
+    ps.zqd
     #cudf ../include/rmm/detail/memory_manager.hpp:37:10: fatal error: rmm/detail/cnmem.h: No such file or directory
     #axelrod pathlib 1.0.1 does not support 3.7
   ])).override (args: { ignoreCollisions = true; });

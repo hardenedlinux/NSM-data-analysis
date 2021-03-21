@@ -15,7 +15,9 @@ python3Packages.buildPythonPackage rec {
     jinja2
     ipython
     networkx
+    jsonpickle
   ];
+
   doCheck = false;
 
   meta = with lib; {
