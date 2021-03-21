@@ -1,49 +1,40 @@
 #+TITLE: Hardenedlinux nixpkgs collection
+
+* Show all of packages in Nixpkgs-Hardenedlinux
+
+#+begin_src sh :exports both :results output
+nix flake show github:hardenedlinux/nixpkgs-hardenedlinux
+#+end_src
+* Build Package with Nix build
+
+#+begin_src sh :async t :exports both :results output
+nix build github:hardenedlinux/nixpkgs-hardenedlinux#<package name>
+#+end_src
+
+
 * Phishing
 ** SMTP/email
 *** Deepsea
 - quickly test commmands
 
-
 #+begin_src sh :async t :exports both :results output
 - Tow methods: templated and hand-rolled
 
- ../../result/bin/deepsea --config template.yaml content inline
-
-../../result/bin/deepsea --config template.yaml content multipart
+cd ./test/deepsea
+nix run github:hardenedlinux/nixpkgs-hardenedlinux#deepsea -- --config template.yaml content inline
+nix run github:hardenedlinux/nixpkgs-hardenedlinux#deepsea -- --config template.yaml content multipart
 
 -  create DB and load from CSV
-./result/bin/deepsea -t --config template.yaml storage -D test/deepsea/template.db manager  -T createtable
+./result/bin/deepsea -t
+nix run github:hardenedlinux/nixpkgs-hardenedlinux#deepsea -- --config template.yaml storage -D test/deepsea/template.db manager  -T createtable
 
  - load CSV
-./result/bin/deepsea -t --config template.yaml storage  -d ./template.db load -s ./marks.csv
+nix run github:hardenedlinux/nixpkgs-hardenedlinux#deepsea -- --config template.yaml storage  -d ./template.db load -s ./marks.csv
 
 - show loaded marks of table
-./result/bin/deepsea --config template.yaml   storage  -d ./template.db manager  -T showmarks
+nix run github:hardenedlinux/nixpkgs-hardenedlinux#deepsea -- --config template.yaml  storage  -d ./template.db manager  -T showmarks
 
 - Mail Campaign
-../../result/bin/deepsea mailclient --config template.yaml
+nix run github:hardenedlinux/nixpkgs-hardenedlinux#deepsea -- --config template.yaml  mailclient --config template.yaml
 #+end_src
 
-* Sources and Methods
-** OSINT
-** HUMINT
- Human-source intelligence
-
-** SIGINT
- Signals intelligence
-
-* threat feeds
-** FIles & MD5
-* Data parsing
-[[https://attack.mitre.org/docs/MITRE_ATTACK_Enterprise_11x17.pdf][MITRE ATTACK Enterprise Placemat V9]]
-
-** collection
-*** Email
-    - [[https://attack.mitre.org/techniques/T1114/][Technique: Email Collection - MITRE ATT&CK™]]
-
-
-**** SMTP-zeek
-* VISUALIZING MALWARE NETWORKS
-* Honeypot
-** [[https://github.com/UHH-ISS/honeygrove][UHH-ISS/honeygrove: A multi-purpose, modular medium-interaction honeypot based on Twisted. - Brave]]

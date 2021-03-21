@@ -65,6 +65,7 @@
               broker
               deepsea
               zq
+              spciy
               ;
           };
 
