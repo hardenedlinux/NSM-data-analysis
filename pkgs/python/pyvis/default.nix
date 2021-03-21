@@ -1,5 +1,4 @@
-{ stdenv
-, lib
+{ lib
 , python3Packages
 , python3
 }:
@@ -7,10 +6,10 @@ with python3.pkgs;
 python3Packages.buildPythonPackage rec {
 
   pname = "pyvis";
-  version = "0.1.7.0";
+  version = "0.1.9";
   src = fetchPypi {
     inherit pname version;
-    sha256 = "02p4r540wyp5kxhrvjfr9lqflb50c9fn2rp9r4m1ay0pknx2pjw1";
+    sha256 = "f9ea603025f31f02155760be638e6c443d992050a2e6942496fbba0586170cbf";
   };
   propagatedBuildInputs = with python3Packages; [
     jinja2
@@ -22,7 +21,5 @@ python3Packages.buildPythonPackage rec {
   meta = with lib; {
     description = "A Python network visualization library";
     license = licenses.asl20;
-
   };
-
 }

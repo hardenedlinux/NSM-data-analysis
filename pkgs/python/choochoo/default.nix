@@ -1,5 +1,4 @@
-{ stdenv
-, lib
+{ lib
 , python3Packages
 , python3
 }:
@@ -99,13 +98,13 @@ python3Packages.buildPythonPackage rec {
     urwid
     textblob
   ];
+
   doCheck = false;
 
   meta = with lib; {
     description = "Data Science for Training'";
     homepage = "https://github.com/andrewcooke/choochoo";
     license = licenses.asl20;
-
   };
 
 }

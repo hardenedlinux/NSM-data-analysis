@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
     bison
     python38
     zlib
-    #ninja
+    ninja
   ];
   buildInputs = [
     which
