@@ -5,9 +5,10 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "nixpkgs";
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
+    zeek-flake = { url = "github:hardenedlinux/zeek-nix"; inputs.flake-utils.follows = "flake-utils"; };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, flake-compat }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, zeek-flake, flake-compat }:
     {
       python-packages-overlay = import ./nix/python-packages-overlay.nix;
       packages-overlay = import ./nix/packages-overlay.nix;
@@ -22,6 +23,7 @@
               self.python-packages-overlay
               self.packages-overlay
               self.overlay
+              zeek-flake.overlay
             ];
             config = {
               allowUnsupportedSystem = true;

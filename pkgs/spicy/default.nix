@@ -12,6 +12,7 @@
 , makeWrapper
 , glibc
 , SpicyPlugin ? true
+, zeekTLS
 }:
 let
   spicy-analyzers = fetchFromGitHub {
@@ -47,7 +48,7 @@ stdenv.mkDerivation rec {
     llvmPackages.clang-unwrapped
     llvmPackages.llvm
     makeWrapper
-  ];
+  ] ++ lib.optionals SpicyPlugin [ zeekTLS ];
 
   preConfigure = ''
     patchShebangs ./scripts/autogen-type-erased
@@ -71,7 +72,7 @@ stdenv.mkDerivation rec {
      ${lib.optionalString SpicyPlugin
       ''
       cp -r ${spicy-analyzers} /build/spicy-analyzers
-      chmod 755  /build/spicy-analyzers
+      chmod 755  /build/spicy-analyzers/
       substituteInPlace /build/spicy-analyzers/CMakeLists.txt \
       --replace "0.4" "0" \
       --replace "00400" "0"
