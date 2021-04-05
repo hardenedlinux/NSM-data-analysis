@@ -16,7 +16,7 @@ index 47ab0228..e19509f4 100755
  }
  
 -get_version "$@"
-+get_version "2020"
++get_version "2021"
  
  # When running from CI, for geting the branch name we prefer what
  # might be passed in through environment variables as we may not
