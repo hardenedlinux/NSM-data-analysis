@@ -45,8 +45,6 @@
                 tldextract
                 yarapython
                 python-pptx
-                jupyterlab_git
-                jupyter_lsp
                 fastai
                 choochoo
                 # cudf ../include/rmm/detail/memory_manager.hpp:37:10: fatal error: rmm/detail/cnmem.h: No such file or directory

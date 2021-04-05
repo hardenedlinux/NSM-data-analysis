@@ -8,7 +8,7 @@ rec {
     rmm = callPackage ../pkgs/python/rmm { };
     clx = callPackage ../pkgs/python/clx { };
     cudf = callPackage ../pkgs/python/cudf { };
-    libclx = callPackage ./pkgs-lib/libclx { };
+    libclx = callPackage ../pkgs/pkgs-lib/libclx { };
     zat = callPackage ../pkgs/python/zat { };
     choochoo = callPackage ../pkgs/python/choochoo { };
     service_identity = callPackage ../pkgs/python/service_identity { };
@@ -30,9 +30,6 @@ rec {
     axelrod = callPackage ../pkgs/python/axelrod { };
     fastai = callPackage ../pkgs/python/fastai { };
     elastalert = callPackage ../pkgs/python/elastalert { };
-    jupyter_server = callPackage ../pkgs/python/jupyter-server { };
-    jupyterlab_git = prev.pythonPackages.callPackage ../pkgs/python/jupyterlab-git { };
-    jupyter_lsp = callPackage ../pkgs/python/jupyter-lsp { };
     textblob = callPackage ../pkgs/python/textblob { };
   };
 }
