@@ -13,14 +13,14 @@
 , glibc
 }:
 stdenv.mkDerivation rec {
-  version = "2021-03-30";
+  version = "2021-04-13";
   name = "spicy";
   src = fetchFromGitHub {
     owner = "zeek";
     repo = "spicy";
-    rev = "c5b3923ac81d8b1ef8071e0b9ba3b2cd529ca2db";
+    rev = "5fdc7493d7779208039c61003f110a987f8cbb45";
     fetchSubmodules = true;
-    sha256 = "0d22880acwinrq9nyn4yhykp4fgrqckmx8rf3l3p8k2ssbllh0fh";
+    sha256 = "0wcqs3kf3fnsckpnq18dh1rqh0yrw1xcvm0vq6msbjgl1qqv5anx";
   };
 
 
