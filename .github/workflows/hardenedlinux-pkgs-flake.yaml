@@ -16,4 +16,12 @@ jobs:
         extra_nix_config: |
           experimental-features = nix-command flakes
           system-features = nixos-test benchmark big-parallel kvm recursive-nix
-    - run: nix -Lv flake check
+    - run: |
+        nix flake lock --update-input packages
+        nix -Lv flake check
+
+    - uses: actions/cache@v2.1.5
+      with:
+        path: |
+          path: /nix/store
+        key: ${{ matrix.os }}-nix-store
