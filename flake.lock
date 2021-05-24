@@ -1,6 +1,97 @@
 {
   "nodes": {
+    "deploy": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "naersk": "naersk",
+        "nixpkgs": "nixpkgs",
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1616406726,
+        "narHash": "sha256-n9zmgxR03QNrvs9/fHewqE0j3SjL7Y+cglBCFu3U3rg=",
+        "owner": "serokell",
+        "repo": "deploy-rs",
+        "rev": "9e405fbc5ab5bacbd271fd78c6b6b6877c4d9f8d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "serokell",
+        "repo": "deploy-rs",
+        "type": "github"
+      }
+    },
+    "devshell": {
+      "locked": {
+        "lastModified": 1618523768,
+        "narHash": "sha256-Gev9da35pHUey3kGz/zrJFc/9ICs++vPCho7qB1mqd8=",
+        "owner": "numtide",
+        "repo": "devshell",
+        "rev": "709fe4d04a9101c9d224ad83f73416dce71baf21",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "devshell",
+        "type": "github"
+      }
+    },
+    "digga": {
+      "inputs": {
+        "deploy": "deploy",
+        "devshell": "devshell",
+        "nixlib": "nixlib",
+        "nixpkgs": "nixpkgs_2",
+        "utils": "utils_2"
+      },
+      "locked": {
+        "lastModified": 1621622491,
+        "narHash": "sha256-umy9jRYUs062L2fv3XlSjX5j7+dPd2Pjw8qbQmsIaN4=",
+        "owner": "divnix",
+        "repo": "digga",
+        "rev": "4a82d2b7638f06f4c900117a39f4fbeb18004b82",
+        "type": "github"
+      },
+      "original": {
+        "owner": "divnix",
+        "ref": "staging",
+        "repo": "digga",
+        "type": "github"
+      }
+    },
     "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1606424373,
+        "narHash": "sha256-oq8d4//CJOrVj+EcOaSXvMebvuTkmBJuT5tzlfewUnQ=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "99f1c2157fba4bfe6211a321fd0ee43199025dbf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flake-compat_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1606424373,
+        "narHash": "sha256-oq8d4//CJOrVj+EcOaSXvMebvuTkmBJuT5tzlfewUnQ=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "99f1c2157fba4bfe6211a321fd0ee43199025dbf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flake-compat_3": {
       "flake": false,
       "locked": {
         "lastModified": 1606424373,
@@ -18,11 +109,11 @@
     },
     "flake-utils": {
       "locked": {
-        "lastModified": 1614513358,
-        "narHash": "sha256-LakhOx3S1dRjnh0b5Dg3mbZyH0ToC9I8Y2wKSkBaTzU=",
+        "lastModified": 1620759905,
+        "narHash": "sha256-WiyWawrgmyN0EdmiHyG2V+fqReiVi8bM9cRdMaKQOFg=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "5466c5bbece17adaab2d82fae80b46e807611bf3",
+        "rev": "b543720b25df6ffdfcf9227afafc5b8c1fabfae8",
         "type": "github"
       },
       "original": {
@@ -31,244 +122,211 @@
         "type": "github"
       }
     },
-    "icsnpp-bacnet": {
-      "flake": false,
+    "flake-utils_2": {
       "locked": {
-        "lastModified": 1611095103,
-        "narHash": "sha256-LM6yZKtmr9/tdVRhkMAxVY8dEh1JeOdIZUhK2BDrZGE=",
-        "ref": "master",
-        "rev": "9c6e6b097b4799245af740402ced96383784e599",
-        "revCount": 1,
-        "type": "git",
-        "url": "https://github.com/cisagov/icsnpp-bacnet"
+        "lastModified": 1619345332,
+        "narHash": "sha256-qHnQkEp1uklKTpx3MvKtY6xzgcqXDsz5nLilbbuL+3A=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "2ebf2558e5bf978c7fb8ea927dfaed8fefab2e28",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "https://github.com/cisagov/icsnpp-bacnet"
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_3": {
+      "locked": {
+        "lastModified": 1618868421,
+        "narHash": "sha256-vyoJhLV6cJ8/tWz+l9HZLIkb9Rd9esE7p+0RL6zDR6Y=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "eed214942bcfb3a8cc09eb3b28ca7d7221e44a94",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "naersk": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1610392286,
+        "narHash": "sha256-3wFl5y+4YZO4SgRYK8WE7JIS3p0sxbgrGaQ6RMw+d98=",
+        "owner": "nmattia",
+        "repo": "naersk",
+        "rev": "d7bfbad3304fd768c0f93a4c3b50976275e6d4be",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nmattia",
+        "ref": "master",
+        "repo": "naersk",
+        "type": "github"
+      }
+    },
+    "nixlib": {
+      "locked": {
+        "lastModified": 1620519687,
+        "narHash": "sha256-+6Dd72b2CASuXm2W7KRxZIE7AOy/dj4mU28vaF+zxcs=",
+        "owner": "divnix",
+        "repo": "nixpkgs.lib",
+        "rev": "c7b6169809c5f74dd0c34f3d69e9d12ba4d448de",
+        "type": "github"
+      },
+      "original": {
+        "owner": "divnix",
+        "repo": "nixpkgs.lib",
+        "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
         "lastModified": 1610942247,
         "narHash": "sha256-PKo1ATAlC6BmfYSRmX0TVmNoFbrec+A5OKcabGEu2yU=",
-        "path": "/nix/store/sdjxjsd5phr225rs2qzklj2xci0c9gr0-source",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
         "rev": "7d71001b796340b219d1bfa8552c81995017544a",
-        "type": "path"
+        "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1617259757,
-        "narHash": "sha256-PFyms6aSWxlvNJJ5bPWJIzfCiLnhe6k2Cy8y3QXfek8=",
+        "lastModified": 1620962350,
+        "narHash": "sha256-9ASW4d4/Z8HmRvuJI8rxbEOTbXTBpQ8y+CmFYBwtXzE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "5d4a430472cafada97888cc80672fab255231f57",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1620000269,
+        "narHash": "sha256-FU839iLHwWFfv6nqxUSA1sazRsIzpeKxTS4jD7ffmqY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "dc68bad367deb8ad1aec9632fef4381c4c8da39a",
+        "rev": "280c8cf540342414661b89158c707fb9ef74a91e",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
-        "rev": "dc68bad367deb8ad1aec9632fef4381c4c8da39a",
         "type": "indirect"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1618801528,
+        "narHash": "sha256-1ru9LzP33ElEAZcDzYLgJQG3/uHhAg0LFJEfVZSOPZg=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0a5f5bab0e08e968ef25cff393312aa51a3512cf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nvfetcher": {
+      "inputs": {
+        "flake-compat": "flake-compat_3",
+        "flake-utils": "flake-utils_3",
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1620817815,
+        "narHash": "sha256-/1umfmECPSf9ah0FFi3BbmeO7vL7dg9FC2RbFj0INh4=",
+        "owner": "berberman",
+        "repo": "nvfetcher",
+        "rev": "4234f6afa70ec209a0a2ede01208cac6c528e0ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "berberman",
+        "repo": "nvfetcher",
+        "type": "github"
+      }
+    },
+    "packages": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "narHash": "sha256-A5NDp8N3C4wNAJWmXAvynFctiKMc/2FFbuXaP81qgwc=",
+        "path": "./packages",
+        "type": "path"
+      },
+      "original": {
+        "path": "./packages",
+        "type": "path"
       }
     },
     "root": {
       "inputs": {
-        "flake-compat": "flake-compat",
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs",
-        "zeek-flake": "zeek-flake"
+        "digga": "digga",
+        "flake-compat": "flake-compat_2",
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": "nixpkgs_3",
+        "nvfetcher": "nvfetcher",
+        "packages": "packages"
       }
     },
-    "spicy-analyzers": {
-      "flake": false,
+    "utils": {
       "locked": {
-        "lastModified": 1617206134,
-        "narHash": "sha256-iJc+CAYW1SXU2OMAkyF4JKJzUpSQhZooBzE+npNxy4w=",
-        "ref": "main",
-        "rev": "26696b65574faf6282aaa5e7836fda1f43a09092",
-        "revCount": 108,
-        "type": "git",
-        "url": "https://github.com/zeek/spicy-analyzers"
+        "lastModified": 1610051610,
+        "narHash": "sha256-U9rPz/usA1/Aohhk7Cmc2gBrEEKRzcW4nwPWMPwja4Y=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "3982c9903e93927c2164caa727cd3f6a0e6d14cc",
+        "type": "github"
       },
       "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://github.com/zeek/spicy-analyzers"
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
       }
     },
-    "zeek-flake": {
+    "utils_2": {
       "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "icsnpp-bacnet": "icsnpp-bacnet",
-        "nixpkgs": "nixpkgs_2",
-        "spicy-analyzers": "spicy-analyzers",
-        "zeek-plugin-community-id": "zeek-plugin-community-id",
-        "zeek-plugin-http2": "zeek-plugin-http2",
-        "zeek-plugin-ikev2": "zeek-plugin-ikev2",
-        "zeek-plugin-kafka": "zeek-plugin-kafka",
-        "zeek-plugin-pdf": "zeek-plugin-pdf",
-        "zeek-plugin-postgresql": "zeek-plugin-postgresql",
-        "zeek-plugin-zip": "zeek-plugin-zip",
-        "zeek-rc": "zeek-rc",
-        "zeek-tls": "zeek-tls"
+        "flake-utils": "flake-utils"
       },
       "locked": {
-        "lastModified": 1617306708,
-        "narHash": "sha256-ROXp2Dznsglp91Zs61pJbJk/kuwAJx5wZmWU8h+lrPs=",
-        "owner": "hardenedlinux",
-        "repo": "zeek-nix",
-        "rev": "bfbf1bf858500dd424ae0ec6ac3c04e251e88448",
+        "lastModified": 1621608968,
+        "narHash": "sha256-VN9Zr6xY2gkBxIR538UVzuTECTMaDFds5qgaucZrDIc=",
+        "owner": "gytis-ivaskevicius",
+        "repo": "flake-utils-plus",
+        "rev": "3929c2b70c3b4bb7bacd7f064e4f23f47981654a",
         "type": "github"
       },
       "original": {
-        "owner": "hardenedlinux",
-        "repo": "zeek-nix",
+        "owner": "gytis-ivaskevicius",
+        "ref": "staging",
+        "repo": "flake-utils-plus",
         "type": "github"
-      }
-    },
-    "zeek-plugin-community-id": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1600967039,
-        "narHash": "sha256-MV5Wa67u7WY91nh5jOCgiCk1ymvSKSyfT5nhl9EDA/w=",
-        "ref": "master",
-        "rev": "181a104b99d9019771ece7e489e46f2268b746d8",
-        "revCount": 21,
-        "type": "git",
-        "url": "https://github.com/corelight/zeek-community-id/"
-      },
-      "original": {
-        "ref": "master",
-        "rev": "181a104b99d9019771ece7e489e46f2268b746d8",
-        "type": "git",
-        "url": "https://github.com/corelight/zeek-community-id/"
-      }
-    },
-    "zeek-plugin-http2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1607350298,
-        "narHash": "sha256-UpNfsYfNKMb8yO8X5bdwB2wSQo9KWsjZbVqzteKYY3Q=",
-        "ref": "master",
-        "rev": "70008f0f40e6c942547285f8c43b9aabd1efc909",
-        "revCount": 50,
-        "type": "git",
-        "url": "https://github.com/MITRECND/bro-http2/"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://github.com/MITRECND/bro-http2/"
-      }
-    },
-    "zeek-plugin-ikev2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1580147366,
-        "narHash": "sha256-ct1nQcbDGQ2V9lrKD/snhmF3EEkDXCbQfiJpSwOmKPI=",
-        "ref": "master",
-        "rev": "5b62d506573da388bb4df0446cc87cdffc12a438",
-        "revCount": 1,
-        "type": "git",
-        "url": "https://github.com/ukncsc/zeek-plugin-ikev2"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://github.com/ukncsc/zeek-plugin-ikev2"
-      }
-    },
-    "zeek-plugin-kafka": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1614206104,
-        "narHash": "sha256-rpKlIo08GOrYWPU+UcPZ7QmmQqb1udjLLRJ75Zo+v7Q=",
-        "ref": "main",
-        "rev": "f8b9c5fe89917641845be572119f354d06a6409f",
-        "revCount": 55,
-        "type": "git",
-        "url": "https://github.com/SeisoLLC/zeek-kafka"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://github.com/SeisoLLC/zeek-kafka"
-      }
-    },
-    "zeek-plugin-pdf": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1602586202,
-        "narHash": "sha256-0zO7RwCJx8W8rn5ebjZUn/xLGl0M1ljCSNWSxawflLA=",
-        "ref": "master",
-        "rev": "3b52f87943f04685da600f4b00b4ad27f8cd28c6",
-        "revCount": 18,
-        "type": "git",
-        "url": "https://github.com/reservoirlabs/zeek-pdf-analyzer"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://github.com/reservoirlabs/zeek-pdf-analyzer"
-      }
-    },
-    "zeek-plugin-postgresql": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1586473863,
-        "narHash": "sha256-AHzzid9/JkSbgvhbql0PlFLWo9pO2VJ7RQ0tdmfv1uQ=",
-        "ref": "master",
-        "rev": "fb72b41140094ec8795cd7aaecbb3997c28ff202",
-        "revCount": 24,
-        "type": "git",
-        "url": "https://github.com/0xxon/zeek-postgresql"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://github.com/0xxon/zeek-postgresql"
-      }
-    },
-    "zeek-plugin-zip": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1602585700,
-        "narHash": "sha256-1JKcDOVLQh9wyipGrVtmDnVrEXoMqjxtXqPs1rQo150=",
-        "ref": "master",
-        "rev": "df3344f1e161da9349d5257fc9137acc09d4af55",
-        "revCount": 6,
-        "type": "git",
-        "url": "https://github.com/reservoirlabs/zeek-zip-analyzer"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://github.com/reservoirlabs/zeek-zip-analyzer"
-      }
-    },
-    "zeek-rc": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-sD4BE06pNWCXFkw1V+XfvVSj0dFCvp9lAhuEVpfT1NQ=",
-        "type": "tarball",
-        "url": "https://download.zeek.org/zeek-4.0.0-rc2.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://download.zeek.org/zeek-4.0.0-rc2.tar.gz"
-      }
-    },
-    "zeek-tls": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-DfOAe+F0X+HHGX3amIvvHJsDJHJVw2nFZVjbbvEa1vI=",
-        "type": "tarball",
-        "url": "https://download.zeek.org/zeek-4.0.0.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://download.zeek.org/zeek-4.0.0.tar.gz"
       }
     }
   },

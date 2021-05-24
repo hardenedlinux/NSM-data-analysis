@@ -1,0 +1,5 @@
+# nvfetcher.toml
+[spicy]
+src.github = "zeek/spicy"
+fetch.github = "zeek/spicy"
+fetchSubmodules = true

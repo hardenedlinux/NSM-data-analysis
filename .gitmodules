@@ -1,3 +1,0 @@
-[submodule "pkgs/zeek"]
-	path = pkgs/zeek
-	url = https://github.com/hardenedlinux/zeek-nix.git
