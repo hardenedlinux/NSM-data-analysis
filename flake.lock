@@ -276,7 +276,7 @@
         ]
       },
       "locked": {
-        "narHash": "sha256-A5NDp8N3C4wNAJWmXAvynFctiKMc/2FFbuXaP81qgwc=",
+        "narHash": "sha256-1uYdP+H0EgIWtbCq5naXCFRw/smYvAvYzqDLVnE23vI=",
         "path": "./packages",
         "type": "path"
       },
