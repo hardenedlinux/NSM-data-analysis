@@ -139,11 +139,11 @@
     },
     "flake-utils_3": {
       "locked": {
-        "lastModified": 1618868421,
-        "narHash": "sha256-vyoJhLV6cJ8/tWz+l9HZLIkb9Rd9esE7p+0RL6zDR6Y=",
+        "lastModified": 1620759905,
+        "narHash": "sha256-WiyWawrgmyN0EdmiHyG2V+fqReiVi8bM9cRdMaKQOFg=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "eed214942bcfb3a8cc09eb3b28ca7d7221e44a94",
+        "rev": "b543720b25df6ffdfcf9227afafc5b8c1fabfae8",
         "type": "github"
       },
       "original": {
@@ -233,56 +233,26 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1618801528,
-        "narHash": "sha256-1ru9LzP33ElEAZcDzYLgJQG3/uHhAg0LFJEfVZSOPZg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "0a5f5bab0e08e968ef25cff393312aa51a3512cf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nvfetcher": {
+    "nvfetcher-flake": {
       "inputs": {
         "flake-compat": "flake-compat_3",
         "flake-utils": "flake-utils_3",
-        "nixpkgs": "nixpkgs_4"
-      },
-      "locked": {
-        "lastModified": 1620817815,
-        "narHash": "sha256-/1umfmECPSf9ah0FFi3BbmeO7vL7dg9FC2RbFj0INh4=",
-        "owner": "berberman",
-        "repo": "nvfetcher",
-        "rev": "4234f6afa70ec209a0a2ede01208cac6c528e0ff",
-        "type": "github"
-      },
-      "original": {
-        "owner": "berberman",
-        "repo": "nvfetcher",
-        "type": "github"
-      }
-    },
-    "packages": {
-      "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "narHash": "sha256-1uYdP+H0EgIWtbCq5naXCFRw/smYvAvYzqDLVnE23vI=",
-        "path": "./packages",
-        "type": "path"
+        "lastModified": 1621923537,
+        "narHash": "sha256-l/ZpqKqWfFjyoDRJt52L0FSKhw8SfEFkVwuJvLMgVew=",
+        "owner": "berberman",
+        "repo": "nvfetcher",
+        "rev": "2783aafd6607e8041fc8ba7918704315c9455035",
+        "type": "github"
       },
       "original": {
-        "path": "./packages",
-        "type": "path"
+        "owner": "berberman",
+        "repo": "nvfetcher",
+        "type": "github"
       }
     },
     "root": {
@@ -291,8 +261,7 @@
         "flake-compat": "flake-compat_2",
         "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs_3",
-        "nvfetcher": "nvfetcher",
-        "packages": "packages"
+        "nvfetcher-flake": "nvfetcher-flake"
       }
     },
     "utils": {

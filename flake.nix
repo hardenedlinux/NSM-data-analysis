@@ -5,12 +5,14 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "nixpkgs";
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
-    nvfetcher.url = "github:berberman/nvfetcher";
-    packages = { url = "path:./packages"; inputs.nixpkgs.follows = "nixpkgs"; };
+    nvfetcher-flake = {
+      url = "github:berberman/nvfetcher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     digga.url = "github:divnix/digga/staging";
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, packages, flake-compat, nvfetcher, digga }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, flake-compat, nvfetcher-flake, digga }:
     { }
     //
     (flake-utils.lib.eachSystem [ "x86_64-linux" ]
@@ -19,9 +21,8 @@
           pkgs = import nixpkgs {
             inherit system;
             overlays = [
-              packages.overlay
               self.overlay
-              nvfetcher.overlay
+              nvfetcher-flake.overlay
             ];
             config = {
               allowUnsupportedSystem = true;
@@ -34,7 +35,10 @@
             buildInputs = [
               nvchecker
               nix-prefetch-git
-              (haskellPackages.ghcWithPackages (p: [ p.nvfetcher ]))
+              (haskellPackages.ghcWithPackages
+                (p: with p;  [
+                  nvfetcher
+                ]))
               (pkgs.python3.withPackages (ps: with ps;[
                 beakerx
               ]))
@@ -46,6 +50,8 @@
               beakerx
               elastalert
               spicy;
+            inherit (pkgs.haskellPackages)
+              nvfetcher;
           };
 
           hydraJobs = {

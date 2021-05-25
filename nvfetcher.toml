@@ -2,4 +2,10 @@
 [spicy]
 src.github = "zeek/spicy"
 fetch.github = "zeek/spicy"
-fetchSubmodules = true
+git.fetchSubmodules = true
+
+
+[zeek]
+src.github = "zeek/broker"
+fetch.github = "zeek/broker"
+git.fetchSubmodules = true

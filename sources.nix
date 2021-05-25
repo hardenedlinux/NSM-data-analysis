@@ -7,10 +7,22 @@
     src = fetchgit {
       url = "https://github.com/zeek/spicy";
       rev = "v1.1.0";
-      fetchSubmodules = false;
+      fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "06dyk84gbiyva0iqpqcpzbklij3848m37al1zzpr46z3j95fdkd2";
+      sha256 = "0vqnj9slgzxbcfrlfqd90dqya000ym0vkp3rrrsfr8zbdsj6ffi7";
+    };
+  };
+  zeek = {
+    pname = "zeek";
+    version = "v2.0.1";
+    src = fetchgit {
+      url = "https://github.com/zeek/broker";
+      rev = "v2.0.1";
+      fetchSubmodules = true;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "19isnl3isnb8xinx7jsy9013psgr1jrnyspm3fpnsdn6q60igwdm";
     };
   };
 }
