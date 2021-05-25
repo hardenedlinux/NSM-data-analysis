@@ -1,16 +1,8 @@
-{ stdenv, lib, fetchFromGitHub, cmake, gcc, openssl, caf, python3, ncurses5 }:
+{ stdenv, lib, fetchFromGitHub, cmake, gcc, openssl, caf, python3, ncurses5, source }:
 
 stdenv.mkDerivation rec {
-  version = "2021-02-26";
   name = "broker";
-  src = fetchFromGitHub {
-    owner = "zeek";
-    repo = "broker";
-    rev = "41d2109da960312995f54fae491e867c0621cc0e";
-    fetchSubmodules = true;
-    sha256 = "0l0vs4623z33cmfp8pkk5jrhy9d2jp6yrjcy88b41pkzg62bgnhb";
-  };
-
+  inherit (source) pname version src;
 
   nativeBuildInputs = [ cmake openssl ];
   buildInputs = [ cmake gcc openssl caf ncurses5 ];

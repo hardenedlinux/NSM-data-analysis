@@ -9,3 +9,8 @@ git.fetchSubmodules = true
 src.github = "zeek/broker"
 fetch.github = "zeek/broker"
 git.fetchSubmodules = true
+
+
+[clx]
+src.github = "rapidsai/clx"
+fetch.github = "rapidsai/clx"
