@@ -49,7 +49,8 @@
             inherit (pkgs)
               beakerx
               elastalert
-              spicy;
+              spicy
+              broker;
             inherit (pkgs.haskellPackages)
               nvfetcher;
           };

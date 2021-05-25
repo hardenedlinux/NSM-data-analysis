@@ -5,7 +5,7 @@ fetch.github = "zeek/spicy"
 git.fetchSubmodules = true
 
 
-[zeek]
+[broker]
 src.github = "zeek/broker"
 fetch.github = "zeek/broker"
 git.fetchSubmodules = true
