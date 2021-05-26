@@ -22,5 +22,5 @@ fetch.pypi = "btest"
 
 #Go Pkgs
 [deepsea]
-src.manual= "8fdeb3be1965cf31badac68dd0031416dfe1dca3"
+src.manual= "dafd8c60fcbe33e398a0cea01447f16a61476165"
 fetch.github = "dsnezhkov/deepsea:dafd8c60fcbe33e398a0cea01447f16a61476165"
