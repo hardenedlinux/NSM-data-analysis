@@ -49,7 +49,6 @@
 
           packages = {
             inherit (pkgs)
-              elastalert
               spicy
               broker;
             inherit (pkgs.haskellPackages)
