@@ -42,14 +42,13 @@
                   nvfetcher
                 ]))
               (pkgs.python3.withPackages (ps: with ps;[
-                beakerx
+                btest
               ]))
             ];
           };
 
           packages = {
             inherit (pkgs)
-              beakerx
               elastalert
               spicy
               broker;
@@ -75,14 +74,14 @@
         let
           inherit (prev) lib;
           sources = (import ./sources.nix) { inherit (final) fetchurl fetchgit; };
-          pythonDirNames = lib.attrNames (lib.filterAttrs (pkgDir: type: type == "directory" && builtins.pathExists (./packages/python + "/${pkgDir}/default.nix")) (builtins.readDir ./packages/python));
-          pkgsDirNames = lib.attrNames (lib.filterAttrs (pkgDir: type: type == "directory" && builtins.pathExists (./packages/pkgs + "/${pkgDir}/default.nix")) (builtins.readDir ./packages/pkgs));
+          pythonDirNames = lib.attrNames (lib.filterAttrs (pkgDir: type: type == "directory") (builtins.readDir ./packages/python-pkgs));
+          pkgsDirNames = lib.attrNames (lib.filterAttrs (pkgDir: type: type == "directory") (builtins.readDir ./packages/pkgs));
         in
         (
           builtins.listToAttrs
             (map
               (pkgDir: {
-                value = prev.callPackage (./packages/python + "/${pkgDir}") { };
+                value = prev.callPackage (./packages/python-pkgs + "/${pkgDir}") { source = sources.${pkgDir}; };
                 name = pkgDir;
               })
               pythonDirNames)

@@ -18,3 +18,8 @@ fetch.github = "rapidsai/clx"
 src.github = "NVIDIA/cnmem"
 src.git = "https://github.com/NVIDIA/cnmem"
 fetch.github = "NVIDIA/cnmem"
+
+#Python Packages
+[btest]
+src.pypi = "btest"
+fetch.pypi = "btest"

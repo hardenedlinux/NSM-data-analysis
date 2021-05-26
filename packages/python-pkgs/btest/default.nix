@@ -1,18 +1,11 @@
 { lib
 , python3Packages
 , python3
+, source
 }:
 with python3.pkgs;
 python3Packages.buildPythonPackage rec {
-
-  pname = "btest";
-  version = "0.67";
-
-  src = fetchPypi {
-    inherit pname version;
-    sha256 = "1df5b1462b62efba6c718d8aa09b1d566cc18e93f50f84132fe96326c40305c1";
-  };
-
+  inherit (source) pname version src;
   doCheck = false;
 
   meta = with lib; {
