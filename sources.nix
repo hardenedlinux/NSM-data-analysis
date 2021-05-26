@@ -45,16 +45,16 @@
       sha256 = "0wx25vn9dq0wwp1klx862cavsgf0f2b5m0sc1d2jr121v24z96jy";
     };
   };
-  spicy = {
-    pname = "spicy";
-    version = "v1.1.0";
+  deepsea = {
+    pname = "deepsea";
+    version = "8fdeb3be1965cf31badac68dd0031416dfe1dca3";
     src = fetchgit {
-      url = "https://github.com/zeek/spicy";
-      rev = "v1.1.0";
-      fetchSubmodules = true;
+      url = "https://github.com/dsnezhkov/deepsea";
+      rev = "dafd8c60fcbe33e398a0cea01447f16a61476165";
+      fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "0vqnj9slgzxbcfrlfqd90dqya000ym0vkp3rrrsfr8zbdsj6ffi7";
+      sha256 = "0b40dci28i5i2ap39dz9xpcnmr2nvasck4z2464zsg4qz8l9f803";
     };
   };
 }

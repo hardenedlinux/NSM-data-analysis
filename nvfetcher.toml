@@ -1,10 +1,4 @@
 # nvfetcher.toml
-[spicy]
-src.github = "zeek/spicy"
-fetch.github = "zeek/spicy"
-git.fetchSubmodules = true
-
-
 [broker]
 src.github = "zeek/broker"
 fetch.github = "zeek/broker"
@@ -23,3 +17,10 @@ fetch.github = "NVIDIA/cnmem"
 [btest]
 src.pypi = "btest"
 fetch.pypi = "btest"
+
+
+
+#Go Pkgs
+[deepsea]
+src.manual= "8fdeb3be1965cf31badac68dd0031416dfe1dca3"
+fetch.github = "dsnezhkov/deepsea:dafd8c60fcbe33e398a0cea01447f16a61476165"
