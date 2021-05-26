@@ -10,9 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     digga.url = "github:divnix/digga/staging";
+    spicy-flake = { url = "github:GTrunSec/spicy-with-nix-flake"; };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, flake-compat, nvfetcher-flake, digga }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, flake-compat, nvfetcher-flake, digga, spicy-flake }:
     { }
     //
     (flake-utils.lib.eachSystem [ "x86_64-linux" ]
@@ -23,6 +24,7 @@
             overlays = [
               self.overlay
               nvfetcher-flake.overlay
+              spicy-flake.overlay
             ];
             config = {
               allowUnsupportedSystem = true;

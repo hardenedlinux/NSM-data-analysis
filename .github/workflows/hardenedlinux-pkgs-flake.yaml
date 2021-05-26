@@ -17,7 +17,6 @@ jobs:
           experimental-features = nix-command flakes
           system-features = nixos-test benchmark big-parallel kvm recursive-nix
     - run: |
-        nix flake lock --update-input packages
         nix -Lv flake check
 
     - uses: actions/cache@v2.1.5
