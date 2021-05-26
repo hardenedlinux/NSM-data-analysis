@@ -1,4 +1,4 @@
-{ stdenv, pkgs, fetchgit, cmake, python3, cudatoolkit }:
+{ stdenv, lib, pkgs, fetchgit, cmake, python3, cudatoolkit }:
 let
   cnmem = fetchgit {
     url = "https://github.com/NVIDIA/cnmem";
@@ -22,6 +22,7 @@ stdenv.mkDerivation rec {
     export INSTALL_PREFIX=$out
     bash ./build.sh -n librmm
   '';
+
   nativeBuildInputs = [ cmake ];
   buildInputs = [ cudatoolkit python3 ];
 

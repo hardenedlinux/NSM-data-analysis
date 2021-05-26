@@ -1,5 +1,4 @@
-{ stdenv
-, python3Packages
+{ python3Packages
 , python3
 , fetchgit
 }:

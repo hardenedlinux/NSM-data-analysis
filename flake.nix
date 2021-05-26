@@ -3,7 +3,7 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "nixpkgs";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     nvfetcher-flake = {
       url = "github:berberman/nvfetcher";

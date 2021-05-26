@@ -25,6 +25,18 @@
       sha256 = "1ka81kfzkpr37wc3qbma3qcavhd6rz2hc4n6sanj13fx76bpbs36";
     };
   };
+  cnmem = {
+    pname = "cnmem";
+    version = "37896cc9bfc6536a8c878a1e675835c22d827821";
+    src = fetchgit {
+      url = "https://github.com/NVIDIA/cnmem";
+      rev = "37896cc9bfc6536a8c878a1e675835c22d827821";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "0wx25vn9dq0wwp1klx862cavsgf0f2b5m0sc1d2jr121v24z96jy";
+    };
+  };
   spicy = {
     pname = "spicy";
     version = "v1.1.0";
