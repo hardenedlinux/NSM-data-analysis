@@ -50,7 +50,9 @@
           packages = {
             inherit (pkgs)
               spicy
-              broker;
+              broker
+              btest
+              ;
             inherit (pkgs.haskellPackages)
               nvfetcher;
           };
@@ -73,14 +75,14 @@
         let
           inherit (prev) lib;
           sources = (import ./sources.nix) { inherit (final) fetchurl fetchgit; };
-          pythonDirNames = lib.attrNames (lib.filterAttrs (pkgDir: type: type == "directory") (builtins.readDir ./packages/python-pkgs));
-          pkgsDirNames = lib.attrNames (lib.filterAttrs (pkgDir: type: type == "directory") (builtins.readDir ./packages/pkgs));
+          pythonDirNames = lib.attrNames (digga.lib.attrs.safeReadDir ./packages/python-pkgs);
+          pkgsDirNames = lib.attrNames (digga.lib.attrs.safeReadDir ./packages/pkgs);
         in
         (
           builtins.listToAttrs
             (map
               (pkgDir: {
-                value = prev.callPackage (./packages/python-pkgs + "/${pkgDir}") { source = sources.${pkgDir}; };
+                value = prev.callPackage (./packages/python-pkgs + "/${pkgDir}") { };
                 name = pkgDir;
               })
               pythonDirNames)
@@ -89,11 +91,11 @@
           builtins.listToAttrs
             (map
               (pkgDir: {
-                value = prev.callPackage (./packages/pkgs + "/${pkgDir}") { source = sources.${pkgDir}; };
+                value = prev.callPackage (./packages/pkgs + "/${pkgDir}") { };
                 name = pkgDir;
               })
               pkgsDirNames)
         )
-        // { };
+        // { inherit sources; };
     };
 }

@@ -1,11 +1,11 @@
 { lib
 , python3Packages
 , python3
-, source
+, sources
 }:
 with python3.pkgs;
 python3Packages.buildPythonPackage rec {
-  inherit (source) pname version src;
+  inherit (sources.btest) pname version src;
   doCheck = false;
 
   meta = with lib; {
