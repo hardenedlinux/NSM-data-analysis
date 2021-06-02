@@ -1,10 +1,10 @@
 { lib
-, python3Packages
+, pythonPackages
 , python3
 , sources
 }:
 with python3.pkgs;
-python3Packages.buildPythonPackage rec {
+pythonPackages.buildPythonPackage rec {
   inherit (sources.btest) pname version src;
   doCheck = false;
 

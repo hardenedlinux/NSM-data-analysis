@@ -75,14 +75,14 @@
         let
           inherit (prev) lib;
           sources = (import ./sources.nix) { inherit (final) fetchurl fetchgit; };
-          pythonDirNames = lib.attrNames (digga.lib.attrs.safeReadDir ./packages/python-pkgs);
-          pkgsDirNames = lib.attrNames (digga.lib.attrs.safeReadDir ./packages/pkgs);
+          pythonDirNames = lib.attrNames (builtins.readDir ./packages/python-pkgs);
+          pkgsDirNames = lib.attrNames (builtins.readDir ./packages/pkgs);
         in
         (
           builtins.listToAttrs
             (map
               (pkgDir: {
-                value = prev.callPackage (./packages/python-pkgs + "/${pkgDir}") { };
+                value = prev.python3Packages.callPackage (./packages/python-pkgs + "/${pkgDir}") { };
                 name = pkgDir;
               })
               pythonDirNames)

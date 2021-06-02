@@ -47,7 +47,7 @@
   };
   deepsea = {
     pname = "deepsea";
-    version = "dafd8c60fcbe33e398a0cea01447f16a61476165";
+    version = "8fdeb3be1965cf31badac68dd0031416dfe1dca3";
     src = fetchgit {
       url = "https://github.com/dsnezhkov/deepsea";
       rev = "dafd8c60fcbe33e398a0cea01447f16a61476165";
