@@ -73,10 +73,9 @@
     {
       overlay = final: prev:
         let
-          inherit (prev) lib;
           sources = (import ./sources.nix) { inherit (final) fetchurl fetchgit; };
-          pythonDirNames = lib.attrNames (builtins.readDir ./packages/python-pkgs);
-          pkgsDirNames = lib.attrNames (builtins.readDir ./packages/pkgs);
+          pythonDirNames = builtins.attrNames (builtins.readDir ./packages/python-pkgs);
+          pkgsDirNames = builtins.attrNames (builtins.readDir ./packages/pkgs);
         in
         (
           builtins.listToAttrs
