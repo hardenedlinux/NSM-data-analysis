@@ -10,7 +10,6 @@ fetch.github = "rapidsai/clx"
 
 [cnmem]
 src.github = "NVIDIA/cnmem"
-src.git = "https://github.com/NVIDIA/cnmem"
 fetch.github = "NVIDIA/cnmem"
 
 #Python Packages
@@ -21,6 +20,6 @@ fetch.pypi = "btest"
 
 
 #Go Pkgs
-[deepsea]
-src.manual= "dafd8c60fcbe33e398a0cea01447f16a61476165"
-fetch.github = "dsnezhkov/deepsea:dafd8c60fcbe33e398a0cea01447f16a61476165"
+# [deepsea]
+# src.manual= "b48e9302d079ed9f53a9123a805096a845d2c6a5"
+# fetch.github = "dsnezhkov/deepsea:b48e9302d079ed9f53a9123a805096a845d2c6a5"

@@ -35,8 +35,8 @@
         rec {
           devShell = with pkgs; mkShell {
             buildInputs = [
+              nixpkgs-fmt
               nvchecker
-              nix-prefetch-git
               (haskellPackages.ghcWithPackages
                 (p: with p;  [
                   nvfetcher
@@ -44,6 +44,7 @@
               (pkgs.python3.withPackages (ps: with ps;[
                 btest
               ]))
+              zqd
             ];
           };
 
@@ -52,6 +53,9 @@
               spicy
               broker
               btest
+              zqd
+              zat
+              elastalert
               ;
             inherit (pkgs.haskellPackages)
               nvfetcher;

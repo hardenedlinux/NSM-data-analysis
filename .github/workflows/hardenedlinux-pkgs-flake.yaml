@@ -3,26 +3,50 @@ on:
   pull_request:
   push:
 jobs:
-  tests:
+  nix-tests:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.3.4
       with:
-        # Nix Flakes doesn't work on shallow clones
         fetch-depth: 0
 
-    - uses: actions/cache@v2.1.5
+    - name: Cache Nix Store
+      id: cache-nix
+      uses: actions/cache@v2.1.6
       with:
         path: |
-          path: /nix/store
-        key: ${{ matrix.os }}-nix-store
+          ~/nix/store
+        key: ${{ runner.os }}-nix-store-1
 
     - uses: cachix/install-nix-action@v13
       with:
         install_url: https://github.com/numtide/nix-flakes-installer/releases/download/nix-2.4pre20210429_d15a196/install
+
         extra_nix_config: |
           experimental-features = nix-command flakes
           system-features = nixos-test benchmark big-parallel kvm recursive-nix
-    - run: |
-        nix -Lv flake check
 
+    # CI workflows
+    - name: Nix Flake Check
+      env:
+        CACHE_HIT: ${{ steps.cache-nix.outputs.cache-hit }}
+      run: |
+        NIX_STORE=/nix/store
+        if [[ "$CACHE_HIT" != 'true' ]]; then
+          nix -Lv flake check
+          nix -Lv develop -c nixpkgs-fmt _build/.
+          mkdir -p ~/nix
+          sudo cp --force --recursive  $NIX_STORE ~/nix/store/
+          #
+          sudo rm -rf ~/nix/store/*.lock
+        else
+          sudo rsync -r --links --force ~/nix/store $NIX_STORE
+          nix -Lv flake check
+        fi
+
+    - name: Nix Format Check
+      run: |
+        nix -Lv develop -c nixpkgs-fmt _build/.
+        nix -Lv develop -c nixpkgs-fmt --check .
