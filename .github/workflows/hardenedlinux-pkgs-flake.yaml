@@ -18,7 +18,7 @@ jobs:
       with:
         path: |
           ~/nix/store
-        key: ${{ runner.os }}-nix-store-1
+        key: ${{ runner.os }}-nix-store-locked-1
 
     - uses: cachix/install-nix-action@v13
       with:
