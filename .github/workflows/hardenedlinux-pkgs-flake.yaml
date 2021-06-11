@@ -12,14 +12,6 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Cache Nix Store
-      id: cache-nix
-      uses: actions/cache@v2.1.6
-      with:
-        path: |
-          ~/nix/store
-        key: ${{ runner.os }}-nix-store-Mon Jun 07 13:17:38 PDT 2021
-
     - uses: cachix/install-nix-action@v13
       with:
         install_url: https://github.com/numtide/nix-flakes-installer/releases/download/nix-2.4pre20210429_d15a196/install
@@ -30,21 +22,8 @@ jobs:
 
     # CI workflows
     - name: Nix Flake Check
-      env:
-        CACHE_HIT: ${{ steps.cache-nix.outputs.cache-hit }}
       run: |
-        NIX_STORE=/nix/store/
-        if [[ ! -d "~/nix/store" ]]; then
           nix -Lv flake check
-          nix -Lv develop -c nixpkgs-fmt _build/.
-          mkdir -p ~/nix/store/
-          sudo rsync -r -l $NIX_STORE ~/nix/store/
-          #
-          sudo rm -rf ~/nix/store/*.lock
-        else
-          sudo rsync -r -l ~/nix/store/ /nix/store/
-          nix -Lv flake check
-        fi
 
     - name: Nix Format Check
       run: |

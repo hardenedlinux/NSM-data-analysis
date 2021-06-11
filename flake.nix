@@ -9,11 +9,10 @@
       url = "github:berberman/nvfetcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    digga.url = "github:divnix/digga/staging";
     spicy-flake = { url = "github:GTrunSec/spicy-with-nix-flake"; };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, flake-compat, nvfetcher-flake, digga, spicy-flake }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, flake-compat, nvfetcher-flake, spicy-flake }:
     { }
     //
     (flake-utils.lib.eachSystem [ "x86_64-linux" ]
