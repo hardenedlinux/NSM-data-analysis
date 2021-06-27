@@ -39,7 +39,7 @@
               {
                 name = pkgs.nvfetcher-bin.pname;
                 help = pkgs.nvfetcher-bin.meta.description;
-                command = "cd $DEVSHELL_ROOT/packages; ${pkgs.nvfetcher-bin}/bin/nvfetcher -c ./sources.toml --no-output $@";
+                command = "cd $DEVSHELL_ROOT/packages; ${pkgs.nvfetcher-bin}/bin/nvfetcher -c ./sources.toml --no-output $@; nixpkgs-fmt _sources";
               }
             ];
             packages = [
@@ -79,7 +79,7 @@
     {
       overlay = final: prev:
         let
-          nixpkgs-hardenedlinux-sources = (import ./sources.nix) {
+          nixpkgs-hardenedlinux-sources = (import ./packages/_sources/generated.nix) {
             inherit (final) fetchurl fetchgit;
           };
           pythonDirNames = builtins.attrNames

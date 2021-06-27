@@ -12,7 +12,7 @@
       leaveDotGit = false;
       sha256 = "19isnl3isnb8xinx7jsy9013psgr1jrnyspm3fpnsdn6q60igwdm";
     };
-    
+
   };
   btest = {
     pname = "btest";
@@ -21,7 +21,7 @@
       sha256 = "00nxf7rh38hrzjq4v70idbrjsgxd5nh97cj0k4qw4z0yl2l2s553";
       url = "https://pypi.io/packages/source/b/btest/btest-0.68.tar.gz";
     };
-    
+
   };
   clx = {
     pname = "clx";
@@ -34,6 +34,6 @@
       leaveDotGit = false;
       sha256 = "1rj2r6wnk90svqmhrwvd9z94sg8sh7zvdqan3bp38d67chlaimjs";
     };
-    
+
   };
 }

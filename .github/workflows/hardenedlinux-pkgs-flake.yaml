@@ -27,5 +27,4 @@ jobs:
 
     - name: Nix Format Check
       run: |
-        nix -Lv develop -c nixpkgs-fmt _build/.
         nix -Lv develop -c nixpkgs-fmt --check .
