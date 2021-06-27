@@ -47,7 +47,7 @@
               (pkgs.python3.withPackages (ps: with ps;[
                 btest
               ]))
-              zqd
+              zed
             ];
           };
 
@@ -58,6 +58,7 @@
               btest
               zqd
               zat
+              zed
               elastalert
               ;
             inherit (pkgs.haskellPackages)
@@ -83,8 +84,7 @@
           nixpkgs-hardenedlinux-sources = (import ./packages/_sources/generated.nix) {
             inherit (final) fetchurl fetchgit;
           };
-          pythonDirNames = builtins.attrNames
-            (builtins.readDir ./packages/python-pkgs);
+          pythonDirNames = builtins.attrNames (builtins.readDir ./packages/python-pkgs);
           pkgsDirNames = builtins.attrNames (builtins.readDir ./packages/pkgs);
         in
         (

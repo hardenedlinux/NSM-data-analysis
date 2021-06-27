@@ -23,3 +23,6 @@ fetch.pypi = "btest"
 # [deepsea]
 # src.manual= "b48e9302d079ed9f53a9123a805096a845d2c6a5"
 # fetch.github = "dsnezhkov/deepsea:b48e9302d079ed9f53a9123a805096a845d2c6a5"
+[zed]
+src.git = "https://github.com/brimdata/zed"
+fetch.github = "brimdata/zed"
