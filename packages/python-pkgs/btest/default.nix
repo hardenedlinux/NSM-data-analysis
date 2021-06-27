@@ -1,11 +1,11 @@
 { lib
 , pythonPackages
 , python3
-, sources
+, nixpkgs-hardenedlinux-sources
 }:
 with python3.pkgs;
 pythonPackages.buildPythonPackage rec {
-  inherit (sources.btest) pname version src;
+  inherit (nixpkgs-hardenedlinux-sources.btest) pname version src;
   doCheck = false;
 
   meta = with lib; {

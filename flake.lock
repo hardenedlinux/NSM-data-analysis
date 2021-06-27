@@ -2,6 +2,21 @@
   "nodes": {
     "devshell-flake": {
       "locked": {
+        "lastModified": 1624738949,
+        "narHash": "sha256-62pEoJ1jQARZ/fAuTw67j8MqTShd8BBm+ZoSs7aeJus=",
+        "owner": "numtide",
+        "repo": "devshell",
+        "rev": "d4be23644b0b6471d556503e03cae3215d3f9cf6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "devshell",
+        "type": "github"
+      }
+    },
+    "devshell-flake_2": {
+      "locked": {
         "lastModified": 1618523768,
         "narHash": "sha256-Gev9da35pHUey3kGz/zrJFc/9ICs++vPCho7qB1mqd8=",
         "owner": "numtide",
@@ -141,16 +156,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1621840840,
-        "narHash": "sha256-o6h6+d5ZwrFmOTe+ma9s1Z9kyHsCW1C84IA8RZ9/fIU=",
+        "lastModified": 1624731051,
+        "narHash": "sha256-/v4wwmiZPSp0SJUf4gZiEi3CDaZdKMbkcduf1eDIh7k=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ea7d4aa9b8225abd6147339f0d56675d6f1f0fd1",
+        "rev": "8b705c3ffe70e59f1f1c23f3da31cb46f91879f0",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
-        "ref": "nixos-unstable",
+        "ref": "release-21.05",
         "type": "indirect"
       }
     },
@@ -169,7 +184,7 @@
         "type": "indirect"
       }
     },
-    "nvfetcher-flake": {
+    "nvfetcher": {
       "inputs": {
         "flake-compat": "flake-compat_2",
         "flake-utils": "flake-utils_2",
@@ -178,11 +193,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1622790111,
-        "narHash": "sha256-58ugchZum5rmu2MEMAOIKnBkiBQxDbuQWvx7kX5+1mw=",
+        "lastModified": 1624534673,
+        "narHash": "sha256-7HWt8Xh4aIFfGKAFQus5euhYxcWLe6kXz1DsGuV0WbU=",
         "owner": "berberman",
         "repo": "nvfetcher",
-        "rev": "cb0dd7addccd480aaec020da50f118ad1b5f35d7",
+        "rev": "a8514f53c7999d23b48d2f42de63660bc3d7850f",
         "type": "github"
       },
       "original": {
@@ -191,11 +206,12 @@
         "type": "github"
       }
     },
-    "nvfetcher-flake_2": {
+    "nvfetcher-flake": {
       "inputs": {
         "flake-compat": "flake-compat_4",
         "flake-utils": "flake-utils_4",
         "nixpkgs": [
+          "spicy",
           "nixpkgs"
         ]
       },
@@ -215,20 +231,21 @@
     },
     "root": {
       "inputs": {
+        "devshell-flake": "devshell-flake",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
-        "nvfetcher-flake": "nvfetcher-flake",
-        "spicy-flake": "spicy-flake"
+        "nvfetcher": "nvfetcher",
+        "spicy": "spicy"
       }
     },
-    "spicy-flake": {
+    "spicy": {
       "inputs": {
-        "devshell-flake": "devshell-flake",
+        "devshell-flake": "devshell-flake_2",
         "flake-compat": "flake-compat_3",
         "flake-utils": "flake-utils_3",
         "nixpkgs": "nixpkgs_2",
-        "nvfetcher-flake": "nvfetcher-flake_2"
+        "nvfetcher-flake": "nvfetcher-flake"
       },
       "locked": {
         "lastModified": 1621998774,

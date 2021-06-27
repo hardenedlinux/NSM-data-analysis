@@ -25,14 +25,14 @@
   };
   clx = {
     pname = "clx";
-    version = "v0.19.0";
+    version = "v21.06.00";
     src = fetchgit {
       url = "https://github.com/rapidsai/clx";
-      rev = "v0.19.0";
+      rev = "v21.06.00";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "1ka81kfzkpr37wc3qbma3qcavhd6rz2hc4n6sanj13fx76bpbs36";
+      sha256 = "1rj2r6wnk90svqmhrwvd9z94sg8sh7zvdqan3bp38d67chlaimjs";
     };
     
   };

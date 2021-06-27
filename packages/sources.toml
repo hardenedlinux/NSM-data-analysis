@@ -8,9 +8,9 @@ git.fetchSubmodules = true
 src.github = "rapidsai/clx"
 fetch.github = "rapidsai/clx"
 
-[cnmem]
-src.github = "NVIDIA/cnmem"
-fetch.github = "NVIDIA/cnmem"
+# [cnmem]
+# src.github = "NVIDIA/cnmem"
+# fetch.github = "NVIDIA/cnmem"
 
 #Python Packages
 [btest]

@@ -1,8 +1,8 @@
-{ stdenv, lib, fetchFromGitHub, cmake, gcc, openssl, caf, python3, ncurses5, sources }:
+{ stdenv, lib, fetchFromGitHub, cmake, gcc, openssl, caf, python3, ncurses5, nixpkgs-hardenedlinux-sources }:
 
 stdenv.mkDerivation rec {
   name = "broker";
-  inherit (sources.broker) pname version src;
+  inherit (nixpkgs-hardenedlinux-sources.broker) pname version src;
 
   nativeBuildInputs = [ cmake openssl ];
   buildInputs = [ cmake gcc openssl caf ncurses5 ];

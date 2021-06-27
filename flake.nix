@@ -3,16 +3,17 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/release-21.05";
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
-    nvfetcher-flake = {
+    nvfetcher = {
       url = "github:berberman/nvfetcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    spicy-flake = { url = "github:GTrunSec/spicy-with-nix-flake"; };
+    spicy = { url = "github:GTrunSec/spicy-with-nix-flake"; };
+    devshell-flake = { url = "github:numtide/devshell"; };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, flake-compat, nvfetcher-flake, spicy-flake }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, flake-compat, devshell-flake, nvfetcher, spicy }:
     { }
     //
     (flake-utils.lib.eachSystem [ "x86_64-linux" ]
@@ -22,8 +23,9 @@
             inherit system;
             overlays = [
               self.overlay
-              nvfetcher-flake.overlay
-              spicy-flake.overlay
+              nvfetcher.overlay
+              spicy.overlay
+              devshell-flake.overlay
             ];
             config = {
               allowUnsupportedSystem = true;
@@ -32,14 +34,15 @@
           };
         in
         rec {
-          devShell = with pkgs; mkShell {
-            buildInputs = [
-              nixpkgs-fmt
-              nvchecker
-              (haskellPackages.ghcWithPackages
-                (p: with p;  [
-                  nvfetcher
-                ]))
+          devShell = with pkgs; devshell.mkShell {
+            commands = [
+              {
+                name = pkgs.nvfetcher-bin.pname;
+                help = pkgs.nvfetcher-bin.meta.description;
+                command = "cd $DEVSHELL_ROOT/packages; ${pkgs.nvfetcher-bin}/bin/nvfetcher -c ./sources.toml --no-output $@";
+              }
+            ];
+            packages = [
               (pkgs.python3.withPackages (ps: with ps;[
                 btest
               ]))
@@ -76,8 +79,11 @@
     {
       overlay = final: prev:
         let
-          sources = (import ./sources.nix) { inherit (final) fetchurl fetchgit; };
-          pythonDirNames = builtins.attrNames (builtins.readDir ./packages/python-pkgs);
+          nixpkgs-hardenedlinux-sources = (import ./sources.nix) {
+            inherit (final) fetchurl fetchgit;
+          };
+          pythonDirNames = builtins.attrNames
+            (builtins.readDir ./packages/python-pkgs);
           pkgsDirNames = builtins.attrNames (builtins.readDir ./packages/pkgs);
         in
         (
@@ -98,6 +104,6 @@
               })
               pkgsDirNames)
         )
-        // { inherit sources; };
+        // { inherit nixpkgs-hardenedlinux-sources; };
     };
 }
