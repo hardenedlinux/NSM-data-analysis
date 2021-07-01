@@ -1,84 +1,65 @@
 {
-  description = "hardenedlinux nixpkgs collection";
+  description = "A highly awesome system configuration.";
 
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus/staging";
     nixpkgs.url = "nixpkgs/release-21.05";
-    flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     nvfetcher = {
       url = "github:berberman/nvfetcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     spicy = { url = "github:GTrunSec/spicy-with-nix-flake"; };
-    devshell-flake = { url = "github:numtide/devshell"; };
+    devshell-flake = { url = "github:numtide/devshell"; flake = false; };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, flake-compat, devshell-flake, nvfetcher, spicy }:
-    { }
-    //
-    (flake-utils.lib.eachSystem [ "x86_64-linux" ]
-      (system:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = [
-              self.overlay
-              nvfetcher.overlay
-              spicy.overlay
-              devshell-flake.overlay
-            ];
-            config = {
-              allowUnsupportedSystem = true;
-              allowBroken = true;
-            };
-          };
-        in
-        rec {
-          devShell = with pkgs; devshell.mkShell {
-            commands = [
-              {
-                name = pkgs.nvfetcher-bin.pname;
-                help = pkgs.nvfetcher-bin.meta.description;
-                command = "cd $DEVSHELL_ROOT/packages; ${pkgs.nvfetcher-bin}/bin/nvfetcher -c ./sources.toml --no-output $@; nixpkgs-fmt _sources";
-              }
-            ];
-            packages = [
-              nixpkgs-fmt
-              (pkgs.python3.withPackages (ps: with ps;[
-                btest
-              ]))
-              zed
-            ];
-          };
 
-          packages = {
-            inherit (pkgs)
-              spicy
-              broker
+  outputs = inputs@{ self, nixpkgs, utils, flake-compat, nvfetcher, spicy, devshell-flake }:
+    let
+      inherit (utils.lib.exporters) internalOverlays fromOverlays modulesFromList;
+    in
+    utils.lib.systemFlake {
+      inherit self inputs;
+
+      channels.nixpkgs.input = nixpkgs;
+      channelsConfig = {
+        allowUnsupportedSystem = true;
+        allowBroken = true;
+        allowUnfree = true;
+      };
+      sharedOverlays = [
+        self.overlay
+        nvfetcher.overlay
+        (import "${devshell-flake}/overlay.nix")
+      ];
+
+      # export overlays automatically for all packages defined in overlaysBuilder of each channel
+      overlays = internalOverlays {
+        inherit (self) pkgs inputs;
+      };
+
+      outputsBuilder = channels: {
+        # construct packagesBuilder to export all packages defined in overlays
+        packages = fromOverlays self.overlays channels;
+        devShell = with channels.nixpkgs; devshell.mkShell {
+          name = "devShell";
+          commands = [
+            {
+              name = nvfetcher-bin.pname;
+              help = nvfetcher-bin.meta.description;
+              command = "cd $DEVSHELL_ROOT/packages; ${nvfetcher-bin}/bin/nvfetcher -c ./sources.toml --no-output $@; nixpkgs-fmt _sources";
+            }
+          ];
+          packages = [
+            nixpkgs-fmt
+            (python3.withPackages (ps: with ps;[
               btest
-              zqd
-              zat
-              zed
-              elastalert
-              ;
-            inherit (pkgs.haskellPackages)
-              nvfetcher;
-          };
+            ]))
+            zed
+          ];
+        };
+      };
 
-          hydraJobs = {
-            inherit packages;
-          };
-
-          defaultPackage =
-            with pkgs;
-            buildEnv
-              rec {
-                name = "nixpkgs-hardenedlinux";
-                paths = [ ];
-              };
-        })
-    ) //
-    {
       overlay = final: prev:
         let
           nixpkgs-hardenedlinux-sources = (import ./packages/_sources/generated.nix) {

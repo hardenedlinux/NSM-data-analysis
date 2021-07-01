@@ -40,11 +40,12 @@ python3Packages.buildPythonPackage rec {
     ln -s ${cnmem}/include/cnmem.h include/rmm/detail
       cd python
   '';
+
   meta = with lib; {
     description = "RAPIDS Memory Manager";
     homepage = "https://github.com/rapidsai/rmm";
     license = licenses.asl20;
-
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
 
 }

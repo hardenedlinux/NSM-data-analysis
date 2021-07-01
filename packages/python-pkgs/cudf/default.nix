@@ -7,15 +7,8 @@
 , spdlog
 , arrow-cpp
 , pyarrow
+, rmm
 }:
-let
-  rmm-src = fetchgit {
-    url = "https://github.com/rapidsai/rmm";
-    rev = "e7f07268373652f9f36f68b284af8ca0637c6e08";
-    sha256 = "sha256-lmACOAJtWIjKWe82GTfD8XOADo+q9nrtNQraJlwPau0=";
-  };
-
-in
 python3Packages.buildPythonPackage rec {
 
   pname = "cudf";
@@ -30,7 +23,7 @@ python3Packages.buildPythonPackage rec {
     export CUDA_HOME=${cudatoolkit}
     export LD_LIBRARY_PATH=${cudatoolkit}/lib
 
-    ln -s ${rmm-src}//include/rmm cpp/include/rmm
+    #ln -s rmm-src //include/rmm cpp/include/rmm
     cd python/cudf
   '';
 
@@ -42,6 +35,7 @@ python3Packages.buildPythonPackage rec {
     arrow-cpp
     pyarrow
   ];
+
   propagatedBuildInputs = with python3Packages; [
     numpy
     versioneer
@@ -57,13 +51,13 @@ python3Packages.buildPythonPackage rec {
     rmm
     arrow
   ];
+
   doCheck = false;
 
   meta = with lib; {
     description = "cuDF - GPU DataFrame Library ";
     homepage = "https://github.com/rapidsai/cudf";
     license = licenses.asl20;
-
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
-
 }
