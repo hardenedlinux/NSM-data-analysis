@@ -31,21 +31,8 @@
     utils.lib.systemFlake
       {
         inherit self inputs;
-        supportedSystems = [ "x86_64-linux" ];
-        channels.nixpkgs.input = nixpkgs;
-        channels.stable = {
-          input = stable;
-          overlaysBuilder = channels: [
-            (final: prev: {
-              nixpkgs-hardenedlinux-sources = (import ./packages/_sources/generated.nix) {
-                inherit (final) fetchurl fetchgit;
-              };
-              broker = prev.callPackage ./packages/pkgs/broker { };
-              broker-json = prev.callPackage ./packages/python-pkgs/broker-json { };
-              eZeeKonfigurator-release = prev.callPackage ./packages/python-pkgs/eZeeKonfigurator { };
-            })
-          ];
-        };
+
+        #supportedSystems = [ "x86_64-linux" ];
 
         channelsConfig = {
           allowUnsupportedSystem = true;
@@ -53,11 +40,29 @@
           allowUnfree = true;
         };
 
-        channels.nixpkgs.overlaysBuilder = channels:
-          [
-            self.overlay
-            nvfetcher.overlay
-          ];
+        channels = {
+          nixpkgs = {
+            input = nixpkgs;
+            overlaysBuilder = channels:
+              [
+                self.overlay
+                nvfetcher.overlay
+              ];
+          };
+          stable = {
+            input = stable;
+            overlaysBuilder = channels: [
+              (final: prev: {
+                nixpkgs-hardenedlinux-sources = (import ./packages/_sources/generated.nix) {
+                  inherit (final) fetchurl fetchgit;
+                };
+                broker = prev.callPackage ./packages/pkgs/broker { };
+                broker-json = prev.callPackage ./packages/python-pkgs/broker-json { };
+                eZeeKonfigurator-release = prev.callPackage ./packages/python-pkgs/eZeeKonfigurator { };
+              })
+            ];
+          };
+        };
 
 
         sharedOverlays = [
@@ -95,35 +100,35 @@
             ];
           };
         };
-
-        overlay = final: prev:
-          let
-            nixpkgs-hardenedlinux-sources = (import ./packages/_sources/generated.nix) {
-              inherit (final) fetchurl fetchgit;
-            };
-            pythonDirNames = builtins.attrNames (builtins.readDir ./packages/python-pkgs);
-            pkgsDirNames = builtins.attrNames (builtins.readDir ./packages/pkgs);
-          in
-          (
-            builtins.listToAttrs
-              (map
-                (pkgDir: {
-                  value = prev.python3Packages.callPackage (./packages/python-pkgs + "/${pkgDir}") { };
-                  name = pkgDir;
-                })
-                pythonDirNames)
-          ) //
-          (
-            builtins.listToAttrs
-              (map
-                (pkgDir: {
-                  value = prev.callPackage (./packages/pkgs + "/${pkgDir}") { };
-                  name = pkgDir;
-                })
-                pkgsDirNames)
-          )
-          // { inherit nixpkgs-hardenedlinux-sources; };
-      } //
+      } // {
+      overlay = final: prev:
+        let
+          nixpkgs-hardenedlinux-sources = (import ./packages/_sources/generated.nix) {
+            inherit (final) fetchurl fetchgit;
+          };
+          pythonDirNames = builtins.attrNames (builtins.readDir ./packages/python-pkgs);
+          pkgsDirNames = builtins.attrNames (builtins.readDir ./packages/pkgs);
+        in
+        (
+          builtins.listToAttrs
+            (map
+              (pkgDir: {
+                value = prev.python3Packages.callPackage (./packages/python-pkgs + "/${pkgDir}") { };
+                name = pkgDir;
+              })
+              pythonDirNames)
+        ) //
+        (
+          builtins.listToAttrs
+            (map
+              (pkgDir: {
+                value = prev.callPackage (./packages/pkgs + "/${pkgDir}") { };
+                name = pkgDir;
+              })
+              pkgsDirNames)
+        )
+        // { inherit nixpkgs-hardenedlinux-sources; };
+    } //
     {
       nixosModules = {
         honeygrove = import ./modules/honeygrove.nix;
