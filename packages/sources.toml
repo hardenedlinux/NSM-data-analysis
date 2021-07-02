@@ -8,6 +8,13 @@ git.fetchSubmodules = true
 src.github = "rapidsai/clx"
 fetch.github = "rapidsai/clx"
 
+[elastalert2]
+src.github = "jertel/elastalert2"
+fetch.github = "jertel/elastalert2"
+
+[choochoo]
+src.git = "https://github.com/andrewcooke/choochoo"
+fetch.github = "andrewcooke/choochoo"
 # [cnmem]
 # src.github = "NVIDIA/cnmem"
 # fetch.github = "NVIDIA/cnmem"

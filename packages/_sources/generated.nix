@@ -23,6 +23,19 @@
     };
 
   };
+  choochoo = {
+    pname = "choochoo";
+    version = "bd5f7ed75c53977183249e9bad7bf094accd151f";
+    src = fetchgit {
+      url = "https://github.com/andrewcooke/choochoo";
+      rev = "bd5f7ed75c53977183249e9bad7bf094accd151f";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "0az90ay6sn5r0lsd0zkka92vsrx1iif24nyrfgdzb6n9kqhaa45z";
+    };
+
+  };
   clx = {
     pname = "clx";
     version = "v21.06.00";
@@ -33,6 +46,19 @@
       deepClone = false;
       leaveDotGit = false;
       sha256 = "1rj2r6wnk90svqmhrwvd9z94sg8sh7zvdqan3bp38d67chlaimjs";
+    };
+
+  };
+  elastalert2 = {
+    pname = "elastalert2";
+    version = "2.1.1";
+    src = fetchgit {
+      url = "https://github.com/jertel/elastalert2";
+      rev = "2.1.1";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "0pqarwjjh6lnz40a7maxc2k31vb01pyfks9w35bv9zla422gfmfh";
     };
 
   };

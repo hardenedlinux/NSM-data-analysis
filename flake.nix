@@ -11,12 +11,21 @@
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     spicy = { url = "github:GTrunSec/spicy-with-nix-flake"; };
     devshell-flake = { url = "github:numtide/devshell"; flake = false; };
+    mach-nix = { url = "github:DavHau/mach-nix"; inputs.nixpkgs.follows = "nixpkgs"; inputs.pypi-deps-db.follows = "pypi-deps-db"; };
+    pypi-deps-db = {
+      url = "github:DavHau/pypi-deps-db";
+      flake = false;
+    };
   };
 
 
-  outputs = inputs@{ self, nixpkgs, utils, flake-compat, nvfetcher, spicy, devshell-flake }:
+  outputs = inputs: with builtins; with inputs;
     let
       inherit (utils.lib.exporters) internalOverlays fromOverlays modulesFromList;
+      inherit (nixpkgs) lib;
+      inherit (builtins) attrValues;
+      inherit (utils-lib) pathsToImportedAttrs overlayPaths;
+      utils-lib = import ./lib/utils-ext.nix { inherit lib; };
     in
     utils.lib.systemFlake {
       inherit self inputs;
@@ -27,11 +36,23 @@
         allowBroken = true;
         allowUnfree = true;
       };
-      sharedOverlays = [
-        self.overlay
-        nvfetcher.overlay
-        (import "${devshell-flake}/overlay.nix")
-      ];
+
+      sharedOverlays =
+        [
+          self.overlay
+          nvfetcher.overlay
+          (import "${devshell-flake}/overlay.nix")
+          (final: prev:
+            {
+              __dontExport = true;
+              #python
+              machlib = import mach-nix {
+                pkgs = prev;
+                pypiDataRev = pypi-deps-db.rev;
+                pypiDataSha256 = pypi-deps-db.narHash;
+              };
+            })
+        ] ++ (attrValues (pathsToImportedAttrs overlayPaths));
 
       # export overlays automatically for all packages defined in overlaysBuilder of each channel
       overlays = internalOverlays {
@@ -52,10 +73,6 @@
           ];
           packages = [
             nixpkgs-fmt
-            (python3.withPackages (ps: with ps;[
-              btest
-            ]))
-            zed
           ];
         };
       };
