@@ -1,9 +1,36 @@
 { lib
 , python3Packages
 , nixpkgs-hardenedlinux-sources
-, choochoo-requirements
+, machlib
 }:
-
+let
+  choochoo-requirements = machlib.mkPython rec {
+    requirements = ''
+      bokeh
+      cachetools
+      colorama
+      colorlog
+      geoalchemy2
+      jupyterlab
+      matplotlib
+      openpyxl
+      pandas
+      pendulum
+      psutil
+      psycopg2
+      pyGeoTile
+      pyproj
+      rasterio
+      requests
+      scipy
+      sklearn
+      sqlalchemy-utils
+      sqlalchemy
+      uritools
+      werkzeug
+    '';
+  };
+in
 python3Packages.buildPythonPackage rec {
   inherit (nixpkgs-hardenedlinux-sources.choochoo) pname version src;
   preConfigure = ''

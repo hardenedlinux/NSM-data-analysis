@@ -3,8 +3,14 @@
 , fetchgit
 , python3
 , nixpkgs-hardenedlinux-sources
-, elastalert2-requirements
+, machlib
 }:
+
+let
+  elastalert2-requirements = machlib.mkPython rec {
+    requirements = builtins.readFile (nixpkgs-hardenedlinux-sources.elastalert2.src + "/requirements.txt");
+  };
+in
 python3Packages.buildPythonPackage rec {
 
   inherit (nixpkgs-hardenedlinux-sources.elastalert2) pname version src;

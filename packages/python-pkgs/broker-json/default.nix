@@ -10,9 +10,9 @@ python3Packages.buildPythonPackage rec {
   nativeBuildInputs = [ broker ];
 
   meta = with lib; {
-    description = "A Simple Driver for Basic Unit Tests";
-    homepage = "https://github.com/zeek/btest";
-    license = licenses.bsd3;
+    description = "Zeek Broker to JSON";
+    homepage = "https://github.com/grigorescu/broker-to-json";
+    license = "The Regents of the University of California through the Lawrence Berkeley National Laboratory. All rightsreserved";
     platforms = platforms.all;
   };
 }
