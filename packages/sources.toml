@@ -4,6 +4,11 @@ src.github = "zeek/broker"
 fetch.github = "zeek/broker"
 git.fetchSubmodules = true
 
+
+[eZeeKonfigurator]
+src.git = "https://github.com/esnet/eZeeKonfigurator"
+fetch.github = "esnet/eZeeKonfigurator"
+
 [clx]
 src.github = "rapidsai/clx"
 fetch.github = "rapidsai/clx"

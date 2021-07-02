@@ -49,6 +49,19 @@
     };
 
   };
+  eZeeKonfigurator = {
+    pname = "eZeeKonfigurator";
+    version = "c36c98b8dc7b6cf986fce5961777de853d356f71";
+    src = fetchgit {
+      url = "https://github.com/esnet/eZeeKonfigurator";
+      rev = "c36c98b8dc7b6cf986fce5961777de853d356f71";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "0bba1v1y4q74p3ylvqxxl7xzpqdf19qbz7z5kgk44f2zw5k1jinv";
+    };
+
+  };
   elastalert2 = {
     pname = "elastalert2";
     version = "2.1.1";

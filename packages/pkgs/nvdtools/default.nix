@@ -1,9 +1,5 @@
 { stdenv
 , buildGoPackage
-, fetchgit
-, fetchhg
-, fetchbzr
-, fetchsvn
 , nixpkgs-hardenedlinux-sources
 }:
 let

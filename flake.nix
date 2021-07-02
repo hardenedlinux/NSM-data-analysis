@@ -4,6 +4,7 @@
   inputs = {
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/staging";
     nixpkgs.url = "nixpkgs/release-21.05";
+    stable.url = "nixpkgs/release-20.09";
     nvfetcher = {
       url = "github:berberman/nvfetcher";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +33,17 @@
         inherit self inputs;
 
         channels.nixpkgs.input = nixpkgs;
+        channels.stable = {
+          input = stable;
+          overlaysBuilder = channels: [
+            (final: prev: {
+              nixpkgs-hardenedlinux-sources = (import ./packages/_sources/generated.nix) {
+                inherit (final) fetchurl fetchgit;
+              };
+              eZeeKonfigurator-release = prev.callPackage ./packages/python-pkgs/eZeeKonfigurator { };
+            })
+          ];
+        };
 
         channelsConfig = {
           allowUnsupportedSystem = true;
@@ -39,23 +51,26 @@
           allowUnfree = true;
         };
 
-        sharedOverlays =
+        channels.nixpkgs.overlaysBuilder = channels:
           [
             self.overlay
             nvfetcher.overlay
-            (import "${devshell-flake}/overlay.nix")
-            (final: prev:
-              {
-                __dontExport = true;
-                #python
-                machlib = import mach-nix {
-                  pkgs = prev;
-                  pypiDataRev = pypi-deps-db.rev;
-                  pypiDataSha256 = pypi-deps-db.narHash;
-                };
-              })
           ] ++ (attrValues (pathsToImportedAttrs overlayPaths));
 
+
+        sharedOverlays = [
+          (import "${devshell-flake}/overlay.nix")
+          (final: prev:
+            {
+              __dontExport = true;
+              #python
+              machlib = import mach-nix {
+                pkgs = prev;
+                pypiDataRev = pypi-deps-db.rev;
+                pypiDataSha256 = pypi-deps-db.narHash;
+              };
+            })
+        ];
         # export overlays automatically for all packages defined in overlaysBuilder of each channel
         overlays = internalOverlays {
           inherit (self) pkgs inputs;
