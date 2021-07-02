@@ -14,7 +14,6 @@ buildGoPackage rec {
 
   goDeps = ./deps.nix;
 
-  # TODO: add metadata https://nixos.org/nixpkgs/manual/#sec-standard-meta-attributes
   meta = {
     description = "Hunting for Sybils and anomalies in archived Tor network data";
     homepage = "https://github.com/NullHypothesis/sybilhunter";

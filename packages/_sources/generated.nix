@@ -97,6 +97,19 @@
     };
 
   };
+  nvdtools = {
+    pname = "nvdtools";
+    version = "c3579d012178c462a53f4e2d1397a83c10c149df";
+    src = fetchgit {
+      url = "https://github.com/facebookincubator/nvdtools";
+      rev = "c3579d012178c462a53f4e2d1397a83c10c149df";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "1vczfn309vjsyw8kjxmf6fn3jvrw30hxzndr683lw377x52imd98";
+    };
+
+  };
   zed = {
     pname = "zed";
     version = "19d600933288c84965ce1b9ec28f02c411409f1d";

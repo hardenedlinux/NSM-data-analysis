@@ -50,3 +50,7 @@ fetch.pypi = "btest"
 [zed]
 src.git = "https://github.com/brimdata/zed"
 fetch.github = "brimdata/zed"
+
+[nvdtools]
+src.git = "https://github.com/facebookincubator/nvdtools"
+fetch.github = "facebookincubator/nvdtools"
