@@ -46,6 +46,10 @@ src.pypi = "fastprogress"
 fetch.pypi = "fastprogress"
 
 
+[zat]
+src.git = "https://github.com/SuperCowPowers/zat"
+fetch.github = "SuperCowPowers/zat"
+
 # [cnmem]
 # src.github = "NVIDIA/cnmem"
 # fetch.github = "NVIDIA/cnmem"

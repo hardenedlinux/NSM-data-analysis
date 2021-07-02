@@ -1,20 +1,12 @@
 { stdenv
 , lib
 , python3Packages
-, fetchgit
-, callPackage
+, nixpkgs-hardenedlinux-sources
 }:
+
 python3Packages.buildPythonPackage rec {
-  pname = "zat";
-  version = "2021-03-08";
 
-  src = fetchgit {
-    url = "https://github.com/SuperCowPowers/zat.git";
-    rev = "62718471a2f2d77c4c13b93f665f1eb9a892fa10";
-    sha256 = "0ynhkdfb0ypxk23a89rmvf6bvck2jh00qgx9qrvadvc2k3mhlcm1";
-  };
-
-
+  inherit (nixpkgs-hardenedlinux-sources.zat) pname src version;
 
   propagatedBuildInputs = with python3Packages; [
     pandas

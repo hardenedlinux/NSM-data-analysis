@@ -158,6 +158,19 @@
     };
 
   };
+  zat = {
+    pname = "zat";
+    version = "2924f5a713bb0c42dedbb89e031acab05b558e10";
+    src = fetchgit {
+      url = "https://github.com/SuperCowPowers/zat";
+      rev = "2924f5a713bb0c42dedbb89e031acab05b558e10";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "1k7jv07dv80cxsq1v087zb3q9li9gzxjn74lmb93xfs8sqk6lh03";
+    };
+
+  };
   zed = {
     pname = "zed";
     version = "19d600933288c84965ce1b9ec28f02c411409f1d";

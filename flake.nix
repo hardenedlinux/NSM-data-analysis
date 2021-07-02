@@ -53,9 +53,6 @@
             input = stable;
             overlaysBuilder = channels: [
               (final: prev: {
-                nixpkgs-hardenedlinux-sources = (import ./packages/_sources/generated.nix) {
-                  inherit (final) fetchurl fetchgit;
-                };
                 broker = prev.callPackage ./packages/pkgs/broker { };
                 broker-json = prev.callPackage ./packages/python-pkgs/broker-json { };
                 eZeeKonfigurator-release = prev.callPackage ./packages/python-pkgs/eZeeKonfigurator { };
@@ -103,9 +100,6 @@
       } // {
       overlay = final: prev:
         let
-          nixpkgs-hardenedlinux-sources = (import ./packages/_sources/generated.nix) {
-            inherit (final) fetchurl fetchgit;
-          };
           pythonDirNames = builtins.attrNames (builtins.readDir ./packages/python-pkgs);
           pkgsDirNames = builtins.attrNames (builtins.readDir ./packages/pkgs);
         in
@@ -127,7 +121,7 @@
               })
               pkgsDirNames)
         )
-        // { inherit nixpkgs-hardenedlinux-sources; };
+        // { };
     } //
     {
       nixosModules = {
