@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, cmake, gcc, openssl, caf, python3, ncurses5, nixpkgs-hardenedlinux-sources }:
+{ stdenv, lib, fetchFromGitHub, cmake, gcc, openssl, caf, python38, ncurses5, nixpkgs-hardenedlinux-sources }:
 
 stdenv.mkDerivation rec {
   name = "broker";
@@ -8,13 +8,13 @@ stdenv.mkDerivation rec {
   buildInputs = [ cmake gcc openssl caf ncurses5 ];
 
   cmakeFlags = [
-    "-DPY_MOD_INSTALL_DIR=${placeholder "out"}/${python3.sitePackages}"
+    "-DPY_MOD_INSTALL_DIR=${placeholder "out"}/${python38.sitePackages}"
     "-DCMAKE_SKIP_BUILD_RPATH=OFF"
-    "-DPYTHON_EXECUTABLE=${python3}/bin/python"
+    "-DPYTHON_EXECUTABLE=${python38}/bin/python"
   ];
 
   postInstall = ''
-    ln -s $out/${python3.sitePackages}/broker/_broker.so $out/lib
+    ln -s $out/${python38.sitePackages}/broker/_broker.so $out/lib
   '';
 
   enableParallelBuilding = true;

@@ -14,6 +14,19 @@
     };
 
   };
+  broker-to-json = {
+    pname = "broker-to-json";
+    version = "v_02";
+    src = fetchgit {
+      url = "https://github.com/grigorescu/broker-to-json";
+      rev = "v_02";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "1n0jklz0lhdkr29rjkhj9swmndvk152w5m90wdj2rrlg3lhrq4s9";
+    };
+
+  };
   btest = {
     pname = "btest";
     version = "0.68";
@@ -51,14 +64,27 @@
   };
   eZeeKonfigurator = {
     pname = "eZeeKonfigurator";
-    version = "c36c98b8dc7b6cf986fce5961777de853d356f71";
+    version = "57c6faece572dbb7e4f45dc1e9c43952f1c392f0";
     src = fetchgit {
       url = "https://github.com/esnet/eZeeKonfigurator";
-      rev = "c36c98b8dc7b6cf986fce5961777de853d356f71";
+      rev = "57c6faece572dbb7e4f45dc1e9c43952f1c392f0";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "0bba1v1y4q74p3ylvqxxl7xzpqdf19qbz7z5kgk44f2zw5k1jinv";
+      sha256 = "1vg2mmjwrnkird6w25phjgi4hbzs5wy27a8hv10br7j5izrf112a";
+    };
+
+  };
+  eZeeKonfigurator_client = {
+    pname = "eZeeKonfigurator_client";
+    version = "efbe39bb1e40a0332d37c3291ee3c8af1ff7678e";
+    src = fetchgit {
+      url = "https://github.com/esnet/eZeeKonfigurator_client";
+      rev = "efbe39bb1e40a0332d37c3291ee3c8af1ff7678e";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "0250aliybv54k7gv0y8fd9v4bpwyspzn8rz24108ijm8vfcjlr3g";
     };
 
   };

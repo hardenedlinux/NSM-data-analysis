@@ -31,7 +31,7 @@
     utils.lib.systemFlake
       {
         inherit self inputs;
-
+        supportedSystems = [ "x86_64-linux" ];
         channels.nixpkgs.input = nixpkgs;
         channels.stable = {
           input = stable;
@@ -40,6 +40,8 @@
               nixpkgs-hardenedlinux-sources = (import ./packages/_sources/generated.nix) {
                 inherit (final) fetchurl fetchgit;
               };
+              broker = prev.callPackage ./packages/pkgs/broker { };
+              broker-json = prev.callPackage ./packages/python-pkgs/broker-json { };
               eZeeKonfigurator-release = prev.callPackage ./packages/python-pkgs/eZeeKonfigurator { };
             })
           ];
@@ -55,7 +57,7 @@
           [
             self.overlay
             nvfetcher.overlay
-          ] ++ (attrValues (pathsToImportedAttrs overlayPaths));
+          ];
 
 
         sharedOverlays = [
@@ -70,7 +72,7 @@
                 pypiDataSha256 = pypi-deps-db.narHash;
               };
             })
-        ];
+        ] ++ (attrValues (pathsToImportedAttrs overlayPaths));
         # export overlays automatically for all packages defined in overlaysBuilder of each channel
         overlays = internalOverlays {
           inherit (self) pkgs inputs;
