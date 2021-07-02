@@ -15,6 +15,23 @@ fetch.github = "jertel/elastalert2"
 [choochoo]
 src.git = "https://github.com/andrewcooke/choochoo"
 fetch.github = "andrewcooke/choochoo"
+
+#################
+# Python fastai #
+#################
+[fastai]
+src.git = "https://github.com/fastai/fastai"
+fetch.github = "fastai/fastai"
+
+[fastcore]
+src.git = "https://github.com/fastai/fastcore"
+fetch.github = "fastai/fastcore"
+
+[fastprogress]
+src.pypi = "fastprogress"
+fetch.pypi = "fastprogress"
+
+
 # [cnmem]
 # src.github = "NVIDIA/cnmem"
 # fetch.github = "NVIDIA/cnmem"

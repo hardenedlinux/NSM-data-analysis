@@ -1,5 +1,5 @@
 {
-  description = "A highly awesome system configuration.";
+  description = "Hardenedlinux Nixpkgs Collection -> Nix Flakes ";
 
   inputs = {
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/staging";

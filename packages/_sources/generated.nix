@@ -62,6 +62,41 @@
     };
 
   };
+  fastai = {
+    pname = "fastai";
+    version = "08a639548fd82ff22b7a72db9519f82b176511d7";
+    src = fetchgit {
+      url = "https://github.com/fastai/fastai";
+      rev = "08a639548fd82ff22b7a72db9519f82b176511d7";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "0j5dpzr81mi6353n4nsd4s2hkpsmmrlhjkp8gs5vjr0g13z8hxm5";
+    };
+
+  };
+  fastcore = {
+    pname = "fastcore";
+    version = "ae8148c85a0c57cc7fd6aa29fa13bdbfbe59be22";
+    src = fetchgit {
+      url = "https://github.com/fastai/fastcore";
+      rev = "ae8148c85a0c57cc7fd6aa29fa13bdbfbe59be22";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "1gpvbshywbf2di5hkrmjmh8s8z160p4hljsbxsblg1y77i5nsdvw";
+    };
+
+  };
+  fastprogress = {
+    pname = "fastprogress";
+    version = "1.0.0";
+    src = fetchurl {
+      sha256 = "1zhv37q6jkqd1pfhlkd4yzrc3dg83vyksgzf32mjlhd5sb0qmql9";
+      url = "https://pypi.io/packages/source/f/fastprogress/fastprogress-1.0.0.tar.gz";
+    };
+
+  };
   zed = {
     pname = "zed";
     version = "19d600933288c84965ce1b9ec28f02c411409f1d";
