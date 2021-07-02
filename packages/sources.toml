@@ -55,6 +55,10 @@ fetch.pypi = "fastprogress"
 src.pypi = "btest"
 fetch.pypi = "btest"
 
+[durationpy]
+src.pypi = "durationpy"
+fetch.pypi = "durationpy"
+
 
 
 #Go Pkgs

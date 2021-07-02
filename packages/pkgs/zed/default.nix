@@ -9,6 +9,6 @@ buildGoPackage rec {
 
   meta = {
     description = "Command-line processor for structured logs";
-    homepage = "https://github.com/brimsec/zq";
+    homepage = "https://github.com/brimdata/zq";
   };
 }

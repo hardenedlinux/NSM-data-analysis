@@ -1,23 +1,25 @@
 { lib
 , python3Packages
-, fetchgit
-, python3
+, nixpkgs-hardenedlinux-sources
 }:
-
-python3Packages.buildPythonPackage rec {
-
-  pname = "zqd";
-  version = "2021-03-19";
-  src = fetchgit {
-    url = "https://github.com/brimsec/zq";
-    rev = "9d71fc4c0ad148e354bccd58772e4aef4d70aa9a";
-    sha256 = "1w5sh886ymn2ql4hq3g5ldf9sd8m7q359rw9h13448v9brakidc6";
+let
+  durationpy = python3Packages.buildPythonPackage {
+    inherit (nixpkgs-hardenedlinux-sources.durationpy) pname src version;
+    propagatedBuildInputs = with python3Packages; [ ];
+    doCheck = false;
   };
+in
+python3Packages.buildPythonPackage rec {
+  inherit (nixpkgs-hardenedlinux-sources.zed) pname src version;
 
   propagatedBuildInputs = with python3Packages; [
     requests
+    python-dateutil
+    durationpy
   ];
+
   doCheck = false;
+
 
   postPatch = ''
     cd python/zqd
@@ -25,7 +27,7 @@ python3Packages.buildPythonPackage rec {
 
   meta = with lib; {
     description = "Search and analysis tooling for structured logs";
-    homepage = "https://github.com/brimsec/zq";
+    homepage = "https://github.com/brimdata/zq";
     license = licenses.bsd3;
   };
 }

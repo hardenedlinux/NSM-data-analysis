@@ -62,6 +62,15 @@
     };
 
   };
+  durationpy = {
+    pname = "durationpy";
+    version = "0.5";
+    src = fetchurl {
+      sha256 = "022l9cqv648rxmavi1rgp2724jaynz7vwma6ycidfl3va9ml3yay";
+      url = "https://pypi.io/packages/source/d/durationpy/durationpy-0.5.tar.gz";
+    };
+
+  };
   eZeeKonfigurator = {
     pname = "eZeeKonfigurator";
     version = "57c6faece572dbb7e4f45dc1e9c43952f1c392f0";
