@@ -5,14 +5,11 @@
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/staging";
     nixpkgs.url = "nixpkgs/release-21.05";
     stable.url = "nixpkgs/release-20.09";
-    nvfetcher = {
-      url = "github:berberman/nvfetcher";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nvfetcher = { url = "github:berberman/nvfetcher"; };
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     spicy = { url = "github:GTrunSec/spicy-with-nix-flake"; };
     devshell-flake = { url = "github:numtide/devshell"; flake = false; };
-    mach-nix = { url = "github:DavHau/mach-nix"; inputs.nixpkgs.follows = "nixpkgs"; inputs.pypi-deps-db.follows = "pypi-deps-db"; };
+    mach-nix = { url = "github:DavHau/mach-nix"; inputs.pypi-deps-db.follows = "pypi-deps-db"; };
     pypi-deps-db = {
       url = "github:DavHau/pypi-deps-db";
       flake = false;
@@ -85,6 +82,7 @@
           packages = fromOverlays self.overlays channels;
           devShell = with channels.nixpkgs; devshell.mkShell {
             name = "devShell";
+            imports = [ (devshell.importTOML ./devshell.toml) ];
             commands = [
               {
                 name = nvfetcher-bin.pname;

@@ -23,3 +23,8 @@ jobs:
     - name: Nix Format Check
       run: |
         nix -Lv develop -c nixpkgs-fmt --check .
+
+    - name: Nix Flake Show
+      run: |
+        nix develop -c only-x86-64_linux
+        nix flake show
