@@ -20,11 +20,15 @@ jobs:
           system-features = nixos-test benchmark big-parallel kvm recursive-nix
 
     # CI workflows
-    - name: Nix Format Check
+    - name: Run Nix Format Check
       run: |
         nix -Lv develop -c nixpkgs-fmt --check .
 
-    - name: Nix Flake Show
+    - name: Run Nix Flake Show
       run: |
         nix develop -c only-x86-64_linux
         nix flake show
+
+    - name: Run Nix Flake Show
+      run: |
+        nix -Lv flake check
