@@ -1,13 +1,12 @@
-{ stdenv
-, lib
+{ lib
 , python3Packages
-, fetchgit
 , cudatoolkit
 , linuxPackages
 , spdlog
 , arrow-cpp
 , pyarrow
 , nixpkgs-hardenedlinux-sources
+, rmm
 }:
 
 python3Packages.buildPythonPackage rec {
@@ -22,6 +21,7 @@ python3Packages.buildPythonPackage rec {
   '';
 
   nativeBuildInputs = [ cudatoolkit ];
+
   buildInputs = [
     linuxPackages.nvidia_x11
     spdlog

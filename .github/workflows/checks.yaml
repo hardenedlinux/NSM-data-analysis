@@ -21,8 +21,7 @@ jobs:
 
     # CI workflows
     - name: Run Nix Format Check
-      run: |
-        nix -Lv develop -c nixpkgs-fmt --check .
+      run: nix -Lv develop -c nixpkgs-fmt --check .
 
     - name: Run Nix Flake Show
       run: |
@@ -30,5 +29,4 @@ jobs:
         nix flake show
 
     - name: Run Nix Flake Show
-      run: |
-        nix -Lv flake check
+      run: nix -Lv flake check
