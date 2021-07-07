@@ -1,24 +1,18 @@
-{ stdenv
-, lib
+{ lib
 , python3Packages
-, fetchgit
 , cudatoolkit
 , cnmem
 , spdlog
 , linuxPackages
+, nixpkgs-hardenedlinux-sources
 }:
 
 python3Packages.buildPythonPackage rec {
 
-  pname = "rmm";
-  version = "0.2.0";
-  src = fetchgit {
-    url = "https://github.com/rapidsai/rmm";
-    rev = "e7f07268373652f9f36f68b284af8ca0637c6e08";
-    sha256 = "sha256-lmACOAJtWIjKWe82GTfD8XOADo+q9nrtNQraJlwPau0=";
-  };
+  inherit (nixpkgs-hardenedlinux-sources.rmm) pname version src;
 
   nativeBuildInputs = [ cudatoolkit ];
+
   propagatedBuildInputs = with python3Packages; [
     cython
     numba

@@ -1,22 +1,15 @@
 { stdenv
 , lib
 , python3Packages
-, fetchgit
-, python-whois
-, python3
+, nixpkgs-hardenedlinux-sources
 }:
 
 python3Packages.buildPythonPackage rec {
 
-  pname = "clx";
-  version = "0.2.0";
-  src = fetchgit {
-    url = "https://github.com/rapidsai/clx";
-    rev = "6cbe4830ac2a5f151445df1f33404d1949716bfd";
-    sha256 = "0mnh57p4jc9bjczbkyqqzfy4mpzdqz1ypmam2lyh61p0xrgqrvsr";
-  };
+  inherit (nixpkgs-hardenedlinux-sources.clx) pname version src;
 
-  nativeBuildInputs = [ python3.pkgs.pytest ];
+  nativeBuildInputs = with python3Packages; [ pytest ];
+
   propagatedBuildInputs = with python3Packages; [
     confluent-kafka
     cython

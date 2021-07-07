@@ -1,15 +1,11 @@
-{ stdenv, lib, pkgs, fetchgit, cmake, cudatoolkit }:
+{ stdenv, lib, pkgs, fetchgit, cmake, cudatoolkit, nixpkgs-hardenedlinux-sources }:
 
 stdenv.mkDerivation rec {
-  version = "master";
-  pname = "cnmem";
-  src = fetchgit {
-    url = "https://github.com/NVIDIA/cnmem";
-    rev = "37896cc9bfc6536a8c878a1e675835c22d827821";
-    sha256 = "sha256-Xpr0idhBhCxFC0yDWpZwwD29FRMGdTrD5RzgluwuonM=";
-  };
+
+  inherit (nixpkgs-hardenedlinux-sources.cnmem) pname version src;
 
   nativeBuildInputs = [ cmake ];
+
   buildInputs = [ cudatoolkit ];
 
   enableParallelBuilding = true;

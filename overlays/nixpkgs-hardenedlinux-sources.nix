@@ -1,4 +1,4 @@
 final: prev:
 {
-  nixpkgs-hardenedlinux-sources = prev.callPackage (import ../packages/_sources/generated.nix) { };
+  nixpkgs-hardenedlinux-sources = prev.callPackage ../packages/_sources/generated.nix { };
 }

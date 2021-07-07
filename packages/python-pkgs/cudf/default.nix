@@ -7,17 +7,11 @@
 , spdlog
 , arrow-cpp
 , pyarrow
-, rmm
+, nixpkgs-hardenedlinux-sources
 }:
-python3Packages.buildPythonPackage rec {
 
-  pname = "cudf";
-  version = "master";
-  src = fetchgit {
-    url = "https://github.com/rapidsai/cudf";
-    rev = "0f0e748fb4cb8c364e6ac2cc35fc40a2608025f2";
-    sha256 = "sha256-hiHFT8w/lrmYJI/fMYgD2jfW6B4neOt+SSfSazWB2dI=";
-  };
+python3Packages.buildPythonPackage rec {
+  inherit (nixpkgs-hardenedlinux-sources.cudf) pname version src;
 
   preConfigure = ''
     export CUDA_HOME=${cudatoolkit}

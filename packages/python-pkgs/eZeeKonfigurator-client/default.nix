@@ -3,12 +3,14 @@
 , python3Packages
 , nixpkgs-hardenedlinux-sources
 , machlib
+, broker
 }:
 let
   eZeeKonfigurator_client-requirements = machlib.mkPython rec {
     requirements = builtins.readFile (nixpkgs-hardenedlinux-sources.eZeeKonfigurator_client.src + "/brokerd/requirements.txt") + ''
 
     '';
+
   };
 in
 python3Packages.buildPythonPackage rec {
@@ -17,8 +19,13 @@ python3Packages.buildPythonPackage rec {
 
   propagatedBuildInputs = with python3Packages; [
     eZeeKonfigurator_client-requirements
+    broker
   ];
 
+  patches = [ ./version.patch ];
+
+  postPatch = ''
+  '';
 
   meta = with lib; {
     description = "client-side half of eZeeKonfigurator";

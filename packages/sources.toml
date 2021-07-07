@@ -1,6 +1,6 @@
 # nvfetcher.toml
 [broker]
-src.github = "zeek/broker"
+src.git = "https://github.com/zeek/broker"
 fetch.github = "zeek/broker"
 git.fetchSubmodules = true
 
@@ -9,18 +9,37 @@ src.github = "grigorescu/broker-to-json"
 fetch.github = "grigorescu/broker-to-json"
 
 
+[sybilhunter]
+src.git = "https://github.com/NullHypothesis/sybilhunter"
+fetch.github = "NullHypothesis/sybilhunter"
+
 
 [eZeeKonfigurator]
 src.git = "https://github.com/esnet/eZeeKonfigurator"
 fetch.github = "esnet/eZeeKonfigurator"
 
+
+[rmm]
+src.git = "https://github.com/rapidsai/rmm"
+fetch.github = "rapidsai/rmm"
+
+
+[cudf]
+src.git = "https://github.com/rapidsai/cudf"
+fetch.github = "rapidsai/cudf"
+
+[clx]
+src.git = "https://github.com/rapidsai/clx"
+fetch.github = "rapidsai/clx"
+
+[cnmem]
+src.git = "https://github.com/NVIDIA/cnmem"
+fetch.github = "NVIDIA/cnmem"
+
+
 [eZeeKonfigurator_client]
 src.git = "https://github.com/esnet/eZeeKonfigurator_client"
 fetch.github = "esnet/eZeeKonfigurator_client"
-
-[clx]
-src.github = "rapidsai/clx"
-fetch.github = "rapidsai/clx"
 
 [elastalert2]
 src.github = "jertel/elastalert2"
@@ -49,10 +68,6 @@ fetch.pypi = "fastprogress"
 [zat]
 src.git = "https://github.com/SuperCowPowers/zat"
 fetch.github = "SuperCowPowers/zat"
-
-# [cnmem]
-# src.github = "NVIDIA/cnmem"
-# fetch.github = "NVIDIA/cnmem"
 
 #Python Packages
 [btest]

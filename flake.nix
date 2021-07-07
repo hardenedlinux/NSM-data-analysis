@@ -58,7 +58,6 @@
           };
         };
 
-
         sharedOverlays = [
           (import "${devshell-flake}/overlay.nix")
           (final: prev:
@@ -72,6 +71,7 @@
               };
             })
         ] ++ (attrValues (pathsToImportedAttrs overlayPaths));
+
         # export overlays automatically for all packages defined in overlaysBuilder of each channel
         overlays = internalOverlays {
           inherit (self) pkgs inputs;
@@ -119,7 +119,7 @@
               })
               pkgsDirNames)
         )
-        // { nixpkgs-hardenedlinux-sources = prev.callPackage (import ./packages/_sources/generated.nix) { }; };
+        // { };
     } //
     {
       nixosModules = {
