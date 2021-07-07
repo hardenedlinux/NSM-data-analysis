@@ -4,6 +4,7 @@
 , nixpkgs-hardenedlinux-sources
 , machlib
 , broker-json
+, broker
 }:
 let
   eZeeKonfigurator-requirements = machlib.mkPython rec {
@@ -26,17 +27,23 @@ let
   };
 in
 python3Packages.buildPythonPackage rec {
+
   inherit (nixpkgs-hardenedlinux-sources.eZeeKonfigurator) pname version src;
+
   nativeBuildInputs = [ ];
+
   propagatedBuildInputs = with python3Packages; [
     eZeeKonfigurator-requirements
     broker-json
+    broker
   ];
 
   postPatch = ''
     substituteInPlace requirements_common.txt \
     --replace "broker_json==0.2" ""
   '';
+
+  doCheck = false;
 
   meta = with lib;
     {
