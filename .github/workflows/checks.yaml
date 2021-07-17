@@ -28,5 +28,5 @@ jobs:
         nix develop -c only-x86-64_linux
         nix flake show
 
-    - name: Run Nix Flake Show
+    - name: Run Nix Flake Check
       run: nix -Lv flake check

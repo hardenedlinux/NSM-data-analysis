@@ -7,7 +7,6 @@
     stable.url = "nixpkgs/release-20.09";
     nvfetcher = { url = "github:berberman/nvfetcher"; };
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
-    spicy = { url = "github:GTrunSec/spicy-with-nix-flake"; };
     devshell-flake = { url = "github:numtide/devshell"; flake = false; };
     mach-nix = { url = "github:DavHau/mach-nix"; inputs.pypi-deps-db.follows = "pypi-deps-db"; };
     pypi-deps-db = {
@@ -119,7 +118,7 @@
               })
               pkgsDirNames)
         )
-        // { };
+        // { nixpkgs-hardenedlinux-sources = prev.callPackage ./packages/_sources/generated.nix { }; };
     } //
     {
       nixosModules = {
